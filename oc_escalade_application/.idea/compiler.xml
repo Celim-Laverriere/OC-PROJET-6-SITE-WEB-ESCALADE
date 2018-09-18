@@ -6,7 +6,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="escalade-batch" />
         <module name="escalade-business" />
         <module name="escalade-consumer" />
         <module name="escalade-model" />

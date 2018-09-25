@@ -1,17 +1,4 @@
 
-CREATE SEQUENCE public.longueur_id_seq;
-
-CREATE TABLE public.longueur (
-                id INTEGER NOT NULL DEFAULT nextval('public.longueur_id_seq'),
-                numero BIT NOT NULL,
-                hauteur REAL NOT NULL,
-                cotation BIT NOT NULL,
-                CONSTRAINT longueur_pk PRIMARY KEY (id)
-);
-
-
-ALTER SEQUENCE public.longueur_id_seq OWNED BY public.longueur.id;
-
 CREATE SEQUENCE public.compte_id_seq;
 
 CREATE TABLE public.compte (
@@ -33,7 +20,6 @@ CREATE TABLE public.site (
                 nom VARCHAR NOT NULL,
                 region VARCHAR NOT NULL,
                 description VARCHAR NOT NULL,
-                url_photo VARCHAR,
                 compte_id INTEGER NOT NULL,
                 CONSTRAINT site_pk PRIMARY KEY (id)
 );
@@ -73,7 +59,7 @@ CREATE TABLE public.voie (
                 id INTEGER NOT NULL DEFAULT nextval('public.voie_id_seq'),
                 nom VARCHAR NOT NULL,
                 type VARCHAR NOT NULL,
-                cotation BIT NOT NULL,
+                cotation VARCHAR NOT NULL,
                 hauteur REAL NOT NULL,
                 secteur_id INTEGER NOT NULL,
                 CONSTRAINT voie_pk PRIMARY KEY (id)
@@ -82,12 +68,26 @@ CREATE TABLE public.voie (
 
 ALTER SEQUENCE public.voie_id_seq OWNED BY public.voie.id;
 
+CREATE SEQUENCE public.longueur_id_seq;
+
+CREATE TABLE public.longueur (
+                id INTEGER NOT NULL DEFAULT nextval('public.longueur_id_seq'),
+                numero BIT NOT NULL,
+                hauteur REAL NOT NULL,
+                cotation VARCHAR NOT NULL,
+                voie_id INTEGER NOT NULL,
+                CONSTRAINT longueur_pk PRIMARY KEY (id)
+);
+
+
+ALTER SEQUENCE public.longueur_id_seq OWNED BY public.longueur.id;
+
 CREATE SEQUENCE public.relai_id_seq;
 
 CREATE TABLE public.relai (
                 id INTEGER NOT NULL DEFAULT nextval('public.relai_id_seq'),
                 num_relai BIT NOT NULL,
-                longueur_id INTEGER NOT NULL,
+                hauteur REAL NOT NULL,
                 voie_id INTEGER NOT NULL,
                 CONSTRAINT relai_pk PRIMARY KEY (id)
 );
@@ -101,7 +101,7 @@ CREATE TABLE public.topo (
                 id INTEGER NOT NULL DEFAULT nextval('public.topo_id_seq'),
                 nom VARCHAR NOT NULL,
                 date_upload DATE NOT NULL,
-                rescription VARCHAR NOT NULL,
+                drescription VARCHAR NOT NULL,
                 statut VARCHAR NOT NULL,
                 compte_id INTEGER NOT NULL,
                 CONSTRAINT topo_pk PRIMARY KEY (id)
@@ -137,13 +137,6 @@ CREATE TABLE public.resa_topo (
 
 
 ALTER SEQUENCE public.resa_topo_id_seq OWNED BY public.resa_topo.id;
-
-ALTER TABLE public.relai ADD CONSTRAINT longueur_point_fk
-FOREIGN KEY (longueur_id)
-REFERENCES public.longueur (id)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION
-NOT DEFERRABLE;
 
 ALTER TABLE public.resa_topo ADD CONSTRAINT compte_resa_topo_fk
 FOREIGN KEY (compte_id)
@@ -202,6 +195,13 @@ ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
 ALTER TABLE public.relai ADD CONSTRAINT voie_point_fk
+FOREIGN KEY (voie_id)
+REFERENCES public.voie (id)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.longueur ADD CONSTRAINT voie_longueur_fk
 FOREIGN KEY (voie_id)
 REFERENCES public.voie (id)
 ON DELETE NO ACTION

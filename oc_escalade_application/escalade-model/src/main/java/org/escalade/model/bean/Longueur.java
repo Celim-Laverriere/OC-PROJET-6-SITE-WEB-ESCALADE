@@ -2,18 +2,18 @@ package org.escalade.model.bean;
 
 public class Longueur {
 
-    private byte cotation;
+    private String cotation;
     private float hauteur;
-    private byte nb_point;
+    private int numero;
 
     public Longueur() {
     }
 
-    public byte getCotation() {
+    public String getCotation() {
         return cotation;
     }
 
-    public void setCotation(byte cotation) {
+    public void setCotation(String cotation) {
         this.cotation = cotation;
     }
 
@@ -25,11 +25,11 @@ public class Longueur {
         this.hauteur = hauteur;
     }
 
-    public byte getNb_point() {
-        return nb_point;
+    public int getNumero() {
+        return numero;
     }
 
-    public void setNb_point(byte nb_point) {
-        this.nb_point = nb_point;
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
 }

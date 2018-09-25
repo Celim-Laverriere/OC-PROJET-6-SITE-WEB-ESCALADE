@@ -3,6 +3,8 @@ package org.escalade.model.bean;
 public class Voie {
 
     private String nom;
+    private String type;
+    private String cotation;
 
     public Voie() {
     }

@@ -47,6 +47,10 @@
         </dependency>
         <!-- ===== Bibliothèques tierces ===== -->
 
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
         <!-- ===== Tests ===== -->
         <dependency>
             <groupId>junit</groupId>

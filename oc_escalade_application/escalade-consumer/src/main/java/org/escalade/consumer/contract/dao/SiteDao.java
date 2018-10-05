@@ -1,22 +1,50 @@
 package org.escalade.consumer.contract.dao;
 
-import org.escalade.model.bean.Longueur;
 import org.escalade.model.bean.Site;
 
+import javax.swing.*;
 import java.util.List;
 
 public interface SiteDao {
 
         /**
-         * Renvoie le/les site(s) demandée(s)
+         * Renvoie la liste des sites demandés
          *
-         * @return Le {@link Site}
+         * @return les {@link Site}
          */
-        List<Site> getRead();
+        List<Site> sites();
 
         /**
-         * Créé un site
+         * Ajouter un site
          *
+         * @param site
+         * @return un message de confirmation
          */
-        List <Site> setCreate();
+        String addSite(Site site);
+
+        /**
+         * Renvoie le site demandé
+         *
+         * @param id
+         * @return le site correspondant à son id
+         */
+        Site site(Integer id);
+
+        /**
+         * Supprimer un site
+         *
+         * @param id
+         * @return un message de confirmation
+         */
+        String delSite(Integer id);
+
+        /**
+         * Mettre à jour un site
+         *
+         * @param id
+         * @param site
+         * @return un message de confirmation
+         */
+        String upSite(Integer id, Site site);
+
 }

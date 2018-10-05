@@ -4,20 +4,26 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- ===== Déclaration des DAO ===== -->
-    <bean id="commentaireDao" class="org.escalade.consumer.impl.dao.CommentaireDaoImpl"/>
-    <bean id="compteDao" class="org.escalade.consumer.impl.dao.CompteDaoImpl"/>
-    <bean id="longueurDao" class="org.escalade.consumer.impl.dao.LongueurDaoImpl"/>
-    <bean id="resaTopoDao" class="org.escalade.consumer.impl.dao.ResaTopoDaoImpl"/>
-    <bean id="secteurDao" class="org.escalade.consumer.impl.dao.SecteurDaoImpl"/>
-    <bean id="siteDao" class="org.escalade.consumer.impl.dao.SiteDaoImpl"/>
-    <bean id="topoDao" class="org.escalade.consumer.impl.dao.TopoDaoImpl"/>
-    <bean id="voieDao" class="org.escalade.consumer.impl.dao.VoieDaoImpl"/>
+    <bean id="abstractDataImpl" abstract="true">
+        <property name="dataSource" value="dataSourceEscalade"/>
+    </bean>
+    
+    <bean id="commentaireDao" class="org.escalade.consumer.impl.dao.CommentaireImpl" parent="abstractDataImpl"/>
+    <bean id="compteDao" class="org.escalade.consumer.impl.dao.CompteImpl" parent="abstractDataImpl"/>
+    <bean id="longueurDao" class="org.escalade.consumer.impl.dao.LongueurImpl" parent="abstractDataImpl"/>
+    <bean id="relaiDao" class="org.escalade.consumer.impl.dao.RelaiImpl" parent="abstractDataImpl"/>
+    <bean id="resaTopoDao" class="org.escalade.consumer.impl.dao.ResaTopoImpl" parent="abstractDataImpl"/>
+    <bean id="secteurDao" class="org.escalade.consumer.impl.dao.SecteurImpl" parent="abstractDataImpl"/>
+    <bean id="siteDao" class="org.escalade.consumer.impl.dao.SiteImpl" parent="abstractDataImpl"/>
+    <bean id="topoDao" class="org.escalade.consumer.impl.dao.TopoImpl" parent="abstractDataImpl"/>
+    <bean id="voieDao" class="org.escalade.consumer.impl.dao.VoieImpl" parent="abstractDataImpl"/>
 
     <!-- ===== DaoFactory ===== -->
     <bean id="daoFactory" class="org.escalade.consumer.impl.DaoFactoryImpl">
         <property name="commentaireDao" ref="commentaireDao"/>
         <property name="compteDao" ref="compteDao"/>
         <property name="longueurDao" ref="longueurDao"/>
+        <property name="relaiDao" ref="relaiDao"/>
         <property name="resaTopoDao" ref="resaTopoDao"/>
         <property name="secteurDao" ref="secteurDao"/>
         <property name="siteDao" ref="siteDao"/>
@@ -25,11 +31,4 @@
         <property name="voieDao" ref="voieDao"/>
     </bean>
 
-    <!-- ==== AbstractResource ===== -->
-    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
-        <property name="targetClass" value="org.escalade.consumer.impl.data.AbstractDaoDataImpl"/>
-        <property name="targetMethod" value="getDataSource"/>
-        <property name="arguments" ref="daoFactory"/>
-    </bean>
-    
 </beans>

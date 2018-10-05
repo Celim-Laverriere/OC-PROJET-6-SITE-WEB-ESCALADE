@@ -1,13 +1,30 @@
 package org.escalade.model.bean;
 
+import java.util.List;
+
 public class Site {
 
+    /* ==================== Attributs ==================== */
+    private Integer id;
     private String nom;
     private String region;
     private String description;
-    private String url_photo;
+    private List<Secteur> secteurs;
+    private List<Photo> photos;
+    private List<Commentaire> commentaires;
 
+    /* ==================== Constructeurs ==================== */
     public Site() {
+
+    }
+
+    /* ==================== Getters/Setters ==================== */
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNom() {
@@ -34,11 +51,27 @@ public class Site {
         this.description = description;
     }
 
-    public String getUrl_photo() {
-        return url_photo;
+    public List<Secteur> getSecteurs() {
+        return secteurs;
     }
 
-    public void setUrl_photo(String url_photo) {
-        this.url_photo = url_photo;
+    public void setSecteurs(List<Secteur> secteurs) {
+        this.secteurs = secteurs;
+    }
+
+    public List<Photo> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(List<Photo> photos) {
+        this.photos = photos;
+    }
+
+    public List<Commentaire> getCommentaires() {
+        return commentaires;
+    }
+
+    public void setCommentaires(List<Commentaire> commentaires) {
+        this.commentaires = commentaires;
     }
 }

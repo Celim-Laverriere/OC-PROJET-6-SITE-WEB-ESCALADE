@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <package name="default" extends="struts-default">
+        <!-- Action par défaut -->
+        <default-action-ref name="index"/>
+
+        <!-- Action "index" -->
+        <action name="index">
+            <result>/jsp/index.jsp</result>
+        </action>
+
+        <!-- Action pour lister les sites-->
+        <action name="site_list"
+                class="org.escalade.webapp.action.GestionSiteAction"
+                method="doList">
+            <result>/jsp/site/list.jsp</result>
+        </action>
+        
+        <action name="site_detail"
+                class="org.escalade.webapp.action.GestionSiteAction"
+                method="doDetail">
+            <result name="success">/jsp/site/detail.jsp</result>
+            <result name="error">/jsp/error.jsp</result>
+        </action>
+
+        <action name="secteur_list"
+                class="org.escalade.webapp.action.GestionSecteurAction"
+                method="doList">
+            <result name="success">/jsp/secteur/list.jsp</result>
+            <result name="error">/jsp/error.jsp</result>
+        </action>
+    </package>
+</struts>

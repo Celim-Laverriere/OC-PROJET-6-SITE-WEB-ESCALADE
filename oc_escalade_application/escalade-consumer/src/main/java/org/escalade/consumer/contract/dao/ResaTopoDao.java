@@ -1,22 +1,38 @@
 package org.escalade.consumer.contract.dao;
 
-import org.escalade.model.bean.Longueur;
 import org.escalade.model.bean.ResaTopo;
-
 import java.util.List;
 
 public interface ResaTopoDao {
 
-    /**
-     * Renvoie le/les reservation(s) du/des topo(s) demandée(s)
-     *
-     * @return Le {@link ResaTopo}
-     */
-    List<ResaTopo> getRead();
+        /**
+         * Renvoie la liste des réservations de topos
+         *
+         * @return les {@link ResaTopo}
+         * */
+        List <ResaTopo> resaTopos();
 
-    /**
-     * Faire une réservation d'un topo
-     *
-     */
-    List <ResaTopo> setCreate();
+        /**
+         * Ajouter une nouvelle réservation de topo
+         *
+         * @param resaTopo
+         * @return un message de confirmation
+         */
+        String addResaTopo(ResaTopo resaTopo);
+
+        /**
+         * Renvoie la réservation du topo demandé
+         *
+         * @param id
+         * @return la réservation du topo correspondant à son id
+         */
+        ResaTopo resaTopo(Integer id);
+
+        /**
+         * Supprimer une réservation de topo
+         *
+         * @param id
+         * @return un message de confirmation
+         */
+        String delResaTopo(Integer id);
 }

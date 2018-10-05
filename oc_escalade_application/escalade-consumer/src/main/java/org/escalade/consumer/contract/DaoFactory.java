@@ -16,6 +16,10 @@ public interface DaoFactory {
 
     void setLongueurDao(LongueurDao longueurDao);
 
+    RelaiDao getRelaiDao();
+
+    void setRelaiDao(RelaiDao relaiDao);
+
     ResaTopoDao getResaTopoDao();
 
     void setResaTopoDao(ResaTopoDao resaTopoDao);

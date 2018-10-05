@@ -3,7 +3,6 @@ package org.escalade.model.bean;
 
 public class Commentaire {
 
-    private Integer id;
     private String commentaire;
 
     public Commentaire() {
@@ -17,11 +16,4 @@ public class Commentaire {
         this.commentaire = commentaire;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 }

@@ -5,18 +5,43 @@ import java.util.List;
 
 public interface CompteDao {
 
-    /**
-     * Renvoie le/les compte(s) demandé(s)
-     *
-     * @return Le {@link Compte}
-     */
-    List <Compte> getRead();
+        /**
+         * Renvoie la liste des comptes demandés
+         *
+         * @return les {@link Compte}
+         * */
+        List<Compte> comptes();
 
-    /**
-     * Créé un compte
-     *
-     */
-    List <Compte> setCreate();
+        /**
+         * Ajouter un compte
+         *
+         * @param compte
+         * @return un message de confirmation
+         */
+        String addCompte(Compte compte);
 
+        /**
+         * Renvoie le compte demandé
+         *
+         * @param id
+         * @return le compte correspondant à son id
+         */
+        Compte compte(Integer id);
+
+        /**
+         * Supprimer un compte
+         *
+         * @param id
+         * @return un message de confirmation
+         */
+        String delCompte(Integer id);
+
+        /**
+         * Mettre à jour les informations d'un compte
+         *
+         * @param id
+         * @return un message de confirmation
+         */
+        String upCompte(Integer id, Compte compte);
 
 }

@@ -5,17 +5,34 @@ import java.util.List;
 
 public interface CommentaireDao {
 
-    /**
-     * Renvoie le/les commentaires demandé
-     *
-     * @return Le {@link Commentaire}
-     */
-    List <Commentaire> getRead();
+        /**
+         * Renvoie la liste des commentaires demandés
+         *
+         * @return les {@link Commentaire}
+         * */
+        List <Commentaire> commentaires();
 
-    /**
-     * Créé un commentaires
-     *
-     */
-    List <Commentaire> setCreate();
+        /**
+         * Ajouter un commentaire
+         *
+         * @param commentaire
+         * @return un message de confirmation
+         */
+        String addCommentaire(Commentaire commentaire);
 
+        /**
+         * Renvoie le commentaire demandé
+         *
+         * @param id
+         * @return le commentaire correspondant à son id
+         */
+        Commentaire commentaire(Integer id);
+
+        /**
+         * Supprimer un commentaire
+         *
+         * @param id
+         * @return un message de confirmation
+         */
+        String delCommentaire(Integer id);
 }

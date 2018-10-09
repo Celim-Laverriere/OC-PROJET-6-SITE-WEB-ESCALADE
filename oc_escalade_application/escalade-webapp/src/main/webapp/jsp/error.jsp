@@ -15,5 +15,6 @@
     <h2>Une erreur s'est produite</h2>
 
     <s:actionerror />
+
 </body>
 </html>

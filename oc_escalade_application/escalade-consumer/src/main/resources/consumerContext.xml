@@ -5,7 +5,7 @@
 
     <!-- ===== Déclaration des DAO ===== -->
     <bean id="abstractDataImpl" abstract="true">
-        <property name="dataSource" value="dataSourceEscalade"/>
+        <property name="dataSource" ref="dataSourceEscalade"/>
     </bean>
     
     <bean id="commentaireDao" class="org.escalade.consumer.impl.dao.CommentaireImpl" parent="abstractDataImpl"/>

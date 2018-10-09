@@ -1,10 +1,8 @@
 package org.escalade.webapp.action;
 
 import com.opensymphony.xwork2.ActionSupport;
-
 import org.escalade.model.bean.Site;
 import org.escalade.webapp.AbstractWebappImpl;
-
 
 import java.util.List;
 
@@ -35,8 +33,16 @@ public class GestionSiteAction extends AbstractWebappImpl {
         return sites;
     }
 
+    public void setSites(List<Site> sites) {
+        this.sites = sites;
+    }
+
     public Site getSite() {
         return site;
+    }
+
+    public void setSite(Site site) {
+        this.site = site;
     }
 
 
@@ -48,7 +54,7 @@ public class GestionSiteAction extends AbstractWebappImpl {
      */
     public String doList() {
 
-        sites = getManagerFactory().getSiteManager().sites();
+        setSites(getManagerFactory().getSiteManager().sites());
         return ActionSupport.SUCCESS;
     }
 

@@ -6,11 +6,6 @@
 
     <display-name>Escalade</display-name>
 
-    <context-param>
-      <param-name>contextConfigLocation</param-name>
-      <param-value>classpath:/bootstrapContext.xml</param-value>
-    </context-param>
-
     <!-- Filter struts-->
     <filter>
         <filter-name>struts2</filter-name>
@@ -20,5 +15,14 @@
         <filter-name>struts2</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:/bootstrapContext.xml</param-value>
+    </context-param>
 
 </web-app>

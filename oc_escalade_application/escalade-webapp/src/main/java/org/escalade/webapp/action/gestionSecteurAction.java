@@ -4,10 +4,12 @@ import com.opensymphony.xwork2.ActionSupport;
 import org.escalade.model.bean.Secteur;
 import org.escalade.webapp.AbstractWebappImpl;
 
-
 import java.util.List;
 
-public class GestionSecteurAction extends AbstractWebappImpl {
+/**
+ *  Action de gestion des {@link Secteur}
+ */
+public class gestionSecteurAction extends AbstractWebappImpl {
 
     // =============== Attributs ===============
     private Integer siteId;

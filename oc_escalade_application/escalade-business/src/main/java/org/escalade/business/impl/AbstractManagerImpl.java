@@ -8,18 +8,13 @@ import javax.inject.Named;
 
 public abstract class AbstractManagerImpl {
 
-    @Inject
-    @Named("txManagerEscalade")
-    private PlatformTransactionManager platformTransactionManager;
-
-    public PlatformTransactionManager getPlatformTransactionManager() {
-        return platformTransactionManager;
-    }
-
     private DaoFactory daoFactory;
 
     public DaoFactory getDaoFactory() {
         return daoFactory;
     }
 
+    public void setDaoFactory(DaoFactory daoFactory) {
+        this.daoFactory = daoFactory;
+    }
 }

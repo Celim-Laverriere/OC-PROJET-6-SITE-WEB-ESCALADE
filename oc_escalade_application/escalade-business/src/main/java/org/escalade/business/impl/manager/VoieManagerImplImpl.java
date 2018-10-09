@@ -13,14 +13,6 @@ import java.util.List;
 public class VoieManagerImplImpl extends AbstractManagerImpl implements VoieManager {
 
     public List<Voie> voies() {
-
-        TransactionTemplate vTransactionTemplate = new TransactionTemplate(getPlatformTransactionManager());
-        vTransactionTemplate.execute(new TransactionCallbackWithoutResult() {
-            @Override
-            protected void doInTransactionWithoutResult(TransactionStatus status) {
-                getDaoFactory().getVoieDao().voies();
-            }
-        });
         return getDaoFactory().getVoieDao().voies();
     }
 

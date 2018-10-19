@@ -5,7 +5,6 @@ import org.escalade.consumer.impl.data.AbstractDataImpl;
 import org.escalade.model.bean.Secteur;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -13,10 +12,11 @@ import java.util.List;
 public class SecteurImpl extends AbstractDataImpl implements SecteurDao {
 
     @Override
-    public List<Secteur> secteurs(Integer siteId) {
+    public List<Secteur> secteurs(Integer site_id) {
         String vSql
-                = "SELECT COUNT(*) FROM public.secteur"
-                + "WHERE site_id = site_id";
+                = "SELECT * FROM public.secteur"
+                + " WHERE site_id = " + site_id;
+
 
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
 

@@ -6,11 +6,11 @@ import org.escalade.model.bean.Relai;
 
 import java.util.List;
 
-public class RelaiManagerImplImpl extends AbstractManagerImpl implements RelaiManager {
+public class RelaiManagerImpl extends AbstractManagerImpl implements RelaiManager {
 
     @Override
-    public List<Relai> relais() {
-        return getDaoFactory().getRelaiDao().relais();
+    public List<Relai> relais(Integer voie_id) {
+        return getDaoFactory().getRelaiDao().relais(voie_id);
     }
 
     @Override

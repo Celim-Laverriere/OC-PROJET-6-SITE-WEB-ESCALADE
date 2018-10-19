@@ -6,7 +6,7 @@ import org.escalade.model.bean.Compte;
 
 import java.util.List;
 
-public class CompteManagerImplImpl extends AbstractManagerImpl implements CompteManager {
+public class CompteManagerImpl extends AbstractManagerImpl implements CompteManager {
 
     @Override
     public List<Compte> comptes() {

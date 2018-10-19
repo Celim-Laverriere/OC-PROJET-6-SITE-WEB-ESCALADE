@@ -6,11 +6,11 @@ import org.escalade.model.bean.Longueur;
 
 import java.util.List;
 
-public class LongueurManagerImplImpl extends AbstractManagerImpl implements LongueurManager {
+public class LongueurManagerImpl extends AbstractManagerImpl implements LongueurManager {
 
     @Override
-    public List<Longueur> longueurs() {
-        return getDaoFactory().getLongueurDao().longueurs();
+    public List<Longueur> longueurs(Integer voie_id) {
+        return getDaoFactory().getLongueurDao().longueurs(voie_id);
     }
 
     @Override

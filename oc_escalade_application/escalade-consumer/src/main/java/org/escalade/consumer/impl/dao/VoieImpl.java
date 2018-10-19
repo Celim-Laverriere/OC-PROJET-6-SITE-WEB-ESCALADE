@@ -2,36 +2,27 @@ package org.escalade.consumer.impl.dao;
 
 import org.escalade.consumer.contract.dao.VoieDao;
 import org.escalade.consumer.impl.data.AbstractDataImpl;
+import org.escalade.consumer.impl.rowmapper.VoieRM;
 import org.escalade.model.bean.Voie;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-
-import javax.swing.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.List;
 
 public class VoieImpl extends AbstractDataImpl implements VoieDao {
 
     @Override
-    public List<Voie> voies() {
-        String vSql = "SELECT * FROM public.voie";
+    public List<Voie> voies(Integer secteur_id) {
+
+        String vSql
+                = "SELECT * FROM public.voie"
+                + " WHERE secteur_id = " + secteur_id;
 
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+        VoieRM voieRM = new VoieRM();
 
-        RowMapper<Voie> voieRowMapper = new RowMapper<Voie>() {
-            @Override
-            public Voie mapRow(ResultSet pRs, int rowNum) throws SQLException {
-                Voie vVoie = new Voie();
-                vVoie.setNom(pRs.getString("nom"));
-                vVoie.setCotation(pRs.getString("cotation"));
-                vVoie.setType(pRs.getString("type"));
-                vVoie.setHauteur(pRs.getFloat("hauteur"));
-                return vVoie;
-            }
-        };
-        List<Voie> vListVoie = vJdbcTemplate.query(vSql, voieRowMapper);
+        List<Voie> vListVoie = vJdbcTemplate.query(vSql, voieRM.getVoieRowMapper());
         return vListVoie;
     }
 
@@ -42,7 +33,15 @@ public class VoieImpl extends AbstractDataImpl implements VoieDao {
 
     @Override
     public Voie voie(Integer id) {
-        return null;
+        String vSql
+                = "SELECT * FROM public.voie"
+                + " WHERE id = " + id;
+
+        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+        VoieRM voieRM = new VoieRM();
+
+        List<Voie> vListVoie = vJdbcTemplate.query(vSql, voieRM.getVoieRowMapper());
+        return vListVoie.get(0);
     }
 
     @Override

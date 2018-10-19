@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface CommentaireManager {
     
-    List<Commentaire> commentaires();
+    List<Commentaire> commentaires(Integer site_id, Integer topo_id);
 
     String addCommentaire(Commentaire commentaire);
 
-    Commentaire commentaire(Integer id);
+    Commentaire commentaire(Integer site_id, Integer topo_id);
 
     String delCommentaire(Integer id);
 }

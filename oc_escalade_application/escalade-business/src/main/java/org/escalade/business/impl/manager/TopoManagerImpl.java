@@ -2,11 +2,13 @@ package org.escalade.business.impl.manager;
 
 import org.escalade.business.contract.manager.TopoManager;
 import org.escalade.business.impl.AbstractManagerImpl;
+import org.escalade.model.bean.Commentaire;
+import org.escalade.model.bean.ResaTopo;
 import org.escalade.model.bean.Topo;
 
 import java.util.List;
 
-public class TopoManagerImplImpl extends AbstractManagerImpl implements TopoManager {
+public class TopoManagerImpl extends AbstractManagerImpl implements TopoManager {
 
     @Override
     public List<Topo> topos() {
@@ -19,8 +21,18 @@ public class TopoManagerImplImpl extends AbstractManagerImpl implements TopoMana
     }
 
     @Override
-    public Topo topo(Integer id) {
-        return getDaoFactory().getTopoDao().topo(id);
+    public Topo topo(Integer topo_id) {
+
+        Topo topo = getDaoFactory().getTopoDao().topo(topo_id);
+
+        List<Commentaire> commentaires = getDaoFactory().getCommentaireDao().commentaires(null, topo.getId());
+        topo.setCommentaires(commentaires);
+
+        List<ResaTopo> resaTopos = getDaoFactory().getResaTopoDao().resaTopos(null, topo.getId());
+        topo.setResaTopos(resaTopos);
+
+
+        return topo;
     }
 
     @Override

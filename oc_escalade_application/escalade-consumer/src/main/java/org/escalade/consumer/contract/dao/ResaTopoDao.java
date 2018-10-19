@@ -10,7 +10,7 @@ public interface ResaTopoDao {
          *
          * @return les {@link ResaTopo}
          * */
-        List <ResaTopo> resaTopos();
+        List <ResaTopo> resaTopos(Integer compte_id, Integer topo_id);
 
         /**
          * Ajouter une nouvelle réservation de topo
@@ -23,10 +23,10 @@ public interface ResaTopoDao {
         /**
          * Renvoie la réservation du topo demandé
          *
-         * @param id
+         * @param compte_id, topo_id
          * @return la réservation du topo correspondant à son id
          */
-        ResaTopo resaTopo(Integer id);
+        ResaTopo resaTopo(Integer compte_id, Integer topo_id);
 
         /**
          * Supprimer une réservation de topo

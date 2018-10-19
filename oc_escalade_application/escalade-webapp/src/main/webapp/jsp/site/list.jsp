@@ -10,28 +10,25 @@
 <html>
 
 <head>
-    <title>Site d'escalades</title>
+    <%@include file="../_include/head.jsp"%>
 </head>
 
-<body>
+<center><body>
 
-    <h2>Liste des sites d'éscalades</h2>
+    <header>
+        <%@include file="/jsp/_include/header.jsp"%>
+    </header>
 
-    <ul>
-        <s:iterator value="sites">
-            <li>
-                <s:a action="site_detail">
-                    <s:param value="id" name="id"/>
-                    <s:property value="nom"/>
-                </s:a>
+        <h2>Liste des sites d'éscalades</h2>
 
-                - Secteurs :
-                <s:a action="secteur_list">
-                    <s:param name="id" value="secteur.id"/>
-                    <s:property value="secteur.nom" />
-                </s:a>
-            </li>
-        </s:iterator>
-    </ul>
-</body>
+        <ul>
+            <s:iterator value="sites">
+                <p>
+                   <s:a action="site_detail">
+                        <s:param value="id" name="id"/>
+                        Nom : <s:property value="nom"/></s:a><br/>
+                </p>
+            </s:iterator>
+        </ul>
+</body></center>
 </html>

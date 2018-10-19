@@ -10,7 +10,7 @@ public interface TopoManager {
 
     String addTopo(Topo topo);
 
-    Topo topo(Integer id);
+    Topo topo(Integer topo_id);
 
     String delTopo(Integer id);
 

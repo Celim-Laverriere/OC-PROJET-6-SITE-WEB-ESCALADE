@@ -97,7 +97,7 @@ public class DaoFactoryImpl implements DaoFactory {
 
     @Override
     public VoieDao getVoieDao() {
-        return null;
+        return voieDao;
     }
 
     @Override

@@ -10,7 +10,7 @@ public interface SecteurDao {
          *
          * @return les {@link Secteur}
          * */
-        List <Secteur> secteurs(Integer siteId);
+        List <Secteur> secteurs(Integer site_id);
 
         /**
          * Ajouter un secteur

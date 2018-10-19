@@ -4,14 +4,17 @@ import java.util.List;
 
 public class Secteur {
 
+    /* ==================== Attributs ==================== */
     private Integer id;
     private String nom;
     private String description;
     private List<Voie> voies;
 
+    /* ==================== Constructeurs ==================== */
     public Secteur() {
     }
 
+    /* ==================== Getters/Setters ==================== */
     public Integer getId() {
         return id;
     }

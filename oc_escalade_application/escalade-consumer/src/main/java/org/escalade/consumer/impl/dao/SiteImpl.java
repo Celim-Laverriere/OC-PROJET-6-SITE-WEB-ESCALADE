@@ -2,12 +2,13 @@ package org.escalade.consumer.impl.dao;
 
 import org.escalade.consumer.contract.dao.SiteDao;
 import org.escalade.consumer.impl.data.AbstractDataImpl;
+import org.escalade.consumer.impl.rowmapper.SiteRM;
 import org.escalade.model.bean.Site;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
+
 import java.util.List;
+
 
 public class SiteImpl extends AbstractDataImpl implements SiteDao {
 
@@ -16,19 +17,9 @@ public class SiteImpl extends AbstractDataImpl implements SiteDao {
         String vSql = "SELECT * FROM public.site";
 
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+        SiteRM siteRM = new SiteRM();
 
-        RowMapper<Site> vSiteRowMapper = new RowMapper<Site>() {
-            public Site mapRow(ResultSet pRs, int pRowNum) throws SQLException {
-                Site vSite = new Site();
-                vSite.setId(pRs.getInt("id"));
-                vSite.setNom(pRs.getString("nom"));
-                vSite.setRegion(pRs.getString("region"));
-                vSite.setDescription(pRs.getString("description"));
-                return vSite;
-            }
-        };
-
-        List<Site> vListSite = vJdbcTemplate.query(vSql, vSiteRowMapper);
+        List<Site> vListSite = vJdbcTemplate.query(vSql, siteRM.getvSiteRowMapper());
         return vListSite;
     }
 
@@ -39,7 +30,15 @@ public class SiteImpl extends AbstractDataImpl implements SiteDao {
 
     @Override
     public Site site(Integer id) {
-        return null;
+        String vSql
+                = "SELECT * FROM public.site"
+                + " WHERE id = " + id;
+
+        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+        SiteRM siteRM = new SiteRM();
+
+        List<Site> vSiteDetail = vJdbcTemplate.query(vSql, siteRM.getvSiteRowMapper());
+        return  vSiteDetail.get(0);
     }
 
     @Override

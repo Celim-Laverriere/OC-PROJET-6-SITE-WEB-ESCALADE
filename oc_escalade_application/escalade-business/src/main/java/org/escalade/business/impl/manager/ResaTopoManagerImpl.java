@@ -6,11 +6,11 @@ import org.escalade.model.bean.ResaTopo;
 
 import java.util.List;
 
-public class ResaTopoManagerImplImpl extends AbstractManagerImpl implements ResaTopoManager {
+public class ResaTopoManagerImpl extends AbstractManagerImpl implements ResaTopoManager {
 
     @Override
-    public List<ResaTopo> resaTopos() {
-        return getDaoFactory().getResaTopoDao().resaTopos();
+    public List<ResaTopo> resaTopos(Integer topo_id, Integer compte_id) {
+        return getDaoFactory().getResaTopoDao().resaTopos(topo_id, compte_id);
     }
 
     @Override
@@ -19,8 +19,8 @@ public class ResaTopoManagerImplImpl extends AbstractManagerImpl implements Resa
     }
 
     @Override
-    public ResaTopo resaTopo(Integer id) {
-        return getDaoFactory().getResaTopoDao().resaTopo(id);
+    public ResaTopo resaTopo(Integer compte_id, Integer topo_id) {
+        return getDaoFactory().getResaTopoDao().resaTopo(compte_id, topo_id);
     }
 
     @Override

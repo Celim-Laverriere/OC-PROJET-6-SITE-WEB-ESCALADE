@@ -3,14 +3,13 @@ package org.escalade.business.impl.manager;
 import org.escalade.business.contract.manager.SecteurManager;
 import org.escalade.business.impl.AbstractManagerImpl;
 import org.escalade.model.bean.Secteur;
-
 import java.util.List;
 
-public class SecteurManagerImplImpl extends AbstractManagerImpl implements SecteurManager {
+public class SecteurManagerImpl extends AbstractManagerImpl implements SecteurManager {
 
     @Override
-    public List<Secteur> secteurs(Integer siteId) {
-        return getDaoFactory().getSecteurDao().secteurs(siteId);
+    public List<Secteur> secteurs(Integer site_id) {
+        return getDaoFactory().getSecteurDao().secteurs(site_id);
     }
 
     @Override

@@ -1,13 +1,11 @@
 package org.escalade.business.contract.manager;
 
 import org.escalade.model.bean.Voie;
-
-import java.util.HashMap;
 import java.util.List;
 
 public interface VoieManager {
 
-    public List<Voie> voies();
+    public List<Voie> voies(Integer secteur_id);
 
     public String addVoie(Voie voie);
 

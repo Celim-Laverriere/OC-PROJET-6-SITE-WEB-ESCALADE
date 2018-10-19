@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface RelaiManager {
 
-    List<Relai> relais();
+    List<Relai> relais(Integer voie_id);
 
     String addRelai(Relai relai);
 

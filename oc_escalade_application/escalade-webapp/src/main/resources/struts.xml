@@ -29,9 +29,58 @@
         </action>
 
         <action name="secteur_list"
-                class="org.escalade.webapp.action.SecteurAction"
+                class="org.escalade.webapp.action.GestionSecteurAction"
                 method="doList">
             <result name="success">/jsp/secteur/list.jsp</result>
+            <result name="error">/jsp/error.jsp</result>
+        </action>
+
+        <action name="voie_list"
+                class="org.escalade.webapp.action.GestionVoieAction"
+                method="doList">
+            <result name="success">/jsp/voie/list.jsp</result>
+            <result name="error">/jsp/error.jsp</result>
+        </action>
+
+        <action name="voie_detail"
+                class="org.escalade.webapp.action.GestionVoieAction"
+                method="doDetail">
+            <result name="success">/jsp/voie/detail.jsp</result>
+            <result name="error">/jsp/error.jsp</result>
+        </action>
+
+        <action name="relai_list"
+                class="org.escalade.webapp.action.GestionRelaiAction"
+                method="doList">
+            <result name="success">/jsp/relai/list.jsp</result>
+            <result name="error">/jsp/error.jsp</result>
+        </action>
+
+        <action name="topo_list"
+                class="org.escalade.webapp.action.GestionTopoAction"
+                method="doList">
+            <result name="success">/jsp/topo/list.jsp</result>
+            <result name="error">/jsp/error.jsp</result>
+        </action>
+
+        <action name="topo_detail"
+                class="org.escalade.webapp.action.GestionTopoAction"
+                method="doDetail">
+            <result name="success">/jsp/topo/detail.jsp</result>
+            <result name="error">/jsp/error.jsp</result>
+        </action>
+
+        <action name="longueur_list"
+                class="org.escalade.webapp.action.GestionLongueurAction"
+                method="doList">
+            <result name="success">/jsp/longueur/list.jsp</result>
+            <result name="error">/jsp/error.jsp</result>
+        </action>
+
+        <action name="commentaire_list"
+                class="org.escalade.webapp.action.GestionCommentaireAction"
+                method="doList">
+            <result name="success">/jsp/commentaire/list.jsp</result>
             <result name="error">/jsp/error.jsp</result>
         </action>
     </package>

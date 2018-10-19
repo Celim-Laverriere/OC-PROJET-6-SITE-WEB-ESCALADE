@@ -11,7 +11,7 @@ public interface RelaiDao {
          *
          * @return les {@link Relai}
          * */
-        List <Relai> relais();
+        List <Relai> relais(Integer voie_id);
 
         /**
          * Ajouter un relai

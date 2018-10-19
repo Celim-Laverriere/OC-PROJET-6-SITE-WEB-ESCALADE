@@ -10,7 +10,7 @@ public interface LongueurDao {
          *
          * @return les {@link Longueur}
          * */
-        List <Longueur> longueurs();
+        List <Longueur> longueurs(Integer voie_id);
 
         /**
          * Ajouter une longueur

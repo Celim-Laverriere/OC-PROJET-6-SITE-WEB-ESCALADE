@@ -10,7 +10,7 @@ public interface CommentaireDao {
          *
          * @return les {@link Commentaire}
          * */
-        List <Commentaire> commentaires();
+        List <Commentaire> commentaires(Integer site_id, Integer topo_id);
 
         /**
          * Ajouter un commentaire
@@ -23,10 +23,10 @@ public interface CommentaireDao {
         /**
          * Renvoie le commentaire demandé
          *
-         * @param id
+         * @param site_id, topo_id
          * @return le commentaire correspondant à son id
          */
-        Commentaire commentaire(Integer id);
+        Commentaire commentaire(Integer site_id, Integer topo_id);
 
         /**
          * Supprimer un commentaire

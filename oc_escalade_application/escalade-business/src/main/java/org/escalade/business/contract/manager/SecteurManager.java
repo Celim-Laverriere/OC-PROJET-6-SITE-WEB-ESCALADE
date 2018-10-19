@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface SecteurManager {
 
-    List<Secteur> secteurs(Integer siteId);
+    List<Secteur> secteurs(Integer site_id);
 
     String addSecteur(Secteur secteur);
 

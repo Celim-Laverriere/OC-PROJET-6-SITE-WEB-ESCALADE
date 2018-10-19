@@ -13,7 +13,7 @@ public interface VoieDao {
         *
         * @return les {@link Voie}
         */
-       List<Voie> voies();
+       List<Voie> voies(Integer secteur_id);
 
        /**
         * Ajouter une voie

@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface LongueurManager {
 
-    List<Longueur> longueurs();
+    List<Longueur> longueurs(Integer voie_id);
 
     String addLongueur(Longueur longueur);
 

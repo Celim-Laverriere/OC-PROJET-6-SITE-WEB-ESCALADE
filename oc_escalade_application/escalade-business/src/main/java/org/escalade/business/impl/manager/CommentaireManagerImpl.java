@@ -6,11 +6,11 @@ import org.escalade.model.bean.Commentaire;
 
 import java.util.List;
 
-public class CommentaireManagerImplImpl extends AbstractManagerImpl implements CommentaireManager {
+public class CommentaireManagerImpl extends AbstractManagerImpl implements CommentaireManager {
 
     @Override
-    public List<Commentaire> commentaires() {
-        return getDaoFactory().getCommentaireDao().commentaires();
+    public List<Commentaire> commentaires(Integer site_id, Integer topo_id) {
+        return getDaoFactory().getCommentaireDao().commentaires(site_id, topo_id);
     }
 
     @Override
@@ -19,8 +19,8 @@ public class CommentaireManagerImplImpl extends AbstractManagerImpl implements C
     }
 
     @Override
-    public Commentaire commentaire(Integer id) {
-        return getDaoFactory().getCommentaireDao().commentaire(id);
+    public Commentaire commentaire(Integer site_id, Integer topo_id) {
+        return getDaoFactory().getCommentaireDao().commentaire(site_id, topo_id);
     }
 
     @Override

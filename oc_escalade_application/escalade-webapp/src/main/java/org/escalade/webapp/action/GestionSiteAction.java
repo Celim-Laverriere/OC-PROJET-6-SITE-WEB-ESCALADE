@@ -1,6 +1,7 @@
 package org.escalade.webapp.action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import org.escalade.model.bean.Secteur;
 import org.escalade.model.bean.Site;
 import org.escalade.webapp.AbstractWebappImpl;
 

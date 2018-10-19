@@ -9,12 +9,20 @@
 <%@taglib prefix="s" uri="/struts-tags" %>
 <html>
 <head>
-    <title>bonjour</title>
+    <%@include file="../jsp/_include/head.jsp"%>
 </head>
-<body>
-    <h2>Bienvenue sur l'application de référencement de sites d'escalade !</h2>
+<center><body>
 
-    <s:a action="site_list">Liste des sites</s:a>
+<header>
+    <%@include file="../jsp/_include/header.jsp"%>
+</header>
 
-</body>
+     <%--<button><s:a action="site_list">Liste des sites</s:a></button><br/>--%>
+     <%--<button><s:a action="topo_list">Litste des topos</s:a></button>--%>
+
+<footer>
+
+</footer>
+
+</body></center>
 </html>

@@ -9,10 +9,10 @@ import java.util.List;
 /**
  *  Action de gestion des {@link Secteur}
  */
-public class gestionSecteurAction extends AbstractWebappImpl {
+public class GestionSecteurAction extends AbstractWebappImpl {
 
     // =============== Attributs ===============
-    private Integer siteId;
+    private Integer site_id;
 
 
     // ----- Eléments en sortie -----
@@ -21,26 +21,31 @@ public class gestionSecteurAction extends AbstractWebappImpl {
 
     // ============ Getters/Setters ============
 
-
-    public Integer getSiteId() {
-        return siteId;
+    public Integer getSite_id() {
+        return site_id;
     }
 
-    public void setSiteId(Integer siteId) {
-        this.siteId = siteId;
+    public void setSite_id(Integer site_id) {
+        this.site_id = site_id;
     }
 
     public List<Secteur> getSecteurs() {
         return secteurs;
     }
 
+    public void setSecteurs(List<Secteur> secteurs) {
+        this.secteurs = secteurs;
+    }
+
+
 // =============== Méthodes ================
 
     /**
      * Action listant les {@link Secteur}
+     * @return success
      */
     public String doList() {
-        secteurs = AbstractWebappImpl.getManagerFactory().getSecteurManager().secteurs(siteId);
+        secteurs = getManagerFactory().getSecteurManager().secteurs(site_id);
         return ActionSupport.SUCCESS;
     }
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Topo {
 
+    private Integer id;
     private String nom;
     private Date date_upload;
     private String description;
@@ -13,6 +14,14 @@ public class Topo {
     private List<ResaTopo> resaTopos;
 
     public Topo() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNom() {

@@ -12,6 +12,8 @@ public interface ManagerFactory {
 
     void setCompteManager(CompteManager compteManager);
 
+    LongueurManager getLongueurManager();
+
     void setLongueurManager(LongueurManager longueurManager);
 
     RelaiManager getRelaiManager();

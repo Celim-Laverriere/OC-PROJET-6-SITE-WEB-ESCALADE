@@ -2,11 +2,20 @@ package org.escalade.model.bean;
 
 public class Longueur {
 
+    private Integer id;
     private String cotation;
     private float hauteur;
     private int numero;
 
     public Longueur() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getCotation() {

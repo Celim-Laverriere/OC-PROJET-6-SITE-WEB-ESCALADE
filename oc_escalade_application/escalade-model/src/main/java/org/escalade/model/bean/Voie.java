@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Voie {
 
+    private Integer id;
     private String nom;
     private String type;
     private String cotation;
@@ -12,6 +13,14 @@ public class Voie {
     private List<Relai> relais;
 
     public Voie() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNom() {

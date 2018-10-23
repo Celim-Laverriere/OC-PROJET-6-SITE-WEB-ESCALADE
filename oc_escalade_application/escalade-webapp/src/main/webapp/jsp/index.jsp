@@ -14,8 +14,11 @@
 <center><body>
 
 <header>
+
     <%@include file="../jsp/_include/header.jsp"%>
+    <%@include file="../jsp/_include/moteurDeRecherche.jsp"%>
 </header>
+
 
      <%--<button><s:a action="site_list">Liste des sites</s:a></button><br/>--%>
      <%--<button><s:a action="topo_list">Litste des topos</s:a></button>--%>

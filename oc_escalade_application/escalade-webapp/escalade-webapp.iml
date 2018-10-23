@@ -2,12 +2,7 @@
 <module version="4">
   <component name="FacetManager">
     <facet type="Spring" name="Spring">
-      <configuration>
-        <fileset id="fileset" name="WebappContext" removed="false">
-          <file>file://$MODULE_DIR$/src/main/resources/webappContext.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/bootstrapContext.xml</file>
-        </fileset>
-      </configuration>
+      <configuration />
     </facet>
   </component>
 </module>

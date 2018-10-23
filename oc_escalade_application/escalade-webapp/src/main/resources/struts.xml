@@ -10,8 +10,10 @@
         <default-action-ref name="index"/>
 
         <!-- Action "index" -->
-        <action name="index">
-            <result>/jsp/index.jsp</result>
+        <action name="index"
+                class="org.escalade.webapp.action.GestionMoteurDeRechercheAction"
+                method="getRegion">
+            <result name="success">/jsp/index.jsp</result>
         </action>
 
         <!-- Action pour lister les sites-->
@@ -20,7 +22,13 @@
                 method="doList">
             <result>/jsp/site/list.jsp</result>
         </action>
-        
+
+        <action name="site_list_recherche"
+                class="org.escalade.webapp.action.GestionSiteAction"
+                method="doList">
+            <result name="success">jsp/index.jsp</result>
+        </action>
+
         <action name="site_detail"
                 class="org.escalade.webapp.action.GestionSiteAction"
                 method="doDetail">
@@ -28,31 +36,10 @@
             <result name="error">/jsp/error.jsp</result>
         </action>
 
-        <action name="secteur_list"
-                class="org.escalade.webapp.action.GestionSecteurAction"
-                method="doList">
-            <result name="success">/jsp/secteur/list.jsp</result>
-            <result name="error">/jsp/error.jsp</result>
-        </action>
-
-        <action name="voie_list"
-                class="org.escalade.webapp.action.GestionVoieAction"
-                method="doList">
-            <result name="success">/jsp/voie/list.jsp</result>
-            <result name="error">/jsp/error.jsp</result>
-        </action>
-
         <action name="voie_detail"
                 class="org.escalade.webapp.action.GestionVoieAction"
                 method="doDetail">
             <result name="success">/jsp/voie/detail.jsp</result>
-            <result name="error">/jsp/error.jsp</result>
-        </action>
-
-        <action name="relai_list"
-                class="org.escalade.webapp.action.GestionRelaiAction"
-                method="doList">
-            <result name="success">/jsp/relai/list.jsp</result>
             <result name="error">/jsp/error.jsp</result>
         </action>
 
@@ -70,18 +57,16 @@
             <result name="error">/jsp/error.jsp</result>
         </action>
 
-        <action name="longueur_list"
-                class="org.escalade.webapp.action.GestionLongueurAction"
-                method="doList">
-            <result name="success">/jsp/longueur/list.jsp</result>
-            <result name="error">/jsp/error.jsp</result>
-        </action>
+        <action name="moteur_de_recherche"
+                class="org.escalade.webapp.action.GestionMoteurDeRechercheAction"
+                method="doRecherche">
 
-        <action name="commentaire_list"
-                class="org.escalade.webapp.action.GestionCommentaireAction"
-                method="doList">
-            <result name="success">/jsp/commentaire/list.jsp</result>
-            <result name="error">/jsp/error.jsp</result>
+            <!--<interceptor-ref name="store">-->
+                <!--<param name="operationMode">STORE</param>-->
+            <!--</interceptor-ref>-->
+            <!--<interceptor-ref name="defaultStack"/>-->
+
+            <result name="success">/jsp/moteur_de_recherche/resultat_recherche.jsp</result>
         </action>
     </package>
 </struts>

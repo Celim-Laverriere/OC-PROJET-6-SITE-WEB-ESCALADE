@@ -14,7 +14,7 @@
 <center><body>
 
     <header>
-        <%@include file="/jsp/_include/header.jsp"%>
+        <%@include file="../_include/header.jsp"%>
     </header>
 
     <h3>Detail de la voies</h3>

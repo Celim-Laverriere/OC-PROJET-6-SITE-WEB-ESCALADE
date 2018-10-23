@@ -15,7 +15,6 @@ public class GestionTopoAction extends AbstractWebappImpl {
     private List<Topo> topos;
     private Topo topo;
 
-
     // ============ Getters/Setters ============
 
 
@@ -52,6 +51,10 @@ public class GestionTopoAction extends AbstractWebappImpl {
      */
     public String doList(){
         topos = getManagerFactory().getTopoManager().topos();
+
+        //Methode peuplant la liste des régions dans le formulaire de recherche
+        getRegion();
+
         return ActionSupport.SUCCESS;
     }
 
@@ -71,6 +74,10 @@ public class GestionTopoAction extends AbstractWebappImpl {
                 this.addActionError("Topo non trouvé. ID = " + topo_id);
             }
         }
+
+        //Methode peuplant la liste des régions dans le formulaire de recherche
+        getRegion();
+
         return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
     }
 }

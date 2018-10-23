@@ -2,6 +2,7 @@ package org.escalade.business.contract.manager;
 
 import org.escalade.model.bean.Site;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface SiteManager {
@@ -15,4 +16,9 @@ public interface SiteManager {
     String delSite(Integer id);
 
     String upSite(Integer id, Site site);
+
+    List<String> regions();
+
+    List<Site> rechercheList(String region);
+
 }

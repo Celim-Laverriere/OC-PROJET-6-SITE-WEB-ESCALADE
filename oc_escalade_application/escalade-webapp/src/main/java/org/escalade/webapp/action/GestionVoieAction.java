@@ -60,8 +60,11 @@ public class GestionVoieAction extends AbstractWebappImpl {
      * @return success
      */
     public String doList() {
-
         voies = getManagerFactory().getVoieManager().voies(secteur_id);
+
+        //Methode peuplant la liste des régions dans le formulaire de recherche
+        getRegion();
+
         return ActionSupport.SUCCESS;
     }
 
@@ -78,6 +81,10 @@ public class GestionVoieAction extends AbstractWebappImpl {
                 this.addActionError("Voie non trouvé. ID = " + voie_id);
             }
         }
+
+        //Methode peuplant la liste des régions dans le formulaire de recherche
+        getRegion();
+
         return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
     }
 }

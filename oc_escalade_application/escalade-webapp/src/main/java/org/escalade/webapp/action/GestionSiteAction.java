@@ -1,7 +1,6 @@
 package org.escalade.webapp.action;
 
 import com.opensymphony.xwork2.ActionSupport;
-import org.escalade.model.bean.Secteur;
 import org.escalade.model.bean.Site;
 import org.escalade.webapp.AbstractWebappImpl;
 
@@ -46,7 +45,6 @@ public class GestionSiteAction extends AbstractWebappImpl {
         this.site = site;
     }
 
-
     // =============== Méthodes ================
 
     /**
@@ -54,8 +52,11 @@ public class GestionSiteAction extends AbstractWebappImpl {
      * @return success
      */
     public String doList() {
-
         setSites(getManagerFactory().getSiteManager().sites());
+
+        //Methode peuplant la liste des régions dans le formulaire de recherche
+        getRegion();
+
         return ActionSupport.SUCCESS;
     }
 
@@ -74,6 +75,12 @@ public class GestionSiteAction extends AbstractWebappImpl {
                this.addActionError("Site non trouvé. ID = " + id);
             }
         }
+
+        //Methode peuplant la liste des régions dans le formulaire de recherche
+        getRegion();
+
         return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
     }
+
+
 }

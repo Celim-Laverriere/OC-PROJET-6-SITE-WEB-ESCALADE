@@ -30,9 +30,9 @@ public class SiteImpl extends AbstractDataImpl implements SiteDao {
 
     @Override
     public Site site(Integer id) {
-        String vSql
-                = "SELECT * FROM public.site"
-                + " WHERE id = " + id;
+
+        String vSql = "SELECT * FROM public.site"
+                    + " WHERE id = " + id;
 
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
         SiteRM siteRM = new SiteRM();

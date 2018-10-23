@@ -14,9 +14,10 @@
 
 <center><body>
 
-<header>
-    <%@include file="/jsp/_include/header.jsp"%>
-</header>
+    <header>
+        <%@include file="../_include/header.jsp"%>
+        <%@include file="../_include/moteurDeRecherche.jsp"%>
+    </header>
 
     <h2>Detail des topos</h2>
 
@@ -27,30 +28,26 @@
                 Date d'upload : <s:property value="date_upload"/><br/>
                 Statut : <s:property value="statut"/><br/>
                 Desciption : <s:property value="description"/><br/>
-            </li>
+            </p>
 
             <s:iterator value="commentaires">
+                <h3>Commentaires</h3>
                 <p>
                     <s:property value="id"/><br/>
                     <s:property value="commentaire"/><br/>
                 </p>
             </s:iterator>
 
-            <s:if test="!resaTopos.equals(null)">
+
+            <s:iterator value="resaTopos">
                 <h3>Reservation des topos</h3>
-                <s:iterator value="resaTopos">
-                    <p>
-                        <s:property value="id"/><br/>
-                        <s:property value="date_debut"/><br/>
-                        <s:property value="date_fin"/><br/>
-                        <s:property value="compte_id"/><br/>
-                    </p>
-                </s:iterator>
-            </s:if>
-            <s:else>
-                <h3>Reservation des topos</h3>
-                <p>Aucunes réservations en cours !</p>
-            </s:else>
+                <p>
+                    <s:property value="id"/><br/>
+                    <s:property value="date_debut"/><br/>
+                    <s:property value="date_fin"/><br/>
+                    <s:property value="compte_id"/><br/>
+                </p>
+            </s:iterator>
 
         </s:iterator>
 

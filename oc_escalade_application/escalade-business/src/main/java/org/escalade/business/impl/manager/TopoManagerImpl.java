@@ -31,7 +31,6 @@ public class TopoManagerImpl extends AbstractManagerImpl implements TopoManager 
         List<ResaTopo> resaTopos = getDaoFactory().getResaTopoDao().resaTopos(null, topo.getId());
         topo.setResaTopos(resaTopos);
 
-
         return topo;
     }
 

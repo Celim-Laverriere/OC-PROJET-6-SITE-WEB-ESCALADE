@@ -11,14 +11,11 @@
     <h2>Bienvenue sur l'application de référencement de sites d'escalade !</h2>
 
     <div>
-        <label for="moteur_de_recherche"></label>
-            <select name="moteur_de_recherche" id="moteur_de_recherche">
-                <option value="region">En construction</option>
-            </select>
-    </div>
+      <nav>
+          <button><s:a action="site_list">Liste des sites</s:a></button>
+          <button><s:a action="topo_list">Litste des topos</s:a></button>
+          <button><s:a action="index">Accueil</s:a> </button>
+      </nav>
 
-    <div>
-        <p><button><s:a action="site_list">Liste des sites</s:a></button></p>
-        <p><button><s:a action="topo_list">Litste des topos</s:a></button></p>
     </div>
 

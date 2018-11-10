@@ -1,6 +1,8 @@
 package org.escalade.consumer.contract.dao;
 
 import org.escalade.model.bean.Secteur;
+import org.escalade.model.bean.Site;
+
 import java.util.List;
 
 public interface SecteurDao {
@@ -10,7 +12,7 @@ public interface SecteurDao {
          *
          * @return les {@link Secteur}
          * */
-        List <Secteur> secteurs(Integer site_id);
+        List <Secteur> secteurs();
 
         /**
          * Ajouter un secteur
@@ -18,7 +20,7 @@ public interface SecteurDao {
          * @param secteur
          * @return un message de confirmation
          */
-        String addSecteur(Secteur secteur);
+        void addSecteur(Secteur secteur, Site site);
 
         /**
          * Renvoie le secteur demandé
@@ -43,4 +45,11 @@ public interface SecteurDao {
          * @return un message de confirmation
          */
         String upSecteur(Integer id, Secteur secteur);
+
+        /**
+         *Renvoie les secteurs correspondant au site sélectionné
+         * @param site_id
+         * @return les Secteurs
+         */
+        List<Secteur> secteursBySiteId(Integer site_id);
 }

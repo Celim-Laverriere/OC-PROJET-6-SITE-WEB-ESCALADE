@@ -9,6 +9,7 @@ public class Voie {
     private String type;
     private String cotation;
     private float hauteur;
+    private Integer secteur_id;
     private List<Longueur> longueurs;
     private List<Relai> relais;
 
@@ -53,6 +54,14 @@ public class Voie {
 
     public void setHauteur(float hauteur) {
         this.hauteur = hauteur;
+    }
+
+    public Integer getSecteur_id() {
+        return secteur_id;
+    }
+
+    public void setSecteur_id(Integer secteur_id) {
+        this.secteur_id = secteur_id;
     }
 
     public List<Longueur> getLongueurs() {

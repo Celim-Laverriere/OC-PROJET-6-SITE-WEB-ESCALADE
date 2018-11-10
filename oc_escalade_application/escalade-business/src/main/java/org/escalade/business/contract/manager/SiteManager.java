@@ -1,5 +1,6 @@
 package org.escalade.business.contract.manager;
 
+import org.escalade.model.bean.Compte;
 import org.escalade.model.bean.Site;
 
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ public interface SiteManager {
 
     List<Site> sites();
 
-    String addSite(Site site);
+    void addSite(Site site, Compte compte);
 
     Site site(Integer id);
 
@@ -17,8 +18,6 @@ public interface SiteManager {
 
     String upSite(Integer id, Site site);
 
-    List<String> regions();
-
-    List<Site> rechercheList(String region);
+    List<Site> rechercheList(Site regionSelect, String typeVoieSelect, String cotationVoieSelect);
 
 }

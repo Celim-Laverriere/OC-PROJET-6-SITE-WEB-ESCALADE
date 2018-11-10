@@ -21,6 +21,7 @@ public class VoieRM {
             vVoie.setCotation(pRs.getString("cotation"));
             vVoie.setType(pRs.getString("type"));
             vVoie.setHauteur(pRs.getFloat("hauteur"));
+            vVoie.setSecteur_id(pRs.getInt("secteur_id"));
             return vVoie;
         }
     };

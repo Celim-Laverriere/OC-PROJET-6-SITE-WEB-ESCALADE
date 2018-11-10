@@ -1,5 +1,6 @@
 package org.escalade.consumer.contract.dao;
 
+import org.escalade.model.bean.Compte;
 import org.escalade.model.bean.Site;
 
 import javax.swing.*;
@@ -20,7 +21,7 @@ public interface SiteDao {
          * @param site
          * @return un message de confirmation
          */
-        String addSite(Site site);
+        void addSite(Site site, Compte compte);
 
         /**
          * Renvoie le site demandé
@@ -46,5 +47,12 @@ public interface SiteDao {
          * @return un message de confirmation
          */
         String upSite(Integer id, Site site);
+
+        /**
+         * Renvoie la liste des sites correspondant à la région sélectionnée.
+         *
+         * @return
+         */
+        List<Site> sitesBySite(Site regionSelect, String typeVoieSelect, String cotationVoieSelect);
 
 }

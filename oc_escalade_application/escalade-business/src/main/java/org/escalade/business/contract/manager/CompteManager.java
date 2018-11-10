@@ -15,4 +15,6 @@ public interface CompteManager {
     String delCompte(Integer id);
 
     String upCompte(Integer id, Compte compte);
+
+//    public List<Compte> listeCompte();
 }

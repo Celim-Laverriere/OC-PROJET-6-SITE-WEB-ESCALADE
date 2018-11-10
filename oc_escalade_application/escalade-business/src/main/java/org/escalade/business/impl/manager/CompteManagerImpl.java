@@ -4,6 +4,7 @@ import org.escalade.business.contract.manager.CompteManager;
 import org.escalade.business.impl.AbstractManagerImpl;
 import org.escalade.model.bean.Compte;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CompteManagerImpl extends AbstractManagerImpl implements CompteManager {
@@ -32,4 +33,5 @@ public class CompteManagerImpl extends AbstractManagerImpl implements CompteMana
     public String upCompte(Integer id, Compte compte) {
         return getDaoFactory().getCompteDao().upCompte(id, compte);
     }
+
 }

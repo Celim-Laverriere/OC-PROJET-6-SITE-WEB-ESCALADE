@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Compte {
 
+    private Integer id;
     private String nom;
     private String prenom;
     private String mail;
@@ -13,6 +14,14 @@ public class Compte {
     private List<Topo> topos;
 
     public Compte() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNom() {

@@ -4,10 +4,6 @@ import org.escalade.business.contract.manager.SiteManager;
 import org.escalade.business.impl.AbstractManagerImpl;
 import org.escalade.model.bean.*;
 
-import javax.swing.plaf.synth.Region;
-import java.awt.*;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 
 public class SiteManagerImpl extends AbstractManagerImpl implements SiteManager {
@@ -18,15 +14,16 @@ public class SiteManagerImpl extends AbstractManagerImpl implements SiteManager 
     }
 
     @Override
-    public String addSite(Site site) {
-        return getDaoFactory().getSiteDao().addSite(site);
+    public void addSite(Site site, Compte compte) {
+         getDaoFactory().getSiteDao().addSite(site, compte);
     }
 
     @Override
     public Site site(Integer id){
+
         Site site = getDaoFactory().getSiteDao().site(id);
 
-        List<Secteur> secteurs = getDaoFactory().getSecteurDao().secteurs(site.getId());
+        List<Secteur> secteurs = getDaoFactory().getSecteurDao().secteursBySiteId(site.getId());
 
         List<Commentaire> commentaires = getDaoFactory().getCommentaireDao().commentaires(site.getId(), null);
         site.setCommentaires(commentaires);
@@ -57,34 +54,34 @@ public class SiteManagerImpl extends AbstractManagerImpl implements SiteManager 
         return getDaoFactory().getSiteDao().upSite(id, site);
     }
 
-    public List<String> regions(){
-
-        List<Site> sites = getDaoFactory().getSiteDao().sites();
-        List<String> regionsList = new ArrayList<String>();
-
-        for (Site site: sites){
-            if (!regionsList.contains(site.getRegion())){
-                regionsList.add(site.getRegion());
-            }
-        }
-        return regionsList;
-    }
-
     /**
      * La méthode récupère tous les sites correspondant à la région sélectionnée
      * @param regionSelect
      * @return sitesRegionSelect
      */
-    public List<Site> rechercheList(String regionSelect){
+    public List<Site> rechercheList(Site regionSelect, String typeVoieSelect, String cotationVoieSelect){
 
-        List<Site> sites = getDaoFactory().getSiteDao().sites();
-        List<Site> sitesRegionSelect = new ArrayList<Site>();
+        List<Site> sites = getDaoFactory().getSiteDao().sitesBySite(regionSelect, typeVoieSelect, cotationVoieSelect);
+//        List<Site> siteSelect = new ArrayList<Site>();
+//
+//        List<Voie> voies = getDaoFactory().getVoieDao().voieByVoieType(typeVoieSelect, cotationVoieSelect);
+//
+//     /* Si site_id de la table secteur correspond à id du secteur dans la table voie, alors on
+//        sauvegarde le site*/
+//
+//        for (Voie voie: voies){
+//
+//           for (Site site: sites){
+//               List<Secteur> secteur = getDaoFactory().getSecteurDao().secteursBySiteId(voie.getSecteur_id());
+//
+//               if(site.getId().equals(secteur.get(0).getSite_id())){
+//                   siteSelect.add(site);
+//               }
+//           }
+//        }
+//        sites.clear();
+//        sites.addAll(siteSelect);
 
-        for (Site site: sites){
-            if (regionSelect.equals(site.getRegion())){
-               sitesRegionSelect.add(site);
-            }
-        }
-        return sitesRegionSelect;
+        return sites;
     }
 }

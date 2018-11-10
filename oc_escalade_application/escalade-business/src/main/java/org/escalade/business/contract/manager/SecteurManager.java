@@ -1,14 +1,15 @@
 package org.escalade.business.contract.manager;
 
 import org.escalade.model.bean.Secteur;
+import org.escalade.model.bean.Site;
 
 import java.util.List;
 
 public interface SecteurManager {
 
-    List<Secteur> secteurs(Integer site_id);
+    List<Secteur> secteurs();
 
-    String addSecteur(Secteur secteur);
+    void addSecteur(Secteur secteur, Site site);
 
     Secteur secteur(Integer id);
 

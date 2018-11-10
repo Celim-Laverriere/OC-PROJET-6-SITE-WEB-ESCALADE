@@ -8,6 +8,7 @@ public class Secteur {
     private Integer id;
     private String nom;
     private String description;
+    private Integer site_id;
     private List<Voie> voies;
 
     /* ==================== Constructeurs ==================== */
@@ -37,6 +38,14 @@ public class Secteur {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Integer getSite_id() {
+        return site_id;
+    }
+
+    public void setSite_id(Integer site_id) {
+        this.site_id = site_id;
     }
 
     public List<Voie> getVoies() {

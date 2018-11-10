@@ -5,9 +5,6 @@ import org.escalade.consumer.impl.data.AbstractDataImpl;
 import org.escalade.consumer.impl.rowmapper.VoieRM;
 import org.escalade.model.bean.Voie;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 public class VoieImpl extends AbstractDataImpl implements VoieDao {
@@ -38,9 +35,9 @@ public class VoieImpl extends AbstractDataImpl implements VoieDao {
                 + " WHERE id = " + id;
 
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
-        VoieRM voieRM = new VoieRM();
+        VoieRM vVoieRM = new VoieRM();
 
-        List<Voie> vListVoie = vJdbcTemplate.query(vSql, voieRM.getVoieRowMapper());
+        List<Voie> vListVoie = vJdbcTemplate.query(vSql, vVoieRM.getVoieRowMapper());
         return vListVoie.get(0);
     }
 
@@ -52,5 +49,18 @@ public class VoieImpl extends AbstractDataImpl implements VoieDao {
     @Override
     public String upVoie(Voie voie) {
         return null;
+    }
+
+    public List<Voie> voieByVoieType (String typeVoieSelect, String cotationVoieSelect){
+
+        String vSQl = "SELECT * FROM public.voie"
+                    + " WHERE type = " + "'" + typeVoieSelect + "'"
+                    + " AND cotation = " + "'" + cotationVoieSelect + "'";
+
+        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+        VoieRM vVoieRM = new VoieRM();
+
+        List<Voie> vListVoieParTypeCotation = vJdbcTemplate.query(vSQl, vVoieRM.getVoieRowMapper());
+        return vListVoieParTypeCotation;
     }
 }

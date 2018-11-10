@@ -2,7 +2,7 @@ package org.escalade.webapp;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.escalade.business.contract.ManagerFactory;
-
+import org.escalade.model.bean.Site;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,14 +22,14 @@ public abstract class AbstractWebappImpl extends ActionSupport {
         AbstractWebappImpl.managerFactory = managerFactory;
     }
 
-    // ================ Formulaire de moteur de recherche ================
-    private List<String> regionList = new ArrayList<>();
+    // ================ Recuperation de la liste des Régions ================
+    private List<Site> regionList = new ArrayList<>();
 
-    public List<String> getRegionList() {
+    public List<Site> getRegionList() {
         return regionList;
     }
 
-    public void setRegionList(List<String> regionList) {
+    public void setRegionList(List<Site> regionList) {
         this.regionList = regionList;
     }
 
@@ -37,8 +37,8 @@ public abstract class AbstractWebappImpl extends ActionSupport {
      * Action peuplant la liste des régions dans le formulaire de recherche
      * @return success
      */
-    public String getRegion(){
-        regionList = getManagerFactory().getSiteManager().regions();
-        return ActionSupport.SUCCESS;
+    protected void fillRegion(){
+        regionList = getManagerFactory().getSiteManager().sites();
     }
+
 }

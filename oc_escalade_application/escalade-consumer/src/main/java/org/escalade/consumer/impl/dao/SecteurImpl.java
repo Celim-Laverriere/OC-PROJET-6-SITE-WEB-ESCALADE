@@ -2,9 +2,15 @@ package org.escalade.consumer.impl.dao;
 
 import org.escalade.consumer.contract.dao.SecteurDao;
 import org.escalade.consumer.impl.data.AbstractDataImpl;
+import org.escalade.consumer.impl.rowmapper.SecteurRM;
+import org.escalade.consumer.impl.rowmapper.SiteRM;
 import org.escalade.model.bean.Secteur;
+import org.escalade.model.bean.Site;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -12,37 +18,44 @@ import java.util.List;
 public class SecteurImpl extends AbstractDataImpl implements SecteurDao {
 
     @Override
-    public List<Secteur> secteurs(Integer site_id) {
-        String vSql
-                = "SELECT * FROM public.secteur"
-                + " WHERE site_id = " + site_id;
+    public List<Secteur> secteurs() {
 
+        String vSql = "SELECT * FROM public.secteur";
 
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+        SecteurRM vSecteurRM = new SecteurRM();
 
-        RowMapper<Secteur> vSecteurRowMapper = new RowMapper<Secteur>() {
-            @Override
-            public Secteur mapRow(ResultSet pRs, int rowNum) throws SQLException {
-                Secteur vSecteur = new Secteur();
-                vSecteur.setId(pRs.getInt("id"));
-                vSecteur.setNom(pRs.getString("nom"));
-                vSecteur.setDescription(pRs.getString("description"));
-                return vSecteur;
-            }
-        };
-
-        List<Secteur> vListSecteur = vJdbcTemplate.query(vSql, vSecteurRowMapper);
+        List<Secteur> vListSecteur = vJdbcTemplate.query(vSql, vSecteurRM.getvSecteurRowMapper());
         return vListSecteur;
     }
 
     @Override
-    public String addSecteur(Secteur secteur) {
-        return null;
+    public void addSecteur(Secteur secteur, Site site) {
+
+        String vSql = "INSERT INTO public.secteur (site_id, nom, description) VALUES"
+                    + " (:site_id, :nom, :description)";
+
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("site_id", site.getId());
+        vParams.addValue("nom", secteur.getNom());
+        vParams.addValue("description", secteur.getDescription());
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+
+        int vNbrLigneMaj = vJdbcTemplate.update(vSql, vParams);
     }
 
     @Override
     public Secteur secteur(Integer id) {
-        return null;
+
+        String vSql = "SELECT * FROM public.secteur "
+                + " WHERE id = " + id;
+
+        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+        SecteurRM vSecteurRM = new SecteurRM();
+
+        List<Secteur> vSecteurDetail = vJdbcTemplate.query(vSql, vSecteurRM.getvSecteurRowMapper());
+        return  vSecteurDetail.get(0);
     }
 
     @Override
@@ -53,5 +66,17 @@ public class SecteurImpl extends AbstractDataImpl implements SecteurDao {
     @Override
     public String upSecteur(Integer id, Secteur secteur) {
         return null;
+    }
+
+    public List<Secteur> secteursBySiteId(Integer site_id){
+
+        String vSql = "SELECT * FROM public.secteur "
+                    + " WHERE site_id = " + site_id;
+
+        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+        SecteurRM vSecteurRM = new SecteurRM();
+
+        List<Secteur> vListScteurs = vJdbcTemplate.query(vSql, vSecteurRM.getvSecteurRowMapper());
+        return vListScteurs;
     }
 }

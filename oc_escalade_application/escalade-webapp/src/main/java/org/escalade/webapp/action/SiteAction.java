@@ -1,0 +1,110 @@
+package org.escalade.webapp.action;
+
+import com.opensymphony.xwork2.ActionSupport;
+import org.escalade.model.bean.Compte;
+import org.escalade.model.bean.Site;
+import org.escalade.webapp.AbstractWebappImpl;
+
+import java.util.List;
+
+/**
+ *  Action de gestion des {@link Site}
+ */
+public class SiteAction extends AbstractWebappImpl {
+
+    // =============== Attributs ===============
+    private Integer id;
+
+    // ----- Eléments en entrée et en sortie -----
+    private List<Site> sites;
+    private Site site;
+    private Compte compte;
+
+    // ============ Getters/Setters ============
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public List<Site> getSites() {
+        return sites;
+    }
+
+    public void setSites(List<Site> sites) {
+        this.sites = sites;
+    }
+
+    public Site getSite() {
+        return site;
+    }
+
+    public void setSite(Site site) {
+        this.site = site;
+    }
+
+    public Compte getCompte() {
+        return compte;
+    }
+
+    public void setCompte(Compte compte) {
+        this.compte = compte;
+    }
+
+    // =============== Méthodes ================
+
+    /**
+     * Action listant les {@link Site}
+     * @return success
+     */
+    public String doList() {
+        setSites(getManagerFactory().getSiteManager().sites());
+
+        //Methode peuplant la liste des régions dans le formulaire de recherche
+        fillRegion();
+
+        return ActionSupport.SUCCESS;
+    }
+
+    /**
+     * Action affichant les détails d'un {@link Site}
+     * @return success / error
+     */
+    public String doDetail(){
+
+        if(id == null) {
+            this.addActionError("Vous devez indiquer un id de site");
+        } else {
+            try {
+                site = getManagerFactory().getSiteManager().site(id);
+            } catch (Exception e) {
+               this.addActionError("Site non trouvé. ID = " + id);
+            }
+        }
+
+        //Methode peuplant la liste des régions dans le formulaire de recherche
+        fillRegion();
+
+        return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
+    }
+
+
+    public String doCreate(){
+
+        //Methode peuplant la liste des régions dans le formulaire de recherche
+        fillRegion();
+
+        String vResult = ActionSupport.INPUT;
+
+        getManagerFactory().getSiteManager().addSite(site, compte);
+
+        vResult =  ActionSupport.SUCCESS;
+
+        this.addActionMessage("Projet "+ site.getNom() +" a été ajouté avec succè");
+
+        return vResult;
+    }
+}

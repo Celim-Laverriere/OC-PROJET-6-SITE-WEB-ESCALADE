@@ -47,4 +47,10 @@ public interface VoieDao {
      */
        String upVoie(Voie voie);
 
+    /**
+     *
+     * @return
+     */
+    List<Voie> voieByVoieType(String typeVoieSelect, String cotationVoieSelect);
+
 }

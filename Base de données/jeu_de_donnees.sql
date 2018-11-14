@@ -32,7 +32,7 @@ VALUES
 ;
 
 INSERT INTO public.voie
-    (secteur_id, nom, type, cotation, hauteur,)
+    (secteur_id, nom, type, cotation, hauteur)
 VALUES
     (1, 'Hubert Nieul-le-Dolent', 'Equipée', 3, 32),
     (2, 'Brunel Saint-Martin-Longueau', 'Non équipée', 5, 40),

@@ -19,7 +19,7 @@ public class VoieRM {
             vVoie.setId(pRs.getInt("id"));
             vVoie.setNom(pRs.getString("nom"));
             vVoie.setCotation(pRs.getString("cotation"));
-            vVoie.setType(pRs.getString("type"));
+            vVoie.setType(pRs.getString("type_voie"));
             vVoie.setHauteur(pRs.getFloat("hauteur"));
             vVoie.setSecteur_id(pRs.getInt("secteur_id"));
             return vVoie;

@@ -45,4 +45,17 @@ public class CompteImpl extends AbstractDataImpl implements CompteDao {
     public String upCompte(Integer id, Compte compte) {
         return null;
     }
+
+    @Override
+    public Compte comptByUtilisateur(String login, String password) {
+        String vSql = "SELECT * FROM public.compte"
+                    + " WHERE mail = " + "'" + login + "'"
+                    + " AND mot_de_passe = " + "'" + password + "'";
+
+        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+        CompteRM vCompteRM = new CompteRM();
+
+        List<Compte> vUtilisateur = vJdbcTemplate.query(vSql, vCompteRM.getvCompteRowMapper());
+        return vUtilisateur.get(0);
+    }
 }

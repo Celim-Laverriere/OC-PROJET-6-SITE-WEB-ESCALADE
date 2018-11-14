@@ -34,4 +34,12 @@ public class CompteManagerImpl extends AbstractManagerImpl implements CompteMana
         return getDaoFactory().getCompteDao().upCompte(id, compte);
     }
 
+    @Override
+    public Compte comptByUtilisateur(String login, String password) {
+
+        Compte vUtilisateur = getDaoFactory().getCompteDao().comptByUtilisateur(login, password);
+        return vUtilisateur;
+    }
+
+
 }

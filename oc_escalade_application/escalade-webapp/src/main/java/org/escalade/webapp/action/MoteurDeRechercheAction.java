@@ -1,23 +1,23 @@
 package org.escalade.webapp.action;
 import com.opensymphony.xwork2.ActionSupport;
+import org.escalade.business.contract.ManagerFactory;
+import org.escalade.model.bean.Secteur;
 import org.escalade.model.bean.Site;
+import org.escalade.model.bean.Voie;
 
-import org.escalade.webapp.AbstractWebappImpl;
-
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class MoteurDeRechercheAction extends AbstractWebappImpl  {
+public class MoteurDeRechercheAction extends ActionSupport  {
 
     // ============ Eléments en entrée  ============
 
     private String motCleRecherche;
-    private Site regionSelect;
+    private String regionSelect;
     private String typeVoieSelect;
     private String cotationVoieSelect;
-
-
 
     // ============ Eléments en sortie ============
     private List<Site> regionList = new ArrayList<>();
@@ -29,26 +29,23 @@ public class MoteurDeRechercheAction extends AbstractWebappImpl  {
     private String typeVoie [] = {"Equipée", "Non équipée"};
 
     private List<Site> sites;
+    private List<Voie> voies;
+    private List<Secteur> secteurs;
 
+    private Site site;
+    private Secteur secteur;
+    private Voie voie;
+
+    @Inject
+    private ManagerFactory managerFactory;
 
     // ============ Getters/Setters ============
 
-
-    @Override
-    public List<Site> getRegionList() {
-        return regionList;
-    }
-
-    @Override
-    public void setRegionList(List<Site> regionList) {
-        this.regionList = regionList;
-    }
-
-    public Site getRegionSelect() {
+    public String getRegionSelect() {
         return regionSelect;
     }
 
-    public void setRegionSelect(Site regionSelect) {
+    public void setRegionSelect(String regionSelect) {
         this.regionSelect = regionSelect;
     }
 
@@ -66,6 +63,14 @@ public class MoteurDeRechercheAction extends AbstractWebappImpl  {
 
     public void setMotCleRecherche(String motCleRecherche) {
         this.motCleRecherche = motCleRecherche;
+    }
+
+    public List<Site> getRegionList() {
+        return regionList;
+    }
+
+    public void setRegionList(List<Site> regionList) {
+        this.regionList = regionList;
     }
 
     public String[] getCotationVoieList() {
@@ -100,44 +105,97 @@ public class MoteurDeRechercheAction extends AbstractWebappImpl  {
         this.cotationVoieSelect = cotationVoieSelect;
     }
 
+    public List<Secteur> getSecteurs() {
+        return secteurs;
+    }
+
+    public void setSecteurs(List<Secteur> secteurs) {
+        this.secteurs = secteurs;
+    }
+
+    public List<Voie> getVoies() {
+        return voies;
+    }
+
+    public void setVoies(List<Voie> voies) {
+        this.voies = voies;
+    }
+
+    public Site getSite() {
+        return site;
+    }
+
+    public void setSite(Site site) {
+        this.site = site;
+    }
+
+    public Secteur getSecteur() {
+        return secteur;
+    }
+
+    public void setSecteur(Secteur secteur) {
+        this.secteur = secteur;
+    }
+
+    public Voie getVoie() {
+        return voie;
+    }
+
+    public void setVoie(Voie voie) {
+        this.voie = voie;
+    }
+
     // =============== Méthodes ================
 
     /**
      * Action qui retourne la liste des sites correspondant à la région sélectionnée
      * @return success
      */
-    public String doRechercheAvancer(){
+    public String doAdvancedSearch(){
 
         String vResult = ActionSupport.INPUT;
 
         if (this.regionSelect != null){
-
-            sites = getManagerFactory().getSiteManager().rechercheList(regionSelect, typeVoieSelect, cotationVoieSelect);
-
-            for (Site site: sites){
-               System.out.println(site.getNom() + " test2");
-           }
-
-
-            vResult = ActionSupport.SUCCESS;
+                sites = managerFactory.getSiteManager().sitesByAdvancedSearch(regionSelect, typeVoieSelect, cotationVoieSelect);
+                vResult = ActionSupport.SUCCESS;
         }
 
         if (vResult.equals(ActionSupport.INPUT)){
-
-            regionList = getManagerFactory().getSiteManager().sites();
-
+            regionList = managerFactory.getSiteManager().siteByRegion();
         }
 
-       // this.addActionMessage("Liste des site d'éscalade de la région" + regionSelect.getRegion() + " !");
-
         return vResult;
-
     }
 
-    public String doBarreDeRecherche(){
+    public String doSimpleSearch(){
+
+        String vResult = ActionSupport.INPUT;
+
+        if (!motCleRecherche.equals(null)) {
+
+            site = managerFactory.getSiteManager().siteBySimpleSearch(motCleRecherche);
+            vResult = ActionSupport.SUCCESS;
+//            if (site.getNom().equals(null)){
+//                secteur = getManagerFactory().getSecteurManager().secteurByMotCleRecherche(motCleRecherche);
+//            } else {
+//                vResult = ActionSupport.SUCCESS;
+//            }
+//
+//            if (secteur.getNom().equals(null) && site.getNom().equals(null)){
+//                voie = getManagerFactory().getVoieManager().voieByMotCleRecherche(motCleRecherche);
+//            }
+//
+//            if (secteur.getNom().equals(null) && site.getNom().equals(null) && voie.getNom().equals(null)){
+//                this.addActionMessage("Désolé la recherche " + motCleRecherche
+//                        + " ne correspond à aucun nom de site, de secteur ou de voie !");
+//            }
+//
+//        } else {
+//            this.addActionMessage("Merci de saisir votre demande dans la barre de recherche !");
+        }
 
 
-        return ActionSupport.SUCCESS;
+        return vResult;
     }
 
 }

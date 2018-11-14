@@ -19,18 +19,21 @@
 
     <h2><s:actionmessage/></h2>
 
-    <ul>
         <s:iterator value="sites">
             <p>
                 <s:a action="site_detail">
                     <s:param value="id" name="id"/>
                     Nom : <s:property value="nom"/></s:a><br/>
-                <s:property value="description"/>
+                    Description : <s:property value="description"/><br/>
             </p>
 
         </s:iterator>
 
-    </ul>
+
+       <s:iterator value="site">
+           Nom : <s:property value="nom"/><br/>
+           Description : <s:property value="description"/>
+       </s:iterator>
 
     <footer>
 

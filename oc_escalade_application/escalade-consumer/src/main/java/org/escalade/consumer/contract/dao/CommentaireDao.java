@@ -1,6 +1,7 @@
 package org.escalade.consumer.contract.dao;
 
 import org.escalade.model.bean.Commentaire;
+import org.escalade.model.bean.Site;
 import java.util.List;
 
 public interface CommentaireDao {

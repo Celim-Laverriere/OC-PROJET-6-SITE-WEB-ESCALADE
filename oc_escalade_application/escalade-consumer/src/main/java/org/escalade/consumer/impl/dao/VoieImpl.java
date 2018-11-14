@@ -12,9 +12,8 @@ public class VoieImpl extends AbstractDataImpl implements VoieDao {
     @Override
     public List<Voie> voies(Integer secteur_id) {
 
-        String vSql
-                = "SELECT * FROM public.voie"
-                + " WHERE secteur_id = " + secteur_id;
+        String vSql = "SELECT * FROM public.voie"
+                    + " WHERE secteur_id = " + secteur_id;
 
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
         VoieRM voieRM = new VoieRM();
@@ -51,16 +50,20 @@ public class VoieImpl extends AbstractDataImpl implements VoieDao {
         return null;
     }
 
-    public List<Voie> voieByVoieType (String typeVoieSelect, String cotationVoieSelect){
+    public List<Voie> voieByVoieType (){
+        return null;
+    }
 
-        String vSQl = "SELECT * FROM public.voie"
-                    + " WHERE type = " + "'" + typeVoieSelect + "'"
-                    + " AND cotation = " + "'" + cotationVoieSelect + "'";
+    @Override
+    public Voie voieByMotCleRecherche(String motCleRecherche) {
+
+        String vSql = "SELECT * FROM public.voie"
+                + " WHERE nom = " + "'" + motCleRecherche + "'";
 
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
         VoieRM vVoieRM = new VoieRM();
 
-        List<Voie> vListVoieParTypeCotation = vJdbcTemplate.query(vSQl, vVoieRM.getVoieRowMapper());
-        return vListVoieParTypeCotation;
+        List<Voie> vListVoie = vJdbcTemplate.query(vSql, vVoieRM.getVoieRowMapper());
+        return vListVoie.get(0);
     }
 }

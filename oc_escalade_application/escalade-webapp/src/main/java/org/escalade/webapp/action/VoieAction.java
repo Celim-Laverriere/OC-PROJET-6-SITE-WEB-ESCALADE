@@ -1,12 +1,13 @@
 package org.escalade.webapp.action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import org.escalade.business.contract.ManagerFactory;
 import org.escalade.model.bean.Voie;
-import org.escalade.webapp.AbstractWebappImpl;
 
+import javax.inject.Inject;
 import java.util.List;
 
-public class VoieAction extends AbstractWebappImpl {
+public class VoieAction extends ActionSupport {
 
     // =============== Attributs ===============
     private Integer secteur_id;
@@ -15,6 +16,9 @@ public class VoieAction extends AbstractWebappImpl {
     // ----- Eléments en sortie -----
     private List<Voie> voies;
     private Voie voie;
+
+    @Inject
+    private ManagerFactory managerFactory;
 
     // ============ Getters/Setters ============
 
@@ -58,11 +62,7 @@ public class VoieAction extends AbstractWebappImpl {
      * @return success
      */
     public String doList() {
-        voies = getManagerFactory().getVoieManager().voies(secteur_id);
-
-        //Methode peuplant la liste des régions dans le formulaire de recherche
-        fillRegion();
-
+        voies = managerFactory.getVoieManager().voies(secteur_id);
         return ActionSupport.SUCCESS;
     }
 
@@ -73,15 +73,12 @@ public class VoieAction extends AbstractWebappImpl {
             this.addActionError("Vous devez indiquer un id de voie");
         } else {
             try{
-                voie = getManagerFactory().getVoieManager().voie(voie_id);
+                voie = managerFactory.getVoieManager().voie(voie_id);
             } catch (Exception e){
                 System.out.println(e);
                 this.addActionError("Voie non trouvé. ID = " + voie_id);
             }
         }
-
-        //Methode peuplant la liste des régions dans le formulaire de recherche
-        fillRegion();
 
         return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
     }

@@ -14,7 +14,7 @@
 <center><body>
 
     <header>
-        <%@include file="../_include/compte.jsp"%>
+        <%@include file="../_include/formulaireChoixCreate.jsp"%>
     </header>
 
     <h1>Création d'un nouveau SECTEUR</h1>
@@ -22,7 +22,7 @@
     <div>
         <s:form action="new_secteur">
 
-            <s:select name="site.id" label="Sélectionnez le site d'escalade"
+            <s:select name="site_id" label="Sélectionnez le site d'escalade"
                       list="sites" listKey="id" listValue="nom"
                       emptyOption="true" requiredLabel="true"/>
 

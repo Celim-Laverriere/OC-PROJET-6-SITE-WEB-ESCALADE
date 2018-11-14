@@ -14,18 +14,13 @@
 <center><body>
 
     <header>
-        <%@include file="../_include/compte.jsp"%>
+        <%@include file="../_include/formulaireChoixCreate.jsp"%>
     </header>
 
     <h1>Création d'un nouveau SITE</h1>
 
     <div>
         <s:form action="new_site">
-
-            <s:select name="compte.id" label="Compte - Nom"
-                      list="comptes" listKey="id" listValue="nom"
-                      emptyOption="true"
-                      requiredLabel="true"/>
 
             <s:textfield name="site.nom" label="Nom du Site" requiredLabel="true"/>
 

@@ -16,5 +16,5 @@ public interface CompteManager {
 
     String upCompte(Integer id, Compte compte);
 
-//    public List<Compte> listeCompte();
+    Compte comptByUtilisateur (String login, String password);
 }

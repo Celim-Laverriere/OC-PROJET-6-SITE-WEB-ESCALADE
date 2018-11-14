@@ -26,10 +26,10 @@ public interface SiteDao {
         /**
          * Renvoie le site demandé
          *
-         * @param id
+         * @param site_id
          * @return le site correspondant à son id
          */
-        Site site(Integer id);
+        Site site(Integer site_id);
 
         /**
          * Supprimer un site
@@ -50,9 +50,13 @@ public interface SiteDao {
 
         /**
          * Renvoie la liste des sites correspondant à la région sélectionnée.
-         *
-         * @return
+         * @return vListSites
          */
-        List<Site> sitesBySite(Site regionSelect, String typeVoieSelect, String cotationVoieSelect);
+        List<Site> sitesByAdvancedSearchDao(String regionSelect, String typeVoieSelect, String cotationVoieSelect);
 
+        List<Site> siteByRegionDao();
+
+        Site siteBySimpleSearchDao(String motCleRecherche);
+
+        List<Site> sitesByCompteSessionDao (Compte compte);
 }

@@ -21,7 +21,7 @@
     <div>
         <s:form action="recherche_avancer">
 
-                <s:select name="regionSelect.region" label="region"
+                <s:select name="regionSelect" label="region"
                           list="regionList" listKey="region" listValue="region"
                           emptyOption="true"
                           requiredLabel="true"/>

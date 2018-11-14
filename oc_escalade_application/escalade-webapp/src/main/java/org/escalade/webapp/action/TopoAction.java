@@ -1,12 +1,14 @@
 package org.escalade.webapp.action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import org.escalade.business.contract.ManagerFactory;
 import org.escalade.model.bean.Topo;
-import org.escalade.webapp.AbstractWebappImpl;
 
+
+import javax.inject.Inject;
 import java.util.List;
 
-public class TopoAction extends AbstractWebappImpl {
+public class TopoAction extends ActionSupport {
 
     // =============== Attributs ===============
     private Integer topo_id;
@@ -14,6 +16,9 @@ public class TopoAction extends AbstractWebappImpl {
     // ----- Eléments en sortie -----
     private List<Topo> topos;
     private Topo topo;
+
+    @Inject
+    private ManagerFactory managerFactory;
 
     // ============ Getters/Setters ============
 
@@ -50,11 +55,7 @@ public class TopoAction extends AbstractWebappImpl {
      * @return success
      */
     public String doList(){
-        topos = getManagerFactory().getTopoManager().topos();
-
-        //Methode peuplant la liste des régions dans le formulaire de recherche
-        fillRegion();
-
+        topos = managerFactory.getTopoManager().topos();
         return ActionSupport.SUCCESS;
     }
 
@@ -68,15 +69,12 @@ public class TopoAction extends AbstractWebappImpl {
             this.addActionError("Vous devez indiquer un id de topo");
         } else {
             try {
-                topo = getManagerFactory().getTopoManager().topo(topo_id);
+                topo = managerFactory.getTopoManager().topo(topo_id);
             } catch (Exception e) {
                 System.out.println(e);
                 this.addActionError("Topo non trouvé. ID = " + topo_id);
             }
         }
-
-        //Methode peuplant la liste des régions dans le formulaire de recherche
-        fillRegion();
 
         return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
     }

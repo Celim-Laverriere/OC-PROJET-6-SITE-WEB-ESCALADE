@@ -1,6 +1,7 @@
 package org.escalade.business.contract.manager;
 
 import org.escalade.model.bean.Commentaire;
+import org.escalade.model.bean.Site;
 
 import java.util.List;
 

@@ -44,4 +44,12 @@ public interface CompteDao {
          */
         String upCompte(Integer id, Compte compte);
 
+        /**
+         *
+         * @param login
+         * @param password
+         * @return
+         */
+        Compte comptByUtilisateur(String login, String password);
+
 }

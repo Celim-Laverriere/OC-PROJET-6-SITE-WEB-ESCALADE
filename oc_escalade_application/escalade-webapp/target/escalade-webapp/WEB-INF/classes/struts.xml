@@ -5,28 +5,59 @@
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
-    <package name="default" extends="struts-default">
+
+    <!-- ============================================ -->
+    <!-- ===== Package de configuration de base ===== -->
+    <!-- ============================================ -->
+    <package name="base" abstract="true" extends="struts-default">
+        <interceptors>
+            <interceptor name="auth" class="org.escalade.webapp.interceptor.AuthInterceptor"/>
+
+            <interceptor-stack name="authenticatedStack">
+                <interceptor-ref name="auth"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+        </interceptors>
+
+        <global-results>
+            <result name="error">/jsp/error.jsp</result>
+            <result name="error-forbidden" type="httpheader">
+                <param name="error">403</param>
+            </result>
+        </global-results>
+    </package>
+
+    <!-- ============================================== -->
+    <!-- ===== Package pour les actions publiques ===== -->
+    <!-- ============================================== -->
+    <package name="public" extends="base">
         <!-- Action par défaut -->
         <default-action-ref name="index"/>
 
         <!-- Action "index" -->
-        <action name="index"
-                class="org.escalade.webapp.action.IndexAction"
-                method="execute">
+        <action name="index">
             <result name="success">/jsp/index.jsp</result>
         </action>
 
-        <!-- Action pour lister les sites-->
+        <!-- ===== Actions Login/Logout ===== -->
+        <action name="login"
+                class="org.escalade.webapp.action.LoginAction"
+                method="doLogin">
+            <result name="input">/jsp/login/login.jsp</result>
+            <result name="success" type="redirectAction">/jsp/index.jsp</result>
+        </action>
+
+        <action name="logout"
+                class="org.escalade.webapp.action.LoginAction"
+                method="doLogout">
+            <result type="redirectAction">/jsp/index.jsp</result>
+        </action>
+
+        <!-- ==== Action pour lister les sites ==== -->
         <action name="site_list"
                 class="org.escalade.webapp.action.SiteAction"
                 method="doList">
             <result>/jsp/site/list.jsp</result>
-        </action>
-
-        <action name="site_list_recherche"
-                class="org.escalade.webapp.action.SiteAction"
-                method="doList">
-            <result name="success">jsp/index.jsp</result>
         </action>
 
         <action name="site_detail"
@@ -64,7 +95,7 @@
         <!-- ===== Action permettant de faire une recherche via la Barre de recherche ===== -->
         <action name="barre_de_recherche"
                 class="org.escalade.webapp.action.MoteurDeRechercheAction"
-                method="doBarreDeRecherche">
+                method="doSimpleSearch">
 
             <interceptor-ref name="store">
                 <param name="operationMode">STORE</param>
@@ -78,7 +109,7 @@
         <!-- ===== Action permettant de faire une recherche avancé ===== -->
         <action name="recherche_avancer"
                 class="org.escalade.webapp.action.MoteurDeRechercheAction"
-                method="doRechercheAvancer">
+                method="doAdvancedSearch">
 
             <interceptor-ref name="store">
                 <param name="operationMode">STORE</param>
@@ -89,44 +120,26 @@
             <result name="success">/jsp/moteur_de_recherche/resultat_recherche.jsp</result>
         </action>
 
-        <!-- ===== Moteur de recherche Avancer ===== -->
-        <!--<action name="moteur_de_recherche"-->
-                <!--class="org.escalade.webapp.action.MoteurDeRechercheAction"-->
-                <!--method="doRechercheAvancer">-->
+    </package>
 
-            <!--<interceptor-ref name="store">-->
-                <!--<param name="operationMode">STORE</param>-->
-            <!--</interceptor-ref>-->
-            <!--<interceptor-ref name="defaultStack"/>-->
-
-            <!--<result name="success">/jsp/moteur_de_recherche/resultat_recherche.jsp</result>-->
-            <!--<result name="error">/jsp/error.jsp</result>-->
-        <!--</action>-->
+    <!-- ============================================ -->
+    <!-- ===== Package pour les actions privées ===== -->
+    <!-- ============================================ -->
+    <package name="private" extends="base">
+        <default-interceptor-ref name="authenticatedStack"/>
 
         <!-- ================================================== -->
         <!-- =====  Renvoie les choix des formulaires     ===== -->
         <!-- =====  de création des sites d'escalade      ===== -->
         <!-- ================================================== -->
 
-        <action name="choixCreate"
-                class="org.escalade.webapp.action.AffichageFormulaireAction"
-                method="doAffichageChoixCreate">
+        <action name="choixCreate">
 
             <interceptor-ref name="store">
                 <param name="operationMode">RETRIEVE</param>
             </interceptor-ref>
-            <interceptor-ref name="defaultStack"/>
 
-            <result name="success">/jsp/_include/compte.jsp</result>
-            <result name="error">/jsp/error.jsp</result>
-        </action>
-
-        <!-- ===== Renvoie le formulaire de création d'un site d'escalade ===== -->
-        <action name="formulaire_site"
-                class="org.escalade.webapp.action.AffichageFormulaireAction"
-                method="doAfficheFormmulaireSite">
-
-            <result name="success">/jsp/compte/formulaire_site.jsp</result>
+            <result name="success">/jsp/_include/formulaireChoixCreate.jsp</result>
             <result name="error">/jsp/error.jsp</result>
         </action>
 
@@ -136,34 +149,30 @@
                 method="doCreate">
 
             <interceptor-ref name="store">
-            <param name="operationMode">STORE</param>
+                <param name="operationMode">STORE</param>
             </interceptor-ref>
-            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="authenticatedStack"/>
 
-            <result name="success">/jsp/_include/compte.jsp</result>
-            <result name="error">/jsp/error.jsp</result>
+            <result name="input">/jsp/compte/formulaire_site.jsp</result>
+            <result name="success" type="redirectAction">/jsp/_include/formulaireChoixCreate.jsp</result>
+            <result name="error">/jsp/compte/formulaire_site.jsp</result>
         </action>
 
-        <!-- Renvoie le formulaire de création d'un secteur -->
-        <action name="formulaire_secteur"
-                class="org.escalade.webapp.action.AffichageFormulaireAction"
-                method="doAfficheFormulaireSecteur">
-
-            <result name="success">/jsp/compte/formulaire_secteur.jsp</result>
-            <result name="error">/jsp/error.jsp</result>
-        </action>
+        <!-- Récupère les informations pour créer un nouveau secteur -->
 
         <action name="new_secteur"
-                class=""
+                class="org.escalade.webapp.action.SecteurAction"
                 method="doCreate">
 
             <interceptor-ref name="store">
                 <param name="operationMode">STORE</param>
             </interceptor-ref>
-            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="authenticatedStack"/>
 
-            <result name="success">/jsp/_include/compte.jsp</result>
-            <result name="error">/jsp/error.jsp</result>
+            <result name="input">/jsp/compte/formulaire_secteur.jsp</result>
+            <result name="success" type="redirectAction">/jsp/_include/formulaireChoixCreate.jsp</result>
+            <result name="error">/jsp/compte/formulaire_secteur.jsp</result>
         </action>
+
     </package>
 </struts>

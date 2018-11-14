@@ -30,13 +30,13 @@ public class SecteurImpl extends AbstractDataImpl implements SecteurDao {
     }
 
     @Override
-    public void addSecteur(Secteur secteur, Site site) {
+    public void addSecteur(Secteur secteur, Integer site_id) {
 
         String vSql = "INSERT INTO public.secteur (site_id, nom, description) VALUES"
                     + " (:site_id, :nom, :description)";
 
         MapSqlParameterSource vParams = new MapSqlParameterSource();
-        vParams.addValue("site_id", site.getId());
+        vParams.addValue("site_id", site_id);
         vParams.addValue("nom", secteur.getNom());
         vParams.addValue("description", secteur.getDescription());
 
@@ -78,5 +78,17 @@ public class SecteurImpl extends AbstractDataImpl implements SecteurDao {
 
         List<Secteur> vListScteurs = vJdbcTemplate.query(vSql, vSecteurRM.getvSecteurRowMapper());
         return vListScteurs;
+    }
+
+    @Override
+    public Secteur secteurByMotCleRecherche(String motCleRecherche) {
+        String vSql = "SELECT * FROM public.secteur"
+                    + " WHERE nom = " + "'" + motCleRecherche + "'";
+
+        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+        SecteurRM vSecteurRM = new SecteurRM();
+
+        List<Secteur> vSecteur = vJdbcTemplate.query(vSql, vSecteurRM.getvSecteurRowMapper());
+        return vSecteur.get(0);
     }
 }

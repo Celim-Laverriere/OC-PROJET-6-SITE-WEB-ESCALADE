@@ -37,4 +37,9 @@ public class VoieManagerImpl extends AbstractManagerImpl implements VoieManager 
     public String upVoie(Voie voie) {
         return getDaoFactory().getVoieDao().upVoie(voie);
     }
+
+    @Override
+    public Voie voieByMotCleRecherche(String motCleRecherche) {
+        return getDaoFactory().getVoieDao().voieByMotCleRecherche(motCleRecherche);
+    }
 }

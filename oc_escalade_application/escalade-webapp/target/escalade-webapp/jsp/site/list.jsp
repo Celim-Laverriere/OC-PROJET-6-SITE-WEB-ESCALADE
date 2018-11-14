@@ -26,7 +26,7 @@
             <s:iterator value="sites">
                 <p>
                    <s:a action="site_detail">
-                        <s:param value="id" name="id"/>
+                        <s:param value="id" name="site_id"/>
                         Nom : <s:property value="nom"/></s:a><br/>
                 </p>
             </s:iterator>

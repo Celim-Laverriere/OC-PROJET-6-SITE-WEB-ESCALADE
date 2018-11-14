@@ -20,7 +20,7 @@ public interface SecteurDao {
          * @param secteur
          * @return un message de confirmation
          */
-        void addSecteur(Secteur secteur, Site site);
+        void addSecteur(Secteur secteur, Integer site_id);
 
         /**
          * Renvoie le secteur demandé
@@ -52,4 +52,6 @@ public interface SecteurDao {
          * @return les Secteurs
          */
         List<Secteur> secteursBySiteId(Integer site_id);
+
+        Secteur secteurByMotCleRecherche(String motCleRecherche);
 }

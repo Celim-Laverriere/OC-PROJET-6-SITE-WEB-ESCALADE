@@ -1,25 +1,52 @@
 package org.escalade.webapp.action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.struts2.interceptor.SessionAware;
+import org.escalade.business.contract.ManagerFactory;
+import org.escalade.model.bean.Compte;
 import org.escalade.model.bean.Secteur;
 import org.escalade.model.bean.Site;
-import org.escalade.webapp.AbstractWebappImpl;
 
-public class SecteurAction extends AbstractWebappImpl {
 
-    // ----- Eléments en entrée et en sortie -----
-    private Site site;
+import javax.inject.Inject;
+import java.util.List;
+import java.util.Map;
+
+public class SecteurAction extends ActionSupport implements SessionAware {
+
+    // ======================== Attributs =======================
+    // ----- Eléments en entrée -----
+    private Integer site_id;
     private Secteur secteur;
+    private Compte compte;
+
+    // ----- Eléments en sortie -----
+    private List<Site> sites;
+
+    // ----- Eléments Struts
+    private Map<String, Object> session;
+
+    @Inject
+    private ManagerFactory managerFactory;
 
     // ============ Getters/Setters ============
 
 
-    public Site getSite() {
-        return site;
+    public Compte getCompte() {
+        return compte;
     }
 
-    public void setSite(Site site) {
-        this.site = site;
+    public void setCompte(Compte compte) {
+        this.compte = compte;
+    }
+
+    public Integer getSite_id() {
+        return site_id;
+    }
+
+    public void setSite_id(Integer site_id) {
+        this.site_id = site_id;
     }
 
     public Secteur getSecteur() {
@@ -30,17 +57,43 @@ public class SecteurAction extends AbstractWebappImpl {
         this.secteur = secteur;
     }
 
+    public List<Site> getSites() {
+        return sites;
+    }
+
+    public void setSites(List<Site> sites) {
+        this.sites = sites;
+    }
+
     // =============== Méthodes ================
 
     public String doCreate(){
 
-        //Methode peuplant la liste des régions dans le formulaire de recherche
-        fillRegion();
+        String vResult = ActionSupport.INPUT;
 
-        getManagerFactory().getSecteurManager().addSecteur(secteur, site);
+        // Idée de condition pour plus tard !!!!!!
+//      if (!StringUtils.isAllEmpty(this.session.get("user").toString())){
+//            System.out.println(this.session.get("user"));
+//        }
 
-        this.addActionMessage("Secteur " + secteur.getNom() + " a été ajouté avec succè");
+        try{
+            managerFactory.getSecteurManager().addSecteur(secteur, site_id);
+            vResult = ActionSupport.SUCCESS;
 
-       return ActionSupport.SUCCESS;
+            this.addActionMessage("Secteur " + secteur.getNom() + " a été ajouté avec succè");
+
+        } catch (NullPointerException pEX){
+            sites = managerFactory.getSiteManager().sitesByCompteSession((Compte) this.session.get("user"));
+        } catch (Exception pEX){
+            this.addActionError("Une erreur technique s'est produite, votre secteur n'a pas pu être ajouté !");
+            sites = managerFactory.getSiteManager().sitesByCompteSession((Compte) this.session.get("user"));
+        }
+
+       return vResult;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> pSession) {
+        this.session = pSession;
     }
 }

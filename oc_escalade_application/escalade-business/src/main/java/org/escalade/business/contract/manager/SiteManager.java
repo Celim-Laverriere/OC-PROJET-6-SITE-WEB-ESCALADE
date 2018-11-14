@@ -12,12 +12,18 @@ public interface SiteManager {
 
     void addSite(Site site, Compte compte);
 
-    Site site(Integer id);
+    Site site(Integer site_id);
 
     String delSite(Integer id);
 
     String upSite(Integer id, Site site);
 
-    List<Site> rechercheList(Site regionSelect, String typeVoieSelect, String cotationVoieSelect);
+    List<Site> sitesByAdvancedSearch(String regionSelect, String typeVoieSelect, String cotationVoieSelect);
+
+    List<Site> siteByRegion();
+
+    Site siteBySimpleSearch(String motCleRecherche);
+
+    List<Site> sitesByCompteSession (Compte compte);
 
 }

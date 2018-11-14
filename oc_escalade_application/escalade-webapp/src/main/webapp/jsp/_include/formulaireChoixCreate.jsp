@@ -20,15 +20,15 @@
     <h1>COMPTE</h1>
 
     <div>
-        <button><s:a action="formulaire_site">Créer un nouveau Site d'escalade</s:a> </button>
-        <button><s:a action="formulaire_secteur">Créer un nouveau Secteurs</s:a> </button>
+        <button><s:a action="new_site">Créer un nouveau Site d'escalade</s:a> </button>
+        <button><s:a action="new_secteur">Créer un nouveau Secteurs</s:a> </button>
         <button><s:a action="">Créer un nouvelle Voie</s:a> </button>
         <button><s:a action="">Créer un nouveau Relai</s:a> </button>
         <button><s:a action="">Créer une nouvelle Longueure</s:a></button>
     </div>
 
-    <h1><s:actionmessage/></h1>
-
+    <h2><s:actionmessage/></h2>
+    <h2><s:actionerror/></h2>
     <footer>
 
     </footer>

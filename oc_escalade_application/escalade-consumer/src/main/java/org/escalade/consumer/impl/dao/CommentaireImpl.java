@@ -4,6 +4,7 @@ import org.escalade.consumer.contract.dao.CommentaireDao;
 import org.escalade.consumer.impl.data.AbstractDataImpl;
 import org.escalade.consumer.impl.rowmapper.CommentaireRM;
 import org.escalade.model.bean.Commentaire;
+import org.escalade.model.bean.Site;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;

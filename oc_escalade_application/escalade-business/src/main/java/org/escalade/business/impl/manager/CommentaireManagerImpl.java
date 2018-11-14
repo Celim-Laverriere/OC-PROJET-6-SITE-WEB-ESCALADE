@@ -3,6 +3,7 @@ package org.escalade.business.impl.manager;
 import org.escalade.business.contract.manager.CommentaireManager;
 import org.escalade.business.impl.AbstractManagerImpl;
 import org.escalade.model.bean.Commentaire;
+import org.escalade.model.bean.Site;
 
 import java.util.List;
 

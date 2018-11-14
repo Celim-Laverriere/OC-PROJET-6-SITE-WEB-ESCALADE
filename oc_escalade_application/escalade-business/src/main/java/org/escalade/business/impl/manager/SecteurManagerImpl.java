@@ -15,8 +15,8 @@ public class SecteurManagerImpl extends AbstractManagerImpl implements SecteurMa
     }
 
     @Override
-    public void addSecteur(Secteur secteur, Site site) {
-        getDaoFactory().getSecteurDao().addSecteur(secteur, site);
+    public void addSecteur(Secteur secteur, Integer site_id) {
+        getDaoFactory().getSecteurDao().addSecteur(secteur, site_id);
     }
 
     @Override
@@ -32,5 +32,10 @@ public class SecteurManagerImpl extends AbstractManagerImpl implements SecteurMa
     @Override
     public String upSecteur(Integer id, Secteur secteur) {
         return getDaoFactory().getSecteurDao().upSecteur(id, secteur);
+    }
+
+    @Override
+    public Secteur secteurByMotCleRecherche(String motCleRecherche) {
+        return getDaoFactory().getSecteurDao().secteurByMotCleRecherche(motCleRecherche);
     }
 }

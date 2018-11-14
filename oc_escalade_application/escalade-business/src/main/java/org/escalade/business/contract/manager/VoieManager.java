@@ -5,13 +5,15 @@ import java.util.List;
 
 public interface VoieManager {
 
-    public List<Voie> voies(Integer secteur_id);
+     List<Voie> voies(Integer secteur_id);
 
-    public String addVoie(Voie voie);
+     String addVoie(Voie voie);
 
-    public Voie voie(Integer id);
+     Voie voie(Integer id);
 
-    public String delVoie(Integer id);
+     String delVoie(Integer id);
 
-    public String upVoie(Voie voie );
+     String upVoie(Voie voie );
+
+     Voie voieByMotCleRecherche(String motCleRecherche);
 }

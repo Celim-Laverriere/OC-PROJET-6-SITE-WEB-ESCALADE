@@ -9,11 +9,13 @@ public interface SecteurManager {
 
     List<Secteur> secteurs();
 
-    void addSecteur(Secteur secteur, Site site);
+    void addSecteur(Secteur secteur, Integer site_id);
 
     Secteur secteur(Integer id);
 
     String delScteur(Integer id);
 
     String upSecteur(Integer id, Secteur secteur);
+
+    Secteur secteurByMotCleRecherche(String motCleRecherche);
 }

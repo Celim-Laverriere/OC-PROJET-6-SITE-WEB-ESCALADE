@@ -51,6 +51,8 @@ public interface VoieDao {
      *
      * @return
      */
-    List<Voie> voieByVoieType(String typeVoieSelect, String cotationVoieSelect);
+    List<Voie> voieByVoieType();
+
+    Voie voieByMotCleRecherche(String motCleRecherche);
 
 }

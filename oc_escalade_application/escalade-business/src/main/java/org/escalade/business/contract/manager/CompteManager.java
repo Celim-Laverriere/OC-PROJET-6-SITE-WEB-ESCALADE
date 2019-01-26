@@ -8,7 +8,7 @@ public interface CompteManager {
 
     List<Compte> comptes();
 
-    String addCompte(Compte compte);
+    void addCompte(Compte compte);
 
     Compte compte(Integer id);
 

@@ -71,11 +71,6 @@ public class SecteurAction extends ActionSupport implements SessionAware {
 
         String vResult = ActionSupport.INPUT;
 
-        // Idée de condition pour plus tard !!!!!!
-//      if (!StringUtils.isAllEmpty(this.session.get("user").toString())){
-//            System.out.println(this.session.get("user"));
-//        }
-
         try{
             managerFactory.getSecteurManager().addSecteur(secteur, site_id);
             vResult = ActionSupport.SUCCESS;

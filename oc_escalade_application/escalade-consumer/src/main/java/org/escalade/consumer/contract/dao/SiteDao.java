@@ -52,7 +52,7 @@ public interface SiteDao {
          * Renvoie la liste des sites correspondant à la région sélectionnée.
          * @return vListSites
          */
-        List<Site> sitesByAdvancedSearchDao(String regionSelect, String typeVoieSelect, String cotationVoieSelect);
+        List<Site> sitesByAdvancedSearchDao(String regionSelect,String typeVoieSelect, String cotationVoieSelect);
 
         List<Site> siteByRegionDao();
 

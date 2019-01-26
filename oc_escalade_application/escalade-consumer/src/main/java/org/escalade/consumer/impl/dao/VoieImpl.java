@@ -50,10 +50,6 @@ public class VoieImpl extends AbstractDataImpl implements VoieDao {
         return null;
     }
 
-    public List<Voie> voieByVoieType (){
-        return null;
-    }
-
     @Override
     public Voie voieByMotCleRecherche(String motCleRecherche) {
 

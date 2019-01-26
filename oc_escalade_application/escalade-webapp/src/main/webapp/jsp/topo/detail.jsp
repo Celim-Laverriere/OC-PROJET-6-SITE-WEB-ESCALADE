@@ -16,7 +16,6 @@
 
     <header>
         <%@include file="../_include/header.jsp"%>
-        <%@include file="../_include/barreDeRecherche.jsp"%>
     </header>
 
     <h2>Detail des topos</h2>

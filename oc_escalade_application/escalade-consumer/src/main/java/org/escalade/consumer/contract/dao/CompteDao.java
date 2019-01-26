@@ -18,7 +18,7 @@ public interface CompteDao {
          * @param compte
          * @return un message de confirmation
          */
-        String addCompte(Compte compte);
+        void addCompte(Compte compte);
 
         /**
          * Renvoie le compte demandé

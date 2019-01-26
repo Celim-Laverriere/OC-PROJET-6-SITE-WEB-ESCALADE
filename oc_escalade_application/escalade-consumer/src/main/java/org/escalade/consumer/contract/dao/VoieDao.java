@@ -49,10 +49,9 @@ public interface VoieDao {
 
     /**
      *
+     * @param motCleRecherche
      * @return
      */
-    List<Voie> voieByVoieType();
-
-    Voie voieByMotCleRecherche(String motCleRecherche);
+       Voie voieByMotCleRecherche(String motCleRecherche);
 
 }

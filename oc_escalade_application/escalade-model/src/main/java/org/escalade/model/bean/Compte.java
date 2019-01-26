@@ -1,5 +1,7 @@
 package org.escalade.model.bean;
 
+import com.sun.istack.internal.NotNull;
+
 import java.util.List;
 
 public class Compte {

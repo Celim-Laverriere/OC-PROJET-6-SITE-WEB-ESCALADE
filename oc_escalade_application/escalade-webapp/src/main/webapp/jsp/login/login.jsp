@@ -12,6 +12,7 @@
 </head>
 <center><body>
 <%@include file="/jsp/_include/header.jsp"%>
+
     <h2>Connexion</h2>
 
     <s:form action="login">
@@ -20,5 +21,6 @@
 
         <s:submit value="Connexion"/>
     </s:form>
+
 </body></center>
 </html>

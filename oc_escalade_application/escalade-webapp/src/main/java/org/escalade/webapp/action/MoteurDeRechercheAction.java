@@ -1,5 +1,6 @@
 package org.escalade.webapp.action;
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.components.ActionMessage;
 import org.escalade.business.contract.ManagerFactory;
 import org.escalade.model.bean.Secteur;
 import org.escalade.model.bean.Site;
@@ -149,6 +150,7 @@ public class MoteurDeRechercheAction extends ActionSupport  {
 
     /**
      * Action qui retourne la liste des sites correspondant à la région sélectionnée
+     * au type de la voie (équpée ou non) et à la difficultée de la voie.
      * @return success
      */
     public String doAdvancedSearch(){
@@ -169,33 +171,14 @@ public class MoteurDeRechercheAction extends ActionSupport  {
 
     public String doSimpleSearch(){
 
-        String vResult = ActionSupport.INPUT;
-
-        if (!motCleRecherche.equals(null)) {
-
+        try {
             site = managerFactory.getSiteManager().siteBySimpleSearch(motCleRecherche);
-            vResult = ActionSupport.SUCCESS;
-//            if (site.getNom().equals(null)){
-//                secteur = getManagerFactory().getSecteurManager().secteurByMotCleRecherche(motCleRecherche);
-//            } else {
-//                vResult = ActionSupport.SUCCESS;
-//            }
-//
-//            if (secteur.getNom().equals(null) && site.getNom().equals(null)){
-//                voie = getManagerFactory().getVoieManager().voieByMotCleRecherche(motCleRecherche);
-//            }
-//
-//            if (secteur.getNom().equals(null) && site.getNom().equals(null) && voie.getNom().equals(null)){
-//                this.addActionMessage("Désolé la recherche " + motCleRecherche
-//                        + " ne correspond à aucun nom de site, de secteur ou de voie !");
-//            }
-//
-//        } else {
-//            this.addActionMessage("Merci de saisir votre demande dans la barre de recherche !");
+
+        } catch (IndexOutOfBoundsException pEx) {
+            this.addActionMessage("Désolé ! Aucun site ne correspond à votre recherche : " + motCleRecherche + " !");
         }
 
-
-        return vResult;
+        return ActionSupport.SUCCESS;
     }
 
 }

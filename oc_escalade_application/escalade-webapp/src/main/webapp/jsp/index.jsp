@@ -15,7 +15,6 @@
 
 <header>
     <%@include file="../jsp/_include/header.jsp"%>
-    <%@include file="_include/barreDeRecherche.jsp"%>
 </header>
 
 

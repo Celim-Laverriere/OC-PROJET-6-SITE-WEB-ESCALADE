@@ -1,5 +1,8 @@
 package org.escalade.model.bean;
 
+import com.sun.istack.internal.NotNull;
+
+import javax.inject.Inject;
 import java.util.List;
 
 public class Site {

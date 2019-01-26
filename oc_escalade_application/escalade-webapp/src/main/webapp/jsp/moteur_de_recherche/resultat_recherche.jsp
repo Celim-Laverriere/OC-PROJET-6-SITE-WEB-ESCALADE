@@ -14,7 +14,6 @@
 
     <header>
         <%@include file="../_include/header.jsp"%>
-        <%@include file="../_include/barreDeRecherche.jsp"%>
     </header>
 
     <h2><s:actionmessage/></h2>
@@ -22,17 +21,21 @@
         <s:iterator value="sites">
             <p>
                 <s:a action="site_detail">
-                    <s:param value="id" name="id"/>
+                    <s:param value="id" name="site_id"/>
                     Nom : <s:property value="nom"/></s:a><br/>
                     Description : <s:property value="description"/><br/>
             </p>
 
         </s:iterator>
 
-
        <s:iterator value="site">
-           Nom : <s:property value="nom"/><br/>
-           Description : <s:property value="description"/>
+          <p>
+              <s:a action="site_detail">
+                    <s:param value="id" name="site_id"/>
+                    Nom : <s:property value="nom"/><br/></s:a><br/>
+                    Description : <s:property value="description"/>
+          </p>
+
        </s:iterator>
 
     <footer>

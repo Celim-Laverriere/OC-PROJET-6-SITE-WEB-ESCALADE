@@ -6,6 +6,8 @@ import org.escalade.consumer.impl.rowmapper.CompteRM;
 import org.escalade.model.bean.Compte;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,8 +29,20 @@ public class CompteImpl extends AbstractDataImpl implements CompteDao {
     }
 
     @Override
-    public String addCompte(Compte compte) {
-        return null;
+    public void addCompte(Compte compte) {
+
+        String vSql = "INSERT INTO public.compte(nom, prenom, mail, mot_de_passe) VALUES"
+                    + " (:nom, :prenom, :mail, :mot_de_passe)";
+
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("nom", compte.getNom());
+        vParams.addValue("prenom", compte.getPrenom());
+        vParams.addValue("mail", compte.getMail());
+        vParams.addValue("mot_de_passe", compte.getMot_de_passe());
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+
+        int vNbrLigneMaj = vJdbcTemplate.update(vSql, vParams);
     }
 
     @Override

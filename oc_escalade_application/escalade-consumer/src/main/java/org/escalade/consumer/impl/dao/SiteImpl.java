@@ -9,7 +9,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -70,12 +69,12 @@ public class SiteImpl extends AbstractDataImpl implements SiteDao {
 
     public List<Site> sitesByAdvancedSearchDao(String regionSelect, String typeVoieSelect, String cotationVoieSelect){
 
-        String vSql = "SELECT * FROM public.site"
-                    + " WHERE region = " + "'" + regionSelect + "'"
-                    + " AND id = (SELECT site_id FROM public.secteur"
-                    + " WHERE id = (SELECT secteur_id FROM public.voie "
-                    + " WHERE type_voie = " + "'" + typeVoieSelect + "'"
-                    + " AND cotation = " + "'" + cotationVoieSelect + "'))";
+        String vSql = "SELECT distinct site.* FROM site "
+                    + " INNER JOIN secteur ON site.id = secteur.site_id\n"
+                    + " INNER JOIN voie ON secteur.id = voie.secteur_id\n"
+                    + " WHERE voie.type_voie = "+ "'" + typeVoieSelect + "'"
+                    + " AND voie.cotation = " + "'" + cotationVoieSelect + "'"
+                    + " AND site.region = " + "'"+ regionSelect + "'";
 
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
         SiteRM vSiteRM = new SiteRM();

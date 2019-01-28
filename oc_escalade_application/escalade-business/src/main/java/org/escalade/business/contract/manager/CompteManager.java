@@ -10,11 +10,11 @@ public interface CompteManager {
 
     void addCompte(Compte compte);
 
-    Compte compte(Integer id);
+    Compte compte(Compte compte_id);
 
     String delCompte(Integer id);
 
-    String upCompte(Integer id, Compte compte);
+    void upCompte(Compte upCompte, Compte compte);
 
     Compte comptByUtilisateur (String login, String password);
 }

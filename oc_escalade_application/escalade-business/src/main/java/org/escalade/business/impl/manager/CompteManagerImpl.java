@@ -20,8 +20,8 @@ public class CompteManagerImpl extends AbstractManagerImpl implements CompteMana
     }
 
     @Override
-    public Compte compte(Integer id) {
-        return getDaoFactory().getCompteDao().compte(id);
+    public Compte compte(Compte compte_id) {
+        return getDaoFactory().getCompteDao().compte(compte_id);
     }
 
     @Override
@@ -30,8 +30,8 @@ public class CompteManagerImpl extends AbstractManagerImpl implements CompteMana
     }
 
     @Override
-    public String upCompte(Integer id, Compte compte) {
-        return getDaoFactory().getCompteDao().upCompte(id, compte);
+    public void upCompte(Compte upComte, Compte compte) {
+         getDaoFactory().getCompteDao().upCompte(upComte, compte);
     }
 
     @Override

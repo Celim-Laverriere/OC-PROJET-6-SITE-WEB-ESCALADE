@@ -23,10 +23,10 @@ public interface CompteDao {
         /**
          * Renvoie le compte demandé
          *
-         * @param id
+         * @param compte_id
          * @return le compte correspondant à son id
          */
-        Compte compte(Integer id);
+        Compte compte(Compte compte_id);
 
         /**
          * Supprimer un compte
@@ -39,10 +39,10 @@ public interface CompteDao {
         /**
          * Mettre à jour les informations d'un compte
          *
-         * @param id
+         * @param compte
          * @return un message de confirmation
          */
-        String upCompte(Integer id, Compte compte);
+        void upCompte(Compte upCompte, Compte compte);
 
         /**
          *

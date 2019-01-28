@@ -9,29 +9,33 @@
 <%@taglib prefix="s" uri="/struts-tags" %>
 <html>
 
-<center><body>
-
-    <header>
-        <%@include file="../_include/formulaireChoixCreate.jsp"%>
-    </header>
-
-    <h1>Création d'un nouveau SECTEUR</h1>
+<body>
 
     <div>
-        <s:form action="new_secteur">
-
-            <s:select name="site_id" label="Sélectionnez le site d'escalade"
-                      list="sites" listKey="id" listValue="nom"
-                      emptyOption="true" requiredLabel="true"/>
-
-            <s:textfield name="secteur.nom" label="Nom du Secteur" requiredLabel="true"/>
-
-            <s:textarea name="secteur.description" label="Description du secteur" cols="40" rows="5"/>
-
-            <s:submit value="Validez"/>
-        </s:form>
+        <%@include file="../_include/formulaireChoixCreate.jsp"%>
     </div>
 
+    <div class="container" style=" position: absolute; top: 14%; left: 45%">
+        <div class="row">
+            <div class="col-md-9">
+                 <h2>Création d'un nouveau SECTEUR</h2>
 
-</body></center>
+                    <s:form action="new_secteur">
+
+                        <s:select name="site_id" label="Sélectionnez le site d'escalade"
+                                  list="sites" listKey="id" listValue="nom"
+                                  emptyOption="true" requiredLabel="true"/>
+
+                        <s:textfield name="secteur.nom" label="Nom du Secteur" requiredLabel="true"/>
+
+                        <s:textarea name="secteur.description" label="Description du secteur" cols="40" rows="5"/>
+
+                        <s:submit value="Validez"/>
+                    </s:form>
+
+            </div>
+        </div>
+    </div>
+
+</body>
 </html>

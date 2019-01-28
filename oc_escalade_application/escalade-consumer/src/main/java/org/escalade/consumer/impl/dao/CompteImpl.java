@@ -21,10 +21,10 @@ public class CompteImpl extends AbstractDataImpl implements CompteDao {
         String vSql = "SELECT * FROM public.compte";
 
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
-        CompteRM compteRM = new CompteRM();
+        CompteRM vCompteRM = new CompteRM();
 
 
-        List<Compte> vListeCompte = vJdbcTemplate.query(vSql, compteRM.getvCompteRowMapper());
+        List<Compte> vListeCompte = vJdbcTemplate.query(vSql, vCompteRM.getvCompteRowMapper());
         return vListeCompte;
     }
 
@@ -46,8 +46,17 @@ public class CompteImpl extends AbstractDataImpl implements CompteDao {
     }
 
     @Override
-    public Compte compte(Integer id) {
-        return null;
+    public Compte compte(Compte compte_id) {
+
+
+        String vSql = "SELECT * FROM public.compte"
+                    + " WHERE id = " + compte_id.getId();
+
+        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+        CompteRM vCompteRM = new CompteRM();
+
+        List<Compte> vCompteDetail = vJdbcTemplate.query(vSql, vCompteRM.getvCompteRowMapper());
+        return vCompteDetail.get(0);
     }
 
     @Override
@@ -56,8 +65,22 @@ public class CompteImpl extends AbstractDataImpl implements CompteDao {
     }
 
     @Override
-    public String upCompte(Integer id, Compte compte) {
-        return null;
+    public void upCompte(Compte upCompte, Compte compte) {
+
+        String vSql = "UPDATE public.compte SET"
+                    + " nom = :nom, prenom = :prenom, mail = :mail, mot_de_passe = :mot_de_passe"
+                    + " WHERE id = :id";
+
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("id", compte.getId());
+        vParams.addValue("nom", upCompte.getNom());
+        vParams.addValue("prenom", upCompte.getPrenom());
+        vParams.addValue("mail", upCompte.getMail());
+        vParams.addValue("mot_de_passe", upCompte.getMot_de_passe());
+
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+        int vNbrLigneMaj = vJdbcTemplate.update(vSql, vParams);
     }
 
     @Override

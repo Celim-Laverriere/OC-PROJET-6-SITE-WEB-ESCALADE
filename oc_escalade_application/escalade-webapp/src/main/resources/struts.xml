@@ -189,6 +189,21 @@
             <result name="success" type="redirectAction">/jsp/_include/formulaireChoixCreate.jsp</result>
             <result name="error">/jsp/compte/formulaire_secteur.jsp</result>
         </action>
+        
+        <action name="modifier_compte_utilisateur"
+                class="org.escalade.webapp.action.CompteAction"
+                method="upCompte">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="input">jsp/formulaire_de_creation/formulaire_compte.jsp</result>
+            <result name="success">jsp/_include/formulaireChoixCreate.jsp</result>
+            <result name="error">/jsp/compte/formulaire_secteur.jsp</result>
+        </action>
 
     </package>
 </struts>

@@ -8,19 +8,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="s" uri="/struts-tags" %>
 <html>
-<head>
-    <%@include file="../jsp/_include/head.jsp"%>
-</head>
-<center><body>
+    <head>
+        <%@include file="_include/head.jsp"%>
+    </head>
+<body>
 
-<header>
-    <%@include file="../jsp/_include/header.jsp"%>
-</header>
+    <header>
+        <%@include file="../jsp/_include/header.jsp"%>
+    </header>
 
+    <script>
+        <%@include file="../jsp/_include/footer.jsp"%>
+    </script>
 
-<footer>
+</body>
 
-</footer>
-
-</body></center>
 </html>

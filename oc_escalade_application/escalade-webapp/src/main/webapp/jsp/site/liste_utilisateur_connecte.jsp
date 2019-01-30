@@ -1,14 +1,13 @@
 <%--
   Created by IntelliJ IDEA.
   User: CELIM
-  Date: 05/10/2018
-  Time: 10:37
+  Date: 30/01/2019
+  Time: 16:21
   To change this template use File | Settings | File Templates.
 --%>
-<%@taglib prefix="s" uri="/struts-tags"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <html>
-
 <head>
     <%@include file="../_include/head.jsp"%>
 </head>
@@ -23,7 +22,7 @@
 
     <div class="row">
         <div class="col-md-12" style="margin-top: 10px; margin-bottom: 10px; text-align: center">
-            <h2>Liste des sites d'éscalades</h2>
+            <h2>Mes sites d'éscalades</h2>
             <hr width="100%" color="#DCDCDC">
         </div>
     </div>
@@ -34,6 +33,7 @@
                 <ul>
                     <div class="well well-md">
                         <h4>Nom du site : <s:property value="nom"/></h4>
+                        <h4>Région : <s:property value="region"/></h4>
                         <p>Dscription : <s:property value="description"/></p>
                     </div>
                 </ul>
@@ -45,18 +45,19 @@
             <div class="col-md-2">
                 <s:a  action="site_detail" class="btn btn-outline-info" role="button">
                     <s:param value="id" name="site_id"/>
-                    Voir détail
+                    Modifier
                 </s:a>
             </div>
         </div>
         <hr width="100%" color="#DCDCDC">
     </s:iterator>
+
+    <s:actionerror />
 </div>
 
-<footer>
+<script>
     <%@include file="../_include/footer.jsp"%>
-</footer>
+</script>
 
 </body>
-
 </html>

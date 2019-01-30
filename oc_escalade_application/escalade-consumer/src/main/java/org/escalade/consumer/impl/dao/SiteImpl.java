@@ -117,7 +117,7 @@ public class SiteImpl extends AbstractDataImpl implements SiteDao {
     }
 
     @Override
-    public List<Site> sitesByCompteSessionDao(Compte compte) {
+    public List<Site> sitesParSessionDeCompteDao(Compte compte) {
 
         String vSql = "SELECT * FROM public.site"
                     + " WHERE compte_id = " + compte.getId();

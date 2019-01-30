@@ -204,6 +204,36 @@
             <result name="success">jsp/_include/formulaireChoixCreate.jsp</result>
             <result name="error">/jsp/compte/formulaire_secteur.jsp</result>
         </action>
+        
+        <action name="supprimer_compte"
+                class="org.escalade.webapp.action.CompteAction"
+                method="supprimerCompteUtilisateur">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="input">jsp/formulaire_de_creation/formulaire_compte.jsp</result>
+            <result name="success" type="redirectAction">jsp/index.jsp</result>
+            <result name="error">/jsp/compte/formulaire_secteur.jsp</result>
+        </action>
+
+        <action name="sites_Par_Session_De_Compte"
+                class="org.escalade.webapp.action.SiteAction"
+                method="sitesParSessionDeCompte">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="input">jsp/_include/formulaireChoixCreate.jsp</result>
+            <result name="success">jsp/site/liste_utilisateur_connecte.jsp</result>
+            <result name="error">jsp/error.jsp</result>
+        </action>
 
     </package>
 </struts>

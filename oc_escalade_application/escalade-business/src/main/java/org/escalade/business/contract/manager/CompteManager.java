@@ -12,7 +12,7 @@ public interface CompteManager {
 
     Compte compte(Compte compte_id);
 
-    String delCompte(Integer id);
+    void delCompte(Compte compte_id);
 
     void upCompte(Compte upCompte, Compte compte);
 

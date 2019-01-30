@@ -25,8 +25,9 @@ public class CompteManagerImpl extends AbstractManagerImpl implements CompteMana
     }
 
     @Override
-    public String delCompte(Integer id) {
-        return getDaoFactory().getCompteDao().delCompte(id);
+    public void delCompte(Compte compte_id) {
+
+        getDaoFactory().getCompteDao().delCompte(compte_id.getId());
     }
 
     @Override

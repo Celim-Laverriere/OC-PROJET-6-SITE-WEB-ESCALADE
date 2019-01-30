@@ -24,6 +24,6 @@ public interface SiteManager {
 
     Site siteBySimpleSearch(String motCleRecherche);
 
-    List<Site> sitesByCompteSession (Compte compte);
+    List<Site> sitesParSessionDeCompte(Compte compte);
 
 }

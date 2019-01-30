@@ -98,8 +98,8 @@ public class SiteManagerImpl extends AbstractManagerImpl implements SiteManager 
     }
 
     @Override
-    public List<Site> sitesByCompteSession(Compte compte) {
+    public List<Site> sitesParSessionDeCompte(Compte compte) {
 
-        return getDaoFactory().getSiteDao().sitesByCompteSessionDao(compte);
+        return getDaoFactory().getSiteDao().sitesParSessionDeCompteDao(compte);
     }
 }

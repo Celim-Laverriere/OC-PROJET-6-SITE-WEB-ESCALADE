@@ -11,35 +11,62 @@
 <head>
     <%@include file="../_include/head.jsp"%>
 </head>
-<center><body>
+<body>
 
-    <header>
-        <%@include file="../_include/header.jsp"%>
-    </header>
+<header>
+    <%@include file="../_include/header.jsp"%>
+</header>
 
-    <h3>Detail de la voies</h3>
-    <s:iterator value="voie">
-        Nom : <s:property value="nom"/>
+    <div class="container">
 
-            <h4>Les relais</h4>
-            <s:iterator value="relais">
-                <p>
-                    ID : <s:property value="id"/>
-                    Numéro du relai : <s:property value="num_relai"/>
-                    Hauteur : <s:property value="hauteur"/>
-                </p>
-            </s:iterator>
+        <div class="row">
+            <div class="col-md-12" style="margin-top: 10px; margin-bottom: 10px; text-align: center">
+                <h4>Detail de la voies</h4>
+            </div>
+        </div>
 
-            <h4>Les longueurs</h4>
-            <s:iterator value="longueurs">
-                <p>
-                    Id : <s:property value="id"/>
-                    Numéro de la longueur : <s:property value="numero"/>
-                    Hauteur : <s:property value="hauteur"/>
-                    Cotation : <s:property value="cotation"/>
-                </p>
-            </s:iterator>
-    </s:iterator>
+        <s:iterator value="voie">
 
-</body></center>
+        <div class="row">
+            <div class="col-md-12">
+               <h6>Voie : <s:property value="nom"/></h6>
+            </div>
+        </div>
+        <hr width="100%" color="#DCDCDC">
+
+        <div class="row">
+            <div class="col-md-12">
+                <s:iterator value="relais">
+                    <p>
+                        Le relai numéro <s:property value="num_relai"/>
+                        ce trouve à une hauteur de <s:property value="hauteur"/> mètres.
+                    </p>
+                </s:iterator>
+            </div>
+        </div>
+            <hr width="100%" color="#DCDCDC">
+
+        <div class="row">
+            <div class="col-md-12">
+                <s:iterator value="longueurs">
+                    <p>
+                        La longueur numéro <s:property value="numero"/>
+                        est d'une hauteur de <s:property value="hauteur"/> mètres,
+                        pour une difficultée de <s:property value="cotation"/>.
+                    </p>
+                </s:iterator>
+            </div>
+        </div>
+        </s:iterator>
+        <hr width="100%" color="#DCDCDC">
+    </div>
+
+
+
+
+    <footer>
+        <%@include file="../_include/footer.jsp"%>
+    </footer>
+
+</body>
 </html>

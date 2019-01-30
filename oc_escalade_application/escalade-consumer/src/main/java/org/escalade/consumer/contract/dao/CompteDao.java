@@ -34,7 +34,7 @@ public interface CompteDao {
          * @param id
          * @return un message de confirmation
          */
-        String delCompte(Integer id);
+        void delCompte(Integer id);
 
         /**
          * Mettre à jour les informations d'un compte

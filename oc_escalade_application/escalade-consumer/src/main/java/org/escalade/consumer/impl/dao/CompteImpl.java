@@ -48,7 +48,6 @@ public class CompteImpl extends AbstractDataImpl implements CompteDao {
     @Override
     public Compte compte(Compte compte_id) {
 
-
         String vSql = "SELECT * FROM public.compte"
                     + " WHERE id = " + compte_id.getId();
 
@@ -60,8 +59,17 @@ public class CompteImpl extends AbstractDataImpl implements CompteDao {
     }
 
     @Override
-    public String delCompte(Integer id) {
-        return null;
+    public void delCompte(Integer id) {
+
+        String vSql = "DELETE FROM public.compte WHERE id = :id";
+
+
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("id", id);
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+        int vNbrLigneMaj = vJdbcTemplate.update(vSql, vParams);
+
     }
 
     @Override

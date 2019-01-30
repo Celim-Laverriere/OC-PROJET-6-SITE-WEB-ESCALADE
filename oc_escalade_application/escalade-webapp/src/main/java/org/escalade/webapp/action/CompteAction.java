@@ -1,27 +1,29 @@
 package org.escalade.webapp.action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.escalade.business.contract.ManagerFactory;
 import org.escalade.model.bean.Compte;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
-public class CompteAction extends ActionSupport implements SessionAware {
+public class CompteAction extends ActionSupport implements SessionAware, ServletRequestAware {
 
 
     // ======================== Attributs =======================
     // ===== Paramètres en entrée =====
-    private Compte compte;
     private Compte upCompte;
 
     // ===== Paramètres en sortie =====
-
+    private Compte compte;
 
     // ----- Eléments Struts
     private Map<String, Object> session;
+    private HttpServletRequest servletRequest;
 
     @Inject
     private ManagerFactory managerFactory;
@@ -80,9 +82,34 @@ public class CompteAction extends ActionSupport implements SessionAware {
             vResult = ActionSupport.SUCCESS;
 
             this.addActionMessage("Vos modifications ont bien été pris en compte !");
+
         } catch (NullPointerException pEX){
             compte = managerFactory.getCompteManager().compte((Compte) this.session.get("user"));
         } catch (Exception pEX) {
+
+            this.addActionError("Une erreur s'est produite, veuillez réessayer ultérieurement !" );
+        }
+
+        return vResult;
+    }
+
+    public String supprimerCompteUtilisateur (){
+        String vResult = ActionSupport.INPUT;
+
+        try {
+
+            managerFactory.getCompteManager().delCompte((Compte) this.session.get("user"));
+
+            vResult = ActionSupport.SUCCESS;
+
+            this.servletRequest.getSession().invalidate();
+
+            this.addActionMessage("Votre compte à bien été supprimer !");
+
+        } catch (NullPointerException pEX) {
+            compte = managerFactory.getCompteManager().compte((Compte) this.session.get("user"));
+        } catch (Exception pEX) {
+            System.out.println(pEX);
             this.addActionError("Une erreur s'est produite, veuillez réessayer ultérieurement !");
         }
 
@@ -92,5 +119,10 @@ public class CompteAction extends ActionSupport implements SessionAware {
     @Override
     public void setSession(Map<String, Object> pSession) {
         this.session = pSession;
+    }
+
+    @Override
+    public void setServletRequest(HttpServletRequest pRequest) {
+        this.servletRequest = pRequest;
     }
 }

@@ -1,6 +1,7 @@
 package org.escalade.webapp.action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.interceptor.SessionAware;
 import org.escalade.business.contract.ManagerFactory;
 import org.escalade.model.bean.Compte;
@@ -125,6 +126,27 @@ public class SiteAction extends ActionSupport implements SessionAware {
                 this.addActionError("Une erreur technique s'est produite, votre site n'a pas pu être ajouté !");
                 regionList = managerFactory.getSiteManager().siteByRegion();
             }
+
+        return vResult;
+    }
+
+    public String sitesParSessionDeCompte (){
+        String vResult = ActionSupport.INPUT;
+
+        try {
+            sites = managerFactory.getSiteManager().sitesParSessionDeCompte((Compte) this.session.get("user"));
+            vResult = ActionSupport.SUCCESS;
+
+            if (sites.isEmpty()) {
+            vResult = ActionSupport.INPUT;
+            this.addActionMessage("Vous n'avez pas encore de sites d'escalades !");
+            }
+
+        } catch (NullPointerException pEX) {
+
+        } catch (Exception pEX) {
+            this.addActionError("Une erreur technique s'est produite, votre site n'a pas pu être ajouté !");
+        }
 
         return vResult;
     }

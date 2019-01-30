@@ -13,70 +13,89 @@
     <%@include file="../_include/head.jsp"%>
 </head>
 
-<center><body>
+<body>
 
-        <header>
-            <%@include file="../_include/header.jsp"%>
-        </header>
+<header>
+    <%@include file="../_include/header.jsp"%>
+</header>
 
-        <h2>Détail du site</h2>
+<div class="container">
 
-            <li>
-                ID : <s:property value="site.id"/><br/>
-                Nom : <s:property value="site.nom"/><br/>
-                Région : <s:property value="site.region"/><br/>
-                Description : <s:property value="site.description"/><br/>
-            </li>
+    <div class="row">
+        <div class="col-md-12" style="margin-top: 10px; margin-bottom: 10px; text-align: center">
+            <h4>Détail du site</h4>
+            <hr width="100%" color="#DCDCDC">
+        </div>
+    </div>
 
-        <h3>Commentaires</h3>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well well-md">
+                <h4>Nom du site : <s:property value="site.nom"/></h4>
+                <p>Région : <s:property value="site.region"/></p>
+                <p>Description : <s:property value="site.description"/></p>
+            </div>
+        </div>
+    </div>
+    <hr width="100%" color="#DCDCDC">
 
-        <s:iterator value="site.commentaires">
-            <li>
-                <s:property value="commentaire"/>
-            </li>
-        </s:iterator>
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Commentaires</h4>
+        </div>
+    </div>
 
-        <h3>Secteurs</h3>
+    <s:iterator value="site.commentaires">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well well-md">
+                    <li><s:property value="commentaire"/></li>
+                </div>
+            </div>
+        </div>
+    </s:iterator>
+    <hr width="100%" color="#DCDCDC">
 
-            <s:iterator value="site.secteurs">
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Secteurs & Voies</h4>
+        </div>
+    </div>
 
-                <li>
-                    Nom : <s:property value="nom"/><br/>
-                    Description : <s:property value="description"/>
-                </li>
+    <s:iterator value="site.secteurs">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well well-md">
+                    <h6>Nom du secteur : <s:property value="nom"/></h6>
+                    <p>Description : <s:property value="description"/></p>
+                </div>
+            </div>
+        </div>
 
-                <h3>Voies</h3>
+        <s:iterator value="voies">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="well well-md">
+                        <li>Nom de la voie : <s:property value="nom"/></li>
+                    </div>
+                </div>
 
-                <s:iterator value="voies">
-                    <li>
-                        <s:a action="voie_detail">
+                <div class="col-md-4">
+                    <s:a action="voie_detail" class="btn btn-outline-info" role="button">
                         <s:param value="id" name="voie_id"/>
-                        Nom : <s:property value="nom"/></s:a>
-                    </li>
+                        Détail de la voie
+                    </s:a>
+                </div>
+            </div>
 
-                    <%--<h3>Detail des voies</h3>--%>
-                    <%--<h4>Les relais</h4>--%>
-                    <%--<s:iterator value="relais">--%>
-                        <%--<p>--%>
-                            <%--ID : <s:property value="id"/>--%>
-                            <%--Numéro du relai : <s:property value="num_relai"/>--%>
-                            <%--Hauteur : <s:property value="hauteur"/>--%>
-                        <%--</p>--%>
-                    <%--</s:iterator>--%>
+            <hr width="100%" color="#DCDCDC">
+        </s:iterator>
+    </s:iterator>
+</div>
 
-                    <%--<h4>Les longueurs</h4>--%>
-                    <%--<s:iterator value="longueurs">--%>
-                        <%--<p>--%>
-                            <%--Id : <s:property value="id"/>--%>
-                            <%--Numéro de la longueur : <s:property value="numero"/>--%>
-                            <%--Hauteur : <s:property value="hauteur"/>--%>
-                            <%--Cotation : <s:property value="cotation"/>--%>
-                        <%--</p>--%>
-                    <%--</s:iterator>--%>
-                </s:iterator>
-            </s:iterator>
+<footer>
+    <%@include file="../_include/footer.jsp"%>
+</footer>
 
-
-</body></center>
-
+</body>
 </html>

@@ -1,7 +1,6 @@
 package org.escalade.webapp.action;
 
 import com.opensymphony.xwork2.ActionSupport;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.interceptor.SessionAware;
 import org.escalade.business.contract.ManagerFactory;
 import org.escalade.model.bean.Compte;
@@ -78,10 +77,10 @@ public class SecteurAction extends ActionSupport implements SessionAware {
             this.addActionMessage("Secteur " + secteur.getNom() + " a été ajouté avec succè");
 
         } catch (NullPointerException pEX){
-            sites = managerFactory.getSiteManager().sitesByCompteSession((Compte) this.session.get("user"));
+            sites = managerFactory.getSiteManager().sitesParSessionDeCompte((Compte) this.session.get("user"));
         } catch (Exception pEX){
             this.addActionError("Une erreur technique s'est produite, votre secteur n'a pas pu être ajouté !");
-            sites = managerFactory.getSiteManager().sitesByCompteSession((Compte) this.session.get("user"));
+            sites = managerFactory.getSiteManager().sitesParSessionDeCompte((Compte) this.session.get("user"));
         }
 
        return vResult;

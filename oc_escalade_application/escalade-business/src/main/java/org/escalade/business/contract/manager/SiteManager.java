@@ -16,7 +16,7 @@ public interface SiteManager {
 
     String delSite(Integer id);
 
-    String upSite(Integer id, Site site);
+    void upSite(Site site);
 
     List<Site> sitesByAdvancedSearch(String regionSelect, String typeVoieSelect, String cotationVoieSelect);
 

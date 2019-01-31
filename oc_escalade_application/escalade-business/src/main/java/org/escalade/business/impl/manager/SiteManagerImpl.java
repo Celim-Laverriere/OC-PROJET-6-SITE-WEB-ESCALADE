@@ -55,9 +55,10 @@ public class SiteManagerImpl extends AbstractManagerImpl implements SiteManager 
         return getDaoFactory().getSiteDao().delSite(id);
     }
 
+
     @Override
-    public String upSite(Integer id, Site site) {
-        return getDaoFactory().getSiteDao().upSite(id, site);
+    public void upSite(Site site) {
+        getDaoFactory().getSiteDao().upSite(site);
     }
 
     /**

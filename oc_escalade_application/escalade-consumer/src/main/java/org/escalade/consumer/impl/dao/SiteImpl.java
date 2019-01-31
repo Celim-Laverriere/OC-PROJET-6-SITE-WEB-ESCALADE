@@ -33,6 +33,7 @@ public class SiteImpl extends AbstractDataImpl implements SiteDao {
         String vSql = "INSERT INTO public.site (compte_id, nom, region, description) VALUES"
                     + " (:compte_id, :nom, :region, :description)";
 
+
         MapSqlParameterSource vParams = new MapSqlParameterSource();
         vParams.addValue("compte_id", compte.getId());
         vParams.addValue("nom", site.getNom());
@@ -63,8 +64,19 @@ public class SiteImpl extends AbstractDataImpl implements SiteDao {
     }
 
     @Override
-    public String upSite(Integer id, Site site) {
-        return null;
+    public void upSite(Site site) {
+        String vSql = "UPDATE public.site SET"
+                    + " nom = :nom, region = :region, description = :description"
+                    + " WHERE id = :id";
+
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("id", site.getId());
+        vParams.addValue("nom", site.getNom());
+        vParams.addValue("region", site.getRegion());
+        vParams.addValue("description", site.getDescription());
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+        int vNbrLigneMaj = vJdbcTemplate.update(vSql, vParams);
     }
 
     public List<Site> sitesByAdvancedSearchDao(String regionSelect, String typeVoieSelect, String cotationVoieSelect){

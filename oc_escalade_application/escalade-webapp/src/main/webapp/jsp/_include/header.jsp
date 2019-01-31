@@ -18,18 +18,18 @@
     <div class="container" style="background:#609987; margin-top: 10px">
         <div class="row">
 
-            <div class="col-md-4">
+            <div class="col-lg-4">
                 <h1>OC Escalade !</h1>
             </div>
 
-            <div class="col-md-6" style="margin-top: 7px">
+            <div class="col-lg-6" style="margin-top: 7px">
                 <s:form action="barre_de_recherche" class="nav navbar-form" style="">
                     <input type="search" name="motCleRecherche" style="width: 400px" class="form-control" placeholder="Rechercher un site d'escalade"/>
                     <button type="submit" style="margin-left: 4px" class="btn btn-primary btn-md">Validez</button>
                 </s:form>
             </div>
 
-            <div class="col-md-2">
+            <div class="col-lg-2">
                 <div class="dropdown" style="margin-top: 8px">
                     <button type="button" class="btn btn-success dropdown-toggle"
                             data-toggle="dropdown">Mon compte</button>
@@ -48,7 +48,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-lg-6">
                 <ul class="nav nav-pills" style="margin-bottom: 8px; margin-left: 5px">
                     <li class="nav-link"><s:a action="index" style="color: black; font-weight:bold" >Accueil</s:a></li>
                     <li class="nav-link"><s:a action="site_list" style="color: black; font-weight:bold">Liste des sites</s:a></li>
@@ -57,9 +57,9 @@
                 </ul>
             </div>
 
-            <div class="col-md-3"></div>
+            <div class="col-lg-2"></div>
 
-            <div style="margin-top: 9px" class="col-md-3">
+            <div style="margin-top: 9px" class="col-lg-4">
                 <h5>
                     <s:if test="#session.user">
                         Utilisateur :

@@ -159,6 +159,10 @@
             <result name="error">/jsp/error.jsp</result>
         </action>
 
+                    <!-- ************************ -->
+                    <!-- ACTION SITES D'ESCALADES -->
+                    <!-- ************************ -->
+
         <!-- Récupère les informations pour créer un nouveau site -->
         <action name="new_site"
                 class="org.escalade.webapp.action.SiteAction"
@@ -172,6 +176,22 @@
             <result name="input">jsp/formulaire_de_creation/formulaire_site.jsp</result>
             <result name="success" type="redirectAction">/jsp/_include/formulaireChoixCreate.jsp</result>
             <result name="error">/jsp/compte/formulaire_site.jsp</result>
+        </action>
+
+        <!-- Modifier un site d'éscalade par un client -->
+        <action name="modifier_site"
+                class="org.escalade.webapp.action.SiteAction"
+                method="modifierSite">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="input">jsp/formulaire_de_creation/site_formulaire_modifier.jsp</result>
+            <result name="success">jsp/_include/formulaireChoixCreate.jsp</result>
+            <result name="error">jsp/error.jsp</result>
         </action>
 
         <!-- Récupère les informations pour créer un nouveau secteur -->

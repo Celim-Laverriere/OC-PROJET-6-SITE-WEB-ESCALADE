@@ -17,7 +17,7 @@
 
         <div class="container" style="margin-top: 10px">
             <div class="row">
-                <div class="col-md-3" style="border-style: solid; border-width: 1px; box-shadow: 6px 6px 6px black; border-radius: 10px">
+                <div class="col-md-3" style="border-style: solid; border-width: 1px">
                     <ul class="nav nav-pills">
                         <li class="nav-item dropdown">
                             <s:a action="modifier_compte_utilisateur"

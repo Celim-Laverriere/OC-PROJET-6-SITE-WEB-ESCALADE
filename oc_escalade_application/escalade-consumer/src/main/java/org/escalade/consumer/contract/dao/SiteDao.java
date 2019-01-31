@@ -42,11 +42,10 @@ public interface SiteDao {
         /**
          * Mettre à jour un site
          *
-         * @param id
          * @param site
          * @return un message de confirmation
          */
-        String upSite(Integer id, Site site);
+        void upSite(Site site);
 
         /**
          * Renvoie la liste des sites correspondant à la région sélectionnée.

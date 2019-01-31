@@ -26,6 +26,7 @@ public class SiteAction extends ActionSupport implements SessionAware {
     // ----- Eléments en entrée -----
     private List<Site> sites;
     private Site site;
+    private Site modifSite;
     private Compte compte;
 
     // ----- Eléments Struts
@@ -75,6 +76,17 @@ public class SiteAction extends ActionSupport implements SessionAware {
     public void setCompte(Compte compte) {
         this.compte = compte;
     }
+
+//    ===================================
+
+    public Site getModifSite() {
+        return modifSite;
+    }
+
+    public void setModifSite(Site modifSite) {
+        this.modifSite = modifSite;
+    }
+
 
     // =============== Méthodes ================
 
@@ -146,6 +158,35 @@ public class SiteAction extends ActionSupport implements SessionAware {
 
         } catch (Exception pEX) {
             this.addActionError("Une erreur technique s'est produite, votre site n'a pas pu être ajouté !");
+        }
+
+        return vResult;
+    }
+
+    /**
+     * Action pour modifier un site par un client
+     * @return success
+     */
+    public String modifierSite() {
+
+        String vResult = ActionSupport.INPUT;
+
+        if (modifSite == null) {
+            site = managerFactory.getSiteManager().site(site_id);
+            regionList = managerFactory.getSiteManager().siteByRegion();
+
+        } else {
+            try {
+
+                managerFactory.getSiteManager().upSite(modifSite);
+                vResult = ActionSupport.SUCCESS;
+
+            } catch (NullPointerException pEX) {
+
+
+            } catch (Exception pEX){
+
+            }
         }
 
         return vResult;

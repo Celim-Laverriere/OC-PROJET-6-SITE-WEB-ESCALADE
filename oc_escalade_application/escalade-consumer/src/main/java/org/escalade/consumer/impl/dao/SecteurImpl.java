@@ -4,6 +4,7 @@ import org.escalade.consumer.contract.dao.SecteurDao;
 import org.escalade.consumer.impl.data.AbstractDataImpl;
 import org.escalade.consumer.impl.rowmapper.SecteurRM;
 import org.escalade.consumer.impl.rowmapper.SiteRM;
+import org.escalade.model.bean.Compte;
 import org.escalade.model.bean.Secteur;
 import org.escalade.model.bean.Site;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -90,5 +91,18 @@ public class SecteurImpl extends AbstractDataImpl implements SecteurDao {
 
         List<Secteur> vSecteur = vJdbcTemplate.query(vSql, vSecteurRM.getvSecteurRowMapper());
         return vSecteur.get(0);
+    }
+
+    public List<Secteur> secteursParSessionDeCompteDao(Compte compte){
+
+        String vSql = "SELECT secteur.* FROM public.secteur, public.site"
+                    + " WHERE site_id = site.id"
+                    + " AND site.id = " + compte.getId();
+
+        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+        SecteurRM vSecteurRM = new SecteurRM();
+
+        List<Secteur> vListSecteurs = vJdbcTemplate.query(vSql, vSecteurRM.getvSecteurRowMapper());
+        return vListSecteurs;
     }
 }

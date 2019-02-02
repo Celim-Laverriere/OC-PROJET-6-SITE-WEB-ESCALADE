@@ -1,12 +1,11 @@
 <%--
   Created by IntelliJ IDEA.
   User: CELIM
-  Date: 30/01/2019
-  Time: 16:21
+  Date: 02/02/2019
+  Time: 15:30
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="s" uri="/struts-tags"%>
 <html>
 <head>
     <%@include file="../_include/head.jsp"%>
@@ -25,7 +24,7 @@
 <div class="container" style=" position: absolute; top: 14%; left: 35%">
     <div class="row">
         <div class="col-md-6" style="margin-left: 10%; margin-top: 10px; margin-bottom: 10px; text-align: center">
-            <h2>Mes sites d'éscalades</h2>
+            <h2>Mes Secteurs </h2>
         </div>
     </div>
 
@@ -35,14 +34,13 @@
         </div>
     </div>
 
-    <s:iterator value="sites">
+    <s:iterator value="secteurs">
         <div class="row">
             <div class="col-md-8" style="margin-top: 5px">
                 <ul>
                     <div class="well well-md">
                         <p>ID SITE : <s:property value="id"/></p>
                         <h4>Nom du site : <s:property value="nom"/></h4>
-                        <h4>Région : <s:property value="region"/></h4>
                         <p>Dscription : <s:property value="description"/></p>
                     </div>
                 </ul>
@@ -52,13 +50,13 @@
         <div class="row">
             <div class="col-md-5"></div>
             <div class="col-md-2">
-                <s:a  action="modifier_site" class="btn btn-info" role="button">
+                <s:a  action="" class="btn btn-info" role="button">
                     <s:param name="site_id" value="id"/>
                     Modifier
                 </s:a>
             </div>
             <div>
-                <s:a action="supprimer_site" class="btn btn-danger"
+                <s:a action="" class="btn btn-danger"
                      onclick="javascript:return confirm('Confirmez la suppression du site!');" type="button">
                     <s:param name="site_id" value="id"/>
                     Supprimer

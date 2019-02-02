@@ -172,10 +172,27 @@
                 <param name="operationMode">STORE</param>
             </interceptor-ref>
             <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
 
             <result name="input">jsp/formulaire_de_creation/formulaire_site.jsp</result>
-            <result name="success" type="redirectAction">/jsp/_include/formulaireChoixCreate.jsp</result>
+            <result name="success">/jsp/_include/formulaireChoixCreate.jsp</result>
             <result name="error">/jsp/compte/formulaire_site.jsp</result>
+        </action>
+
+        <!-- Affiche les sites d'éscalade d'un client -->
+        <action name="sites_Par_Session_De_Compte"
+                class="org.escalade.webapp.action.SiteAction"
+                method="sitesParSessionDeCompte">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="input">jsp/_include/formulaireChoixCreate.jsp</result>
+            <result name="success">jsp/site/liste_utilisateur_connecte.jsp</result>
+            <result name="error">jsp/error.jsp</result>
         </action>
 
         <!-- Modifier un site d'éscalade par un client -->
@@ -194,6 +211,26 @@
             <result name="error">jsp/error.jsp</result>
         </action>
 
+        <!-- Supprimer un site d'éscalade -->
+
+        <action name="supprimer_site"
+                class="org.escalade.webapp.action.SiteAction"
+                method="supprimerSite">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="success">jsp/_include/formulaireChoixCreate.jsp</result>
+            <result name="error">jsp/error.jsp</result>
+        </action>
+
+                    <!-- *************************** -->
+                    <!-- ***** ACTION SECTEURS ***** -->
+                    <!-- *************************** -->
+
         <!-- Récupère les informations pour créer un nouveau secteur -->
 
         <action name="new_secteur"
@@ -204,12 +241,33 @@
                 <param name="operationMode">STORE</param>
             </interceptor-ref>
             <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
 
             <result name="input">jsp/formulaire_de_creation/formulaire_secteur.jsp</result>
-            <result name="success" type="redirectAction">/jsp/_include/formulaireChoixCreate.jsp</result>
+            <result name="success">jsp/_include/formulaireChoixCreate.jsp</result>
             <result name="error">/jsp/compte/formulaire_secteur.jsp</result>
         </action>
-        
+
+        <!-- Affiche les sites d'éscalade d'un client -->
+        <action name="secteurs_Par_Session_De_Compte"
+                class="org.escalade.webapp.action.SecteurAction"
+                method="secteursParSessionDeCompte">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="input">jsp/formulaire_de_creation/formulaire_secteur.jsp</result>
+            <result name="success">jsp/secteur/liste_utilisateur_connecte.jsp</result>
+            <result name="error">jsp/secteur/liste_utilisateur_connecte.jsp</result>
+        </action>
+
+
+                    <!-- ************************* -->
+                    <!-- ***** ACTION COMPTE ***** -->
+                    <!-- ************************* -->
         <action name="modifier_compte_utilisateur"
                 class="org.escalade.webapp.action.CompteAction"
                 method="upCompte">
@@ -238,21 +296,6 @@
             <result name="input">jsp/formulaire_de_creation/formulaire_compte.jsp</result>
             <result name="success" type="redirectAction">jsp/index.jsp</result>
             <result name="error">/jsp/compte/formulaire_secteur.jsp</result>
-        </action>
-
-        <action name="sites_Par_Session_De_Compte"
-                class="org.escalade.webapp.action.SiteAction"
-                method="sitesParSessionDeCompte">
-
-            <interceptor-ref name="store">
-                <param name="operationMode">STORE</param>
-            </interceptor-ref>
-            <interceptor-ref name="authenticatedStack"/>
-            <interceptor-ref name="defaultStack"/>
-
-            <result name="input">jsp/_include/formulaireChoixCreate.jsp</result>
-            <result name="success">jsp/site/liste_utilisateur_connecte.jsp</result>
-            <result name="error">jsp/error.jsp</result>
         </action>
 
     </package>

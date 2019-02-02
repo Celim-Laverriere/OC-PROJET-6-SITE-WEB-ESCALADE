@@ -80,6 +80,14 @@
         <scope>import</scope>
       </dependency>
 
+      <!-- jstl -->
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>jstl</artifactId>
+        <version>1.2</version>
+      </dependency>
+
+
       <!-- postgresql -->
       <dependency>
         <groupId>org.postgresql</groupId>

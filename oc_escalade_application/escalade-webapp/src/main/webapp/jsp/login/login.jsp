@@ -10,17 +10,33 @@
 <head>
     <%@include file="../_include/head.jsp"%>
 </head>
-<center><body>
+<body>
 <%@include file="/jsp/_include/header.jsp"%>
 
-    <h2>Connexion</h2>
+<div class="container" style="margin-top: 2%">
+    <div class="row justify-content-md-center">
+        <div class="col-md-6">
+            <h4>Se connecter</h4>
 
-    <s:form action="login">
-        <s:textfield name="login" label="Identifiant" requiredLabel="true"/>
-        <s:password name="password" label="Mot de passe" requiredLabel="true"/>
+            <s:form action="login">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input name="login" type="email" class="form-control"
+                           id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                </div>
 
-        <s:submit value="Connexion"/>
-    </s:form>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input name="password" type="password" class="form-control"
+                           id="exampleInputPassword1" placeholder="Password">
+                </div>
 
-</body></center>
+                <button type="submit" class="btn btn-primary">Connexion</button>
+            </s:form>
+
+        </div>
+    </div>
+</div>
+
+</body>
 </html>

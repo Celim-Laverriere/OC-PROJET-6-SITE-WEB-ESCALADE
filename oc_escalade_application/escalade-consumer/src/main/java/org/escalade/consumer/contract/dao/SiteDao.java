@@ -37,7 +37,7 @@ public interface SiteDao {
          * @param id
          * @return un message de confirmation
          */
-        String delSite(Integer id);
+        void delSite(Integer id);
 
         /**
          * Mettre à jour un site

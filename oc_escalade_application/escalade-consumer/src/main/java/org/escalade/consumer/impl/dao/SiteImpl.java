@@ -59,8 +59,15 @@ public class SiteImpl extends AbstractDataImpl implements SiteDao {
     }
 
     @Override
-    public String delSite(Integer id) {
-        return null;
+    public void delSite(Integer id) {
+
+        String vSql = "DELETE FROM public.site WHERE id = :id";
+
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("id", id);
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+        int vNbrLigneMaj = vJdbcTemplate.update(vSql, vParams);
     }
 
     @Override

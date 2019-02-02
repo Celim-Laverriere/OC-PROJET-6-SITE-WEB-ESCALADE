@@ -14,7 +14,7 @@ public interface SiteManager {
 
     Site site(Integer site_id);
 
-    String delSite(Integer id);
+    void delSite(Integer id);
 
     void upSite(Site site);
 

@@ -1,5 +1,6 @@
 package org.escalade.consumer.contract.dao;
 
+import org.escalade.model.bean.Compte;
 import org.escalade.model.bean.Secteur;
 import org.escalade.model.bean.Site;
 
@@ -53,5 +54,17 @@ public interface SecteurDao {
          */
         List<Secteur> secteursBySiteId(Integer site_id);
 
+        /**
+         *
+         * @param motCleRecherche
+         * @return
+         */
         Secteur secteurByMotCleRecherche(String motCleRecherche);
+
+        /**
+         * Renvoie les secteurs correspondant à la session en cours
+         * @param compte
+         * @return
+         */
+       List<Secteur> secteursParSessionDeCompteDao(Compte compte);
 }

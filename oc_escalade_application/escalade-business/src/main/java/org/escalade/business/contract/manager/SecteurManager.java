@@ -1,5 +1,6 @@
 package org.escalade.business.contract.manager;
 
+import org.escalade.model.bean.Compte;
 import org.escalade.model.bean.Secteur;
 import org.escalade.model.bean.Site;
 
@@ -18,4 +19,6 @@ public interface SecteurManager {
     String upSecteur(Integer id, Secteur secteur);
 
     Secteur secteurByMotCleRecherche(String motCleRecherche);
+
+    List<Secteur> secteursParSessionDeCompte(Compte compte);
 }

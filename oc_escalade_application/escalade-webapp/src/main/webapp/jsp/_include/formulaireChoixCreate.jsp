@@ -20,8 +20,9 @@
                 <div class="col-md-3" style="border-style: solid; border-width: 1px">
                     <ul class="nav nav-pills">
                         <li class="nav-item dropdown">
-                            <s:a action="modifier_compte_utilisateur"
-                                 class="dropdown-item">MES INFOS PERSO</s:a>
+                            <s:a action="modifier_compte_utilisateur" class="dropdown-item">
+                                MES INFOS PERSO
+                            </s:a>
                         </li>
                     </ul>
                     <ul class="nav nav-pills">
@@ -40,7 +41,7 @@
                                role="button" aria-haspopup="true" aria-expanded="false">MES SECTEURS</a>
                             <div class="dropdown-menu">
                                 <s:a action="new_secteur" class="dropdown-item">Créer un nouveau Secteurs</s:a>
-                                <s:a class="dropdown-item"> Afficher mes secteurs !</s:a>
+                                <s:a action="secteurs_Par_Session_De_Compte" class="dropdown-item"> Afficher mes secteurs !</s:a>
                             </div>
                         </li>
                     </ul>

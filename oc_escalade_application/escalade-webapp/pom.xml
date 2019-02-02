@@ -66,6 +66,12 @@
             <artifactId>struts2-spring-plugin</artifactId>
         </dependency>
 
+        <!-- jstl -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
+
         <!-- JSR-330 -->
         <dependency>
             <groupId>javax.inject</groupId>

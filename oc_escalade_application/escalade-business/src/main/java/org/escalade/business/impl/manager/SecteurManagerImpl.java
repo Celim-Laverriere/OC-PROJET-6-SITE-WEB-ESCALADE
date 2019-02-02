@@ -2,6 +2,7 @@ package org.escalade.business.impl.manager;
 
 import org.escalade.business.contract.manager.SecteurManager;
 import org.escalade.business.impl.AbstractManagerImpl;
+import org.escalade.model.bean.Compte;
 import org.escalade.model.bean.Secteur;
 import org.escalade.model.bean.Site;
 
@@ -37,5 +38,10 @@ public class SecteurManagerImpl extends AbstractManagerImpl implements SecteurMa
     @Override
     public Secteur secteurByMotCleRecherche(String motCleRecherche) {
         return getDaoFactory().getSecteurDao().secteurByMotCleRecherche(motCleRecherche);
+    }
+
+    public List<Secteur> secteursParSessionDeCompte(Compte compte){
+
+        return getDaoFactory().getSecteurDao().secteursParSessionDeCompteDao(compte);
     }
 }

@@ -22,6 +22,7 @@ public class SiteAction extends ActionSupport implements SessionAware {
 
     // ----- Eléments en sortie -----
     private List<Site> regionList = new ArrayList<>();
+    private List<String> regionListSite = new ArrayList<>();
 
     // ----- Eléments en entrée -----
     private List<Site> sites;
@@ -171,22 +172,38 @@ public class SiteAction extends ActionSupport implements SessionAware {
 
         String vResult = ActionSupport.INPUT;
 
-        if (modifSite == null) {
-            site = managerFactory.getSiteManager().site(site_id);
-            regionList = managerFactory.getSiteManager().siteByRegion();
-
-        } else {
             try {
 
                 managerFactory.getSiteManager().upSite(modifSite);
                 vResult = ActionSupport.SUCCESS;
 
+                this.addActionMessage("Modifications effectuées !");
+
             } catch (NullPointerException pEX) {
+                site = managerFactory.getSiteManager().site(site_id);
+                regionList = managerFactory.getSiteManager().siteByRegion();
+
+                for(Site regionList : regionList){
+                    regionListSite.add(regionList.getRegion());
+                }
 
 
             } catch (Exception pEX){
-
+                this.addActionError("Une erreur technique s'est produite, veuillez réessayer plus tard!");
             }
+
+
+        return vResult;
+    }
+
+    public String supprimerSite(){
+        String vResult = ActionSupport.INPUT;
+
+        try {
+            managerFactory.getSiteManager().delSite(site_id);
+            vResult = ActionSupport.SUCCESS;
+        } catch (Exception pEX) {
+
         }
 
         return vResult;

@@ -22,6 +22,7 @@ public class SecteurAction extends ActionSupport implements SessionAware {
 
     // ----- Eléments en sortie -----
     private List<Site> sites;
+    private List<Secteur> secteurs;
 
     // ----- Eléments Struts
     private Map<String, Object> session;
@@ -64,6 +65,14 @@ public class SecteurAction extends ActionSupport implements SessionAware {
         this.sites = sites;
     }
 
+    public List<Secteur> getSecteurs() {
+        return secteurs;
+    }
+
+    public void setSecteurs(List<Secteur> secteurs) {
+        this.secteurs = secteurs;
+    }
+
     // =============== Méthodes ================
 
     public String doCreate(){
@@ -84,6 +93,20 @@ public class SecteurAction extends ActionSupport implements SessionAware {
         }
 
        return vResult;
+    }
+
+    public String secteursParSessionDeCompte() {
+        String vResult = ActionSupport.INPUT;
+
+        try {
+          secteurs =  managerFactory.getSecteurManager().secteursParSessionDeCompte((Compte) this.session.get("user"));
+            vResult = ActionSupport.SUCCESS;
+
+        } catch (Exception pEX) {
+
+        }
+
+        return vResult;
     }
 
     @Override

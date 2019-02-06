@@ -81,16 +81,22 @@ public class SecteurImpl extends AbstractDataImpl implements SecteurDao {
         return vListScteurs;
     }
 
+    /**
+     * Recherche dans la table "secteur" une correspondance
+     * dans la colonne "nom" avec la saissi de l'utilisateur.
+     * @param motCleRecherche
+     * @return vListSecteurs
+     */
     @Override
-    public Secteur secteurByMotCleRecherche(String motCleRecherche) {
+    public List<Secteur> rechercheSimpleParSecteurDao(String motCleRecherche) {
         String vSql = "SELECT * FROM public.secteur"
-                    + " WHERE nom = " + "'" + motCleRecherche + "'";
+                    + " WHERE nom LIKE " + "'" + motCleRecherche + "%" + "'";
 
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
         SecteurRM vSecteurRM = new SecteurRM();
 
-        List<Secteur> vSecteur = vJdbcTemplate.query(vSql, vSecteurRM.getvSecteurRowMapper());
-        return vSecteur.get(0);
+        List<Secteur> vListSecteurs = vJdbcTemplate.query(vSql, vSecteurRM.getvSecteurRowMapper());
+        return vListSecteurs;
     }
 
     public List<Secteur> secteursParSessionDeCompteDao(Compte compte){
@@ -105,4 +111,6 @@ public class SecteurImpl extends AbstractDataImpl implements SecteurDao {
         List<Secteur> vListSecteurs = vJdbcTemplate.query(vSql, vSecteurRM.getvSecteurRowMapper());
         return vListSecteurs;
     }
+
+
 }

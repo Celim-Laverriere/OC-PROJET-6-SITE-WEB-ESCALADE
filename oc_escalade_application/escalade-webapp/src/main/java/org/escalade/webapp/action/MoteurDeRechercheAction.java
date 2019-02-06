@@ -1,6 +1,5 @@
 package org.escalade.webapp.action;
 import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.components.ActionMessage;
 import org.escalade.business.contract.ManagerFactory;
 import org.escalade.model.bean.Secteur;
 import org.escalade.model.bean.Site;
@@ -172,7 +171,9 @@ public class MoteurDeRechercheAction extends ActionSupport  {
     public String doSimpleSearch(){
 
         try {
-            site = managerFactory.getSiteManager().siteBySimpleSearch(motCleRecherche);
+            sites = managerFactory.getSiteManager().rechercheSimpleParSite(motCleRecherche);
+            secteurs = managerFactory.getSecteurManager().rechercheSimpleParSecteur(motCleRecherche);
+            voies = managerFactory.getVoieManager().rechercheSimpleParVoie(motCleRecherche);
 
         } catch (IndexOutOfBoundsException pEx) {
             this.addActionMessage("Désolé ! Aucun site ne correspond à votre recherche : " + motCleRecherche + " !");

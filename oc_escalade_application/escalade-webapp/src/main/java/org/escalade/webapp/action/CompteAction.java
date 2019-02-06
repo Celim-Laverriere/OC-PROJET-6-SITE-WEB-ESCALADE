@@ -79,10 +79,10 @@ public class CompteAction extends ActionSupport implements SessionAware, Servlet
         try {
             managerFactory.getCompteManager().upCompte(upCompte, (Compte) this.session.get("user"));
 
+            this.servletRequest.getSession().invalidate();
+            this.addActionMessage("Vos modifications ont bien été pris en compte, merci de vous reconnecter !");
+
             vResult = ActionSupport.SUCCESS;
-
-            this.addActionMessage("Vos modifications ont bien été pris en compte !");
-
         } catch (NullPointerException pEX){
             compte = managerFactory.getCompteManager().compte((Compte) this.session.get("user"));
         } catch (Exception pEX) {

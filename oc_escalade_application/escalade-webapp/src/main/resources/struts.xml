@@ -74,6 +74,21 @@
             <result name="error">/jsp/error.jsp</result>
         </action>
 
+        <action name="secteur_detail"
+                class="org.escalade.webapp.action.SecteurAction"
+                method="datailSecteur">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="input"></result>
+            <result name="success">jsp/secteur/detail.jsp</result>
+            <result name="error"></result>
+
+        </action>
+
         <action name="topo_list"
                 class="org.escalade.webapp.action.TopoAction"
                 method="doList">
@@ -279,7 +294,7 @@
             <interceptor-ref name="defaultStack"/>
 
             <result name="input">jsp/formulaire_de_creation/formulaire_compte.jsp</result>
-            <result name="success">jsp/_include/formulaireChoixCreate.jsp</result>
+            <result name="success">jsp/login/login.jsp</result>
             <result name="error">/jsp/compte/formulaire_secteur.jsp</result>
         </action>
         

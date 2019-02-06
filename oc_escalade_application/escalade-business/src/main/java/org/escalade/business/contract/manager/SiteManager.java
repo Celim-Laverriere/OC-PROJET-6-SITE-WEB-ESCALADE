@@ -22,7 +22,7 @@ public interface SiteManager {
 
     List<Site> siteByRegion();
 
-    Site siteBySimpleSearch(String motCleRecherche);
+    List<Site> rechercheSimpleParSite(String motCleRecherche);
 
     List<Site> sitesParSessionDeCompte(Compte compte);
 

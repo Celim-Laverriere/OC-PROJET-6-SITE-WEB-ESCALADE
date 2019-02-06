@@ -2,8 +2,7 @@ package org.escalade.business.impl.manager;
 
 import org.escalade.business.contract.manager.VoieManager;
 import org.escalade.business.impl.AbstractManagerImpl;
-import org.escalade.model.bean.Longueur;
-import org.escalade.model.bean.Relai;
+import org.escalade.model.bean.LongueurRelai;
 import org.escalade.model.bean.Voie;
 import java.util.List;
 
@@ -21,11 +20,8 @@ public class VoieManagerImpl extends AbstractManagerImpl implements VoieManager 
     public Voie voie(Integer id) {
         Voie voie = getDaoFactory().getVoieDao().voie(id);
 
-        List<Relai> relais = getDaoFactory().getRelaiDao().relais(voie.getId());
-        voie.setRelais(relais);
-
-        List<Longueur> longueurs = getDaoFactory().getLongueurDao().longueurs(voie.getId());
-        voie.setLongueurs(longueurs);
+        List<LongueurRelai> longueursRelais = getDaoFactory().getLongueurRelaiDao().longueursRelai(voie.getId());
+        voie.setLongueursRelais(longueursRelais);
 
         return voie;
     }
@@ -39,7 +35,8 @@ public class VoieManagerImpl extends AbstractManagerImpl implements VoieManager 
     }
 
     @Override
-    public Voie voieByMotCleRecherche(String motCleRecherche) {
-        return getDaoFactory().getVoieDao().voieByMotCleRecherche(motCleRecherche);
+    public List<Voie> rechercheSimpleParVoie(String motCleRecherche) {
+        List<Voie> voies = getDaoFactory().getVoieDao().rechercheSimpleParVoieDao(motCleRecherche);
+        return voies;
     }
 }

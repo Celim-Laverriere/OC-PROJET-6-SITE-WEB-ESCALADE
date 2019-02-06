@@ -18,7 +18,7 @@ public interface SecteurManager {
 
     String upSecteur(Integer id, Secteur secteur);
 
-    Secteur secteurByMotCleRecherche(String motCleRecherche);
+    List<Secteur> rechercheSimpleParSecteur(String motCleRecherche);
 
     List<Secteur> secteursParSessionDeCompte(Compte compte);
 }

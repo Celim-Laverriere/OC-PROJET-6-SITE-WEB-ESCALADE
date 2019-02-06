@@ -17,9 +17,9 @@
         <%@include file="../jsp/_include/header.jsp"%>
     </header>
 
-    <script>
+    <footer>
         <%@include file="../jsp/_include/footer.jsp"%>
-    </script>
+    </footer>
 
 </body>
 

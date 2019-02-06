@@ -6,12 +6,12 @@ public class Voie {
 
     private Integer id;
     private String nom;
-    private String type;
+    private String type_voie;
     private String cotation;
     private float hauteur;
-    private Integer secteur_id;
-    private List<Longueur> longueurs;
-    private List<Relai> relais;
+    private String description;
+    private List<LongueurRelai> longueursRelais;
+
 
     public Voie() {
     }
@@ -32,12 +32,12 @@ public class Voie {
         this.nom = nom;
     }
 
-    public String getType() {
-        return type;
+    public String getType_voie() {
+        return type_voie;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setType_voie(String type_voie) {
+        this.type_voie = type_voie;
     }
 
     public String getCotation() {
@@ -56,27 +56,19 @@ public class Voie {
         this.hauteur = hauteur;
     }
 
-    public Integer getSecteur_id() {
-        return secteur_id;
+    public String getDescription() {
+        return description;
     }
 
-    public void setSecteur_id(Integer secteur_id) {
-        this.secteur_id = secteur_id;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public List<Longueur> getLongueurs() {
-        return longueurs;
+    public List<LongueurRelai> getLongueursRelais() {
+        return longueursRelais;
     }
 
-    public void setLongueurs(List<Longueur> longueurs) {
-        this.longueurs = longueurs;
-    }
-
-    public List<Relai> getRelais() {
-        return relais;
-    }
-
-    public void setRelais(List<Relai> relais) {
-        this.relais = relais;
+    public void setLongueursRelais(List<LongueurRelai> longueursRelais) {
+        this.longueursRelais = longueursRelais;
     }
 }

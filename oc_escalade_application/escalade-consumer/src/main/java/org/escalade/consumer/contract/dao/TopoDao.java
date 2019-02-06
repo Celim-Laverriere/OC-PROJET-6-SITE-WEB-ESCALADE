@@ -1,6 +1,5 @@
 package org.escalade.consumer.contract.dao;
 
-import org.escalade.model.bean.Longueur;
 import org.escalade.model.bean.Topo;
 
 import java.util.List;

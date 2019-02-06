@@ -11,16 +11,11 @@
 
 <body>
 
-<div>
-    <s:if test="!#session.user">
-        <%@include file="../_include/header.jsp"%>
-    </s:if>
-    <s:else>
-        <%@include file="../_include/formulaireChoixCreate.jsp"%>
-    </s:else>
-</div>
-
 <s:if test="!#session.user">
+
+    <%@include file="../_include/head.jsp"%>
+
+    <%@include file="../_include/header.jsp"%>
 
     <div class="container" style="margin-top: 2%">
         <div class="row justify-content-md-center">
@@ -58,9 +53,15 @@
         </div>
     </div>
 
+    <footer>
+        <%@include file="../_include/footer.jsp"%>
+    </footer>
 </s:if>
 
 <s:if test="#session.user">
+
+    <%@include file="../_include/formulaireChoixCreate.jsp"%>
+
     <div class="container" style="position: absolute; top: 14%; left: 29%">
         <div class="row justify-content-md-center">
             <div class="col-md-6">
@@ -138,12 +139,6 @@
 
 </s:if>
 
-<h2><s:actionmessage/></h2>
-<h2><s:actionerror/></h2>
-
-<script>
-    <%@include file="../_include/footer.jsp"%>
-</script>
 </body>
 
 </html>

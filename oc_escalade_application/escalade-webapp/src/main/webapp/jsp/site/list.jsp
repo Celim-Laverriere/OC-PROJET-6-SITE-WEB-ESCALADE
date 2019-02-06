@@ -44,7 +44,7 @@
             <div class="col-md-10"></div>
             <div class="col-md-2">
                 <s:a  action="site_detail" class="btn btn-outline-info" role="button">
-                    <s:param value="id" name="site_id"/>
+                    <s:param name="site_id" value="id"/>
                     Voir détail
                 </s:a>
             </div>

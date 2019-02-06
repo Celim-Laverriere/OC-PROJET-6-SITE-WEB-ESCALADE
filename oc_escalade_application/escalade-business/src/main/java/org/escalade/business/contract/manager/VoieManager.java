@@ -15,5 +15,5 @@ public interface VoieManager {
 
      String upVoie(Voie voie );
 
-     Voie voieByMotCleRecherche(String motCleRecherche);
+     List<Voie>  rechercheSimpleParVoie(String motCleRecherche);
 }

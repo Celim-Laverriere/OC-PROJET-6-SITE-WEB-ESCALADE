@@ -39,10 +39,8 @@ public class SiteManagerImpl extends AbstractManagerImpl implements SiteManager 
             List<Voie> voies = getDaoFactory().getVoieDao().voies(secteur.getId());
 
             for(Voie voie: voies){
-                List<Relai> relais = getDaoFactory().getRelaiDao().relais(voie.getId());
-                voie.setRelais(relais);
-                List<Longueur> longueurs = getDaoFactory().getLongueurDao().longueurs(voie.getId());
-                voie.setLongueurs(longueurs);
+                List<LongueurRelai> longueursRelai = getDaoFactory().getLongueurRelaiDao().longueursRelai(voie.getId());
+                voie.setLongueursRelais(longueursRelai);
             }
             secteur.setVoies(voies);
         }
@@ -91,11 +89,10 @@ public class SiteManagerImpl extends AbstractManagerImpl implements SiteManager 
      * @return
      */
     @Override
-    public Site siteBySimpleSearch(String motCleRecherche) {
+    public List<Site> rechercheSimpleParSite(String motCleRecherche) {
 
-        Site site = getDaoFactory().getSiteDao().siteBySimpleSearchDao(motCleRecherche);
-
-        return site;
+        List<Site> sites = getDaoFactory().getSiteDao().rechercheSimpleParSiteDao(motCleRecherche);
+        return sites;
     }
 
     @Override

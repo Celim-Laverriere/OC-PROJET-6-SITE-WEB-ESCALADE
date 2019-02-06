@@ -32,58 +32,38 @@ VALUES
 ;
 
 INSERT INTO public.voie
-    (secteur_id, nom, type, cotation, hauteur)
+    (secteur_id, nom, description, type_voie, cotation, hauteur)
 VALUES
-    (1, 'Hubert Nieul-le-Dolent', 'Equipée', 3, 32),
-    (2, 'Brunel Saint-Martin-Longueau', 'Non équipée', 5, 40),
-    (3, 'Pottier Cagnes-sur-Mer', 'Non équipée', 8, 100),
-    (4, 'Clement Chailley', 'Equipée', 6, 50),
-    (5, 'Merlin Sainte-Escobille', 'Equipée', 4, 22.50)
+    (1, 'Hubert Nieul-le-Dolent', 'Dapibus congue sem vivamus hac. interdum litora ut mollis. placerat dolor. Urna egestas congue cursus fermentum posuere feugiat faucibus', 'Equipée', 3, 32),
+    (2, 'Brunel Saint-Martin-Longueau', 'Per malesuada duis class enim rutrum. pulvinar nisi lobortis ultrices leo lacus. fames cursus nunc', 'Non équipée', 5, 40),
+    (3, 'Pottier Cagnes-sur-Mer', 'Maecenas porta hac justo curabitur mauris. proin scelerisque nisi venenatis quis. ipsum egestas fusce suspendisse', 'Non équipée', 8, 100),
+    (4, 'Clement Chailley', 'Pharetra himenaeos ornare luctus sodales malesuada platea. ut sociosqu pellentesque nulla aliquet nibh sem. vitae', 'Equipée', 6, 50),
+    (5, 'Merlin Sainte-Escobille', 'Lobortis fusce volutpat egestas nibh. adipiscing cubilia ac ante. sollicitudin vitae ad leo fames. eu', 'Equipée', 4, 22.50)
 ;
 
-INSERT INTO public.longueur
-    (voie_id, numero, hauteur, cotation)
+INSERT INTO public.longueur_relai
+    (voie_id, num_longueur, hauteur, cotation, num_relai)
 VALUES
-    (1, 1, 6.50, '3A'),
-    (1, 2, 10.50, '3A'),
-    (1, 3, 5, '3B'),
-    (1, 4, 10, '3A'),
+    (1, 1, 6.50, '3A', 1),
+    (1, 2, 10.50, '3A', 2),
+    (1, 3, 5, '3B', 3),
+    (1, 4, 10, '3A', null),
     
-    (2, 1, 20, '5A'),
-    (2, 2, 20, '5C'),
+    (2, 1, 20, '5A', 1),
+    (2, 2, 20, '5C', null),
     
-    (3, 1, 20, '8A'),
-    (3, 2, 25, '8A'),
-    (3, 3, 35, '8'),
-    (3, 4, 20, '8B'),
+    (3, 1, 20, '8A', 1),
+    (3, 2, 25, '8A', 2),
+    (3, 3, 35, '8', 3),
+    (3, 4, 20, '8B', null),
     
-    (4, 1, 15, '6A'),
-    (4, 2, 15, '6'),
-    (4, 3, 20, '6C'),
+    (4, 1, 15, '6A', 1),
+    (4, 2, 15, '6', 2),
+    (4, 3, 20, '6C', null),
     
-    (5, 1, 10, '4A'),
-    (5, 2, 6, '4'),
-    (5, 3, 6.50, '4C')
-;
-
-INSERT INTO public.relai
-    (voie_id, num_relai, hauteur)
-VALUES
-    (1, 1, 6.50),
-    (1, 2, 17),
-    (1, 3,22),
-    
-    (2, 1, 20),
-    
-    (3, 1, 20),
-    (3, 2, 45),
-    (3, 3, 80),
-    
-    (4, 1, 15),
-    (4, 2, 30),
-    
-    (5, 1, 10),
-    (5, 2, 16)
+    (5, 1, 10, '4A', 1),
+    (5, 2, 6, '4', 2),
+    (5, 3, 6.50, '4C', null)
 ;
 
 INSERT INTO public.topo

@@ -9,8 +9,7 @@
 
     <bean id="commentaireManager" class="org.escalade.business.impl.manager.CommentaireManagerImpl" parent="abstractManager"/>
     <bean id="compteManager" class="org.escalade.business.impl.manager.CompteManagerImpl" parent="abstractManager"/>
-    <bean id="longueurManager" class="org.escalade.business.impl.manager.LongueurManagerImpl" parent="abstractManager"/>
-    <bean id="relaiManager" class="org.escalade.business.impl.manager.RelaiManagerImpl" parent="abstractManager"/>
+    <bean id="longueurRelaiManager" class="org.escalade.business.impl.manager.LongueurRelaiManagerImpl" parent="abstractManager"/>
     <bean id="resaTopoManager" class="org.escalade.business.impl.manager.ResaTopoManagerImpl" parent="abstractManager"/>
     <bean id="secteurManager" class="org.escalade.business.impl.manager.SecteurManagerImpl" parent="abstractManager"/>
     <bean id="siteManager" class="org.escalade.business.impl.manager.SiteManagerImpl" parent="abstractManager"/>
@@ -20,8 +19,7 @@
     <bean id="managerFactory" class="org.escalade.business.impl.ManagerFactoryImpl">
         <property name="commentaireManager" ref="commentaireManager"/>
         <property name="compteManager" ref="compteManager"/>
-        <property name="longueurManager" ref="longueurManager"/>
-        <property name="relaiManager" ref="relaiManager"/>
+        <property name="longueurRelaiManager" ref="longueurRelaiManager"/>
         <property name="resaTopoManager" ref="resaTopoManager"/>
         <property name="secteurManager" ref="secteurManager"/>
         <property name="siteManager" ref="siteManager"/>

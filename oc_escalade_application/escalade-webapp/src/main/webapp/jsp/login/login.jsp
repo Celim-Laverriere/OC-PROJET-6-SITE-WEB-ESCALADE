@@ -15,8 +15,13 @@
 
 <div class="container" style="margin-top: 2%">
     <div class="row justify-content-md-center">
-        <div class="col-md-6">
-            <h4>Se connecter</h4>
+        <div class="col-md-8">
+            <h4 style="text-align: center">Se connecter</h4>
+
+            <div>
+                <p><s:actionmessage style="list-style-type: none"/></p>
+                <p><s:actionerror/></p>
+            </div>
 
             <s:form action="login">
                 <div class="form-group">
@@ -37,6 +42,10 @@
         </div>
     </div>
 </div>
+
+<footer>
+    <%@include file="../_include/footer.jsp"%>
+</footer>
 
 </body>
 </html>

@@ -4,7 +4,7 @@ import org.escalade.business.contract.manager.SecteurManager;
 import org.escalade.business.impl.AbstractManagerImpl;
 import org.escalade.model.bean.Compte;
 import org.escalade.model.bean.Secteur;
-import org.escalade.model.bean.Site;
+import org.escalade.model.bean.Voie;
 
 import java.util.List;
 
@@ -22,7 +22,12 @@ public class SecteurManagerImpl extends AbstractManagerImpl implements SecteurMa
 
     @Override
     public Secteur secteur(Integer id) {
-        return getDaoFactory().getSecteurDao().secteur(id);
+        Secteur secteur = getDaoFactory().getSecteurDao().secteur(id);
+        List<Voie> voies = getDaoFactory().getVoieDao().voies(id);
+
+        secteur.setVoies(voies);
+
+        return secteur;
     }
 
     @Override
@@ -35,9 +40,14 @@ public class SecteurManagerImpl extends AbstractManagerImpl implements SecteurMa
         return getDaoFactory().getSecteurDao().upSecteur(id, secteur);
     }
 
-    @Override
-    public Secteur secteurByMotCleRecherche(String motCleRecherche) {
-        return getDaoFactory().getSecteurDao().secteurByMotCleRecherche(motCleRecherche);
+    /**
+     *
+     * @param motCleRecherche
+     * @return
+     */
+    public List<Secteur> rechercheSimpleParSecteur(String motCleRecherche){
+        List<Secteur> secteurs = getDaoFactory().getSecteurDao().rechercheSimpleParSecteurDao(motCleRecherche);
+        return secteurs;
     }
 
     public List<Secteur> secteursParSessionDeCompte(Compte compte){

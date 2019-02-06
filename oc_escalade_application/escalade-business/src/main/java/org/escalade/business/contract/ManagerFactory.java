@@ -12,13 +12,9 @@ public interface ManagerFactory {
 
     void setCompteManager(CompteManager compteManager);
 
-    LongueurManager getLongueurManager();
+    LongueurRelaiManager getLongueurRelaiManager();
 
-    void setLongueurManager(LongueurManager longueurManager);
-
-    RelaiManager getRelaiManager();
-
-    void setRelaiManager(RelaiManager relaiManager);
+    void setLongueurRelaiManager(LongueurRelaiManager longueurRelaiManager);
 
     ResaTopoManager getResaTopoManager();
 

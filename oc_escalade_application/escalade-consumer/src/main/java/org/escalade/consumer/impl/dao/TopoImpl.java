@@ -5,10 +5,7 @@ import org.escalade.consumer.impl.data.AbstractDataImpl;
 import org.escalade.consumer.impl.rowmapper.TopoRM;
 import org.escalade.model.bean.Topo;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 public class TopoImpl extends AbstractDataImpl implements TopoDao {

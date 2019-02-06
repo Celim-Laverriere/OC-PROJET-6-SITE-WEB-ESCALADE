@@ -22,7 +22,6 @@ public class VoieAction extends ActionSupport {
 
     // ============ Getters/Setters ============
 
-
     public Integer getSecteur_id() {
         return secteur_id;
     }
@@ -68,6 +67,7 @@ public class VoieAction extends ActionSupport {
 
 
     public String doDetail(){
+
 
         if (voie_id == null) {
             this.addActionError("Vous devez indiquer un id de voie");

@@ -23,7 +23,7 @@
 
     <div class="row">
         <div class="col-md-12" style="margin-top: 10px; margin-bottom: 10px; text-align: center">
-            <h4>Détail du site</h4>
+            <h4>Détail du site : <s:property value="site.nom"/></h4>
             <hr width="100%" color="#DCDCDC">
         </div>
     </div>
@@ -31,7 +31,6 @@
     <div class="row">
         <div class="col-md-12">
             <div class="well well-md">
-                <h4>Nom du site : <s:property value="site.nom"/></h4>
                 <p>Région : <s:property value="site.region"/></p>
                 <p>Description : <s:property value="site.description"/></p>
             </div>
@@ -45,51 +44,45 @@
         </div>
     </div>
 
-    <s:iterator value="site.commentaires">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="well well-md">
-                    <li><s:property value="commentaire"/></li>
+    <s:if test="%{site.commentaires.isEmpty()}">
+        <p>Ce site n'a pas encore de commentaires !</p>
+    </s:if>
+    <s:else>
+        <s:iterator value="site.commentaires">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="well well-md">
+                        <p><s:property value="commentaire"/></p>
+
+                    </div>
                 </div>
             </div>
-        </div>
-    </s:iterator>
+        </s:iterator>
+    </s:else>
     <hr width="100%" color="#DCDCDC">
 
     <div class="row">
         <div class="col-md-12">
-            <h4>Secteurs & Voies</h4>
+            <h4>Secteurs</h4>
         </div>
     </div>
 
     <s:iterator value="site.secteurs">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-10">
                 <div class="well well-md">
                     <h6>Nom du secteur : <s:property value="nom"/></h6>
                     <p>Description : <s:property value="description"/></p>
                 </div>
             </div>
-        </div>
-
-        <s:iterator value="voies">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="well well-md">
-                        <li>Nom de la voie : <s:property value="nom"/></li>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <s:a action="voie_detail" class="btn btn-outline-info" role="button">
-                        <s:param value="id" name="voie_id"/>
-                        Détail de la voie
-                    </s:a>
-                </div>
+            <div class="col-md-5 offset-md-9">
+                <s:a action="secteur_detail" class="btn btn-outline-info" role="button">
+                    <s:param value="id" name="secteur.id"/>
+                    Détail du secteur
+                </s:a>
             </div>
-
-            <hr width="100%" color="#DCDCDC">
-        </s:iterator>
+        </div>
+        <hr width="100%" color="#DCDCDC">
     </s:iterator>
 </div>
 

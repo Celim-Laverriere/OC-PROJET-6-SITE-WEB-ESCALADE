@@ -55,7 +55,7 @@ public interface SiteDao {
 
         List<Site> siteByRegionDao();
 
-        Site siteBySimpleSearchDao(String motCleRecherche);
+        List<Site> rechercheSimpleParSiteDao(String motCleRecherche);
 
         List<Site> sitesParSessionDeCompteDao(Compte compte);
 }

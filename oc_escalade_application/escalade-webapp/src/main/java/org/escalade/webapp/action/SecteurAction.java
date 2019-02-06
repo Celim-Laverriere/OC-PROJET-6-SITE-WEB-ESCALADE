@@ -75,6 +75,21 @@ public class SecteurAction extends ActionSupport implements SessionAware {
 
     // =============== Méthodes ================
 
+
+    public String datailSecteur(){
+        String vResult = ActionSupport.INPUT;
+
+        try{
+
+            secteur = managerFactory.getSecteurManager().secteur(secteur.getId());
+
+            vResult = ActionSupport.SUCCESS;
+        } catch (Exception pEX){
+
+        }
+        return vResult;
+    }
+
     public String doCreate(){
 
         String vResult = ActionSupport.INPUT;
@@ -100,12 +115,16 @@ public class SecteurAction extends ActionSupport implements SessionAware {
 
         try {
           secteurs =  managerFactory.getSecteurManager().secteursParSessionDeCompte((Compte) this.session.get("user"));
-            vResult = ActionSupport.SUCCESS;
+          sites = managerFactory.getSiteManager().sitesParSessionDeCompte((Compte) this.session.get("user"));
+          vResult = ActionSupport.SUCCESS;
 
         } catch (Exception pEX) {
 
         }
 
+        for(Site sites: sites){
+            System.out.println(sites.getNom());
+        }
         return vResult;
     }
 

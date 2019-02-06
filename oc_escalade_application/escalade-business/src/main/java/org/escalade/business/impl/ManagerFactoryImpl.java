@@ -7,8 +7,7 @@ public class ManagerFactoryImpl implements ManagerFactory {
 
     private CommentaireManager commentaireManager;
     private CompteManager compteManager;
-    private LongueurManager longueurManager;
-    private RelaiManager relaiManager;
+    private LongueurRelaiManager longueurRelaiManager;
     private ResaTopoManager resaTopoManager;
     private SecteurManager secteurManager;
     private SiteManager siteManager;
@@ -35,23 +34,14 @@ public class ManagerFactoryImpl implements ManagerFactory {
         this.compteManager = compteManager;
     }
 
-    public LongueurManager getLongueurManager() {
-        return longueurManager;
+    @Override
+    public LongueurRelaiManager getLongueurRelaiManager() {
+        return longueurRelaiManager;
     }
 
     @Override
-    public void setLongueurManager(LongueurManager longueurManager) {
-        this.longueurManager = longueurManager;
-    }
-
-    @Override
-    public RelaiManager getRelaiManager() {
-        return relaiManager;
-    }
-
-    @Override
-    public void setRelaiManager(RelaiManager relaiManager) {
-        this.relaiManager = relaiManager;
+    public void setLongueurRelaiManager(LongueurRelaiManager longueurRelaiManager) {
+        this.longueurRelaiManager = longueurRelaiManager;
     }
 
     @Override

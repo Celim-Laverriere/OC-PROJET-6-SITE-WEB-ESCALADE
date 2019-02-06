@@ -59,7 +59,7 @@ public interface SecteurDao {
          * @param motCleRecherche
          * @return
          */
-        Secteur secteurByMotCleRecherche(String motCleRecherche);
+        List<Secteur>  rechercheSimpleParSecteurDao(String motCleRecherche);
 
         /**
          * Renvoie les secteurs correspondant à la session en cours

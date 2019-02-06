@@ -48,10 +48,11 @@ public interface VoieDao {
        String upVoie(Voie voie);
 
     /**
-     *
+     * Recherche dans la table "voie" une correspondance
+     * par le nom de la voie avec la saissi de l'utilisateur.
      * @param motCleRecherche
      * @return
      */
-       Voie voieByMotCleRecherche(String motCleRecherche);
+    List<Voie>  rechercheSimpleParVoieDao(String motCleRecherche);
 
 }

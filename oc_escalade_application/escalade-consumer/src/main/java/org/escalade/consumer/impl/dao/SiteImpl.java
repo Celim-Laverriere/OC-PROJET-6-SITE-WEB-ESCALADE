@@ -122,17 +122,23 @@ public class SiteImpl extends AbstractDataImpl implements SiteDao {
         return vListRegion;
     }
 
+    /**
+     * Recherche dans la table "site" une correspondance
+     * dans la colonne "nom" avec la saissi de l'utilisateur.
+     * @param motCleRecherche
+     * @return vListSite
+     */
     @Override
-    public Site siteBySimpleSearchDao(String motCleRecherche) {
+    public List<Site> rechercheSimpleParSiteDao(String motCleRecherche) {
 
         String vSql = "SELECT * FROM public.site"
-                    + " WHERE nom = " + "'" + motCleRecherche + "'";
+                    + " WHERE CONCAT(nom, region) LIKE " + "'" + "%" + motCleRecherche + "%" + "'";
 
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
         SiteRM vSiteRM = new SiteRM();
 
         List<Site> vListSite = vJdbcTemplate.query(vSql, vSiteRM.getvSiteRowMapper());
-        return vListSite.get(0);
+        return vListSite;
     }
 
     @Override

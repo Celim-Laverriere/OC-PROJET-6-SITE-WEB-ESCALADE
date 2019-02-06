@@ -50,16 +50,22 @@ public class VoieImpl extends AbstractDataImpl implements VoieDao {
         return null;
     }
 
+    /**
+     * Recherche dans la table "voie" une correspondance
+     * dans la colonne "nom" avec la saissi de l'utilisateur.
+     * @param motCleRecherche
+     * @return vListVoie
+     */
     @Override
-    public Voie voieByMotCleRecherche(String motCleRecherche) {
+    public List<Voie>  rechercheSimpleParVoieDao(String motCleRecherche) {
 
         String vSql = "SELECT * FROM public.voie"
-                + " WHERE nom = " + "'" + motCleRecherche + "'";
+                + " WHERE nom LIKE " + "'" + motCleRecherche + "%" + "'";
 
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
         VoieRM vVoieRM = new VoieRM();
 
         List<Voie> vListVoie = vJdbcTemplate.query(vSql, vVoieRM.getVoieRowMapper());
-        return vListVoie.get(0);
+        return vListVoie;
     }
 }

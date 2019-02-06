@@ -7,27 +7,59 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f408df2d-97bf-4ab1-b9e8-b0adff5f56bd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Base de données/db_oc_escalade.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../Base de données/db_oc_escalade.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Base de données/jeu_de_donnees.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../Base de données/jeu_de_donnees.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Conception/OC Escalade - Dossier de conception technique.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../Conception/OC Escalade - Dossier de conception technique.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/contract/ManagerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/contract/ManagerFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/contract/manager/LongueurManager.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/contract/manager/SecteurManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/contract/manager/SecteurManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/contract/manager/SiteManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/contract/manager/SiteManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/contract/manager/VoieManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/contract/manager/VoieManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/impl/ManagerFactoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/impl/ManagerFactoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/impl/manager/LongueurManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/impl/manager/LongueurRelaiManagerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/impl/manager/RelaiManagerImpl.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/impl/manager/SecteurManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/impl/manager/SecteurManagerImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/impl/manager/SiteManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/impl/manager/SiteManagerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/impl/manager/VoieManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/impl/manager/VoieManagerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-business/src/main/resources/businessContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-business/src/main/resources/businessContext.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/contract/DaoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/contract/DaoFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/contract/dao/LongueurDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/contract/dao/LongueurRelaiDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/contract/dao/RelaiDao.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/contract/dao/SecteurDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/contract/dao/SecteurDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/contract/dao/SiteDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/contract/dao/SiteDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/contract/dao/TopoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/contract/dao/TopoDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/contract/dao/VoieDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/contract/dao/VoieDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/DaoFactoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/DaoFactoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/dao/LongueurImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/dao/LongueurRelaiImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/dao/RelaiImpl.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/dao/SecteurImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/dao/SecteurImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/dao/SiteImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/dao/SiteImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/escalade-webapp/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-webapp/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/dao/TopoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/dao/TopoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/dao/VoieImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/dao/VoieImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/data/AbstractDataImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/data/AbstractDataImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/rowmapper/VoieRM.java" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/rowmapper/VoieRM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-consumer/src/main/resources/consumerContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-consumer/src/main/resources/consumerContext.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-model/src/main/java/org/escalade/model/bean/Longueur.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-model/src/main/java/org/escalade/model/bean/Voie.java" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-model/src/main/java/org/escalade/model/bean/Voie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-webapp/src/main/java/org/escalade/webapp/action/CompteAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-webapp/src/main/java/org/escalade/webapp/action/CompteAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-webapp/src/main/java/org/escalade/webapp/action/MoteurDeRechercheAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-webapp/src/main/java/org/escalade/webapp/action/MoteurDeRechercheAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/escalade-webapp/src/main/java/org/escalade/webapp/action/SecteurAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-webapp/src/main/java/org/escalade/webapp/action/SecteurAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/escalade-webapp/src/main/java/org/escalade/webapp/action/SiteAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-webapp/src/main/java/org/escalade/webapp/action/SiteAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-webapp/src/main/java/org/escalade/webapp/action/VoieAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-webapp/src/main/java/org/escalade/webapp/action/VoieAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/escalade-webapp/src/main/resources/struts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-webapp/src/main/resources/struts.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/_include/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/_include/footer.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/_include/formulaireChoixCreate.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/_include/formulaireChoixCreate.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/_include/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/_include/header.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/formulaire_de_creation/formulaire_compte.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/formulaire_de_creation/formulaire_compte.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/formulaire_de_creation/formulaire_secteur.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/formulaire_de_creation/formulaire_secteur.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/formulaire_de_creation/formulaire_site.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/formulaire_de_creation/formulaire_site.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/formulaire_de_creation/site_formulaire_modifier.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/formulaire_de_creation/site_formulaire_modifier.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/login/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/login/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/site/liste_utilisateur_connecte.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/site/liste_utilisateur_connecte.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/moteur_de_recherche/resultat_recherche.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/moteur_de_recherche/resultat_recherche.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/secteur/liste_utilisateur_connecte.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/secteur/liste_utilisateur_connecte.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/site/detail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/site/detail.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/site/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/site/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/topo/detail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/topo/detail.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/topo/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/topo/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/voie/detail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/voie/detail.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -102,7 +134,7 @@
     <session id="-319924519">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="91" />
+          <entry key="project.closed" value="94" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.10" value="4" />
           <entry key="project.open.time.11" value="1" />
@@ -116,11 +148,11 @@
           <entry key="project.open.time.33" value="2" />
           <entry key="project.open.time.34" value="2" />
           <entry key="project.open.time.36" value="1" />
-          <entry key="project.open.time.37" value="1" />
+          <entry key="project.open.time.37" value="2" />
           <entry key="project.open.time.38" value="8" />
-          <entry key="project.open.time.39" value="2" />
+          <entry key="project.open.time.39" value="3" />
           <entry key="project.open.time.4" value="2" />
-          <entry key="project.open.time.40" value="2" />
+          <entry key="project.open.time.40" value="3" />
           <entry key="project.open.time.41" value="4" />
           <entry key="project.open.time.42" value="1" />
           <entry key="project.open.time.43" value="4" />
@@ -141,7 +173,7 @@
           <entry key="project.open.time.7" value="6" />
           <entry key="project.open.time.8" value="7" />
           <entry key="project.open.time.9" value="6" />
-          <entry key="project.opened" value="94" />
+          <entry key="project.opened" value="97" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -149,14 +181,14 @@
           <entry key="class" value="1" />
           <entry key="css" value="2" />
           <entry key="iml" value="6" />
-          <entry key="java" value="1219" />
+          <entry key="java" value="1341" />
           <entry key="js" value="1" />
-          <entry key="jsp" value="444" />
+          <entry key="jsp" value="500" />
           <entry key="pom" value="1" />
           <entry key="properties" value="22" />
           <entry key="sql" value="1" />
           <entry key="tld" value="3" />
-          <entry key="xml" value="389" />
+          <entry key="xml" value="412" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -164,33 +196,33 @@
           <entry key="CLASS" value="1" />
           <entry key="CSS" value="2" />
           <entry key="IDEA_MODULE" value="6" />
-          <entry key="JAVA" value="1219" />
-          <entry key="JSP" value="444" />
+          <entry key="JAVA" value="1341" />
+          <entry key="JSP" value="500" />
           <entry key="JavaScript" value="1" />
           <entry key="Properties" value="22" />
           <entry key="Scratch" value="1" />
-          <entry key="XML" value="393" />
+          <entry key="XML" value="416" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="dummy" value="47" />
-          <entry key="java" value="33372" />
-          <entry key="jsp" value="18595" />
+          <entry key="dummy" value="62" />
+          <entry key="java" value="34775" />
+          <entry key="jsp" value="20453" />
           <entry key="properties" value="242" />
           <entry key="txt" value="14" />
-          <entry key="xml" value="5037" />
+          <entry key="xml" value="5126" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="33368" />
-          <entry key="JSP" value="18594" />
+          <entry key="JAVA" value="34771" />
+          <entry key="JSP" value="20452" />
           <entry key="OGNL" value="1" />
-          <entry key="PLAIN_TEXT" value="61" />
+          <entry key="PLAIN_TEXT" value="76" />
           <entry key="Properties" value="242" />
           <entry key="SQL" value="4" />
-          <entry key="XML" value="5037" />
+          <entry key="XML" value="5126" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.spring.core.usages.trigger">
@@ -223,7 +255,52 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/moteur_de_recherche/resultat_recherche.jsp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="510">
+                  <caret line="33" column="29" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/java/org/escalade/webapp/action/MoteurDeRechercheAction.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="303">
+                  <caret line="174" column="69" selection-start-line="174" selection-start-column="69" selection-end-line="174" selection-end-column="69" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/impl/manager/SecteurManagerImpl.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="513">
+                  <caret line="51" selection-start-line="51" selection-end-line="51" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/resources/struts.xml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="209">
+                  <caret line="86" column="57" selection-start-line="86" selection-start-column="57" selection-end-line="86" selection-end-column="57" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -232,8 +309,8 @@
         <option value="spring-beans.schema" />
         <option value="struts_2_5" />
         <option value="Tag Library Descriptor" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
         <option value="Jsp File" />
       </list>
     </option>
@@ -244,6 +321,8 @@
       <find>creer</find>
       <find>choixC</find>
       <find>log</find>
+      <find>top</find>
+      <find>barre</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -252,57 +331,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/compte/formulaire_site.jsp" />
-        <option value="$PROJECT_DIR$/escalade-webapp/src/main/java/org/escalade/webapp/converter/locator/RegionLocator.java" />
-        <option value="$PROJECT_DIR$/escalade-model/pom.xml" />
-        <option value="$PROJECT_DIR$/escalade-webapp/src/main/resources/xwork-conversion.properties" />
-        <option value="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/dao/VoieImpl.java" />
-        <option value="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/contract/dao/VoieDao.java" />
-        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/moteur_de_recherche/formulaire_de_recherche.jsp" />
-        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/moteur_de_recherche/formulaire_de_recherche_avance.jsp" />
+        <option value="$PROJECT_DIR$/escalade-model/src/main/java/org/escalade/model/bean/Longueur.java" />
+        <option value="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/contract/DaoFactory.java" />
+        <option value="$PROJECT_DIR$/escalade-consumer/src/main/resources/consumerContext.xml" />
+        <option value="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/DaoFactoryImpl.java" />
+        <option value="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/contract/manager/LongueurManager.java" />
+        <option value="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/contract/manager/LongueurRelaiManageur.java" />
+        <option value="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/contract/manager/LongueurRelaiManager.java" />
+        <option value="$PROJECT_DIR$/escalade-business/src/main/resources/businessContext.xml" />
+        <option value="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/impl/ManagerFactoryImpl.java" />
+        <option value="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/contract/ManagerFactory.java" />
+        <option value="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/impl/manager/LongueurRelaiManagerImpl.java" />
+        <option value="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/contract/dao/LongueurRelaiDao.java" />
+        <option value="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/contract/dao/TopoDao.java" />
+        <option value="$PROJECT_DIR$/escalade-model/src/main/java/org/escalade/model/bean/Voie.java" />
+        <option value="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/rowmapper/VoieRM.java" />
+        <option value="$PROJECT_DIR$/escalade-model/src/main/java/org/escalade/model/bean/LongueurRelai.java" />
+        <option value="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/dao/LongueurRelaiImpl.java" />
+        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/secteur/liste_utilisateur_connecte.jsp" />
+        <option value="$PROJECT_DIR$/escalade-webapp/src/main/java/org/escalade/webapp/action/SiteAction.java" />
+        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/_include/header.jsp" />
+        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/index.jsp" />
+        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/_include/footer.jsp" />
+        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/_include/formulaireChoixCreate.jsp" />
+        <option value="$PROJECT_DIR$/escalade-webapp/src/main/java/org/escalade/webapp/action/CompteAction.java" />
+        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/login/login.jsp" />
+        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/site/list.jsp" />
         <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/topo/list.jsp" />
         <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/topo/detail.jsp" />
-        <option value="$PROJECT_DIR$/escalade-webapp/src/main/java/org/escalade/webapp/action/MoteurDeRechercheAction.java" />
-        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/compte/formulaire_compte.jsp" />
-        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/_include/barreDeRecherche.jsp" />
-        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/moteur_de_recherche/resultat_recherche.jsp" />
-        <option value="$PROJECT_DIR$/escalade-business/pom.xml" />
-        <option value="$PROJECT_DIR$/escalade-webapp/src/main/java/org/escalade/webapp/action/Compte.java" />
-        <option value="$PROJECT_DIR$/escalade-model/src/main/java/org/escalade/model/bean/Compte.java" />
-        <option value="$PROJECT_DIR$/escalade-model/src/main/java/org/escalade/model/bean/Site.java" />
-        <option value="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/contract/dao/CompteDao.java" />
-        <option value="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/contract/manager/CompteManager.java" />
-        <option value="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/impl/manager/CompteManagerImpl.java" />
-        <option value="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/dao/CompteImpl.java" />
-        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/_include/footer.jsp" />
-        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/_include/head.jsp" />
-        <option value="$PROJECT_DIR$/escalade-webapp/src/main/java/org/escalade/webapp/action/CompteAction.java" />
-        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/index.jsp" />
-        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/voie/detail.jsp" />
-        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/site/detail.jsp" />
-        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/site/list.jsp" />
-        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/_include/header.jsp" />
+        <option value="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/dao/TopoImpl.java" />
         <option value="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/contract/dao/SiteDao.java" />
         <option value="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/contract/manager/SiteManager.java" />
-        <option value="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/impl/manager/SiteManagerImpl.java" />
-        <option value="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/dao/SiteImpl.java" />
-        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/login/login.jsp" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/escalade-webapp/pom.xml" />
-        <option value="$PROJECT_DIR$/escalade-webapp/src/main/java/org/escalade/webapp/action/SiteAction.java" />
-        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/formulaire_de_creation/site_formulaire_modifier.jsp" />
-        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/formulaire_de_creation/formulaire_compte.jsp" />
-        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/site/liste_utilisateur_connecte.jsp" />
-        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/formulaire_de_creation/formulaire_site.jsp" />
-        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/formulaire_de_creation/formulaire_secteur.jsp" />
-        <option value="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/contract/dao/SecteurDao.java" />
         <option value="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/contract/manager/SecteurManager.java" />
-        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/_include/formulaireChoixCreate.jsp" />
-        <option value="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/impl/manager/SecteurManagerImpl.java" />
+        <option value="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/impl/manager/VoieManagerImpl.java" />
+        <option value="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/contract/manager/VoieManager.java" />
+        <option value="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/contract/dao/VoieDao.java" />
+        <option value="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/contract/dao/SecteurDao.java" />
+        <option value="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/impl/manager/SiteManagerImpl.java" />
+        <option value="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/dao/VoieImpl.java" />
+        <option value="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/dao/SecteurImpl.java" />
+        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/secteur/liste.jsp" />
         <option value="$PROJECT_DIR$/escalade-webapp/src/main/resources/struts.xml" />
         <option value="$PROJECT_DIR$/escalade-webapp/src/main/java/org/escalade/webapp/action/SecteurAction.java" />
-        <option value="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/dao/SecteurImpl.java" />
-        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/secteur/liste_utilisateur_connecte.jsp" />
+        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/secteur/detail.jsp" />
+        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/voie/detail.jsp" />
+        <option value="$PROJECT_DIR$/escalade-webapp/src/main/java/org/escalade/webapp/action/VoieAction.java" />
+        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/formulaire_de_creation/formulaire_compte.jsp" />
+        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/site/detail.jsp" />
+        <option value="$PROJECT_DIR$/escalade-webapp/src/main/java/org/escalade/webapp/action/MoteurDeRechercheAction.java" />
+        <option value="$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/dao/SiteImpl.java" />
+        <option value="$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/moteur_de_recherche/resultat_recherche.jsp" />
+        <option value="$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/impl/manager/SecteurManagerImpl.java" />
       </list>
     </option>
   </component>
@@ -350,7 +429,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
@@ -387,6 +466,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -394,19 +475,116 @@
               <item name="oc_escalade_application" type="b2602c69:ProjectViewProjectNode" />
               <item name="oc_escalade_application" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="oc_escalade_application" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oc_escalade_application" type="462c0819:PsiDirectoryNode" />
+              <item name="escalade-webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oc_escalade_application" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oc_escalade_application" type="462c0819:PsiDirectoryNode" />
+              <item name="escalade-webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oc_escalade_application" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oc_escalade_application" type="462c0819:PsiDirectoryNode" />
+              <item name="escalade-webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oc_escalade_application" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oc_escalade_application" type="462c0819:PsiDirectoryNode" />
+              <item name="escalade-webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oc_escalade_application" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oc_escalade_application" type="462c0819:PsiDirectoryNode" />
+              <item name="escalade-webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oc_escalade_application" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oc_escalade_application" type="462c0819:PsiDirectoryNode" />
+              <item name="escalade-webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="action" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oc_escalade_application" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oc_escalade_application" type="462c0819:PsiDirectoryNode" />
+              <item name="escalade-webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oc_escalade_application" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oc_escalade_application" type="462c0819:PsiDirectoryNode" />
+              <item name="escalade-webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oc_escalade_application" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oc_escalade_application" type="462c0819:PsiDirectoryNode" />
+              <item name="escalade-webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="jsp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oc_escalade_application" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oc_escalade_application" type="462c0819:PsiDirectoryNode" />
+              <item name="escalade-webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="jsp" type="462c0819:PsiDirectoryNode" />
+              <item name="_include" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oc_escalade_application" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oc_escalade_application" type="462c0819:PsiDirectoryNode" />
+              <item name="escalade-webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="jsp" type="462c0819:PsiDirectoryNode" />
+              <item name="moteur_de_recherche" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="oc_escalade_application" type="b2602c69:ProjectViewProjectNode" />
+              <item name="oc_escalade_application" type="462c0819:PsiDirectoryNode" />
+              <item name="escalade-webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="postgresql" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549123367596" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549440965542" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -416,22 +594,22 @@
     <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\PARCOURS DÉVELOPPEUR D'APPLICATION JAVA\PROJET 6 - CREEZ UN SITE COMMUNAUTAIRE AUTOUR DE L’ESCALADE\OC-PROJET-6-SITE-WEB-ESCALADE\oc_escalade_application\escalade-webapp\src\main\webapp\bootstrap\js" />
-      <recent name="E:\PARCOURS DÉVELOPPEUR D'APPLICATION JAVA\PROJET 6 - CREEZ UN SITE COMMUNAUTAIRE AUTOUR DE L’ESCALADE\OC-PROJET-6-SITE-WEB-ESCALADE\oc_escalade_application\escalade-webapp\src\main\bootstrap" />
-      <recent name="E:\PARCOURS DÉVELOPPEUR D'APPLICATION JAVA\PROJET 6 - CREEZ UN SITE COMMUNAUTAIRE AUTOUR DE L’ESCALADE\OC-PROJET-6-SITE-WEB-ESCALADE\oc_escalade_application\escalade-webapp\src\main\bootstrap\css" />
-      <recent name="E:\PARCOURS DÉVELOPPEUR D'APPLICATION JAVA\PROJET 6 - CREEZ UN SITE COMMUNAUTAIRE AUTOUR DE L’ESCALADE\OC-PROJET-6-SITE-WEB-ESCALADE\oc_escalade_application\escalade-webapp\src\main\java\org\escalade\webapp\action" />
-      <recent name="E:\PARCOURS DÉVELOPPEUR D'APPLICATION JAVA\PROJET 6 - CREEZ UN SITE COMMUNAUTAIRE AUTOUR DE L’ESCALADE\OC-PROJET-6-SITE-WEB-ESCALADE\oc_escalade_application\escalade-business\src\main\java\org\escalade\business\contract\manager" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="org.escalade.consumer.impl.dao" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\PARCOURS DÉVELOPPEUR D'APPLICATION JAVA\PROJET 6 - CREEZ UN SITE COMMUNAUTAIRE AUTOUR DE L’ESCALADE\OC-PROJET-6-SITE-WEB-ESCALADE\oc_escalade_application\escalade-webapp\src\main\webapp\jsp\site" />
       <recent name="E:\PARCOURS DÉVELOPPEUR D'APPLICATION JAVA\PROJET 6 - CREEZ UN SITE COMMUNAUTAIRE AUTOUR DE L’ESCALADE\OC-PROJET-6-SITE-WEB-ESCALADE\oc_escalade_application\escalade-webapp\src\main\webapp\jsp\formulaire_de_creation" />
       <recent name="E:\PARCOURS DÉVELOPPEUR D'APPLICATION JAVA\PROJET 6 - CREEZ UN SITE COMMUNAUTAIRE AUTOUR DE L’ESCALADE\OC-PROJET-6-SITE-WEB-ESCALADE\oc_escalade_application\escalade-webapp\src\main\java\org\escalade\webapp" />
       <recent name="E:\PARCOURS DÉVELOPPEUR D'APPLICATION JAVA\PROJET 6 - CREEZ UN SITE COMMUNAUTAIRE AUTOUR DE L’ESCALADE\OC-PROJET-6-SITE-WEB-ESCALADE\oc_escalade_application\escalade-webapp\src\main\webapp" />
       <recent name="E:\PARCOURS DÉVELOPPEUR D'APPLICATION JAVA\PROJET 6 - CREEZ UN SITE COMMUNAUTAIRE AUTOUR DE L’ESCALADE\OC-PROJET-6-SITE-WEB-ESCALADE\oc_escalade_application\escalade-webapp\src\main\webapp\jsp\_include" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.escalade.consumer.impl.dao" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\PARCOURS DÉVELOPPEUR D'APPLICATION JAVA\PROJET 6 - CREEZ UN SITE COMMUNAUTAIRE AUTOUR DE L’ESCALADE\OC-PROJET-6-SITE-WEB-ESCALADE\oc_escalade_application\escalade-webapp\src\main\webapp\bootstrap\js" />
+      <recent name="E:\PARCOURS DÉVELOPPEUR D'APPLICATION JAVA\PROJET 6 - CREEZ UN SITE COMMUNAUTAIRE AUTOUR DE L’ESCALADE\OC-PROJET-6-SITE-WEB-ESCALADE\oc_escalade_application\escalade-webapp\src\main\bootstrap" />
+      <recent name="E:\PARCOURS DÉVELOPPEUR D'APPLICATION JAVA\PROJET 6 - CREEZ UN SITE COMMUNAUTAIRE AUTOUR DE L’ESCALADE\OC-PROJET-6-SITE-WEB-ESCALADE\oc_escalade_application\escalade-webapp\src\main\bootstrap\css" />
+      <recent name="E:\PARCOURS DÉVELOPPEUR D'APPLICATION JAVA\PROJET 6 - CREEZ UN SITE COMMUNAUTAIRE AUTOUR DE L’ESCALADE\OC-PROJET-6-SITE-WEB-ESCALADE\oc_escalade_application\escalade-webapp\src\main\java\org\escalade\webapp\action" />
+      <recent name="E:\PARCOURS DÉVELOPPEUR D'APPLICATION JAVA\PROJET 6 - CREEZ UN SITE COMMUNAUTAIRE AUTOUR DE L’ESCALADE\OC-PROJET-6-SITE-WEB-ESCALADE\oc_escalade_application\escalade-business\src\main\java\org\escalade\business\contract\manager" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -634,12 +812,15 @@
       <workItem from="1548834441338" duration="30901000" />
       <workItem from="1548920253457" duration="29701000" />
       <workItem from="1549005686660" duration="29765000" />
-      <workItem from="1549094711669" duration="24428000" />
+      <workItem from="1549094711669" duration="24648000" />
+      <workItem from="1549267363451" duration="22594000" />
+      <workItem from="1549351316741" duration="21787000" />
+      <workItem from="1549439773577" duration="1416000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="723758000" />
+    <option name="totallyTimeSpent" value="769775000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -651,9 +832,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18230277" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18923241" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -663,7 +844,7 @@
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49093816" visible="true" weight="0.29067245" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49093816" visible="true" weight="0.29067245" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.30368763" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -685,7 +866,7 @@
       <window_info anchor="right" id="Database" order="5" weight="0.32995737" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="Theme Preview" order="7" />
-      <window_info active="true" anchor="right" id="Maven Projects" order="8" visible="true" weight="0.19296375" />
+      <window_info anchor="right" id="Maven Projects" order="8" visible="true" weight="0.19296375" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -734,341 +915,208 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/escalade-model/src/main/java/org/escalade/model/bean/Compte.java">
+    <entry file="file://$PROJECT_DIR$/escalade-model/src/main/java/org/escalade/model/bean/Secteur.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/contract/dao/CompteDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/moteur_de_recherche/resultat_recherche.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/moteur_de_recherche/formulaire_de_recherche_avance.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/contract/manager/CompteManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/impl/manager/CompteManagerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/voie/detail.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="32" column="18" lean-forward="true" selection-start-line="32" selection-start-column="18" selection-end-line="32" selection-end-column="18" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/error.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/java/org/escalade/webapp/action/LoginAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="581">
-          <caret line="80" column="8" selection-start-line="80" selection-start-column="8" selection-end-line="80" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/_include/header.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="24" column="30" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/_include/footer.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/site/detail.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="71" column="18" lean-forward="true" selection-start-line="71" selection-start-column="18" selection-end-line="71" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/_include/head.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="68">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/escalade-model/src/main/java/org/escalade/model/bean/Site.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/rowmapper/SiteRM.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/rowmapper/VoieRM.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/contract/dao/LongueurRelaiDao.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
-          <caret line="14" column="35" lean-forward="true" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/resources/struts.properties">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/WEB-INF/web.xml">
+    <entry file="file://$PROJECT_DIR$/escalade-model/src/main/java/org/escalade/model/bean/Voie.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="130">
+          <caret line="12" column="39" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-business/src/main/resources/businessContext.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/resources/webappContext.xml">
+    <entry file="file://$PROJECT_DIR$/escalade-model/src/main/java/org/escalade/model/bean/LongueurRelai.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        <state relative-caret-position="425">
+          <caret line="37" column="34" selection-start-line="37" selection-start-column="34" selection-end-line="37" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/resources/bootstrapContext.xml">
+    <entry file="file://$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/dao/LongueurRelaiImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="398">
+          <caret line="27" column="43" lean-forward="true" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/java/org/escalade/webapp/interceptor/AuthInterceptor.java">
+    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/secteur/liste_utilisateur_connecte.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="60" column="30" selection-start-line="60" selection-start-column="30" selection-end-line="60" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/_include/footer.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="11" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/_include/head.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
+          <caret line="14" selection-start-line="14" selection-end-line="14" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/impl/ManagerFactoryImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/formulaire_de_creation/formulaire_site.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/contract/ManagerFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/formulaire_de_creation/formulaire_secteur.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/impl/AbstractManagerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="13" selection-start-column="13" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/data/AbstractDataImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/contract/dao/SiteDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/contract/manager/SiteManager.java">
+    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/formulaire_de_creation/site_formulaire_modifier.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
+          <caret line="12" selection-start-line="12" selection-end-line="14" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/java/org/escalade/webapp/action/CompteAction.java">
+    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/login/login.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="86" column="16" selection-start-line="86" selection-start-column="16" selection-end-line="86" selection-end-column="16" />
+        <state relative-caret-position="147">
+          <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="n#style#0;n#h4#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/site/list.jsp">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="46" column="54" selection-start-line="46" selection-start-column="54" selection-end-line="46" selection-end-column="54" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/topo/list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/dao/TopoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-142">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/java/org/escalade/webapp/action/TopoAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="436">
+          <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/topo/detail.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="45" column="20" lean-forward="true" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/contract/manager/VoieManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/contract/dao/VoieDao.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
-          <caret line="45" column="16" selection-start-line="45" selection-start-column="16" selection-end-line="48" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/dao/CompteImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="592">
-          <caret line="85" column="25" lean-forward="true" selection-start-line="85" selection-start-column="25" selection-end-line="85" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/login/login.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/Applications/Developpement/Resource/Apache Maven/.m2/repository/org/apache/struts/struts2-core/2.5.14.1/struts2-core-2.5.14.1.jar!/META-INF/struts-tags.tld">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="6680" column="4" selection-start-line="6680" selection-start-column="4" selection-end-line="6680" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="82" column="6" selection-start-line="82" selection-start-column="6" selection-end-line="87" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-webapp/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="71" column="41" selection-start-line="71" selection-start-column="41" selection-end-line="71" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/formulaire_de_creation/formulaire_compte.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="759">
-          <caret line="121" column="44" selection-start-line="121" selection-start-column="44" selection-end-line="121" selection-end-column="44" />
-          <folding>
-            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/formulaire_de_creation/site_formulaire_modifier.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="46" column="111" selection-start-line="46" selection-start-column="30" selection-end-line="46" selection-end-column="111" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/impl/manager/SiteManagerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="54" column="8" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="8" />
-          <folding>
-            <element signature="e#343#344#0" expanded="true" />
-            <element signature="e#402#403#0" expanded="true" />
-            <element signature="method#sitesByAdvancedSearch#0;class#SiteManagerImpl#0" />
-            <element signature="method#siteBySimpleSearch#0;class#SiteManagerImpl#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/formulaire_de_creation/formulaire_secteur.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="54" column="103" selection-start-line="54" selection-start-column="103" selection-end-line="54" selection-end-column="103" />
+          <caret line="50" column="5" lean-forward="true" selection-start-line="50" selection-start-column="5" selection-end-line="51" selection-end-column="61" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/contract/dao/SecteurDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="57" column="10" selection-start-line="57" selection-start-column="10" selection-end-line="57" selection-end-column="10" />
+        <state relative-caret-position="357">
+          <caret line="60" column="11" lean-forward="true" selection-start-line="60" selection-start-column="11" selection-end-line="60" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/formulaire_de_creation/formulaire_site.jsp">
+    <entry file="file://$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/dao/VoieImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1065">
-          <caret line="63" column="32" selection-start-line="63" selection-start-column="32" selection-end-line="63" selection-end-column="32" />
+        <state relative-caret-position="745">
+          <caret line="62" column="34" selection-start-line="62" selection-start-column="34" selection-end-line="62" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/contract/manager/SecteurManager.java">
+    <entry file="file://$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/dao/SecteurImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="35" selection-start-column="35" selection-end-column="35" />
+        <state relative-caret-position="321">
+          <caret line="93" selection-start-line="93" selection-end-line="93" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/site/liste_utilisateur_connecte.jsp">
+    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/java/org/escalade/webapp/action/SecteurAction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-190">
-          <caret line="35" column="10" lean-forward="true" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
+        <state relative-caret-position="289">
+          <caret line="83" column="61" lean-forward="true" selection-start-line="83" selection-start-column="61" selection-end-line="83" selection-end-column="61" />
+          <folding>
+            <element signature="e#3120#3121#0" expanded="true" />
+            <element signature="e#3159#3160#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/dao/SiteImpl.java">
+    <entry file="file://$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/impl/manager/VoieManagerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="146" column="8" lean-forward="true" selection-start-line="146" selection-start-column="8" selection-end-line="147" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/_include/formulaireChoixCreate.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="43" column="75" selection-start-line="43" selection-start-column="75" selection-end-line="43" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/Applications/Developpement/Resource/Apache Maven/.m2/repository/org/apache/struts/struts2-core/2.5.14.1/struts2-core-2.5.14.1-sources.jar!/org/apache/struts2/interceptor/SessionAware.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
+        <state relative-caret-position="374">
+          <caret line="37" column="22" selection-start-line="37" selection-start-column="22" selection-end-line="37" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/java/org/escalade/webapp/action/SiteAction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="694">
-          <caret line="80" column="2" lean-forward="true" selection-start-line="80" selection-start-column="2" selection-end-line="80" selection-end-column="41" />
+        <state relative-caret-position="221">
+          <caret line="112" column="57" lean-forward="true" selection-start-line="112" selection-start-column="57" selection-end-line="112" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#5609#5610#0" expanded="true" />
@@ -1077,49 +1125,155 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/java/org/escalade/webapp/action/SecteurAction.java">
+    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/secteur/detail.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="351">
-          <caret line="107" selection-start-line="107" selection-end-line="107" />
+          <caret line="50" column="36" selection-start-line="50" selection-start-column="36" selection-end-line="50" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/voie/detail.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="4" lean-forward="true" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
           <folding>
-            <element signature="e#1555#1556#0" expanded="true" />
-            <element signature="e#1586#1587#0" expanded="true" />
-            <element signature="e#1641#1642#0" expanded="true" />
-            <element signature="e#1681#1682#0" expanded="true" />
-            <element signature="e#2970#2971#0" expanded="true" />
-            <element signature="e#3009#3010#0" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/java/org/escalade/webapp/action/VoieAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/moteur_de_recherche/formulaire_de_recherche_avance.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/java/org/escalade/webapp/action/LoginAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="61" column="101" selection-start-line="61" selection-start-column="101" selection-end-line="61" selection-end-column="101" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/java/org/escalade/webapp/action/CompteAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="79" column="60" selection-start-line="79" selection-start-column="60" selection-end-line="79" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/_include/formulaireChoixCreate.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="4" lean-forward="true" selection-start-column="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/_include/header.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-408">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/formulaire_de_creation/formulaire_compte.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2023">
+          <caret line="140" selection-start-line="140" selection-end-line="140" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/dao/CompteImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="44" column="63" lean-forward="true" selection-start-line="44" selection-start-column="63" selection-end-line="44" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/site/detail.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="77" column="32" selection-start-line="77" selection-start-column="32" selection-end-line="77" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/contract/manager/SiteManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="24" column="15" selection-start-line="24" selection-start-column="15" selection-end-line="24" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/impl/manager/SiteManagerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="93" column="73" selection-start-line="93" selection-start-column="73" selection-end-line="93" selection-end-column="73" />
+          <folding>
+            <element signature="e#343#344#0" expanded="true" />
+            <element signature="e#402#403#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/contract/dao/SiteDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="57" selection-start-line="57" selection-end-line="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/dao/SiteImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="134" column="50" selection-start-line="134" selection-start-column="50" selection-end-line="134" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/resources/bootstrapContext.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/resources/struts.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="86" column="57" selection-start-line="86" selection-start-column="57" selection-end-line="86" selection-end-column="57" />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.struts2.graph.fileEditor.Struts2GraphFileEditorProvider" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/moteur_de_recherche/resultat_recherche.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="33" column="29" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/java/org/escalade/webapp/action/MoteurDeRechercheAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="174" column="69" selection-start-line="174" selection-start-column="69" selection-end-line="174" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/contract/manager/SecteurManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="20" column="18" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/escalade-business/src/main/java/org/escalade/business/impl/manager/SecteurManagerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        <state relative-caret-position="513">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-consumer/src/main/java/org/escalade/consumer/impl/dao/SecteurImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="96" selection-start-line="96" selection-end-line="96" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/webapp/jsp/secteur/liste_utilisateur_connecte.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="68" column="48" lean-forward="true" selection-start-line="68" selection-start-column="48" selection-end-line="68" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/escalade-webapp/src/main/resources/struts.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="262" column="77" selection-start-line="262" selection-start-column="77" selection-end-line="262" selection-end-column="77" />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.struts2.graph.fileEditor.Struts2GraphFileEditorProvider" />
     </entry>
   </component>
   <component name="masterDetails">

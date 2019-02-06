@@ -20,7 +20,15 @@
         </div>
     </div>
 </div>
+<s:property value="%{sites.nom}"></s:property>
+<s:iterator value="sites">
+    <h6><s:property value="%{sites.nom}"></s:property> </h6>
+<%--<s:if test="%{sites.id.equals(secteurs.site_id)}">--%>
 
+        <h6><s:property value="sites.nom"></s:property> </h6>
+
+<%--</s:if>--%>
+</s:iterator>
 <div class="container" style=" position: absolute; top: 14%; left: 35%">
     <div class="row">
         <div class="col-md-6" style="margin-left: 10%; margin-top: 10px; margin-bottom: 10px; text-align: center">
@@ -33,7 +41,7 @@
             <hr width="95%" color="#DCDCDC">
         </div>
     </div>
-
+    
     <s:iterator value="secteurs">
         <div class="row">
             <div class="col-md-8" style="margin-top: 5px">

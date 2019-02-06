@@ -12,21 +12,48 @@
     <%@include file="../_include/head.jsp"%>
 </head>
 
-<center><body>
+<body>
 
-    <header>
-        <%@include file="../_include/header.jsp"%>
-    </header>
+<header>
+    <%@include file="../_include/header.jsp"%>
+</header>
 
-    <h2>Topos d'éscalades !</h2>
+<div class="container">
 
-        <s:iterator value="topos">
-            <p>
-                <s:a action="topo_detail">
-                    <s:param value="id" name="topo_id"/>
-                    Nom : <s:property value="nom"/><br/></s:a>
-            </p>
-        </s:iterator>
+    <div class="row">
+        <div class="col-md-12" style="margin-top: 10px; margin-bottom: 10px; text-align: center">
+            <h2>Topos d'éscalades !</h2>
+            <hr width="100%" color="#DCDCDC">
+        </div>
+    </div>
 
-</body></center>
+    <s:iterator value="topos">
+        <div class="row">
+            <div class="col-md-9" style="margin-top: 5px">
+                <ul>
+                    <div class="well well-md">
+                        <h4>Nom du topo : <s:property value="nom"/></h4>
+                        <p>Dscription : <s:property value="description"/></p>
+                    </div>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10"></div>
+            <div class="col-md-2">
+                <s:a  action="topo_detail" class="btn btn-outline-info" role="button">
+                    <s:param name="topo_id" value="id"/>
+                    Voir détail
+                </s:a>
+            </div>
+        </div>
+        <hr width="100%" color="#DCDCDC">
+    </s:iterator>
+</div>
+
+<footer>
+    <%@include file="../_include/footer.jsp"%>
+</footer>
+
+</body>
 </html>

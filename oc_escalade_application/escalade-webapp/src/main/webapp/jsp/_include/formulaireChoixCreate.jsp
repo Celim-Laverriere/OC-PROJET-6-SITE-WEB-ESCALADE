@@ -9,6 +9,9 @@
 <%@taglib prefix="s" uri="/struts-tags"%>
 
 <html>
+<head>
+    <%@include file="../_include/head.jsp"%>
+</head>
     <body>
 
         <header>
@@ -58,20 +61,10 @@
                     <ul class="nav nav-pills">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
-                               role="button" aria-haspopup="true" aria-expanded="false">MES RELAIS</a>
+                               role="button" aria-haspopup="true" aria-expanded="false">MES LONGUEURES & RELAIS</a>
                             <div class="dropdown-menu">
-                                <s:a action="" class="dropdown-item">Créer un nouveau Relai</s:a>
-                                <s:a action="" class="dropdown-item"> Afficher mes Relais !</s:a>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul class="nav nav-pills">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
-                               role="button" aria-haspopup="true" aria-expanded="false">MES LONGUEURES</a>
-                            <div class="dropdown-menu">
-                                <s:a action="" class="dropdown-item">Créer un nouvelle Longueure</s:a>
-                                <s:a action="" class="dropdown-item"> Afficher mes Longueure !</s:a>
+                                <s:a action="" class="dropdown-item">Créer un nouvelle Longueure et relais</s:a>
+                                <s:a action="" class="dropdown-item"> Afficher mes Longueure et relais !</s:a>
                             </div>
                         </li>
                     </ul>
@@ -83,10 +76,9 @@
             </div>
         </div>
 
-
-        <script>
+        <footer>
             <%@include file="../_include/footer.jsp"%>
-        </script>
+        </footer>
 
     </body>
 

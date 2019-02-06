@@ -12,31 +12,48 @@
     <%@include file="../_include/head.jsp"%>
 </head>
 
-<center><body>
+<body>
 
     <header>
         <%@include file="../_include/header.jsp"%>
     </header>
 
-    <h2>Detail des topos</h2>
-
+    <div class="container">
         <s:iterator value="topo">
+        <div class="row">
+            <div class="col-md-12" style="margin-top: 10px; margin-bottom: 10px; text-align: center">
+                <h2>Detail du topos d'éscalades : <s:property value="nom"/></h2>
+                <hr width="100%" color="#DCDCDC">
+            </div>
+        </div>
+
             <p
                 ID : <s:property value="id"/><br/>
-                Nom : <s:property value="nom"/><br/>
                 Date d'upload : <s:property value="date_upload"/><br/>
                 Statut : <s:property value="statut"/><br/>
                 Desciption : <s:property value="description"/><br/>
             </p>
 
-            <s:iterator value="commentaires">
-                <h3>Commentaires</h3>
-                <p>
-                    <s:property value="id"/><br/>
-                    <s:property value="commentaire"/><br/>
-                </p>
-            </s:iterator>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Commentaires</h4>
+                </div>
+            </div>
 
+            <s:if test="%{topo.commentaires.isEmpty()}">
+                <p>Ce topo d'éscalade n'a pas encore de commentaires !</p>
+            </s:if>
+            <s:else>
+                <s:iterator value="commentaires">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="well well-md">
+                                <p><s:property value="commentaire"/></p>
+                            </div>
+                        </div>
+                    </div>
+                </s:iterator>
+            </s:else>
 
             <s:iterator value="resaTopos">
                 <h3>Reservation des topos</h3>
@@ -49,7 +66,10 @@
             </s:iterator>
 
         </s:iterator>
-
+    </div>
+    <footer>
+        <%@include file="../_include/footer.jsp"%>
+    </footer>
 
 </body></center>
 </html>

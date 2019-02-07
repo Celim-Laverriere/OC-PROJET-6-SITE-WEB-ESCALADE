@@ -99,6 +99,29 @@ public class SecteurImpl extends AbstractDataImpl implements SecteurDao {
         return vListSecteurs;
     }
 
+    /**
+     * Renvoie le secteur correspondant a secteur_id de la voie trouver
+     * lors de la recherche.
+     * @param secteur_id
+     * @return sites
+     */
+    public List<Secteur> rechercheSecteurParVoie(Integer secteur_id){
+
+        String vSql = "SELECT * FROM public.secteur"
+                    + " WHERE id = " + secteur_id;
+
+        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+        SecteurRM vSecteurRM = new SecteurRM();
+
+        List<Secteur> vListSecteurs = vJdbcTemplate.query(vSql, vSecteurRM.getvSecteurRowMapper());
+        return vListSecteurs;
+    }
+
+    /**
+     *
+     * @param compte
+     * @return
+     */
     public List<Secteur> secteursParSessionDeCompteDao(Compte compte){
 
         String vSql = "SELECT secteur.* FROM public.secteur, public.site"

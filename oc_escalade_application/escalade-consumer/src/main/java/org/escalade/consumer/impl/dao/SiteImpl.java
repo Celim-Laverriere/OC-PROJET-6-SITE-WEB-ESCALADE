@@ -4,6 +4,7 @@ import org.escalade.consumer.contract.dao.SiteDao;
 import org.escalade.consumer.impl.data.AbstractDataImpl;
 import org.escalade.consumer.impl.rowmapper.SiteRM;
 import org.escalade.model.bean.Compte;
+import org.escalade.model.bean.Secteur;
 import org.escalade.model.bean.Site;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -42,7 +43,7 @@ public class SiteImpl extends AbstractDataImpl implements SiteDao {
 
         NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
 
-        int vNbrLigneMaj = vJdbcTemplate.update(vSql, vParams);
+        vJdbcTemplate.update(vSql, vParams);
     }
 
     @Override
@@ -124,7 +125,7 @@ public class SiteImpl extends AbstractDataImpl implements SiteDao {
 
     /**
      * Recherche dans la table "site" une correspondance
-     * dans la colonne "nom" avec la saissi de l'utilisateur.
+     * dans la colonne "nom" ou "region" avec la saissi de l'utilisateur.
      * @param motCleRecherche
      * @return vListSite
      */
@@ -141,6 +142,24 @@ public class SiteImpl extends AbstractDataImpl implements SiteDao {
         return vListSite;
     }
 
+    /**
+     * Renvoie le site correspondant a site_id du secteur.
+     *
+     * @param site_id
+     * @return sites
+     */
+    public List<Site> rechercheSiteParSecteur(Integer site_id){
+
+        String vSql = "SELECT * FROM public.site"
+                    + " WHERE id = " + site_id;
+
+        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+        SiteRM vSiteRM = new SiteRM();
+
+        List<Site> vListSites = vJdbcTemplate.query(vSql, vSiteRM.getvSiteRowMapper());
+        return vListSites;
+    }
+
     @Override
     public List<Site> sitesParSessionDeCompteDao(Compte compte) {
 
@@ -153,4 +172,5 @@ public class SiteImpl extends AbstractDataImpl implements SiteDao {
         List<Site> vListSites = vJdbcTemplate.query(vSql, vSiteRM.getvSiteRowMapper());
         return vListSites;
     }
+
 }

@@ -36,6 +36,10 @@ public class MoteurDeRechercheAction extends ActionSupport  {
     private Secteur secteur;
     private Voie voie;
 
+    private List<Site> secteursRefSite;
+    private List<Secteur> voiesRefSecteur;
+    private List<Site> voiesRefSecteurRefSite;
+
     @Inject
     private ManagerFactory managerFactory;
 
@@ -145,6 +149,30 @@ public class MoteurDeRechercheAction extends ActionSupport  {
         this.voie = voie;
     }
 
+    public List<Site> getSecteursRefSite() {
+        return secteursRefSite;
+    }
+
+    public void setSecteursRefSite(List<Site> secteursRefSite) {
+        this.secteursRefSite = secteursRefSite;
+    }
+
+    public List<Secteur> getVoiesRefSecteur() {
+        return voiesRefSecteur;
+    }
+
+    public void setVoiesRefSecteur(List<Secteur> voiesRefSecteur) {
+        this.voiesRefSecteur = voiesRefSecteur;
+    }
+
+    public List<Site> getVoiesRefSecteurRefSite() {
+        return voiesRefSecteurRefSite;
+    }
+
+    public void setVoiesRefSecteurRefSite(List<Site> voiesRefSecteurRefSite) {
+        this.voiesRefSecteurRefSite = voiesRefSecteurRefSite;
+    }
+
     // =============== Méthodes ================
 
     /**
@@ -171,9 +199,21 @@ public class MoteurDeRechercheAction extends ActionSupport  {
     public String doSimpleSearch(){
 
         try {
+
             sites = managerFactory.getSiteManager().rechercheSimpleParSite(motCleRecherche);
+
             secteurs = managerFactory.getSecteurManager().rechercheSimpleParSecteur(motCleRecherche);
+
+            if (!secteurs.isEmpty()){
+                secteursRefSite = managerFactory.getSiteManager().rechercheSiteParSecteur(secteurs);
+            }
+
             voies = managerFactory.getVoieManager().rechercheSimpleParVoie(motCleRecherche);
+
+            if (!voies.isEmpty()){
+                voiesRefSecteur = managerFactory.getSecteurManager().rechercheSecteurParVoie(voies);
+                voiesRefSecteurRefSite = managerFactory.getSiteManager().rechercheSiteParSecteur(voiesRefSecteur);
+            }
 
         } catch (IndexOutOfBoundsException pEx) {
             this.addActionMessage("Désolé ! Aucun site ne correspond à votre recherche : " + motCleRecherche + " !");

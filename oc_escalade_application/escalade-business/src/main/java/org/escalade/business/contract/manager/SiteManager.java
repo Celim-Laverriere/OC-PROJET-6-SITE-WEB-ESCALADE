@@ -1,7 +1,9 @@
 package org.escalade.business.contract.manager;
 
 import org.escalade.model.bean.Compte;
+import org.escalade.model.bean.Secteur;
 import org.escalade.model.bean.Site;
+import org.escalade.model.bean.Voie;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +25,8 @@ public interface SiteManager {
     List<Site> siteByRegion();
 
     List<Site> rechercheSimpleParSite(String motCleRecherche);
+
+    List<Site> rechercheSiteParSecteur(List<Secteur> secteurs);
 
     List<Site> sitesParSessionDeCompte(Compte compte);
 

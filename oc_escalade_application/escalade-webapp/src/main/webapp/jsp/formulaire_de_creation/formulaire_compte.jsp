@@ -36,6 +36,7 @@
                         <input name="compte.mail"  type="email" class="form-control"
                                id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
                         <small id="emailHelp" class="form-text text-muted">
+                            <p><s:actionerror class="list-unstyled" style="color: red"/></p>
                             Nous ne partagerons jamais votre courriel avec qui que ce soit d'autre.
                         </small>
                     </div>

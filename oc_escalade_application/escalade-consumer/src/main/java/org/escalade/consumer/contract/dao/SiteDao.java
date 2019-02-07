@@ -57,5 +57,7 @@ public interface SiteDao {
 
         List<Site> rechercheSimpleParSiteDao(String motCleRecherche);
 
+        List<Site> rechercheSiteParSecteur(Integer site_id);
+
         List<Site> sitesParSessionDeCompteDao(Compte compte);
 }

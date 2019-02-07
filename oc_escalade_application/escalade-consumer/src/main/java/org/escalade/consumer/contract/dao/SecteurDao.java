@@ -55,11 +55,20 @@ public interface SecteurDao {
         List<Secteur> secteursBySiteId(Integer site_id);
 
         /**
-         *
+         ** Recherche dans la table "secteur" une correspondance
+         *  dans la colonne "nom" avec la saissi de l'utilisateur.
          * @param motCleRecherche
          * @return
          */
         List<Secteur>  rechercheSimpleParSecteurDao(String motCleRecherche);
+
+        /**
+         * Renvoie le secteur correspondant a secteur_id de la voie trouver
+         * lors de la recherche.
+         * @param secteur_id
+         * @return sites
+         */
+        List<Secteur> rechercheSecteurParVoie(Integer secteur_id);
 
         /**
          * Renvoie les secteurs correspondant à la session en cours

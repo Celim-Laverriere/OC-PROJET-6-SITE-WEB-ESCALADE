@@ -86,12 +86,36 @@ public class SiteManagerImpl extends AbstractManagerImpl implements SiteManager 
     /**
      * Recherche dans la table site une correcpondance avec le mot clé de recherche
      * saisi pas l'utilisateur.
-     * @return
+     * @param motCleRecherche
+     * @return sites
      */
     @Override
     public List<Site> rechercheSimpleParSite(String motCleRecherche) {
 
         List<Site> sites = getDaoFactory().getSiteDao().rechercheSimpleParSiteDao(motCleRecherche);
+        return sites;
+    }
+
+    /**
+     * Renvoie le site correspondant aux secteurs trouver lors de la recherche,
+     * dans la " barre de recherche" du navigateur.
+     * @param secteurs
+     * @return sites
+     */
+    public List<Site> rechercheSiteParSecteur(List<Secteur> secteurs) {
+
+        List<Site> sites = new ArrayList<>();
+        Set<Integer> secteurSite_id = new HashSet<>();
+
+        for (Secteur secteur: secteurs){
+            secteurSite_id.add(secteur.getSite_id());
+        }
+
+        for (Integer site_id : secteurSite_id){
+            List<Site> siteParSecteur = getDaoFactory().getSiteDao().rechercheSiteParSecteur(site_id);
+            sites.addAll(siteParSecteur);
+        }
+
         return sites;
     }
 

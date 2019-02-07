@@ -5,54 +5,148 @@
   Time: 10:20
   To change this template use File | Settings | File Templates.
 --%>
-<%@page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="s" uri="/struts-tags" %>
+<%@page contentType="text/html;charset=UTF-8" language="java"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <html>
+
 <head>
     <%@include file="../_include/head.jsp"%>
 </head>
-<center><body>
+
+<body>
 
 <header>
     <%@include file="../_include/header.jsp"%>
 </header>
 
-<h2><s:actionmessage/></h2>
+<div class="container">
 
-<s:iterator value="sites">
-    <h4>Site(s)</h4>
-    <p>
-        <s:a action="site_detail">
-            <s:param value="id" name="site_id"/>
-            Nom : <s:property value="nom"/></s:a><br/>
-        Région : <s:property value="region"/>
-        Description : <s:property value="description"/><br/>
-    </p>
+    <h2><s:actionmessage/></h2>
 
-</s:iterator>
+    <div class="row">
+        <div class="col-md-12" style="margin-top: 10px; margin-bottom: 10px; text-align: center">
+            <h2>Résultat de votre recherche !</h2>
+            <hr width="100%" color="#DCDCDC">
+        </div>
+    </div>
+</div>
 
-<s:iterator value="secteurs">
-    <h4>Secteur(s)</h4>
-    <p>
-        <s:a action="site_detail">
-            <s:param value="id" name="site_id"/>
-            Nom : <s:property value="nom"/><br/></s:a><br/>
-        Description : <s:property value="description"/>
-    </p>
+<div class="container">
+    <s:if test="%{!sites.isEmpty()}">
+        <h3 style="text-align: center">Site(s)</h3>
+        <s:iterator value="sites">
+            <div class="row">
+                <div class="col-md-9">
+                    <h6>Nom : <s:property value="nom"/></h6>
+                    <p>Région : <s:property value="region"/></p>
+                    <p>Description : <s:property value="description"/></p>
+                </div>
+                <div class="col-md-3 align-self-center">
+                    <s:a  action="site_detail" class="btn btn-outline-info" role="button">
+                        <s:param name="site_id" value="id"/>
+                        Voir détail
+                    </s:a>
+                </div>
+            </div>
+        </s:iterator>
+    </s:if>
+</div>
 
-</s:iterator>
+<div class="col-md-12"></div>
 
-<s:iterator value="voies">
-    <h4>Voie(s)</h4>
-    <s:a action="voie_detail">
-        <s:param name="voie_id" value="id"/>
-        ID : <s:property value="id"/>
-        <p>Nom : <s:property value="nom"/></p> </s:a>
-    <p>Description : <s:property value="description"/></p>
+<div class="container">
+    <s:if test="%{!secteurs.isEmpty()}">
+        <h3 style="text-align: center">Secteur(s)</h3>
+        <s:iterator value="secteurs">
+            <div class="row">
+                <div class="col-md-9">
+                    <h5>Nom : <s:property value="nom"/></h5>
+                    <p>Description : <s:property value="description"/></p>
+                    <s:iterator value="secteursRefSite">
+                        <s:if test="%{site_id.equals(id)}">
+                            <p>Nom du site auquel le secteur apartien : <s:property value="nom"/></p>
+                        </s:if>
+                    </s:iterator>
+                </div>
+                <div class="col-md-3 align-self-center">
+                    <s:a  action="site_detail" class="btn btn-outline-info" role="button">
+                        <s:param name="site_id" value="site_id"/>
+                        Voir détail du site
+                    </s:a>
+                    <p></p>
+                    <s:a  action="secteur_detail" class="btn btn-outline-info" role="button">
+                        <s:param name="secteur.id" value="id"/>
+                        Voir détail du secteur
+                    </s:a>
+                </div>
+            </div>
+        </s:iterator>
+    </s:if>
+    <hr width="100%" color="#DCDCDC">
+</div>
 
-</s:iterator>
+
+
+<div class="container">
+    <s:if test="%{!voies.isEmpty()}">
+        <h3 style="text-align: center">Voie(s)</h3>
+        <s:iterator value="voies">
+            <div class="row">
+                <div class="col-md-9">
+                    <h5>Nom : <s:property value="nom"/></h5>
+                    <p>Description : <s:property value="description"/></p>
+                    <p>Type de voie : <s:property value="type_voie"/></p>
+                    <p>Cotation : <s:property value="cotation"/> </p>
+                </div>
+                <div class="col-md-3 align-self-center">
+                    <s:a action="voie_detail" class="btn btn-outline-info" role="button">
+                        <s:param value="id" name="voie_id"/>
+                        Détail de la voie
+                    </s:a>
+                </div>
+            </div>
+
+            <s:iterator value="voiesRefSecteur">
+                <div class="row">
+                    <div class="col-md-9">
+                        <s:if test="%{secteur_id.equals(id)}">
+                            <p>Nom du secteur auquel apartien la voie : <s:property value="nom"/></p>
+                        </s:if>
+                    </div>
+                    <div class="col-md-3 align-self-center">
+                        <s:a  action="site_detail" class="btn btn-outline-info" role="button">
+                            <s:param name="site_id" value="site_id"/>
+                            Voir détail du site
+                        </s:a>
+                    </div>
+                </div>
+            </s:iterator>
+
+            <s:iterator value="voiesRefSecteur">
+                <s:iterator value="voiesRefSecteurRefSite">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <s:if test="%{site_id.equals(id)}">
+                                <p>Nom du site auquel apartien la voie : <s:property value="nom"/> </p>
+                            </s:if>
+                        </div>
+                        <div class="col-md-3 align-self-center">
+                            <s:a  action="secteur_detail" class="btn btn-outline-info" role="button">
+                                <s:param name="secteur.id" value="id"/>
+                                Voir détail du secteur
+                            </s:a>
+                        </div>
+                    </div>
+                </s:iterator>
+            </s:iterator>
+        </s:iterator>
+    </s:if>
+</div>
+
 <footer>
     <%@include file="../_include/footer.jsp"%>
 </footer>
-</body></center>
+
+</body>
+
 </html>

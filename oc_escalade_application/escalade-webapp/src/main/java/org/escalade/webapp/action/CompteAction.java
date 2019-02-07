@@ -8,7 +8,7 @@ import org.escalade.model.bean.Compte;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
+import java.sql.SQLException;
 import java.util.Map;
 
 public class CompteAction extends ActionSupport implements SessionAware, ServletRequestAware {
@@ -63,8 +63,11 @@ public class CompteAction extends ActionSupport implements SessionAware, Servlet
         } catch (NullPointerException pEX){
 
         } catch (Exception pEX) {
-            this.addActionError("Une erreur technique s'est produite, votre compte n'a pas pu être ajouté !");
+
+            this.addActionError("Cette adresse e-mail est déjà utilisée !");
         }
+
+
 
         return vResult;
     }
@@ -109,7 +112,7 @@ public class CompteAction extends ActionSupport implements SessionAware, Servlet
         } catch (NullPointerException pEX) {
             compte = managerFactory.getCompteManager().compte((Compte) this.session.get("user"));
         } catch (Exception pEX) {
-            System.out.println(pEX);
+
             this.addActionError("Une erreur s'est produite, veuillez réessayer ultérieurement !");
         }
 

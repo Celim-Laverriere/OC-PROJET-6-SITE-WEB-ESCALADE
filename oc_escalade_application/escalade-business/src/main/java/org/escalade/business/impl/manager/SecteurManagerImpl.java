@@ -6,7 +6,10 @@ import org.escalade.model.bean.Compte;
 import org.escalade.model.bean.Secteur;
 import org.escalade.model.bean.Voie;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class SecteurManagerImpl extends AbstractManagerImpl implements SecteurManager {
 
@@ -41,12 +44,38 @@ public class SecteurManagerImpl extends AbstractManagerImpl implements SecteurMa
     }
 
     /**
-     *
+     * Recherche dans la table site une correcpondance avec le mot clé de recherche
+     * saisi pas l'utilisateur.
      * @param motCleRecherche
-     * @return
+     * @return secteurs
      */
     public List<Secteur> rechercheSimpleParSecteur(String motCleRecherche){
+
         List<Secteur> secteurs = getDaoFactory().getSecteurDao().rechercheSimpleParSecteurDao(motCleRecherche);
+
+        return secteurs;
+    }
+
+    /**
+     * Renvoie le(s) secteur(s) correspondant aux voies trouver lors de la recherche,
+     * dans la "barre de recherche" du navigateur.
+     * @param voies
+     * @return secteurs
+     */
+    public List<Secteur> rechercheSecteurParVoie(List<Voie> voies){
+
+        List<Secteur> secteurs = new ArrayList<>();
+        Set<Integer> voieSecteur_id = new HashSet<>();
+
+        for (Voie voie: voies){
+            voieSecteur_id.add(voie.getSecteur_id());
+        }
+
+        for (Integer secteur_id: voieSecteur_id){
+            List<Secteur> secteursParVoie = getDaoFactory().getSecteurDao().rechercheSecteurParVoie(secteur_id);
+            secteurs.addAll(secteursParVoie);
+        }
+
         return secteurs;
     }
 

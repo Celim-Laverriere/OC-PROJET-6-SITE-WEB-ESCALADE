@@ -11,6 +11,7 @@ public class Voie {
     private float hauteur;
     private String description;
     private List<LongueurRelai> longueursRelais;
+    private Integer secteur_id;
 
 
     public Voie() {
@@ -70,5 +71,13 @@ public class Voie {
 
     public void setLongueursRelais(List<LongueurRelai> longueursRelais) {
         this.longueursRelais = longueursRelais;
+    }
+
+    public Integer getSecteur_id() {
+        return secteur_id;
+    }
+
+    public void setSecteur_id(Integer secteur_id) {
+        this.secteur_id = secteur_id;
     }
 }

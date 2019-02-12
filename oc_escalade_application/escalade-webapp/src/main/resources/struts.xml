@@ -150,6 +150,20 @@
             <result name="error">/jsp/compte/formulaire_secteur.jsp</result>
         </action>
 
+        <!-- Créer un site d'éscalade complet : Attention emplacement temporaire ! -->
+        <action name="complete_creation_climbing_site"
+                class="org.escalade.webapp.action.formulaireSiteComplet"
+                method="completeCreationClimbingSite">
+
+            <!--<interceptor-ref name="store">-->
+            <!--<param name="operationMode">STORE</param>-->
+            <!--</interceptor-ref>-->
+            <!--<interceptor-ref name="authenticatedStack"/>-->
+            <!--<interceptor-ref name="defaultStack"/>-->
+
+            <result name="input">jsp/formulaire_de_creation/formulaire_site_complet.jsp</result>
+        </action>
+
     </package>
 
     <!-- ============================================ -->
@@ -177,6 +191,8 @@
                     <!-- ************************ -->
                     <!-- ACTION SITES D'ESCALADES -->
                     <!-- ************************ -->
+
+
 
         <!-- Récupère les informations pour créer un nouveau site -->
         <action name="new_site"
@@ -297,7 +313,7 @@
             <result name="success">jsp/login/login.jsp</result>
             <result name="error">/jsp/compte/formulaire_secteur.jsp</result>
         </action>
-        
+
         <action name="supprimer_compte"
                 class="org.escalade.webapp.action.CompteAction"
                 method="supprimerCompteUtilisateur">

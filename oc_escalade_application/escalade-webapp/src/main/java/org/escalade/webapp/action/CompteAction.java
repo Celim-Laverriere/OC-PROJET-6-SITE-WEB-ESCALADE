@@ -8,7 +8,6 @@ import org.escalade.model.bean.Compte;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
-import java.sql.SQLException;
 import java.util.Map;
 
 public class CompteAction extends ActionSupport implements SessionAware, ServletRequestAware {
@@ -67,8 +66,6 @@ public class CompteAction extends ActionSupport implements SessionAware, Servlet
             this.addActionError("Cette adresse e-mail est déjà utilisée !");
         }
 
-
-
         return vResult;
     }
 
@@ -79,17 +76,31 @@ public class CompteAction extends ActionSupport implements SessionAware, Servlet
     public String upCompte(){
         String vResult = ActionSupport.INPUT;
 
+        Compte compteSessionCompar = (Compte) this.session.get("user");
+
         try {
-            managerFactory.getCompteManager().upCompte(upCompte, (Compte) this.session.get("user"));
 
-            this.servletRequest.getSession().invalidate();
-            this.addActionMessage("Vos modifications ont bien été pris en compte, merci de vous reconnecter !");
+            if(!upCompte.equals(null) && !upCompte.getMail().equals(compteSessionCompar.getMail())
+                    || !upCompte.getMot_de_passe().equals(compteSessionCompar.getMot_de_passe())){
 
-            vResult = ActionSupport.SUCCESS;
+                managerFactory.getCompteManager().upCompte(upCompte, (Compte) this.session.get("user"));
+
+                this.addActionMessage("Vos modifications ont bien été pris en compte, merci de vous reconnecter !");
+                vResult = ActionSupport.SUCCESS;
+
+            } else if (!upCompte.equals(null)){
+                managerFactory.getCompteManager().upCompte(upCompte, (Compte) this.session.get("user"));
+                Compte vUtilisateur = managerFactory.getCompteManager().comptByUtilisateur(upCompte.getMail(), upCompte.getMot_de_passe());
+
+                this.addActionMessage("Vos modifications ont bien été pris en compte !");
+
+                this.session.put("user",vUtilisateur );
+                compte = managerFactory.getCompteManager().compte((Compte) this.session.get("user"));
+            }
+
         } catch (NullPointerException pEX){
             compte = managerFactory.getCompteManager().compte((Compte) this.session.get("user"));
         } catch (Exception pEX) {
-
             this.addActionError("Une erreur s'est produite, veuillez réessayer ultérieurement !" );
         }
 

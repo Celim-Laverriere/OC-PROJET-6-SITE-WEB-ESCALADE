@@ -9,15 +9,17 @@
 <%@taglib prefix="s" uri="/struts-tags"%>
 <html>
 
+<head>
+    <%@include file="../_include/head.jsp"%>
+</head>
+
 <body>
 
+<%@include file="../_include/header.jsp"%>
+
 <s:if test="!#session.user">
-
-    <%@include file="../_include/head.jsp"%>
-
-    <%@include file="../_include/header.jsp"%>
-
-    <div class="container" style="margin-top: 2%">
+    <div class="container" style="margin-top: 1%; padding-top: 1%; margin-bottom: 1%; border-style: solid; border-color: #DCDCDC; border-width: 2px;
+                    border-radius: 10px">
         <div class="row justify-content-md-center">
             <div class="col-md-6">
                 <h4>Creez votre compte OC Escalade</h4>
@@ -54,18 +56,18 @@
         </div>
     </div>
 
-    <footer>
-        <%@include file="../_include/footer.jsp"%>
-    </footer>
+
 </s:if>
 
 <s:if test="#session.user">
 
-    <%@include file="../_include/formulaireChoixCreate.jsp"%>
-
-    <div class="container" style="position: absolute; top: 14%; left: 29%">
-        <div class="row justify-content-md-center">
+    <div class="container" style="margin-top: 1%; padding-top: 1%; margin-bottom: 1%; border-style: solid;
+            border-color: #DCDCDC; border-width: 2px;  border-radius: 10px">
+        <div class="row justify-content-center">
             <div class="col-md-6">
+
+                <s:actionmessage/>
+
                 <h4>Modifier le compte</h4>
 
                 <s:form action="modifier_compte_utilisateur">
@@ -139,6 +141,10 @@
     </div>
 
 </s:if>
+
+<footer>
+    <%@include file="../_include/footer.jsp"%>
+</footer>
 
 </body>
 

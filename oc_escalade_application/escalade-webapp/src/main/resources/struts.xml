@@ -164,6 +164,14 @@
             <result name="input">jsp/formulaire_de_creation/formulaire_site_complet.jsp</result>
         </action>
 
+        <action name="modifier_longueur_relai"
+                class="org.escalade.webapp.action.formulaireSiteComplet"
+                method="modifierLongueurRelai">
+
+
+            <result name="input">jsp/formulaire_de_creation/formulaire_site_complet.jsp</result>
+        </action>
+
     </package>
 
     <!-- ============================================ -->

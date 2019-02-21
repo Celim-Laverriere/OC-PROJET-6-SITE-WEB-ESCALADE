@@ -1,6 +1,7 @@
 package org.escalade.webapp.action;
 
 import com.opensymphony.xwork2.ActionSupport;
+
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.escalade.business.contract.ManagerFactory;
@@ -11,10 +12,7 @@ import org.escalade.model.bean.Voie;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class formulaireSiteComplet extends ActionSupport implements SessionAware, ServletRequestAware {
 
@@ -27,6 +25,13 @@ public class formulaireSiteComplet extends ActionSupport implements SessionAware
     private Secteur secteur;
     private Voie voie;
     private LongueurRelai longueurRelai;
+    private List<LongueurRelai> longueursRelais = new ArrayList<>();
+
+    /**
+     * Stock la hauteur de la voie ou de la longueur
+     */
+    private String hauteur_voie_logueur;
+    private Integer initNumLongueur;
 
     // ===== Paramètres en sortie =====
     private List<String> regions = new ArrayList(Arrays.asList("Ile-de-France", "Champagne-Ardenne", "Picardie",
@@ -51,30 +56,6 @@ public class formulaireSiteComplet extends ActionSupport implements SessionAware
     private ManagerFactory managerFactory;
 
     // ==================== Getters/Setters =====================
-
-    public List<String> getRegions() {
-        return regions;
-    }
-
-    public void setRegions(List<String> regions) {
-        this.regions = regions;
-    }
-
-    public List<String> getTypes_voie() {
-        return types_voie;
-    }
-
-    public void setTypes_voie(List<String> types_voie) {
-        this.types_voie = types_voie;
-    }
-
-    public List<String> getCotations() {
-        return cotations;
-    }
-
-    public void setCotations(List<String> cotations) {
-        this.cotations = cotations;
-    }
 
     public String getConfigSelectFormulaire() {
         return configSelectFormulaire;
@@ -116,7 +97,55 @@ public class formulaireSiteComplet extends ActionSupport implements SessionAware
         this.longueurRelai = longueurRelai;
     }
 
-// ======================== Méthodes ========================
+    public List<String> getRegions() {
+        return regions;
+    }
+
+    public void setRegions(List<String> regions) {
+        this.regions = regions;
+    }
+
+    public List<String> getTypes_voie() {
+        return types_voie;
+    }
+
+    public void setTypes_voie(List<String> types_voie) {
+        this.types_voie = types_voie;
+    }
+
+    public List<String> getCotations() {
+        return cotations;
+    }
+
+    public void setCotations(List<String> cotations) {
+        this.cotations = cotations;
+    }
+
+    public String getHauteur_voie_logueur() {
+        return hauteur_voie_logueur;
+    }
+
+    public void setHauteur_voie_logueur(String hauteur_voie_logueur) {
+        this.hauteur_voie_logueur = hauteur_voie_logueur;
+    }
+
+    public Integer getInitNumLongueur() {
+        return initNumLongueur;
+    }
+
+    public void setInitNumLongueur(Integer initNumLongueur) {
+        this.initNumLongueur = initNumLongueur;
+    }
+
+    public List<LongueurRelai> getLongueursRelais() {
+        return longueursRelais;
+    }
+
+    public void setLongueursRelais(List<LongueurRelai> longueursRelais) {
+        this.longueursRelais = longueursRelais;
+    }
+
+    // ======================== Méthodes ========================
 
     public String completeCreationClimbingSite(){
 
@@ -127,20 +156,44 @@ public class formulaireSiteComplet extends ActionSupport implements SessionAware
             switch (configSelectFormulaire) {
 
                 case "formulaireSite":
-                    System.out.println(site.getNom());
+
+                   this.session.put("site", site);
                     configSelectFormulaire = "formulaireSecteur";
                     break;
+
                 case "formulaireSecteur":
-                    System.out.println(secteur.getNom());
+
+                    this.session.put("secteur", secteur);
+
                     configSelectFormulaire = "formulaireVoie";
                     break;
+
                 case "formulaireVoie":
-                    System.out.println(voie.getNom());
-                    System.out.println(voie.getType_voie());
+
+                    voie.setHauteur(Float.parseFloat(hauteur_voie_logueur));
+                    this.session.put("voie", voie);
+
+
+                    initNumLongueur  = (Integer) this.session.get("initNumLongueur");
+
+                    if (initNumLongueur == null) {
+                        initNumLongueur = 1;
+                    }
+
+                    this.session.put("initNumLongueur", initNumLongueur);
+
+                    longueursRelais = (List<LongueurRelai>) this.session.get("listLongueurs");
+
                     configSelectFormulaire = "formulaireLongueurRelai";
                     break;
+
                 case "formulaireLongueurRelai":
-                    System.out.println(voie.getNom());
+
+                    upLongueurRelai();
+
+                    initNumLongueur = initNumLongueur + 1;
+                    this.session.put("initNumLongueur", initNumLongueur);
+
                     configSelectFormulaire = "formulaireLongueurRelai";
                     break;
             }
@@ -154,7 +207,74 @@ public class formulaireSiteComplet extends ActionSupport implements SessionAware
         return vResult;
     }
 
+
+    public void upLongueurRelai (){
+
+        longueurRelai.setHauteur(Float.parseFloat(hauteur_voie_logueur));
+
+        initNumLongueur = (Integer) this.session.get("initNumLongueur");
+        longueurRelai.setNum_longueur(initNumLongueur);
+
+        if (longueurRelai.getNum_longueur() == 1){
+            longueursRelais.add(longueurRelai);
+            this.session.put("listLongueurs", longueursRelais);
+        } else {
+
+            longueursRelais = (List<LongueurRelai>) this.session.get("listLongueurs");
+
+            if (longueurRelai.getNum_relai() != 0){
+                List<LongueurRelai> longueurRelaiListReverse = new ArrayList<>(longueursRelais);
+                Collections.reverse(longueurRelaiListReverse);
+
+                for (LongueurRelai relais: longueurRelaiListReverse){
+                    if (relais.getNum_relai() > 0){
+                        int numRelai = relais.getNum_relai();
+                        longueurRelai.setNum_relai(numRelai + 1);
+                        break;
+                    }
+                }
+            }
+
+            longueursRelais.add(longueurRelai);
+            this.session.put("listLongueurs", longueursRelais);
+        }
+    }
+
+    public String modifierLongueurRelai(){
+        String vResult = ActionSupport.INPUT;
+
+        longueursRelais = (List<LongueurRelai>) this.session.get("listLongueurs");
+        longueurRelai.setHauteur(Float.parseFloat(hauteur_voie_logueur));
+
+        for (LongueurRelai vLongueurRelai: longueursRelais){
+            Integer numLongueur = vLongueurRelai.getNum_longueur();
+
+            if (numLongueur.equals(longueurRelai.getNum_longueur())){
+                vLongueurRelai.setHauteur(longueurRelai.getHauteur());
+                vLongueurRelai.setCotation(longueurRelai.getCotation());
+
+                if (longueurRelai.getNum_relai() != 0){
+                    List<LongueurRelai> longueurRelaiListReverse = new ArrayList<>(longueursRelais);
+                    Collections.reverse(longueurRelaiListReverse);
+
+                    for (LongueurRelai relais: longueurRelaiListReverse){
+                        if (relais.getNum_relai() > 0){
+                            int numRelai = relais.getNum_relai();
+                           vLongueurRelai.setNum_relai(numRelai + 1);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        configSelectFormulaire = "formulaireLongueurRelai";
+
+        return vResult;
+    }
+
     // ======================== Session =========================
+
     @Override
     public void setSession(Map<String, Object> pSession) {
         this.session = pSession;

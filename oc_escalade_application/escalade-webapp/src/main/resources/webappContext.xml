@@ -13,10 +13,4 @@
         <property name="password" value="escalade" />
     </bean>
 
-    <!--<bean id="abstractWebappImpl" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">-->
-        <!--<property name="targetClass" value="org.escalade.webapp.AbstractWebappImpl"/>-->
-        <!--<property name="targetMethod" value="setManagerFactory"/>-->
-        <!--<property name="arguments" ref="managerFactory"/>-->
-    <!--</bean>-->
-
 </beans>

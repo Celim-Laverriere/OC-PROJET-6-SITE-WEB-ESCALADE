@@ -23,7 +23,7 @@
                              placeholder="Rechercher un site d'escalade"/>
                 </div>
                 <div class="col-md-1" >
-                    <button type="submit" style="margin-left: 4px" class="btn btn-primary btn-md">Validez</button>
+                    <button id="valRecherche" type="submit" style="margin-left: 4px" class="btn btn-primary btn-md">Validez</button>
                 </div>
             </s:form>
         </div>

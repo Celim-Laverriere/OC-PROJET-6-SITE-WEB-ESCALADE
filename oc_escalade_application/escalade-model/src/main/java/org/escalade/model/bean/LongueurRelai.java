@@ -4,7 +4,7 @@ public class LongueurRelai {
 
     private Integer id;
     private String cotation;
-    private float hauteur;
+    private Float hauteur;
     private int num_longueur;
     private int num_relai;
 

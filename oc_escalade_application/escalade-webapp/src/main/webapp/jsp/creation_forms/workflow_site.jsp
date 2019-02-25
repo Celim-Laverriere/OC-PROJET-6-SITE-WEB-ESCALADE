@@ -5,9 +5,9 @@
   Time: 07:52
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 
 <head>
@@ -16,14 +16,12 @@
 
 <body>
 
-<header>
-    <%@include file="../_include/header.jsp"%>
-</header>
+<%@include file="../_include/user_menu.jsp"%>
 
-<div id="configSelectFormulaire"><s:property value="configSelectFormulaire"/></div>
+<div id="configSelectForm"><s:property value="configSelectForm"/></div>
 
 <div class="container" style="border-style: solid; border-color: #DCDCDC; border-width: 2px; border-radius: 10px;
-        margin-top: 10px; box-shadow: 6px 6px 14px #DCDCDC">
+        margin-top: 1%; box-shadow: 6px 6px 14px #DCDCDC">
 
     <div class="col-md-12" style="text-align: center; margin-top: 2%">
         <h4>Création d'un nouveau sites d'éscalades</h4>
@@ -34,8 +32,8 @@
     <%-- =============================== --%>
 
     <div class="row">
-        <div id="navigateur" class="col-md-12">
-            <ul class="nav nav-tabs" id="navFormulaire">
+        <div id="navForm" class="col-md-12">
+            <ul class="nav nav-tabs">
                 <li class="nav-item">
                     <a id="navSite" class="nav-link" href="#">Site</a>
                 </li>
@@ -46,7 +44,7 @@
                     <a id="navVoie" class="nav-link" href="#">Voie</a>
                 </li>
                 <li class="nav-item">
-                    <a id="navLongueurRelai" class="nav-link" href="#">Longueurs & Relais</a>
+                    <a id="navLongueur" class="nav-link" href="#">Longueurs & Relais</a>
                 </li>
             </ul>
         </div>
@@ -56,7 +54,7 @@
     <%-- ==== Formulaire Site ==== --%>
     <%-- ========================= --%>
 
-    <div class="row" id="formulaireSite">
+    <div class="row" id="formSite">
 
         <div class="col-md-12" style="margin-top: 1%">
             <h5>Création d'un nouveau sites d'éscalades</h5>
@@ -67,15 +65,15 @@
                 <div class="form-group">
                     <label for="inputNomSite">Nom du site</label>
                     <input name="site.nom" value="<s:property value="#session.site.nom"/>" id="inputNomSite" type="text"
-                           class="form-control" style="width: 100%" required="true">
+                           class="form-control" style="width: 100%" required="true" autofocus>
                 </div>
                 <div class="form-group">
-                    <label for="selectRegion">Région</label>
-                    <select name="site.region" id="selectRegion" required="true" class="form-control" style="width: 100%">
+                    <label for="selectRegionSite">Région</label>
+                    <select name="site.region" id="selectRegionSite" required="true" class="form-control" style="width: 100%">
                         <s:if test="#session.site">
                             <option selected="selected"><s:property value="#session.site.region"/></option>
                         </s:if>
-                        <c:forEach var="region" items="${regions}">
+                        <c:forEach var="region" items="${listRegions}">
                             <option><c:out value="${region}"/></option>
                         </c:forEach>
                     </select>
@@ -89,10 +87,10 @@
 
                 <div class="row justify-content">
                     <div class="col-md-6">
-                        <select name="configSelectFormulaire" required="true" class="form-control" checked style="display: none">
-                            <option>formulaireSite</option>
+                        <select name="configSelectForm" required="true" class="form-control" checked style="display: none">
+                            <option>formSite</option>
                         </select>
-                        <button id="siteEtapeSuivante" class="btn btn-primary" type="submit">Suivant</button>
+                        <button id="siteNextStep" class="btn btn-primary" type="submit">Suivant</button>
                     </div>
                     <!-- Button trigger modal -->
                     <div class="col-md-6">
@@ -111,20 +109,19 @@
     <%-- ===== Formulaire secteur ===== --%>
     <%-- ============================== --%>
 
-    <div class="row" id="formulaireSecteur">
+    <div class="row" id="formSecteur">
 
         <div class="col-md-12" style="margin-top: 1%">
             <h5>Création d'un nouveau secteur</h5>
         </div>
 
         <div class="col-md-12">
-            <s:form action="complete_creation_climbing_site">
+            <s:form action="complete_creation_climbing_secteur">
                 <div class="form-group">
 
                     <label for="inputNomSecteur">Nom du secteur</label>
                     <input name="secteur.nom" value="<s:property value="#session.secteur.nom"/>"  id="inputNomSecteur"
-                           type="text" class="form-control" style="width: 100%" requiredLabel="true"
-                           required="true">
+                           type="text" class="form-control" style="width: 100%" requiredLabel="true" required="true" autofocus>
 
                     <label for="textareaDescriptionSecteur">Description du secteur</label>
                     <textarea name="secteur.description" id="textareaDescriptionSecteur" cols="40" rows="5"
@@ -133,10 +130,10 @@
 
                 <div class="row justify-content-end">
                     <div class="col-md-6">
-                        <select name="configSelectFormulaire" required="true" class="form-control" checked style="display: none">
-                            <option>formulaireSecteur</option>
+                        <select name="configSelectForm" required="true" class="form-control" checked style="display: none">
+                            <option>formSecteur</option>
                         </select>
-                        <button id="secteurEtapeSuivante" class="btn btn-primary" type="submit">Validez</button>
+                        <button id="secteurNextStep" class="btn btn-primary" type="submit">Suivant</button>
                     </div>
                     <!-- Button trigger modal -->
                     <div class="col-md-6">
@@ -154,19 +151,19 @@
     <%-- ======= Formulaire voie ======= --%>
     <%-- =============================== --%>
 
-    <div class="row" id="formulaireVoie">
+    <div class="row" id="formVoie">
 
         <div class="col-md-12" style="margin-top: 1%">
             <h5>Création d'une nouvelle Voie !</h5>
         </div>
 
         <div class="col-md-12">
-            <s:form action="complete_creation_climbing_site">
+            <s:form action="complete_creation_climbing_voie">
                 <div class="form-group">
 
                     <label for="inputNomVoie">Nom de la voie</label>
                     <input name="voie.nom" id="inputNomVoie" value="<s:property value="#session.voie.nom"/>"
-                           type="text" class="form-control" style="width: 100%" requiredLabel="true" required="true">
+                           type="text" class="form-control" style="width: 100%" requiredLabel="true" required="true" autofocus>
 
                     <div class="row align-justify">
                         <div class="col-md-4">
@@ -175,7 +172,7 @@
                                 <s:if test="#session.voie">
                                     <option selected="selected"><s:property value="#session.voie.type_voie"/></option>
                                 </s:if>
-                                <c:forEach var="type" items="${types_voie}">
+                                <c:forEach var="type" items="${listTypesVoie}">
                                     <option><c:out value="${type}"/></option>
                                 </c:forEach>
                             </select>
@@ -193,7 +190,7 @@
                         </div>
                         <div class="col-md-4">
                             <label for="inputHauteurVoie">Hauteur de la voie</label>
-                            <input name="hauteur_voie_logueur" id="inputHauteurVoie" value="<s:property value="#session.voie.hauteur"/>"
+                            <input name="hauteur" id="inputHauteurVoie" value="<s:property value="#session.voie.hauteur"/>"
                                    type="number" step="0.10" class="form-control" required="true">
                         </div>
                     </div>
@@ -205,10 +202,10 @@
 
                 <div class="row justify-content-end">
                     <div class="col-md-6">
-                        <select name="configSelectFormulaire" required="true" class="form-control" checked style="display: none">
-                            <option>formulaireVoie</option>
+                        <select name="configSelectForm" required="true" class="form-control" checked style="display: none">
+                            <option>formVoie</option>
                         </select>
-                        <button id="voieEtapeSuivante" class="btn btn-primary" type="submit">Validez</button>
+                        <button id="voieNextStep" class="btn btn-primary" type="submit">Suivant</button>
                     </div>
                     <!-- Button trigger modal -->
                     <div class="col-md-6">
@@ -225,7 +222,7 @@
     <%-- ============================================== --%>
     <%-- ======= Formulaire Longueurs et relais ======= --%>
     <%-- ============================================== --%>
-    <div class="row" id="formulaireLongueurRelai">
+    <div class="row" id="formLongueur">
 
         <div class="col-md-12" style="margin-top: 1%">
             <h5>Création des longueurs et des relais !</h5>
@@ -261,29 +258,29 @@
                 </table>
             </div>
 
-            <div class="col-md-12">
+            <div class="col-md-12" id="divSelectLongueur">
                 <div class="d-flex justify-content-center">
-                    <button  class="btn btn-secondary" data-toggle="collapse" href="#selectLongueurModif" aria-expanded="false" aria-controls="collapseExample"
-                             id="selectRelaiModif" role="button">Cliquez ici pour modifier une longueur</button>
+                    <button class="btn btn-secondary" data-toggle="collapse" href="#selectLongueurModif" aria-expanded="false"
+                            aria-controls="collapseExample" id="buttonSelectLongueurModif" role="button">Cliquez ici pour modifier une longueur</button>
                 </div>
             </div>
 
             <hr width="90%" color="#DCDCDC">
         </s:if>
 
-        <div class="col-md-12">
-            <s:form action="complete_creation_climbing_site">
-                <div id="formGroupLongueur" class="form-group">
+        <div class="col-md-12" id="formGroupLongueur">
+            <s:form action="complete_creation_climbing_longueur">
+                <div class="form-group">
 
                     <div class="row align-justify">
                         <div class="col-md-3">
                             <label for="inputHauteurLongueur">Hauteur de la longueur N° <s:property value="#session.initNumLongueur"/></label>
-                            <input name="hauteur_voie_logueur" id="inputHauteurLongueur" type="number" step="0.10"
-                                   class="form-control" style="width: 100%" required="true">
+                            <input name="hauteur" id="inputHauteurLongueur" type="number" step="0.10" class="form-control"
+                                   style="width: 100%" required="true" autofocus>
                         </div>
                         <div class="col-md-3">
                             <label for="selectCotationLongueur">Cotation de la longueur</label>
-                            <select name="longueurRelai.cotation" id="selectCotationLongueur" required="true" class="form-control"
+                            <select name="longueur.cotation" id="selectCotationLongueur" required="true" class="form-control"
                                     style="width: 100%">
                                 <c:forEach var="cotation" items="${cotations}">
                                     <option><c:out value="${cotation}"/></option>
@@ -291,16 +288,16 @@
                             </select>
                         </div>
                         <div class="col-md-5">
-                            <label for="relaiRadios">Relai</label>
-                            <fieldset class="form-group" id="relaiRadios">
+                            <label for="radiosRelaiModif">Relai</label>
+                            <fieldset class="form-group" id="radiosRelaiModif">
                                 <div class="form-check form-check-inline">
-                                    <input name="longueurRelai.num_relai" id="relaiOui" value=1 class="form-check-input" type="radio">
+                                    <input name="longueur.num_relai" id="relaiOui" value=1 class="form-check-input" type="radio">
                                     <label class="form-check-label" for="relaiOui">
                                         Oui il y a un relai !
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input name="longueurRelai.num_relai" id="relaiNon" value=0 class="form-check-input" type="radio">
+                                    <input name="longueur.num_relai" id="relaiNon" value=0 class="form-check-input" type="radio">
                                     <label class="form-check-label" for="relaiNon">
                                         Non il n'y a pas de relai !
                                     </label>
@@ -312,22 +309,21 @@
                         </div>
                         <div class="row align-items-center">
                             <div class="col-md-2" style="margin-right: -1%">
-                                <select name="configSelectFormulaire" required="true" class="form-control" checked style="display: none">
-                                    <option>formulaireLongueurRelai</option>
+                                <select name="configSelectForm" required="true" class="form-control" checked style="display: none">
+                                    <option>formLongueur</option>
                                 </select>
-                                <button id="ajouterUneLongueur" class="btn btn-primary" type="submit">Ajouter</button>
+                                <button id="addLongueur" class="btn btn-primary" type="submit">Ajouter</button>
                             </div>
                         </div>
                     </div>
                 </div>
+            </s:form>
 
+            <s:form action="validation_Form">
                 <div class="row justify-content-end">
 
                     <div class="col-md-6">
-                            <%--<select name="configSelectFormulaire" required="true" class="form-control" checked style="display: none">--%>
-                            <%--<option>validerFormulaire</option>--%>
-                            <%--</select>--%>
-                        <button id="validerFormulaire" class="btn btn-success" type="submit">Validez</button>
+                        <button id="validateForm" class="btn btn-success" type="submit">Validez</button>
                     </div>
 
                     <!-- Button trigger modal -->
@@ -338,6 +334,7 @@
                     </div>
                 </div>
             </s:form>
+
         </div>
     </div>
 
@@ -355,8 +352,12 @@
                         </select>
                     </div>
                     <div class="col-md-2" style="margin-top: 3%">
-                        <button class="btn btn-success" data-toggle="collapse" href="#modifierLongueur" aria-expanded="false" aria-controls="collapseExample"
-                                 id="validezSelectLongueur" role="button">Validez</button>
+                        <button class="btn btn-success" data-toggle="collapse" href="#modifiedLongueur" aria-expanded="false"
+                                aria-controls="collapseExample" id="buttonValidateSelectLongueur" role="button">Validez
+                        </button>
+                    </div>
+                    <div class="col-md-2" style="margin-top: 3%">
+                        <button id="cancelSelect" class="btn btn-danger" >Annuler</button>
                     </div>
                 </div>
             </div>
@@ -364,43 +365,45 @@
     </div>
 
     <!-- collapse modifier longueur -->
-    <div class="collapse" id="modifierLongueur">
+    <div class="collapse" id="modifiedLongueur">
         <div class="card card-body">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <s:form action="modifier_longueur_relai">
+                        <s:form action="modified_Longueur">
                             <div id="formGroupLongueurModif" class="form-group">
 
                                 <div class="row align-justify align-items-center">
                                     <div class="col-md-3">
-                                        <label for="inputHauteurLongueur">Hauteur de la longueur N° <span id="afficheNumLongueurModif"></span></label>
-                                        <select name="longueurRelai.num_longueur" required="true" class="form-control" checked style="display: none">
+                                        <label for="inputHauteurLongueur">Hauteur de la longueur N° <span id="displayNumLongueurModif"></span></label>
+                                        <select name="longueur.num_longueur" required="true" class="form-control" checked style="display: none">
                                             <option id="numLongueurModif"></option>
                                         </select>
-                                        <input name="hauteur_voie_logueur" id="inputHauteurLongueurModif" type="number" step="0.10"
-                                               class="form-control" style="width: 100%" required="true">
+                                        <input name="hauteur" id="inputHauteurLongueurModif" type="number" step="0.10"
+                                               class="form-control" style="width: 100%" required="true" autofocus>
                                     </div>
                                     <div class="col-md-3">
                                         <label for="selectCotationLongueur">Cotation de la longueur</label>
-                                        <select name="longueurRelai.cotation" id="selectCotationLongueurModif" required="true" class="form-control"
-                                                style="width: 100%">
+                                        <select name="longueur.cotation" id="selectCotationLongueurModif" required="true"
+                                                class="form-control" style="width: 100%">
                                             <c:forEach var="cotation" items="${cotations}">
                                                 <option><c:out value="${cotation}"/></option>
                                             </c:forEach>
                                         </select>
                                     </div>
                                     <div class="col-md-4">
-                                        <label for="relaiRadios">Relai</label>
+                                        <label for="radiosRelaiModif">Relai</label>
                                         <fieldset class="form-group" id="relaiRadiosModif">
                                             <div class="form-check form-check-inline">
-                                                <input name="longueurRelai.num_relai" id="relaiOuiModif" value=1 class="form-check-input" type="radio">
+                                                <input name="longueur.num_relai" id="relaiOuiModif" value=1
+                                                       class="form-check-input" type="radio">
                                                 <label class="form-check-label" for="relaiOui">
                                                     Oui
                                                 </label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input name="longueurRelai.num_relai" id="relaiNonModif" value=0 class="form-check-input" type="radio">
+                                                <input name="longueur.num_relai" id="relaiNonModif" value=0
+                                                       class="form-check-input" type="radio">
                                                 <label class="form-check-label" for="relaiNon">
                                                     Non
                                                 </label>
@@ -410,13 +413,11 @@
                                             </small>
                                         </fieldset>
                                     </div>
-
-                                        <div class="col-md-2">
-                                            <button id="modifierUneLongueur" class="btn btn-primary" type="submit">Validez</button>
-                                            <p></p>
-                                            <button id="annulerModif" class="btn btn-danger" >Annuler</button>
-                                        </div>
-
+                                    <div class="col-md-2">
+                                        <button id="validateModifLongueur" class="btn btn-primary" type="submit">Validez</button>
+                                        <p></p>
+                                        <button id="cancelModif" class="btn btn-danger" >Annuler</button>
+                                    </div>
                                 </div>
                             </div>
                         </s:form>
@@ -426,17 +427,13 @@
         </div>
     </div>
 </div>
-<%----%>
-
-
-
 
 <!-- Modal -->
 <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="secteurModalL">Quitter le formulaire !</h5>
+                <h5 class="modal-title">Quitter le formulaire !</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -455,13 +452,8 @@
     </div>
 </div>
 
-<span id="test"></span>
 
-<footer>
-    <%@include file="../_include/footer.jsp"%>
-</footer>
-
-<script src="javaScript/formulaire_site_complet.js"></script>
+<script src="javaScript/workflow_site.js"></script>
 
 </body>
 

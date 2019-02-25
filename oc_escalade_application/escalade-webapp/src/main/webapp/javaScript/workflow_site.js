@@ -6,59 +6,58 @@ configPage();
 
 function configPage() {
 
-    var configSelectFormulaire = $('#configSelectFormulaire').text();
+    var configSelectForm = $('#configSelectForm').text();
 
-    $('span[id="test"]').text(configSelectFormulaire);
+    switch (configSelectForm) {
 
-    switch (configSelectFormulaire) {
-
-        case 'formulaireSite':
+        case 'formSite':
             $('#navSite').attr('class', 'nav-link active');
             $('#navSecteur').attr('class', 'nav-link disabled');
             $('#navVoie').attr('class', 'nav-link disabled');
-            $('#navLongueurRelai').attr('class', 'nav-link disabled');
+            $('#navLongueur').attr('class', 'nav-link disabled');
 
-            $('#configSelectFormulaire').hide();
-            $('#formulaireSite').show();
-            $('#formulaireSecteur').hide();
-            $('#formulaireVoie').hide();
-            $('#formulaireLongueurRelai').hide();
+            $('#configSelectForm').hide();
+            $('#formSite').show();
+            $('#formSecteur').hide();
+            $('#formVoie').hide();
+            $('#formLongueur').hide();
             break;
-        case 'formulaireSecteur':
+        case 'formSecteur':
             $('#navSite').attr('class', 'nav-link');
             $('#navSecteur').attr('class', 'nav-link active');
             $('#navVoie').attr('class', 'nav-link disabled');
-            $('#navLongueurRelai').attr('class', 'nav-link disabled');
+            $('#navLongueur').attr('class', 'nav-link disabled');
 
-            $('#configSelectFormulaire').hide();
-            $('#formulaireSite').hide();
-            $('#formulaireSecteur').show();
-            $('#formulaireVoie').hide();
-            $('#formulaireLongueurRelai').hide();
+            $('#configSelectForm').hide();
+            $('#formSite').hide();
+            $('#formSecteur').show();
+            $('#formVoie').hide();
+            $('#formLongueur').hide();
             break;
-        case 'formulaireVoie':
+        case 'formVoie':
             $('#navSite').attr('class', 'nav-link');
             $('#navSecteur').attr('class', 'nav-link');
             $('#navVoie').attr('class', 'nav-link active');
-            $('#navLongueurRelai').attr('class', 'nav-link disabled');
+            $('#navLongueur').attr('class', 'nav-link disabled');
 
-            $('#configSelectFormulaire').hide();
-            $('#formulaireSite').hide();
-            $('#formulaireSecteur').hide();
-            $('#formulaireVoie').show();
-            $('#formulaireLongueurRelai').hide();
+            $('#configSelectForm').hide();
+            $('#formSite').hide();
+            $('#formSecteur').hide();
+            $('#formVoie').show();
+            $('#formLongueur').hide();
             break;
-        case 'formulaireLongueurRelai' :
+        case 'formLongueur' :
             $('#navSite').attr('class', 'nav-link');
             $('#navSecteur').attr('class', 'nav-link');
             $('#navVoie').attr('class', 'nav-link');
-            $('#navLongueurRelai').attr('class', 'nav-link active');
+            $('#navLongueur').attr('class', 'nav-link active');
 
-            $('#configSelectFormulaire').hide();
-            $('#formulaireSite').hide();
-            $('#formulaireSecteur').hide();
-            $('#formulaireVoie').hide();
-            $('#formulaireLongueurRelai').show();
+            $('#configSelectForm').hide();
+            $('#formSite').hide();
+            $('#formSecteur').hide();
+            $('#formVoie').hide();
+            $('#formLongueur').show();
+            $('#validatedWorkflow').removeAttr('style');
             break;
     }
 }
@@ -72,7 +71,7 @@ function configPage() {
 
        var navSecteur = $('#navSecteur').attr('class');
        var navVoie = $('#navVoie').attr('class');
-       var navLongueur = $('#navLongueurRelai').attr('class');
+       var navLongueur = $('#navLongueur').attr('class');
 
         $('#navSite').attr('class', 'nav-link active');
 
@@ -89,17 +88,16 @@ function configPage() {
         }
 
         if(navLongueur ==  "nav-link active" || navLongueur ==  "nav-link"){
-            $('#navLongueurRelai').attr('class', 'nav-link');
+            $('#navLongueur').attr('class', 'nav-link');
         } else {
-            $('#navLongueurRelai').attr('class', 'nav-link disabled');
+            $('#navLongueur').attr('class', 'nav-link disabled');
         }
 
-        $('#configSelectFormulaire').hide();
-        $('#formulaireSite').show();
-        $('#formulaireSecteur').hide();
-        $('#formulaireVoie').hide();
-        $('#formulaireLongueurRelai').hide();
-
+        $('#configSelectForm').hide();
+        $('#formSite').show();
+        $('#formSecteur').hide();
+        $('#formVoie').hide();
+        $('#formLongueur').hide();
     });
 
     /* ==== Nav Secteur ==== */
@@ -107,7 +105,7 @@ function configPage() {
 
         var navSite = $('#navSite').attr('class');
         var navVoie = $('#navVoie').attr('class');
-        var navLongueur = $('#navLongueurRelai').attr('class');
+        var navLongueur = $('#navLongueur').attr('class');
 
         $('#navSecteur').attr('class', 'nav-link active');
 
@@ -124,16 +122,16 @@ function configPage() {
         }
 
         if(navLongueur ==  "nav-link active" || navLongueur ==  "nav-link"){
-            $('#navLongueurRelai').attr('class', 'nav-link');
+            $('#navLongueur').attr('class', 'nav-link');
         } else {
-            $('#navLongueurRelai').attr('class', 'nav-link disabled');
+            $('#navLongueur').attr('class', 'nav-link disabled');
         }
 
-        $('#configSelectFormulaire').hide();
-        $('#formulaireSite').hide();
-        $('#formulaireSecteur').show();
-        $('#formulaireVoie').hide();
-        $('#formulaireLongueurRelai').hide();
+        $('#configSelectForm').hide();
+        $('#formSite').hide();
+        $('#formSecteur').show();
+        $('#formVoie').hide();
+        $('#formLongueur').hide();
     });
 
     /* ==== Nav Voie ==== */
@@ -141,7 +139,7 @@ function configPage() {
 
         var navSite = $('#navSite').attr('class');
         var navSecteur = $('#navSecteur').attr('class');
-        var navLongueur = $('#navLongueurRelai').attr('class');
+        var navLongueur = $('#navLongueur').attr('class');
 
         $('#navVoie').attr('class', 'nav-link active');
 
@@ -158,26 +156,26 @@ function configPage() {
         }
 
         if(navLongueur ==  "nav-link active" || navLongueur ==  "nav-link"){
-            $('#navLongueurRelai').attr('class', 'nav-link');
+            $('#navLongueur').attr('class', 'nav-link');
         } else {
-            $('#navLongueurRelai').attr('class', 'nav-link disabled');
+            $('#navLongueur').attr('class', 'nav-link disabled');
         }
 
-        $('#configSelectFormulaire').hide();
-        $('#formulaireSite').hide();
-        $('#formulaireSecteur').hide();
-        $('#formulaireVoie').show();
-        $('#formulaireLongueurRelai').hide();
+        $('#configSelectForm').hide();
+        $('#formSite').hide();
+        $('#formSecteur').hide();
+        $('#formVoie').show();
+        $('#formLongueur').hide();
     });
 
     /* ==== Nav Longueur & Relai ==== */
-    $('#navLongueurRelai').click(function () {
+    $('#navLongueur').click(function () {
 
         var navSite = $('#navSite').attr('class');
         var navSecteur = $('#navSecteur').attr('class');
         var navVoie = $('#navVoie').attr('class');
 
-        $('#navLongueurRelai').attr('class', 'nav-link active');
+        $('#navLongueur').attr('class', 'nav-link active');
 
         if(navSite ==  "nav-link active" || navSite ==  "nav-link"){
             $('#navSite').attr('class', 'nav-link');
@@ -197,11 +195,11 @@ function configPage() {
             $('#navVoie').attr('class', 'nav-link disabled');
         }
 
-        $('#configSelectFormulaire').hide();
-        $('#formulaireSite').hide();
-        $('#formulaireSecteur').hide();
-        $('#formulaireVoie').hide();
-        $('#formulaireLongueurRelai').show();
+        $('#configSelectForm').hide();
+        $('#formSite').hide();
+        $('#formSecteur').hide();
+        $('#formVoie').hide();
+        $('#formLongueur').show();
     });
 
 
@@ -210,9 +208,9 @@ function configPage() {
             /* ======================== */
 
     $(function () {
-        $('#navigateur').css('margin-top', '2%');
+        $('#navForm').css('margin-top', '2%');
         $('div[id*="formulaire"][class="row"]').css('margin-top', '2%');
-        $(':button:not(#valRecherche, #ajouterUneLongueur)').attr('style', style="width: 100%");
+        $(':button:not(#valRecherche, #addLongueur)').attr('style', style="width: 100%");
     });
 
 
@@ -220,29 +218,32 @@ function configPage() {
 /* == Gestion de l'événements ajouer une nouvelle longueur == */
 /* ========================================================== */
 
-    $('#validerFormulaire').click(function () {
-        $('#validerFormulaire').attr('value', longueursRelais);
+    /* ===== Validez le formulaire ===== */
+    $('#validateForm').click(function () {
+        $('#validateForm').attr('value', longueursRelais);
     });
 
     /* ===== Modifier une longueeur ===== */
-    $('#selectRelaiModif').click(function () {
+    $('#buttonSelectLongueurModif').click(function () {
+        $('#formGroupLongueur').hide();
         $('#selectLongueurModif').collapse('show');
-        $('#modifier_longueur').collapse('show');
+
     });
 
-
-    $('#validezSelectLongueur').click(function () {
-        $('#modifierLongueur').collapse('show');
+    $('#buttonValidateSelectLongueur').click(function () {
+        $('#modifiedLongueur').collapse('show');
         var numRelai = $('#selectLongueur').val();
 
-       $('#afficheNumLongueurModif').text(numRelai);
+       $('#displayNumLongueurModif').text(numRelai);
        $('#numLongueurModif').val(numRelai);
        $('#selectLongueurModif').collapse('hide');
 
     });
 
-    $('#annulerModif').click(function () {
-        $('#modifierLongueur').collapse('hide');
+    $('#cancelSelect, #cancelModif').click(function () {
+        $('#selectLongueurModif').collapse('hide');
+        $('#modifiedLongueur').collapse('hide');
+        $('#formLongueur').show();
     });
 
 

@@ -71,6 +71,10 @@ public class SiteImpl extends AbstractDataImpl implements SiteDao {
         int vNbrLigneMaj = vJdbcTemplate.update(vSql, vParams);
     }
 
+    /**
+     * Cette méthode permet de mettre à jour un site d'escalade.
+     * @param site
+     */
     @Override
     public void upSite(Site site) {
         String vSql = "UPDATE public.site SET"
@@ -84,9 +88,13 @@ public class SiteImpl extends AbstractDataImpl implements SiteDao {
         vParams.addValue("description", site.getDescription());
 
         NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
-        int vNbrLigneMaj = vJdbcTemplate.update(vSql, vParams);
+        vJdbcTemplate.update(vSql, vParams);
     }
 
+    /**
+     * Renvoie la liste des sites correspondant à la région sélectionnée, au type de voie et la cotation de la voie.
+     * @return vListSites
+     */
     public List<Site> sitesByAdvancedSearchDao(String regionSelect, String typeVoieSelect, String cotationVoieSelect){
 
         String vSql = "SELECT distinct site.* FROM site "
@@ -104,25 +112,6 @@ public class SiteImpl extends AbstractDataImpl implements SiteDao {
         return vListSites;
     }
 
-    public List<Site> siteByRegionDao(){
-
-        String vSql = "SELECT DISTINCT region FROM public.site";
-
-        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
-        RowMapper<Site> vSiteRowMapper = new RowMapper<Site>() {
-
-            @Override
-            public Site mapRow(ResultSet pRs, int rowNum) throws SQLException {
-                Site vSite = new Site();
-                vSite.setRegion(pRs.getString("region"));
-                return vSite;
-            }
-        };
-
-        List<Site> vListRegion = vJdbcTemplate.query(vSql, vSiteRowMapper);
-        return vListRegion;
-    }
-
     /**
      * Recherche dans la table "site" une correspondance
      * dans la colonne "nom" ou "region" avec la saissi de l'utilisateur.
@@ -130,7 +119,7 @@ public class SiteImpl extends AbstractDataImpl implements SiteDao {
      * @return vListSite
      */
     @Override
-    public List<Site> rechercheSimpleParSiteDao(String motCleRecherche) {
+    public List<Site> siteBySimpleSearchDao(String motCleRecherche) {
 
         String vSql = "SELECT * FROM public.site"
                     + " WHERE CONCAT(nom, region) LIKE " + "'" + "%" + motCleRecherche + "%" + "'";
@@ -143,12 +132,11 @@ public class SiteImpl extends AbstractDataImpl implements SiteDao {
     }
 
     /**
-     * Renvoie le site correspondant a site_id du secteur.
-     *
+     * Renvoie le site correspondant a site_id du secteur
      * @param site_id
      * @return sites
      */
-    public List<Site> rechercheSiteParSecteur(Integer site_id){
+    public List<Site> searchSiteBySectorDao(Integer site_id){
 
         String vSql = "SELECT * FROM public.site"
                     + " WHERE id = " + site_id;
@@ -161,7 +149,7 @@ public class SiteImpl extends AbstractDataImpl implements SiteDao {
     }
 
     @Override
-    public List<Site> sitesParSessionDeCompteDao(Compte compte) {
+    public List<Site> listSitesByAccountDao(Compte compte) {
 
         String vSql = "SELECT * FROM public.site"
                     + " WHERE compte_id = " + compte.getId();
@@ -171,6 +159,21 @@ public class SiteImpl extends AbstractDataImpl implements SiteDao {
 
         List<Site> vListSites = vJdbcTemplate.query(vSql, vSiteRM.getvSiteRowMapper());
         return vListSites;
+    }
+
+    public Site recoversSiteWorkflowDao(Site site, Compte compte){
+
+        String vSql = "SELECT * FROM public.site"
+                     + " WHERE nom = '" + site.getNom() + "'"
+                     + " AND region = '" + site.getRegion() + "'"
+                     + " AND description = '" + site.getDescription() + "'"
+                     + " AND compte_id = " + compte.getId();
+
+        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+        SiteRM vSiteRM = new SiteRM();
+
+        List<Site> vSite = vJdbcTemplate.query(vSql, vSiteRM.getvSiteRowMapper());
+        return  vSite.get(0);
     }
 
 }

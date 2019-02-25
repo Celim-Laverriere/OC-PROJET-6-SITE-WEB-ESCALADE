@@ -2,21 +2,33 @@ package org.escalade.business.impl.manager;
 
 import org.escalade.business.contract.manager.SiteManager;
 import org.escalade.business.impl.AbstractManagerImpl;
+import org.escalade.consumer.impl.dao.SiteImpl;
 import org.escalade.model.bean.*;
 
 import java.util.*;
 
-
 public class SiteManagerImpl extends AbstractManagerImpl implements SiteManager {
 
+    /**
+     * Cette méthode permet de récupérer tous les sites d'escalade.
+     * @return
+     */
     @Override
     public List<Site> sites() {
+        /** @see SiteImpl#sites()*/
         return getDaoFactory().getSiteDao().sites();
     }
 
+    /**
+     * C'est méthode permet d'ajouter un nouveau site d'escalade.
+     * @param site
+     * @param compte
+     */
     @Override
     public void addSite(Site site, Compte compte) {
-         getDaoFactory().getSiteDao().addSite(site, compte);
+
+        /** @see org.escalade.consumer.impl.dao.SiteImpl#addSite(Site, Compte)*/
+        getDaoFactory().getSiteDao().addSite(site, compte);
     }
 
     /**
@@ -27,18 +39,23 @@ public class SiteManagerImpl extends AbstractManagerImpl implements SiteManager 
     @Override
     public Site site(Integer site_id){
 
+        /**@see org.escalade.consumer.impl.dao.SiteImpl#site(Integer)*/
         Site site = getDaoFactory().getSiteDao().site(site_id);
 
+        /**@see org.escalade.consumer.impl.dao.SecteurImpl#secteursBySiteId(Integer)*/
         List<Secteur> secteurs = getDaoFactory().getSecteurDao().secteursBySiteId(site_id);
 
+        /**@see org.escalade.consumer.impl.dao.CommentaireImpl#commentaires(Integer, Integer)*/
         List<Commentaire> commentaires = getDaoFactory().getCommentaireDao().commentaires(site_id, null);
         site.setCommentaires(commentaires);
 
         for(Secteur secteur: secteurs){
 
+            /**@see org.escalade.consumer.impl.dao.VoieImpl#voies(Integer)*/
             List<Voie> voies = getDaoFactory().getVoieDao().voies(secteur.getId());
 
             for(Voie voie: voies){
+                /**@see org.escalade.consumer.impl.dao.LongueurRelaiImpl#longueurRelai(Integer)*/
                 List<LongueurRelai> longueursRelai = getDaoFactory().getLongueurRelaiDao().longueursRelai(voie.getId());
                 voie.setLongueursRelais(longueursRelai);
             }
@@ -50,12 +67,17 @@ public class SiteManagerImpl extends AbstractManagerImpl implements SiteManager 
 
     @Override
     public void delSite(Integer id) {
+        /**@see org.escalade.consumer.impl.dao.SiteImpl#delSite(Integer)*/
         getDaoFactory().getSiteDao().delSite(id);
     }
 
-
+    /**
+     * Cette méthode permet de mettre à jour un site d'escalade
+     * @param site
+     */
     @Override
     public void upSite(Site site) {
+        /**@see org.escalade.consumer.impl.dao.SiteImpl#upSite(Site)*/
         getDaoFactory().getSiteDao().upSite(site);
     }
 
@@ -67,42 +89,32 @@ public class SiteManagerImpl extends AbstractManagerImpl implements SiteManager 
      */
     public List<Site> sitesByAdvancedSearch(String regionSelect, String typeVoieSelect, String cotationVoieSelect){
 
+        /**@see org.escalade.consumer.impl.dao.SiteImpl#sitesByAdvancedSearchDao(String, String, String) */
         List<Site> sites = getDaoFactory().getSiteDao().sitesByAdvancedSearchDao(regionSelect, typeVoieSelect, cotationVoieSelect);
 
         return sites;
     }
 
     /**
-     * La méthode récupère toutes les régions de la table public.site.
-     * @return
-     */
-    public List<Site> siteByRegion(){
-
-        List<Site> listRegion =  getDaoFactory().getSiteDao().siteByRegionDao();
-
-        return listRegion;
-    }
-
-    /**
-     * Recherche dans la table site une correcpondance avec le mot clé de recherche
-     * saisi pas l'utilisateur.
+     * Recherche dans la base de données un site d'escalade qui a une correspondance avec le mot-clé de recherche
+     * saisi par l'utilisateur.
      * @param motCleRecherche
      * @return sites
      */
     @Override
-    public List<Site> rechercheSimpleParSite(String motCleRecherche) {
+    public List<Site> siteBySimpleSearch(String motCleRecherche) {
 
-        List<Site> sites = getDaoFactory().getSiteDao().rechercheSimpleParSiteDao(motCleRecherche);
+        /** @see org.escalade.consumer.impl.dao.SiteImpl#siteBySimpleSearchDao(String)*/
+        List<Site> sites = getDaoFactory().getSiteDao().siteBySimpleSearchDao(motCleRecherche);
         return sites;
     }
 
     /**
-     * Renvoie le site correspondant aux secteurs trouver lors de la recherche,
-     * dans la " barre de recherche" du navigateur.
+     * Renvoie le site correspondant aux secteurs trouver lors de la recherche dans la "barre de recherche" du navigateur.
      * @param secteurs
      * @return sites
      */
-    public List<Site> rechercheSiteParSecteur(List<Secteur> secteurs) {
+    public List<Site> searchSiteBySector(List<Secteur> secteurs) {
 
         List<Site> sites = new ArrayList<>();
         Set<Integer> secteurSite_id = new HashSet<>();
@@ -112,16 +124,41 @@ public class SiteManagerImpl extends AbstractManagerImpl implements SiteManager 
         }
 
         for (Integer site_id : secteurSite_id){
-            List<Site> siteParSecteur = getDaoFactory().getSiteDao().rechercheSiteParSecteur(site_id);
+            /** @see org.escalade.consumer.impl.dao.SiteImpl#searchSiteBySectorDao */
+            List<Site> siteParSecteur = getDaoFactory().getSiteDao().searchSiteBySectorDao(site_id);
             sites.addAll(siteParSecteur);
         }
 
         return sites;
     }
 
+    /**
+     * @param compte
+     * @return les sites d'escalade correspondant au compte de l'utilisateur.
+     */
     @Override
-    public List<Site> sitesParSessionDeCompte(Compte compte) {
+    public List<Site> listSitesByAccount(Compte compte) {
 
-        return getDaoFactory().getSiteDao().sitesParSessionDeCompteDao(compte);
+        /** @see org.escalade.consumer.impl.dao.SiteImpl#listSitesByAccountDao(Compte) */
+        return getDaoFactory().getSiteDao().listSitesByAccountDao(compte);
+    }
+
+    /**
+     * Cette métode permet d'ajouter le site d'escalade du Workflow et de le récupèrer pour transmettre l'id du site
+     * pour le secteur.
+     * @param site
+     * @param compte
+
+     * @return le site du Workflow pour transmettre l'id du site au secteur.
+     */
+    public Site addSiteWorkflow (Site site, Compte compte){
+
+        /** @see org.escalade.consumer.impl.dao.SiteImpl#addSite(Site, Compte) */
+        getDaoFactory().getSiteDao().addSite(site, compte);
+
+        /** @see org.escalade.consumer.impl.dao.SiteImpl#recoversSiteWorkflowDao(Site, Compte) */
+        Site vSite = getDaoFactory().getSiteDao().recoversSiteWorkflowDao(site, compte);
+
+        return vSite;
     }
 }

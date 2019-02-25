@@ -39,25 +39,17 @@ public interface SiteDao {
          */
         void delSite(Integer id);
 
-        /**
-         * Mettre à jour un site
-         *
-         * @param site
-         * @return un message de confirmation
-         */
+
         void upSite(Site site);
 
-        /**
-         * Renvoie la liste des sites correspondant à la région sélectionnée.
-         * @return vListSites
-         */
-        List<Site> sitesByAdvancedSearchDao(String regionSelect,String typeVoieSelect, String cotationVoieSelect);
+        List<Site> sitesByAdvancedSearchDao(String regionSelect, String typeVoieSelect, String cotationVoieSelect);
 
-        List<Site> siteByRegionDao();
+        List<Site> siteBySimpleSearchDao(String motCleRecherche);
 
-        List<Site> rechercheSimpleParSiteDao(String motCleRecherche);
+        List<Site> searchSiteBySectorDao(Integer site_id);
 
-        List<Site> rechercheSiteParSecteur(Integer site_id);
+        List<Site> listSitesByAccountDao(Compte compte);
 
-        List<Site> sitesParSessionDeCompteDao(Compte compte);
+        Site recoversSiteWorkflowDao(Site site, Compte compte);
+
 }

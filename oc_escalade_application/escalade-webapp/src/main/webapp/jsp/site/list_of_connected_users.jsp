@@ -14,30 +14,25 @@
 
 <body>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <%@include file="../_include/formulaireChoixCreate.jsp"%>
-        </div>
-    </div>
-</div>
+<%@include file="../_include/user_menu.jsp"%>
 
-<div class="container" style=" position: absolute; top: 14%; left: 35%">
+<div class="container" style="margin-top: 1%; border-style: solid; border-color: #DCDCDC; border-width: 2px;
+     border-radius: 10px; box-shadow: 6px 6px 14px #DCDCDC">
     <div class="row">
-        <div class="col-md-6" style="margin-left: 10%; margin-top: 10px; margin-bottom: 10px; text-align: center">
+        <div class="col-md-12" style="text-align: center; margin-top: 1%">
             <h2>Mes sites d'éscalades</h2>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-9">
-            <hr width="95%" color="#DCDCDC">
+        <div class="col-md-12">
+            <hr width="80%" color="#DCDCDC">
         </div>
     </div>
 
     <s:iterator value="sites">
-        <div class="row">
-            <div class="col-md-8" style="margin-top: 5px">
+        <div class="row justify-content-center">
+            <div class="col-md-9" style="margin-top: 1%">
                 <ul>
                     <div class="well well-md">
                         <p>ID SITE : <s:property value="id"/></p>
@@ -49,25 +44,22 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-5"></div>
-            <div class="col-md-2">
-                <s:a  action="modifier_site" class="btn btn-info" role="button">
+        <div class="row justify-content-end">
+            <div class="col-md-4">
+                <s:a action="modifier_site">
                     <s:param name="site_id" value="id"/>
-                    Modifier
+                    <button type="button" class="btn btn-outline-primary">Modifier</button>
                 </s:a>
-            </div>
-            <div>
-                <s:a action="supprimer_site" class="btn btn-danger"
-                     onclick="javascript:return confirm('Confirmez la suppression du site!');" type="button">
+
+                <s:a action="supprimer_site" onclick="javascript:return confirm('Confirmez la suppression du site!');">
                     <s:param name="site_id" value="id"/>
-                    Supprimer
+                    <button type="button" class="btn btn-outline-danger">Supprimer</button>
                 </s:a>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <hr width="95%" color="#DCDCDC">
             </div>
         </div>

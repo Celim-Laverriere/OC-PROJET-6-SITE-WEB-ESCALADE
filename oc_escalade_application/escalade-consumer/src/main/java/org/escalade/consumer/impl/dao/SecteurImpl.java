@@ -43,7 +43,7 @@ public class SecteurImpl extends AbstractDataImpl implements SecteurDao {
 
         NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
 
-        int vNbrLigneMaj = vJdbcTemplate.update(vSql, vParams);
+        vJdbcTemplate.update(vSql, vParams);
     }
 
     @Override
@@ -82,13 +82,13 @@ public class SecteurImpl extends AbstractDataImpl implements SecteurDao {
     }
 
     /**
-     * Recherche dans la table "secteur" une correspondance
-     * dans la colonne "nom" avec la saissi de l'utilisateur.
+     * Recherche dans la base de données dans la colonne "nom", le "secteur" en correspondance
+     * avec la saisie de l'utilisateur.
      * @param motCleRecherche
      * @return vListSecteurs
      */
     @Override
-    public List<Secteur> rechercheSimpleParSecteurDao(String motCleRecherche) {
+    public List<Secteur> secteurBySimpleSearchDao(String motCleRecherche) {
         String vSql = "SELECT * FROM public.secteur"
                     + " WHERE nom LIKE " + "'" + motCleRecherche + "%" + "'";
 
@@ -124,9 +124,9 @@ public class SecteurImpl extends AbstractDataImpl implements SecteurDao {
      */
     public List<Secteur> secteursParSessionDeCompteDao(Compte compte){
 
-        String vSql = "SELECT secteur.* FROM public.secteur, public.site"
-                    + " WHERE site_id = site.id"
-                    + " AND site.id = " + compte.getId();
+        String vSql = "SELECT secteur.* FROM public.secteur"
+                    + " INNER JOIN site ON site.compte_id = " + compte.getId()
+                    + " WHERE secteur.site_id = site.id";
 
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
         SecteurRM vSecteurRM = new SecteurRM();
@@ -135,5 +135,17 @@ public class SecteurImpl extends AbstractDataImpl implements SecteurDao {
         return vListSecteurs;
     }
 
+    public Secteur recoversSecteurWorkflowDao(Secteur secteur, Site site){
+
+        String vSql = "SELECT * FROM public.secteur"
+                    + " WHERE nom = '" + secteur.getNom() + "'"
+                    + " AND site_id = " + site.getId();
+
+        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+        SecteurRM vSecteurRM = new SecteurRM();
+
+        List<Secteur> vSecteur = vJdbcTemplate.query(vSql, vSecteurRM.getvSecteurRowMapper());
+        return vSecteur.get(0);
+    }
 
 }

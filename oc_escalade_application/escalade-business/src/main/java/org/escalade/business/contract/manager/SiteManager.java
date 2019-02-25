@@ -22,12 +22,12 @@ public interface SiteManager {
 
     List<Site> sitesByAdvancedSearch(String regionSelect, String typeVoieSelect, String cotationVoieSelect);
 
-    List<Site> siteByRegion();
+    List<Site> siteBySimpleSearch(String motCleRecherche);
 
-    List<Site> rechercheSimpleParSite(String motCleRecherche);
+    List<Site> searchSiteBySector(List<Secteur> secteurs);
 
-    List<Site> rechercheSiteParSecteur(List<Secteur> secteurs);
+    List<Site> listSitesByAccount(Compte compte);
 
-    List<Site> sitesParSessionDeCompte(Compte compte);
+    Site addSiteWorkflow (Site site, Compte compte);
 
 }

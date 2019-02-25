@@ -44,7 +44,7 @@
                 class="org.escalade.webapp.action.LoginAction"
                 method="doLogin">
             <result name="input">/jsp/login/login.jsp</result>
-            <result name="success">jsp/_include/formulaireChoixCreate.jsp</result>
+            <result name="success">jsp/_include/user_menu.jsp</result>
         </action>
 
         <action name="logout"
@@ -109,7 +109,7 @@
 
         <!-- ===== Action permettant de faire une recherche via la Barre de recherche ===== -->
         <action name="barre_de_recherche"
-                class="org.escalade.webapp.action.MoteurDeRechercheAction"
+                class="org.escalade.webapp.action.SearchEngineAction"
                 method="doSimpleSearch">
 
             <interceptor-ref name="store">
@@ -117,13 +117,13 @@
             </interceptor-ref>
             <interceptor-ref name="defaultStack"/>
 
-            <result name="success">/jsp/moteur_de_recherche/resultat_recherche.jsp</result>
+            <result name="success">/jsp/search_engine/search_result.jsp</result>
             <result name="error">/jsp/error.jsp</result>
         </action>
 
         <!-- ===== Action permettant de faire une recherche avancé ===== -->
-        <action name="recherche_avancer"
-                class="org.escalade.webapp.action.MoteurDeRechercheAction"
+        <action name="advanced_research"
+                class="org.escalade.webapp.action.SearchEngineAction"
                 method="doAdvancedSearch">
 
             <interceptor-ref name="store">
@@ -131,8 +131,9 @@
             </interceptor-ref>
             <interceptor-ref name="defaultStack"/>
 
-            <result name="input">/jsp/moteur_de_recherche/formulaire_de_recherche_avance.jsp</result>
-            <result name="success">/jsp/moteur_de_recherche/resultat_recherche.jsp</result>
+            <result name="input">/jsp/search_engine/advanced_search_form.jsp</result>
+            <result name="success">/jsp/search_engine/search_result.jsp</result>
+            <result name="error">jsp/error.jsp</result>
         </action>
 
         <!-- Création de compte utilisateur -->
@@ -145,31 +146,9 @@
             </interceptor-ref>
             <interceptor-ref name="defaultStack"/>
 
-            <result name="input">jsp/formulaire_de_creation/formulaire_compte.jsp</result>
+            <result name="input">jsp/creation_forms/form_compte.jsp</result>
             <result name="success">jsp/login/login.jsp</result>
-            <result name="error">/jsp/compte/formulaire_secteur.jsp</result>
-        </action>
-
-        <!-- Créer un site d'éscalade complet : Attention emplacement temporaire ! -->
-        <action name="complete_creation_climbing_site"
-                class="org.escalade.webapp.action.formulaireSiteComplet"
-                method="completeCreationClimbingSite">
-
-            <!--<interceptor-ref name="store">-->
-            <!--<param name="operationMode">STORE</param>-->
-            <!--</interceptor-ref>-->
-            <!--<interceptor-ref name="authenticatedStack"/>-->
-            <!--<interceptor-ref name="defaultStack"/>-->
-
-            <result name="input">jsp/formulaire_de_creation/formulaire_site_complet.jsp</result>
-        </action>
-
-        <action name="modifier_longueur_relai"
-                class="org.escalade.webapp.action.formulaireSiteComplet"
-                method="modifierLongueurRelai">
-
-
-            <result name="input">jsp/formulaire_de_creation/formulaire_site_complet.jsp</result>
+            <result name="error">jsp/error.jsp</result>
         </action>
 
     </package>
@@ -192,15 +171,13 @@
             </interceptor-ref>
             <interceptor-ref name="authenticatedStack"/>
 
-            <result name="success">/jsp/_include/formulaireChoixCreate.jsp</result>
+            <result name="success">/jsp/_include/user_menu.jsp</result>
             <result name="error">/jsp/error.jsp</result>
         </action>
 
                     <!-- ************************ -->
                     <!-- ACTION SITES D'ESCALADES -->
                     <!-- ************************ -->
-
-
 
         <!-- Récupère les informations pour créer un nouveau site -->
         <action name="new_site"
@@ -213,15 +190,15 @@
             <interceptor-ref name="authenticatedStack"/>
             <interceptor-ref name="defaultStack"/>
 
-            <result name="input">jsp/formulaire_de_creation/formulaire_site.jsp</result>
-            <result name="success">/jsp/_include/formulaireChoixCreate.jsp</result>
-            <result name="error">/jsp/compte/formulaire_site.jsp</result>
+            <result name="input">jsp/creation_forms/form_site.jsp</result>
+            <result name="success">/jsp/_include/user_menu.jsp</result>
+            <result name="error">/jsp/compte/form_site.jsp</result>
         </action>
 
         <!-- Affiche les sites d'éscalade d'un client -->
         <action name="sites_Par_Session_De_Compte"
                 class="org.escalade.webapp.action.SiteAction"
-                method="sitesParSessionDeCompte">
+                method="actionListSitesByAccount">
 
             <interceptor-ref name="store">
                 <param name="operationMode">STORE</param>
@@ -229,15 +206,15 @@
             <interceptor-ref name="authenticatedStack"/>
             <interceptor-ref name="defaultStack"/>
 
-            <result name="input">jsp/_include/formulaireChoixCreate.jsp</result>
-            <result name="success">jsp/site/liste_utilisateur_connecte.jsp</result>
+            <result name="input">jsp/_include/user_menu.jsp</result>
+            <result name="success">jsp/site/list_of_connected_users.jsp</result>
             <result name="error">jsp/error.jsp</result>
         </action>
 
         <!-- Modifier un site d'éscalade par un client -->
         <action name="modifier_site"
                 class="org.escalade.webapp.action.SiteAction"
-                method="modifierSite">
+                method="modifiedSite">
 
             <interceptor-ref name="store">
                 <param name="operationMode">STORE</param>
@@ -245,8 +222,8 @@
             <interceptor-ref name="authenticatedStack"/>
             <interceptor-ref name="defaultStack"/>
 
-            <result name="input">jsp/formulaire_de_creation/site_formulaire_modifier.jsp</result>
-            <result name="success">jsp/_include/formulaireChoixCreate.jsp</result>
+            <result name="input">jsp/creation_forms/modified_site_form.jsp</result>
+            <result name="success">jsp/_include/user_menu.jsp</result>
             <result name="error">jsp/error.jsp</result>
         </action>
 
@@ -262,9 +239,102 @@
             <interceptor-ref name="authenticatedStack"/>
             <interceptor-ref name="defaultStack"/>
 
-            <result name="success">jsp/_include/formulaireChoixCreate.jsp</result>
+            <result name="success">jsp/_include/user_menu.jsp</result>
             <result name="error">jsp/error.jsp</result>
         </action>
+
+        <!-- *********************************************** -->
+        <!-- **** Création d'un site d'éscalade complet **** -->
+        <!-- *********************************************** -->
+
+        <!-- **** Action création du site **** -->
+        <action name="complete_creation_climbing_site"
+                class="org.escalade.webapp.action.workflowSiteAction"
+                method="completeCreationClimbingSite">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="input">jsp/creation_forms/workflow_site.jsp</result>
+            <result name="error">jsp/error.jsp</result>
+        </action>
+
+        <!-- **** Action création du secteur **** -->
+        <action name="complete_creation_climbing_secteur"
+                class="org.escalade.webapp.action.workflowSiteAction"
+                method="completeCreationClimbingSecteur">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="input">jsp/creation_forms/workflow_site.jsp</result>
+            <result name="error">jsp/error.jsp</result>
+        </action>
+
+        <!-- **** Action création de la voie **** -->
+        <action name="complete_creation_climbing_voie"
+                class="org.escalade.webapp.action.workflowSiteAction"
+                method="completeCreationClimbingVoie">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="input">jsp/creation_forms/workflow_site.jsp</result>
+            <result name="error">jsp/error.jsp</result>
+        </action>
+
+        <!-- **** Action création d'une longueur **** -->
+        <action name="complete_creation_climbing_longueur"
+                class="org.escalade.webapp.action.workflowSiteAction"
+                method="completeCreationClimbingLongueur">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="input">jsp/creation_forms/workflow_site.jsp</result>
+            <result name="error">jsp/error.jsp</result>
+        </action>
+
+        <!-- **** Action modification d'une longueur **** -->
+        <action name="modified_Longueur"
+                class="org.escalade.webapp.action.workflowSiteAction"
+                method="modifiedLongueur">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="input">jsp/creation_forms/workflow_site.jsp</result>
+        </action>
+
+        <!-- **** Action valider le formulaire **** -->
+        <action name="validation_Form"
+                class="org.escalade.webapp.action.workflowSiteAction"
+                method="validationForm">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="success">jsp/index.jsp</result>
+        </action>
+
 
                     <!-- *************************** -->
                     <!-- ***** ACTION SECTEURS ***** -->
@@ -282,9 +352,9 @@
             <interceptor-ref name="authenticatedStack"/>
             <interceptor-ref name="defaultStack"/>
 
-            <result name="input">jsp/formulaire_de_creation/formulaire_secteur.jsp</result>
-            <result name="success">jsp/_include/formulaireChoixCreate.jsp</result>
-            <result name="error">/jsp/compte/formulaire_secteur.jsp</result>
+            <result name="input">jsp/creation_forms/form_secteur.jsp</result>
+            <result name="success">jsp/_include/user_menu.jsp</result>
+            <result name="error">/jsp/compte/form_secteur.jsp</result>
         </action>
 
         <!-- Affiche les sites d'éscalade d'un client -->
@@ -298,9 +368,8 @@
             <interceptor-ref name="authenticatedStack"/>
             <interceptor-ref name="defaultStack"/>
 
-            <result name="input">jsp/formulaire_de_creation/formulaire_secteur.jsp</result>
-            <result name="success">jsp/secteur/liste_utilisateur_connecte.jsp</result>
-            <result name="error">jsp/secteur/liste_utilisateur_connecte.jsp</result>
+            <result name="success">jsp/secteur/list_of_connected_users.jsp</result>
+            <result name="error">jsp/secteur/list_of_connected_users.jsp</result>
         </action>
 
 
@@ -317,9 +386,9 @@
             <interceptor-ref name="authenticatedStack"/>
             <interceptor-ref name="defaultStack"/>
 
-            <result name="input">jsp/formulaire_de_creation/formulaire_compte.jsp</result>
+            <result name="input">jsp/creation_forms/form_compte.jsp</result>
             <result name="success">jsp/login/login.jsp</result>
-            <result name="error">/jsp/compte/formulaire_secteur.jsp</result>
+            <result name="error">/jsp/compte/form_secteur.jsp</result>
         </action>
 
         <action name="supprimer_compte"
@@ -332,9 +401,9 @@
             <interceptor-ref name="authenticatedStack"/>
             <interceptor-ref name="defaultStack"/>
 
-            <result name="input">jsp/formulaire_de_creation/formulaire_compte.jsp</result>
+            <result name="input">jsp/creation_forms/form_compte.jsp</result>
             <result name="success" type="redirectAction">jsp/index.jsp</result>
-            <result name="error">/jsp/compte/formulaire_secteur.jsp</result>
+            <result name="error">/jsp/compte/form_secteur.jsp</result>
         </action>
 
     </package>

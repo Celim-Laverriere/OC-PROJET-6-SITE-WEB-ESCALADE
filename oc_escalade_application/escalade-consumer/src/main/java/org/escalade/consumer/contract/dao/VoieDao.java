@@ -1,5 +1,6 @@
 package org.escalade.consumer.contract.dao;
 
+import org.escalade.model.bean.Secteur;
 import org.escalade.model.bean.Voie;
 
 import javax.swing.*;
@@ -21,7 +22,7 @@ public interface VoieDao {
         * @param voie
         * @return un message de confirmation
         */
-       String addVoie(Voie voie);
+       void addVoie(Voie voie, Secteur secteur);
 
        /**
         * Renvoie la voie demandée
@@ -55,4 +56,5 @@ public interface VoieDao {
      */
     List<Voie>  rechercheSimpleParVoieDao(String motCleRecherche);
 
+    Voie recoversVoieWorkflowDao(Voie voie, Secteur secteur);
 }

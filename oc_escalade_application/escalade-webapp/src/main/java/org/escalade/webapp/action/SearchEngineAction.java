@@ -7,10 +7,11 @@ import org.escalade.model.bean.Voie;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
-public class MoteurDeRechercheAction extends ActionSupport  {
+public class SearchEngineAction extends ActionSupport  {
 
     // ============ Eléments en entrée  ============
 
@@ -20,13 +21,20 @@ public class MoteurDeRechercheAction extends ActionSupport  {
     private String cotationVoieSelect;
 
     // ============ Eléments en sortie ============
-    private List<Site> regionList = new ArrayList<>();
+
+    private List<String> listRegions = new ArrayList(Arrays.asList("Ile-de-France", "Champagne-Ardenne", "Picardie",
+            "Haute-Normandie", "Centre", "Basse-Normandie", "Bourgogne", "Nord-Pas-de-Calais", "Lorraine", "Alsace",
+            "Franche-Comté", "Pays de la Loire", "Bretagne", "Poitou-Charentes", "Aquitaine", "Midi-Pyrénées",
+            "Limousin", "Rhône-Alpes", "Auvergne", "Languedoc-Roussillon", "Provence-Alpes-Côte d'Azur",
+            "Corse", "Guadeloupe", "Martinique", "Guyane", "La Réunion", "Mayotte"));
 
     // Liste de sélection de la difficulté par ordre croissant de 3 à 9 des voies.
-    private String cotationVoieList [] = {"3", "4", "5", "6", "7", "8", "9"};
+    private List<String> listCotations = new ArrayList(Arrays.asList("1", "2", "3", "4", "5a", "5b", "5c", "6a", "6a+", "6b",
+            "6b+", "6c", "6c+", "7a", "7a+", "7b", "7b+", "7c", "7c+", "8a", "8a+", "8b", "8b+", "8c", "8c+", "9a", "9a+",
+            "9b", "9b+", "9c"));
 
     // Liste de sélection, voies équipée ou non équipée.
-    private String typeVoie [] = {"Equipée", "Non équipée"};
+    private  List<String> listTypesVoie = new ArrayList(Arrays.asList("Non équipée", "Equipée"));
 
     private List<Site> sites;
     private List<Voie> voies;
@@ -69,28 +77,28 @@ public class MoteurDeRechercheAction extends ActionSupport  {
         this.motCleRecherche = motCleRecherche;
     }
 
-    public List<Site> getRegionList() {
-        return regionList;
+    public List<String> getListRegions() {
+        return listRegions;
     }
 
-    public void setRegionList(List<Site> regionList) {
-        this.regionList = regionList;
+    public void setListRegions(List<String> listRegions) {
+        this.listRegions = listRegions;
     }
 
-    public String[] getCotationVoieList() {
-        return cotationVoieList;
+    public List<String> getListCotations() {
+        return listCotations;
     }
 
-    public void setCotationVoieList(String[] cotationVoieList) {
-        this.cotationVoieList = cotationVoieList;
+    public void setListCotations(List<String> listCotations) {
+        this.listCotations = listCotations;
     }
 
-    public String[] getTypeVoie() {
-        return typeVoie;
+    public List<String> getListTypesVoie() {
+        return listTypesVoie;
     }
 
-    public void setTypeVoie(String[] typeVoie) {
-        this.typeVoie = typeVoie;
+    public void setListTypesVoie(List<String> listTypesVoie) {
+        this.listTypesVoie = listTypesVoie;
     }
 
     public String getTypeVoieSelect() {
@@ -184,13 +192,16 @@ public class MoteurDeRechercheAction extends ActionSupport  {
 
         String vResult = ActionSupport.INPUT;
 
-        if (this.regionSelect != null){
+        try {
+
+            if (this.regionSelect != null){
+                /**@see org.escalade.business.impl.manager.SiteManagerImpl#sitesByAdvancedSearch(String, String, String)*/
                 sites = managerFactory.getSiteManager().sitesByAdvancedSearch(regionSelect, typeVoieSelect, cotationVoieSelect);
                 vResult = ActionSupport.SUCCESS;
-        }
+            }
 
-        if (vResult.equals(ActionSupport.INPUT)){
-            regionList = managerFactory.getSiteManager().siteByRegion();
+        } catch (Exception pEX){
+
         }
 
         return vResult;
@@ -200,19 +211,21 @@ public class MoteurDeRechercheAction extends ActionSupport  {
 
         try {
 
-            sites = managerFactory.getSiteManager().rechercheSimpleParSite(motCleRecherche);
+            /**@see org.escalade.business.impl.manager.SiteManagerImpl#siteBySimpleSearch(String) */
+            sites = managerFactory.getSiteManager().siteBySimpleSearch(motCleRecherche);
 
-            secteurs = managerFactory.getSecteurManager().rechercheSimpleParSecteur(motCleRecherche);
+            /**@see org.escalade.business.impl.manager.SecteurManagerImpl#secteurBySimpleSearch(String) */
+            secteurs = managerFactory.getSecteurManager().secteurBySimpleSearch(motCleRecherche);
 
             if (!secteurs.isEmpty()){
-                secteursRefSite = managerFactory.getSiteManager().rechercheSiteParSecteur(secteurs);
+                secteursRefSite = managerFactory.getSiteManager().searchSiteBySector(secteurs);
             }
 
             voies = managerFactory.getVoieManager().rechercheSimpleParVoie(motCleRecherche);
 
             if (!voies.isEmpty()){
                 voiesRefSecteur = managerFactory.getSecteurManager().rechercheSecteurParVoie(voies);
-                voiesRefSecteurRefSite = managerFactory.getSiteManager().rechercheSiteParSecteur(voiesRefSecteur);
+                voiesRefSecteurRefSite = managerFactory.getSiteManager().searchSiteBySector(voiesRefSecteur);
             }
 
         } catch (IndexOutOfBoundsException pEx) {

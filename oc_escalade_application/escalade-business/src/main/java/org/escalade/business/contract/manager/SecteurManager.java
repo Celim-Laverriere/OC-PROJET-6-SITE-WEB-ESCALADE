@@ -19,7 +19,7 @@ public interface SecteurManager {
 
     String upSecteur(Integer id, Secteur secteur);
 
-    List<Secteur> rechercheSimpleParSecteur(String motCleRecherche);
+    List<Secteur> secteurBySimpleSearch(String motCleRecherche);
 
     /**
      * Renvoie le(s) secteur(s) correspondant aux voies trouver lors de la recherche,
@@ -30,4 +30,6 @@ public interface SecteurManager {
     List<Secteur> rechercheSecteurParVoie(List<Voie> voies);
 
     List<Secteur> secteursParSessionDeCompte(Compte compte);
+
+    Secteur addSecteurWorkflow (Secteur secteur, Site site);
 }

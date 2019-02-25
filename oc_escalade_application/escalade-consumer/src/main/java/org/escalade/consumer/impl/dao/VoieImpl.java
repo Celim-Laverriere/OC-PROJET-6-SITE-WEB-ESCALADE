@@ -3,8 +3,12 @@ package org.escalade.consumer.impl.dao;
 import org.escalade.consumer.contract.dao.VoieDao;
 import org.escalade.consumer.impl.data.AbstractDataImpl;
 import org.escalade.consumer.impl.rowmapper.VoieRM;
+import org.escalade.model.bean.Secteur;
 import org.escalade.model.bean.Voie;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+
 import java.util.List;
 
 public class VoieImpl extends AbstractDataImpl implements VoieDao {
@@ -23,8 +27,22 @@ public class VoieImpl extends AbstractDataImpl implements VoieDao {
     }
 
     @Override
-    public String addVoie(Voie voie) {
-        return null;
+    public void addVoie(Voie voie, Secteur secteur) {
+
+        String vSql = "INSERT INTO public.voie (nom, description, type_voie, cotation, hauteur, secteur_id) VALUES"
+                    + " (:nom, :description, :type_voie, :cotation, :hauteur, :secteur_id)";
+
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("nom", voie.getNom());
+        vParams.addValue("description", voie.getDescription());
+        vParams.addValue("type_voie", voie.getType_voie());
+        vParams.addValue("cotation", voie.getCotation());
+        vParams.addValue("hauteur", voie.getHauteur());
+        vParams.addValue("secteur_id", secteur.getId());
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+
+        vJdbcTemplate.update(vSql, vParams);
     }
 
     @Override
@@ -67,5 +85,21 @@ public class VoieImpl extends AbstractDataImpl implements VoieDao {
 
         List<Voie> vListVoie = vJdbcTemplate.query(vSql, vVoieRM.getVoieRowMapper());
         return vListVoie;
+    }
+
+    public Voie recoversVoieWorkflowDao(Voie voie, Secteur secteur){
+
+        String vSql = "SELECT * FROM public.voie"
+                    + " WHERE nom = '" + voie.getNom() + "'"
+                    + " AND type_voie = '" + voie.getType_voie() + "'"
+                    + " AND cotation = '" + voie.getCotation() + "'"
+                    + " AND  hauteur = '" + voie.getHauteur() + "'"
+                    + " AND secteur_id = " + secteur.getId();
+
+        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+        VoieRM vVoieRM = new VoieRM();
+
+        List<Voie> vVoie = vJdbcTemplate.query(vSql, vVoieRM.getVoieRowMapper());
+        return vVoie.get(0);
     }
 }

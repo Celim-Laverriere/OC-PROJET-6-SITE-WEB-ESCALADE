@@ -60,7 +60,7 @@ public interface SecteurDao {
          * @param motCleRecherche
          * @return
          */
-        List<Secteur>  rechercheSimpleParSecteurDao(String motCleRecherche);
+        List<Secteur> secteurBySimpleSearchDao(String motCleRecherche);
 
         /**
          * Renvoie le secteur correspondant a secteur_id de la voie trouver
@@ -76,4 +76,6 @@ public interface SecteurDao {
          * @return
          */
        List<Secteur> secteursParSessionDeCompteDao(Compte compte);
+
+        Secteur recoversSecteurWorkflowDao(Secteur secteur, Site site);
 }

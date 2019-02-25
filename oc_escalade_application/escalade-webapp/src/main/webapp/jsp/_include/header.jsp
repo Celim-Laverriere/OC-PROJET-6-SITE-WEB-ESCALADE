@@ -20,7 +20,7 @@
             <s:form action="barre_de_recherche" class="nav navbar-form" style="">
                 <div class="col-md-10">
                     <input type="search" name="motCleRecherche" class="form-control"
-                             placeholder="Rechercher un site d'escalade"/>
+                           placeholder="Rechercher un site d'escalade" required="true"/>
                 </div>
                 <div class="col-md-1" >
                     <button id="valRecherche" type="submit" style="margin-left: 4px" class="btn btn-primary btn-md">Validez</button>
@@ -53,8 +53,8 @@
             <ul class="nav nav-pills" style="margin-bottom: 8px; margin-left: 5px">
                 <li class="nav-link"><s:a action="index" style="color: black; font-weight:bold" >Accueil</s:a></li>
                 <li class="nav-link"><s:a action="site_list" style="color: black; font-weight:bold">Liste des sites</s:a></li>
-                <li class="nav-link"><s:a action="topo_list" style="color: black; font-weight:bold">Litste des topos</s:a></li>
-                <li class="nav-link"><s:a action="recherche_avancer" style="color: black; font-weight:bold">Recherche</s:a> </li>
+                <li class="nav-link"><s:a action="topo_list" style="color: black; font-weight:bold">Liste des topos</s:a></li>
+                <li class="nav-link"><s:a action="advanced_research" style="color: black; font-weight:bold">Recherche</s:a> </li>
             </ul>
         </div>
 

@@ -12,6 +12,7 @@ public class Site {
     private String nom;
     private String region;
     private String description;
+    private Integer compte_id;
     private List<Secteur> secteurs;
     private List<Photo> photos;
     private List<Commentaire> commentaires;
@@ -52,6 +53,14 @@ public class Site {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Integer getCompte_id() {
+        return compte_id;
+    }
+
+    public void setCompte_id(Integer compte_id) {
+        this.compte_id = compte_id;
     }
 
     public List<Secteur> getSecteurs() {

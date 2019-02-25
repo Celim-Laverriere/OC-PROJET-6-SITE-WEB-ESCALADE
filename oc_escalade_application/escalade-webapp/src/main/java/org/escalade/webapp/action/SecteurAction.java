@@ -101,10 +101,10 @@ public class SecteurAction extends ActionSupport implements SessionAware {
             this.addActionMessage("Secteur " + secteur.getNom() + " a été ajouté avec succè");
 
         } catch (NullPointerException pEX){
-            sites = managerFactory.getSiteManager().sitesParSessionDeCompte((Compte) this.session.get("user"));
+            sites = managerFactory.getSiteManager().listSitesByAccount((Compte) this.session.get("user"));
         } catch (Exception pEX){
             this.addActionError("Une erreur technique s'est produite, votre secteur n'a pas pu être ajouté !");
-            sites = managerFactory.getSiteManager().sitesParSessionDeCompte((Compte) this.session.get("user"));
+            sites = managerFactory.getSiteManager().listSitesByAccount((Compte) this.session.get("user"));
         }
 
        return vResult;
@@ -115,16 +115,16 @@ public class SecteurAction extends ActionSupport implements SessionAware {
 
         try {
           secteurs =  managerFactory.getSecteurManager().secteursParSessionDeCompte((Compte) this.session.get("user"));
-          sites = managerFactory.getSiteManager().sitesParSessionDeCompte((Compte) this.session.get("user"));
+          sites = managerFactory.getSiteManager().listSitesByAccount((Compte) this.session.get("user"));
           vResult = ActionSupport.SUCCESS;
 
         } catch (Exception pEX) {
 
         }
 
-        for(Site sites: sites){
-            System.out.println(sites.getNom());
-        }
+//        for(Secteur secteur: secteurs){
+//            System.out.println(secteur.getNom());
+//        }
         return vResult;
     }
 

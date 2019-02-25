@@ -4,6 +4,7 @@ import org.escalade.business.contract.manager.SecteurManager;
 import org.escalade.business.impl.AbstractManagerImpl;
 import org.escalade.model.bean.Compte;
 import org.escalade.model.bean.Secteur;
+import org.escalade.model.bean.Site;
 import org.escalade.model.bean.Voie;
 
 import java.util.ArrayList;
@@ -44,14 +45,14 @@ public class SecteurManagerImpl extends AbstractManagerImpl implements SecteurMa
     }
 
     /**
-     * Recherche dans la table site une correcpondance avec le mot clé de recherche
-     * saisi pas l'utilisateur.
+     * Recherche le secteur en correspondance avec le mot-clé saisi par l'utilisateur.
      * @param motCleRecherche
      * @return secteurs
      */
-    public List<Secteur> rechercheSimpleParSecteur(String motCleRecherche){
+    public List<Secteur> secteurBySimpleSearch(String motCleRecherche){
 
-        List<Secteur> secteurs = getDaoFactory().getSecteurDao().rechercheSimpleParSecteurDao(motCleRecherche);
+        /**@see org.escalade.consumer.impl.dao.SecteurImpl#secteurBySimpleSearchDao(String) */
+        List<Secteur> secteurs = getDaoFactory().getSecteurDao().secteurBySimpleSearchDao(motCleRecherche);
 
         return secteurs;
     }
@@ -81,6 +82,22 @@ public class SecteurManagerImpl extends AbstractManagerImpl implements SecteurMa
 
     public List<Secteur> secteursParSessionDeCompte(Compte compte){
 
-        return getDaoFactory().getSecteurDao().secteursParSessionDeCompteDao(compte);
+       List<Secteur> vSecteurs = getDaoFactory().getSecteurDao().secteursParSessionDeCompteDao(compte);
+       return vSecteurs;
+    }
+
+    /**
+     * Ajoute le site  dscalade du Workflow
+     * @param secteur
+     * @param site
+     * @see org.escalade.consumer.impl.dao.SecteurImpl#recoversSecteurWorkflowDao(Secteur, Site)
+     * @return le Secteur du Workflow pour transmettre l'id du secteur à la voie
+     */
+    public Secteur addSecteurWorkflow (Secteur secteur, Site site){
+
+        getDaoFactory().getSecteurDao().addSecteur(secteur, site.getId());
+        Secteur vSecteur = getDaoFactory().getSecteurDao().recoversSecteurWorkflowDao(secteur, site);
+
+        return vSecteur;
     }
 }

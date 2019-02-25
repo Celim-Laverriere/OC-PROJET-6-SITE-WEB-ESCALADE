@@ -18,21 +18,23 @@
     <%@include file="header.jsp"%>
 </header>
 
-<div class="container" style="margin-top: 10px">
+<div class="container" style="margin-top: 1%">
     <div class="row">
-        <div class="col-md-3" style="border-style: solid; border-color: #DCDCDC; border-width: 2px;
-             border-radius: 10px; height: 500px; box-shadow: 6px 6px 14px #DCDCDC">
-            <ul class="nav nav-pills">
+        <div class="col-md-12" style="border-style: solid; border-color: #DCDCDC; border-width: 2px;
+             border-radius: 10px; box-shadow: 6px 6px 14px #DCDCDC">
+            <ul class="nav nav-tabs">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
                        role="button" aria-haspopup="true" aria-expanded="false">MES SITES</a>
                     <div class="dropdown-menu">
+                        <s:a action="complete_creation_climbing_site" class="dropdown-item">
+                            Créer un nouveau Site d'escalade complet
+                        </s:a>
                         <s:a action="new_site" class="dropdown-item">Créer un nouveau Site d'escalade</s:a>
                         <s:a action="sites_Par_Session_De_Compte" class="dropdown-item">Afficher mes sites d'éscalades !</s:a>
                     </div>
                 </li>
-            </ul>
-            <ul class="nav nav-pills">
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
                        role="button" aria-haspopup="true" aria-expanded="false">MES SECTEURS</a>
@@ -41,8 +43,7 @@
                         <s:a action="secteurs_Par_Session_De_Compte" class="dropdown-item"> Afficher mes secteurs !</s:a>
                     </div>
                 </li>
-            </ul>
-            <ul class="nav nav-pills">
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
                        role="button" aria-haspopup="true" aria-expanded="false">MES VOIES</a>
@@ -51,8 +52,8 @@
                         <s:a action="" class="dropdown-item"> Afficher mes Voies !</s:a>
                     </div>
                 </li>
-            </ul>
-            <ul class="nav nav-pills">
+
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
                        role="button" aria-haspopup="true" aria-expanded="false">MES LONGUEURES & RELAIS</a>

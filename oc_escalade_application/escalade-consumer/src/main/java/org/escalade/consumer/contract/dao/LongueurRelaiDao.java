@@ -1,5 +1,7 @@
 package org.escalade.consumer.contract.dao;
 import org.escalade.model.bean.LongueurRelai;
+import org.escalade.model.bean.Voie;
+
 import java.util.List;
 
 public interface LongueurRelaiDao {
@@ -17,7 +19,7 @@ public interface LongueurRelaiDao {
          * @param longueurRelai
          * @return un message de confirmation
          */
-        String addLongueurRelai(LongueurRelai longueurRelai);
+        void addLongueurRelai(LongueurRelai longueurRelai, Voie voie);
 
         /**
          * Renvoie la longueur demandée et les relais de la voie
@@ -42,4 +44,6 @@ public interface LongueurRelaiDao {
          * @return un message de confirmation
          */
         String upLongueurRelai(Integer id, LongueurRelai longueur);
+
+        List<LongueurRelai> recoversLongueurWorkflowDao(LongueurRelai longueurRelai, Voie voie);
 }

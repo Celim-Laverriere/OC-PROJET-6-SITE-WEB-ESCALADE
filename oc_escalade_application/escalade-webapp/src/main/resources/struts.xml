@@ -50,10 +50,10 @@
         <action name="logout"
                 class="org.escalade.webapp.action.LoginAction"
                 method="doLogout">
-            <result type="redirectAction">/jsp/index.jsp</result>
+            <result name="success" type="redirectAction">index.action</result>
         </action>
 
-        <!-- ==== Action pour lister les sites ==== -->
+        <!-- ==== Action pour lister les listSites ==== -->
         <action name="site_list"
                 class="org.escalade.webapp.action.SiteAction"
                 method="doList">
@@ -63,6 +63,7 @@
         <action name="site_detail"
                 class="org.escalade.webapp.action.SiteAction"
                 method="doDetail">
+
             <result name="success">/jsp/site/detail.jsp</result>
             <result name="error">/jsp/error.jsp</result>
         </action>
@@ -83,9 +84,8 @@
             </interceptor-ref>
             <interceptor-ref name="defaultStack"/>
 
-            <result name="input"></result>
             <result name="success">jsp/secteur/detail.jsp</result>
-            <result name="error"></result>
+            <result name="error">/jsp/error.jsp</result>
 
         </action>
 
@@ -161,10 +161,10 @@
 
         <!-- ================================================== -->
         <!-- =====  Renvoie les choix des formulaires     ===== -->
-        <!-- =====  de création des sites d'escalade      ===== -->
+        <!-- =====  de création des listSites d'escalade      ===== -->
         <!-- ================================================== -->
 
-        <action name="choixCreate">
+        <action name="management_menu">
 
             <interceptor-ref name="store">
                 <param name="operationMode">RETRIEVE</param>
@@ -195,10 +195,10 @@
             <result name="error">/jsp/compte/form_site.jsp</result>
         </action>
 
-        <!-- Affiche les sites d'éscalade d'un client -->
-        <action name="sites_Par_Session_De_Compte"
+        <!-- Affiche les Sites d'éscalade d'un client -->
+        <action name="sites_by_account"
                 class="org.escalade.webapp.action.SiteAction"
-                method="actionListSitesByAccount">
+                method="sitesByAccount">
 
             <interceptor-ref name="store">
                 <param name="operationMode">STORE</param>
@@ -207,14 +207,12 @@
             <interceptor-ref name="defaultStack"/>
 
             <result name="input">jsp/_include/user_menu.jsp</result>
-            <result name="success">jsp/site/list_of_connected_users.jsp</result>
+            <result name="success">jsp/site/list_site_of_connected_users.jsp</result>
             <result name="error">jsp/error.jsp</result>
         </action>
 
         <!-- Modifier un site d'éscalade par un client -->
-        <action name="modifier_site"
-                class="org.escalade.webapp.action.SiteAction"
-                method="modifiedSite">
+        <action name="modified_site" class="org.escalade.webapp.action.SiteAction" method="modifiedSite">
 
             <interceptor-ref name="store">
                 <param name="operationMode">STORE</param>
@@ -222,16 +220,14 @@
             <interceptor-ref name="authenticatedStack"/>
             <interceptor-ref name="defaultStack"/>
 
-            <result name="input">jsp/creation_forms/modified_site_form.jsp</result>
+            <result name="input">jsp/creation_forms/form_modified_site.jsp</result>
             <result name="success">jsp/_include/user_menu.jsp</result>
             <result name="error">jsp/error.jsp</result>
         </action>
 
         <!-- Supprimer un site d'éscalade -->
 
-        <action name="supprimer_site"
-                class="org.escalade.webapp.action.SiteAction"
-                method="supprimerSite">
+        <action name="del_site" class="org.escalade.webapp.action.SiteAction" method="delSite">
 
             <interceptor-ref name="store">
                 <param name="operationMode">STORE</param>
@@ -239,7 +235,7 @@
             <interceptor-ref name="authenticatedStack"/>
             <interceptor-ref name="defaultStack"/>
 
-            <result name="success">jsp/_include/user_menu.jsp</result>
+            <result name="success" type="redirectAction">sites_by_account.action</result>
             <result name="error">jsp/error.jsp</result>
         </action>
 
@@ -342,6 +338,7 @@
 
         <!-- Récupère les informations pour créer un nouveau secteur -->
 
+        <!-- **** Créer un nouveau secteur **** -->
         <action name="new_secteur"
                 class="org.escalade.webapp.action.SecteurAction"
                 method="doCreate">
@@ -353,14 +350,12 @@
             <interceptor-ref name="defaultStack"/>
 
             <result name="input">jsp/creation_forms/form_secteur.jsp</result>
-            <result name="success">jsp/_include/user_menu.jsp</result>
-            <result name="error">/jsp/compte/form_secteur.jsp</result>
+            <result name="success" type="redirectAction">secteur_by_account.action</result>
+            <result name="error">jsp/creation_forms/form_secteur.jsp</result>
         </action>
 
-        <!-- Affiche les sites d'éscalade d'un client -->
-        <action name="secteurs_Par_Session_De_Compte"
-                class="org.escalade.webapp.action.SecteurAction"
-                method="secteursParSessionDeCompte">
+        <!-- **** Mettre à jour un secteur **** -->
+        <action name="modified_secteur" class="org.escalade.webapp.action.SecteurAction" method="modifiedSecteur">
 
             <interceptor-ref name="store">
                 <param name="operationMode">STORE</param>
@@ -368,14 +363,145 @@
             <interceptor-ref name="authenticatedStack"/>
             <interceptor-ref name="defaultStack"/>
 
-            <result name="success">jsp/secteur/list_of_connected_users.jsp</result>
-            <result name="error">jsp/secteur/list_of_connected_users.jsp</result>
+            <result name="input">jsp/creation_forms/form_modified_secteur.jsp</result>
+            <result name="success" type="redirectAction">secteur_by_account.action</result>
+            <result name="error">jsp/creation_forms/form_modified_secteur.jsp</result>
         </action>
+
+        <!-- **** Supprimer un secteur **** -->
+        <action name="del_Secteur" class="org.escalade.webapp.action.SecteurAction" method="delSecteur">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="success" type="redirectAction">secteur_by_account.action</result>
+            <result name="error">jsp/creation_forms/form_secteur.jsp</result>
+        </action>
+
+        <!-- Affiche les listSites d'éscalade d'un client -->
+        <action name="secteur_by_account"
+                class="org.escalade.webapp.action.SecteurAction"
+                method="secteursByAccount">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="success">jsp/secteur/list_secteur_of_connected_users.jsp</result>
+            <result name="error">jsp/error.jsp</result>
+        </action>
+
+                    <!-- ************************** -->
+                    <!-- ****** ACTION VOIES ****** -->
+                    <!-- ************************** -->
+
+        <action name="new_voie" class="org.escalade.webapp.action.VoieAction" method="doCreate">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="input">jsp/creation_forms/form_voie.jsp</result>
+            <result name="success" type="redirectAction">voies_by_account.action</result>
+            <result name="error">jsp/creation_forms/form_voie.jsp</result>
+        </action>
+
+        <action name="voies_by_account" class="org.escalade.webapp.action.VoieAction" method="voiesByAccount">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="success">jsp/voie/list_voie_of_connected_users.jsp</result>
+            <result name="error">jsp/error.jsp</result>
+        </action>
+
+        <action name="modified_voie" class="org.escalade.webapp.action.VoieAction" method="modifiedVoie">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="input">jsp/creation_forms/form_modified_voie.jsp</result>
+            <result name="success" type="redirectAction">voies_by_account.action</result>
+            <result name="error">jsp/creation_forms/form_modified_voie.jsp</result>
+        </action>
+
+        <action name="del_voie" class="org.escalade.webapp.action.VoieAction" method="delVoie">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="success" type="redirectAction">voies_by_account.action</result>
+            <result name="error">jsp/error.jsp</result>
+        </action>
+
+                    <!-- ***************************** -->
+                    <!-- ****** ACTION LONGUEUR ****** -->
+                    <!-- ***************************** -->
+
+        <action name="new_longueur" class="org.escalade.webapp.action.LongueurAction" method="newLongueur" >
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="input">jsp/creation_forms/form_longueur.jsp</result>
+            <result name="success">jsp/longueur/list_longueur_of_connected_users.jsp</result>
+            <result name="error">jsp/error.jsp</result>
+        </action>
+
+        <action name="del_longueur" class="org.escalade.webapp.action.LongueurAction" method="delLongueur">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="input">jsp/creation_forms/form_del_Longueur.jsp</result>
+            <result name="success">jsp/longueur/list_longueur_of_connected_users.jsp</result>
+            <result name="error">jsp/error.jsp</result>
+        </action>
+
+        <action name="longueur_by_voie" class="org.escalade.webapp.action.LongueurAction" method="longueurByVoie">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="success">jsp/longueur/list_longueur_of_connected_users.jsp</result>
+            <result name="error">jsp/error.jsp</result>
+        </action>
+
+
+                    <!-- ************************** -->
+                    <!-- ****** ACTION TOPOS ****** -->
+                    <!-- ************************** -->
 
 
                     <!-- ************************* -->
                     <!-- ***** ACTION COMPTE ***** -->
                     <!-- ************************* -->
+
         <action name="modifier_compte_utilisateur"
                 class="org.escalade.webapp.action.CompteAction"
                 method="upCompte">

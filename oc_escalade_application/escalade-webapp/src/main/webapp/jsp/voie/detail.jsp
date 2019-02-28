@@ -23,7 +23,7 @@
 
     <div class="row">
         <div class="col-md-12" style="margin-top: 10px; margin-bottom: 10px; text-align: center">
-            <h4>Detail de la voies : <s:property value="nom"/></h4>
+            <h4>Detail de la listVoies : <s:property value="nom"/></h4>
         </div>
     </div>
 

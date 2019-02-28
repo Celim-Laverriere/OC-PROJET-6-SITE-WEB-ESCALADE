@@ -15,21 +15,15 @@ public interface SecteurManager {
 
     Secteur secteur(Integer id);
 
-    String delScteur(Integer id);
+    void delSecteur(Integer id);
 
-    String upSecteur(Integer id, Secteur secteur);
+    void upSecteur(Secteur secteur);
 
     List<Secteur> secteurBySimpleSearch(String motCleRecherche);
 
-    /**
-     * Renvoie le(s) secteur(s) correspondant aux voies trouver lors de la recherche,
-     * dans la "barre de recherche" du navigateur.
-     * @param voies
-     * @return secteurs
-     */
     List<Secteur> rechercheSecteurParVoie(List<Voie> voies);
 
-    List<Secteur> secteursParSessionDeCompte(Compte compte);
+    List<Secteur> listSecteurByAccount(Compte compte);
 
     Secteur addSecteurWorkflow (Secteur secteur, Site site);
 }

@@ -70,8 +70,7 @@ public class TopoAction extends ActionSupport {
         } else {
             try {
                 topo = managerFactory.getTopoManager().topo(topo_id);
-            } catch (Exception e) {
-                System.out.println(e);
+            } catch (Exception pEX) {
                 this.addActionError("Topo non trouvé. ID = " + topo_id);
             }
         }

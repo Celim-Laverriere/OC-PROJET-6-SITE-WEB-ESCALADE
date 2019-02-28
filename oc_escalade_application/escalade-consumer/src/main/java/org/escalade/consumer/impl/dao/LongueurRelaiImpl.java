@@ -3,6 +3,7 @@ package org.escalade.consumer.impl.dao;
 import org.escalade.consumer.contract.dao.LongueurRelaiDao;
 import org.escalade.consumer.impl.data.AbstractDataImpl;
 import org.escalade.consumer.impl.rowmapper.LongueurRM;
+import org.escalade.model.bean.Compte;
 import org.escalade.model.bean.LongueurRelai;
 import org.escalade.model.bean.Voie;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -52,28 +53,59 @@ public class LongueurRelaiImpl extends AbstractDataImpl implements LongueurRelai
         return null;
     }
 
+    /**
+     * Supprimer une longueur d'une voie
+     * @param id
+     * @return un message de confirmation
+     */
     @Override
-    public String delLongueurRelai(Integer id) {
+    public void delLongueurRelai(Integer id) {
+
+        String vSql = "DELETE FROM  public.longueur_relai"
+                    + " WHERE id = :id";
+
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("id", id);
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+        vJdbcTemplate.update(vSql, vParams);
+    }
+
+    /**
+     *Mettre à jour une longueur et un relai d'une voie
+     * @param id
+     * @return un message de confirmation
+     */
+    @Override
+    public String upLongueur(Integer id, LongueurRelai longueur) {
         return null;
     }
 
-    @Override
-    public String upLongueurRelai(Integer id, LongueurRelai longueur) {
-        return null;
-    }
+    public List<LongueurRelai> listLongueursByVoieDao(Voie voie){
 
-    public List<LongueurRelai> recoversLongueurWorkflowDao(LongueurRelai longueurRelai, Voie voie){
-
-        String vSql = "SELECT * FROM public.longueur_relai"
-                    + " WHERE num_longueur = " + longueurRelai.getNum_longueur()
-                    + " AND  cotation = '" + longueurRelai.getCotation() + "'"
-                    + " AND  hauteur = '" + longueurRelai.getHauteur() + "'"
-                    + " AND  voie_id = " + voie.getId();
+        String vSql = "SELECT longueur_relai.* FROM public.longueur_relai"
+                    + " INNER JOIN voie ON voie.id = " + voie.getId()
+                    + " WHERE longueur_relai.voie_id = voie.id";
 
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
         LongueurRM vLongueurRM = new LongueurRM();
 
-        List<LongueurRelai> vListLongueur = vJdbcTemplate.query(vSql, vLongueurRM.getvLongueurRelaiRowMapper());
-        return vListLongueur;
+        List<LongueurRelai> listLongueurRelai = vJdbcTemplate.query(vSql, vLongueurRM.getvLongueurRelaiRowMapper());
+        return listLongueurRelai;
     }
+
+//    public List<LongueurRelai> recoversLongueurWorkflowDao(LongueurRelai longueurRelai, Voie voie){
+//
+//        String vSql = "SELECT * FROM public.longueur_relai"
+//                    + " WHERE num_longueur = " + longueurRelai.getNum_longueur()
+//                    + " AND  cotation = '" + longueurRelai.getCotation() + "'"
+//                    + " AND  hauteur = '" + longueurRelai.getHauteur() + "'"
+//                    + " AND  voie_id = " + voie.getId();
+//
+//        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+//        LongueurRM vLongueurRM = new LongueurRM();
+//
+//        List<LongueurRelai> vListLongueur = vJdbcTemplate.query(vSql, vLongueurRM.getvLongueurRelaiRowMapper());
+//        return vListLongueur;
+//    }
 }

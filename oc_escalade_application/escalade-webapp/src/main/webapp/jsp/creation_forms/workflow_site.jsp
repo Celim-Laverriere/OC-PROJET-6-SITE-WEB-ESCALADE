@@ -24,7 +24,7 @@
         margin-top: 1%; box-shadow: 6px 6px 14px #DCDCDC">
 
     <div class="col-md-12" style="text-align: center; margin-top: 2%">
-        <h4>Création d'un nouveau sites d'éscalades</h4>
+        <h4>Création d'un nouveau listSites d'éscalades</h4>
     </div>
 
     <%-- =============================== --%>
@@ -57,7 +57,7 @@
     <div class="row" id="formSite">
 
         <div class="col-md-12" style="margin-top: 1%">
-            <h5>Création d'un nouveau sites d'éscalades</h5>
+            <h5>Création d'un nouveau listSites d'éscalades</h5>
         </div>
 
         <div class="col-md-12">
@@ -452,8 +452,12 @@
     </div>
 </div>
 
+<footer>
+    <%@include file="../_include/footer.jsp"%>
+    <script src="javaScript/workflow_site.js"></script>
+</footer>
 
-<script src="javaScript/workflow_site.js"></script>
+
 
 </body>
 

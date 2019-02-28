@@ -3,17 +3,14 @@ package org.escalade.consumer.impl.dao;
 import org.escalade.consumer.contract.dao.SecteurDao;
 import org.escalade.consumer.impl.data.AbstractDataImpl;
 import org.escalade.consumer.impl.rowmapper.SecteurRM;
-import org.escalade.consumer.impl.rowmapper.SiteRM;
 import org.escalade.model.bean.Compte;
 import org.escalade.model.bean.Secteur;
 import org.escalade.model.bean.Site;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
 import java.util.List;
 
 public class SecteurImpl extends AbstractDataImpl implements SecteurDao {
@@ -59,14 +56,42 @@ public class SecteurImpl extends AbstractDataImpl implements SecteurDao {
         return  vSecteurDetail.get(0);
     }
 
+    /**
+     * Supprimer un secteur
+     * @param id
+     * @return un message de confirmation
+     */
     @Override
-    public String delSecteur(Integer id) {
-        return null;
+    public void delSecteur(Integer id) {
+
+        String vSql = "DELETE FROM public.secteur WHERE id = :id";
+
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("id", id);
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+        vJdbcTemplate.update(vSql, vParams);
+
     }
 
+    /**
+     * Mettre à jour un secteur
+     * @return un message de confirmation
+     */
     @Override
-    public String upSecteur(Integer id, Secteur secteur) {
-        return null;
+    public void upSecteur(Secteur secteur) {
+
+        String vSql = "UPDATE public.secteur SET"
+                    + " nom = :nom, description = :description"
+                    + " WHERE id = :id";
+
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("id", secteur.getId());
+        vParams.addValue("nom", secteur.getNom());
+        vParams.addValue("description", secteur.getDescription());
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+        vJdbcTemplate.update(vSql, vParams);
     }
 
     public List<Secteur> secteursBySiteId(Integer site_id){
@@ -122,7 +147,7 @@ public class SecteurImpl extends AbstractDataImpl implements SecteurDao {
      * @param compte
      * @return
      */
-    public List<Secteur> secteursParSessionDeCompteDao(Compte compte){
+    public List<Secteur> listSecteurByAccountDao(Compte compte){
 
         String vSql = "SELECT secteur.* FROM public.secteur"
                     + " INNER JOIN site ON site.compte_id = " + compte.getId()

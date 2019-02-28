@@ -342,26 +342,19 @@ public class workflowSiteAction extends ActionSupport implements SessionAware, S
 
         try {
 
-            /**
-             * @see org.escalade.business.impl.manager.SiteManagerImpl#addSiteWorkflow(Site, Compte)
-             */
+            /**@see org.escalade.business.impl.manager.SiteManagerImpl#addSiteWorkflow(Site, Compte)*/
             Site site = managerFactory.getSiteManager().addSiteWorkflow((Site) this.session.get("site"), (Compte) this.session.get("user"));
 
-            /**
-             * @see org.escalade.business.impl.manager.SecteurManagerImpl#addSecteurWorkflow(Secteur, Site)
-             */
+            /**@see org.escalade.business.impl.manager.SecteurManagerImpl#addSecteurWorkflow(Secteur, Site)*/
             Secteur secteur = managerFactory.getSecteurManager().addSecteurWorkflow((Secteur) this.session.get("secteur"), site);
 
-            /**
-             * @see org.escalade.business.impl.manager.VoieManagerImpl#addVoieWorkflow(Voie, Secteur)
-             */
+            /**@see org.escalade.business.impl.manager.VoieManagerImpl#addVoieWorkflow(Voie, Secteur)*/
             Voie voie = managerFactory.getVoieManager().addVoieWorkflow((Voie) this.session.get("voie"), secteur);
 
-            /**
-             * @see org.escalade.business.impl.manager.LongueurRelaiManagerImpl#addLongueurWorkflow(List, Voie)
-             */
+            /**@see org.escalade.business.impl.manager.LongueurRelaiManagerImpl#addLongueurWorkflow(List, Voie)*/
             longueursRelais = (List<LongueurRelai>) this.session.get("listLongueurs");
             managerFactory.getLongueurRelaiManager().addLongueurWorkflow(longueursRelais, voie);
+
         } catch (Exception pEX){
             this.addActionError("Une erreur technique s'est produite, veuillez réessayer plus tard!");
         }

@@ -1,8 +1,5 @@
 package org.escalade.model.bean;
 
-import com.sun.istack.internal.NotNull;
-
-import javax.inject.Inject;
 import java.util.List;
 
 public class Site {
@@ -13,7 +10,7 @@ public class Site {
     private String region;
     private String description;
     private Integer compte_id;
-    private List<Secteur> secteurs;
+    private List<Secteur> listSecteurs;
     private List<Photo> photos;
     private List<Commentaire> commentaires;
 
@@ -63,12 +60,12 @@ public class Site {
         this.compte_id = compte_id;
     }
 
-    public List<Secteur> getSecteurs() {
-        return secteurs;
+    public List<Secteur> getListSecteurs() {
+        return listSecteurs;
     }
 
-    public void setSecteurs(List<Secteur> secteurs) {
-        this.secteurs = secteurs;
+    public void setListSecteurs(List<Secteur> listSecteurs) {
+        this.listSecteurs = listSecteurs;
     }
 
     public List<Photo> getPhotos() {

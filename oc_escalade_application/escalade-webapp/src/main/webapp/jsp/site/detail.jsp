@@ -19,6 +19,7 @@
     <%@include file="../_include/header.jsp"%>
 </header>
 
+<section>
 <div class="container">
 
     <div class="row">
@@ -67,7 +68,7 @@
         </div>
     </div>
 
-    <s:iterator value="site.secteurs">
+    <s:iterator value="site.listSecteurs">
         <div class="row">
             <div class="col-md-10">
                 <div class="well well-md">
@@ -85,9 +86,11 @@
         <hr width="100%" color="#DCDCDC">
     </s:iterator>
 </div>
+</section>
 
 <footer>
     <%@include file="../_include/footer.jsp"%>
+    <%@include file="../_include/scripts.jsp"%>
 </footer>
 
 </body>

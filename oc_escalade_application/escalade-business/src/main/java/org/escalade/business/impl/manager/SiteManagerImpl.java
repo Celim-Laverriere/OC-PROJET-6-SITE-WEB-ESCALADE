@@ -42,7 +42,7 @@ public class SiteManagerImpl extends AbstractManagerImpl implements SiteManager 
         /**@see org.escalade.consumer.impl.dao.SiteImpl#site(Integer)*/
         Site site = getDaoFactory().getSiteDao().site(site_id);
 
-        /**@see org.escalade.consumer.impl.dao.SecteurImpl#secteursBySiteId(Integer)*/
+        /**@see org.escalade.consumer.impl.dao.SecteurImpl#secteursBySiteId(Integer)  */
         List<Secteur> secteurs = getDaoFactory().getSecteurDao().secteursBySiteId(site_id);
 
         /**@see org.escalade.consumer.impl.dao.CommentaireImpl#commentaires(Integer, Integer)*/
@@ -59,9 +59,9 @@ public class SiteManagerImpl extends AbstractManagerImpl implements SiteManager 
                 List<LongueurRelai> longueursRelai = getDaoFactory().getLongueurRelaiDao().longueursRelai(voie.getId());
                 voie.setLongueursRelais(longueursRelai);
             }
-            secteur.setVoies(voies);
+            secteur.setListVoies(voies);
         }
-        site.setSecteurs(secteurs);
+        site.setListSecteurs(secteurs);
         return site;
     }
 

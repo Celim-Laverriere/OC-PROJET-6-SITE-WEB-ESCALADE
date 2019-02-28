@@ -9,7 +9,7 @@ public class Secteur {
     private String nom;
     private String description;
     private Integer site_id;
-    private List<Voie> voies;
+    private List<Voie> listVoies;
 
     /* ==================== Constructeurs ==================== */
     public Secteur() {
@@ -48,11 +48,11 @@ public class Secteur {
         this.site_id = site_id;
     }
 
-    public List<Voie> getVoies() {
-        return voies;
+    public List<Voie> getListVoies() {
+        return listVoies;
     }
 
-    public void setVoies(List<Voie> voies) {
-        this.voies = voies;
+    public void setListVoies(List<Voie> listVoies) {
+        this.listVoies = listVoies;
     }
 }

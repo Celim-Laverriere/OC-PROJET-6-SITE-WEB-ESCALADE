@@ -16,6 +16,7 @@ public class LongueurRelaiManagerImpl extends AbstractManagerImpl implements Lon
 
     @Override
     public void addLongueurRelai(LongueurRelai longueur, Voie voie) {
+        /**@see org.escalade.consumer.impl.dao.LongueurRelaiImpl#addLongueurRelai(LongueurRelai, Voie) */
         getDaoFactory().getLongueurRelaiDao().addLongueurRelai(longueur, voie);
     }
 
@@ -25,25 +26,34 @@ public class LongueurRelaiManagerImpl extends AbstractManagerImpl implements Lon
     }
 
     @Override
-    public String delLongueurRelai(Integer id) {
-        return getDaoFactory().getLongueurRelaiDao().delLongueurRelai(id);
+    public void delLongueurRelai(Integer id) {
+        /**@see org.escalade.consumer.impl.dao.LongueurRelaiImpl#delLongueurRelai(Integer)*/
+        getDaoFactory().getLongueurRelaiDao().delLongueurRelai(id);
     }
 
     @Override
     public String upLongueurRelai(Integer id, LongueurRelai longueur) {
-        return getDaoFactory().getLongueurRelaiDao().upLongueurRelai(id, longueur);
+        return getDaoFactory().getLongueurRelaiDao().upLongueur(id, longueur);
+    }
+
+    public List<LongueurRelai> listLongueursByVoie(Voie voie){
+
+        /**@see org.escalade.consumer.impl.dao.LongueurRelaiImpl#listLongueursByVoieDao(Voie)*/
+        List<LongueurRelai> longueurRelaiList = getDaoFactory().getLongueurRelaiDao().listLongueursByVoieDao(voie);
+        return longueurRelaiList;
     }
 
     /**
-     *
+     * Cette méthode transmet à la couche consumer les longueurs une à une pour les ajouter à la base de données.
      * @param longueurs
      * @param voie
-     * @see org.escalade.consumer.impl.dao.LongueurRelaiImpl#recoversLongueurWorkflowDao(LongueurRelai, Voie)
      */
     public void addLongueurWorkflow(List<LongueurRelai> longueurs, Voie voie) {
 
-        for (LongueurRelai longueuRelai : longueurs){
-            getDaoFactory().getLongueurRelaiDao().addLongueurRelai(longueuRelai, voie);
+        for (LongueurRelai longueurRelai : longueurs){
+
+            /**@see org.escalade.consumer.impl.dao.LongueurRelaiImpl#addLongueurRelai(LongueurRelai, Voie)*/
+            getDaoFactory().getLongueurRelaiDao().addLongueurRelai(longueurRelai, voie);
         }
     }
 }

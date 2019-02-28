@@ -20,6 +20,7 @@
 
     <footer>
         <%@include file="../jsp/_include/footer.jsp"%>
+        <%@include file="../jsp/_include/scripts.jsp"%>
     </footer>
 
 </body>

@@ -1,4 +1,5 @@
 package org.escalade.consumer.contract.dao;
+import org.escalade.model.bean.Compte;
 import org.escalade.model.bean.LongueurRelai;
 import org.escalade.model.bean.Voie;
 
@@ -29,21 +30,11 @@ public interface LongueurRelaiDao {
          */
         LongueurRelai longueurRelai(Integer id);
 
-        /**
-         * Supprimer une longueur et le relai d'une voie
-         *
-         * @param id
-         * @return un message de confirmation
-         */
-        String delLongueurRelai(Integer id);
+        void delLongueurRelai(Integer id);
 
-        /**
-         *Mettre à jour une longueur et un relai d'une voie
-         *
-         * @param id
-         * @return un message de confirmation
-         */
-        String upLongueurRelai(Integer id, LongueurRelai longueur);
+        String upLongueur(Integer id, LongueurRelai longueur);
 
-        List<LongueurRelai> recoversLongueurWorkflowDao(LongueurRelai longueurRelai, Voie voie);
+        List<LongueurRelai> listLongueursByVoieDao(Voie voie);
+
+//        List<LongueurRelai> recoversLongueurWorkflowDao(LongueurRelai longueurRelai, Voie voie);
 }

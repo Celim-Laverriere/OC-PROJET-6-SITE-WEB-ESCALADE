@@ -38,7 +38,7 @@
                         <li><s:a action="creerCompte">Creer mon compte</s:a></li>
                     </s:if>
                     <s:else>
-                        <li><s:a action="choixCreate">Gestion Sites</s:a></li>
+                        <li><s:a action="management_menu">Gestion Sites</s:a></li>
                         <li><s:a action="modifier_compte_utilisateur">Mes infos perso</s:a></li>
                         <li><s:a action="logout">Déconnexion</s:a></li>
                     </s:else>
@@ -52,7 +52,7 @@
         <div class="col-md-6">
             <ul class="nav nav-pills" style="margin-bottom: 8px; margin-left: 5px">
                 <li class="nav-link"><s:a action="index" style="color: black; font-weight:bold" >Accueil</s:a></li>
-                <li class="nav-link"><s:a action="site_list" style="color: black; font-weight:bold">Liste des sites</s:a></li>
+                <li class="nav-link"><s:a action="site_list" style="color: black; font-weight:bold">Liste des Sites</s:a></li>
                 <li class="nav-link"><s:a action="topo_list" style="color: black; font-weight:bold">Liste des topos</s:a></li>
                 <li class="nav-link"><s:a action="advanced_research" style="color: black; font-weight:bold">Recherche</s:a> </li>
             </ul>

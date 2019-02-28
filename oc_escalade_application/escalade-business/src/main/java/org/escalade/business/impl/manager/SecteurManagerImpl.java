@@ -21,27 +21,32 @@ public class SecteurManagerImpl extends AbstractManagerImpl implements SecteurMa
 
     @Override
     public void addSecteur(Secteur secteur, Integer site_id) {
+        /**@see org.escalade.consumer.impl.dao.SecteurImpl#addSecteur(Secteur, Integer) */
         getDaoFactory().getSecteurDao().addSecteur(secteur, site_id);
     }
 
     @Override
     public Secteur secteur(Integer id) {
+        /**@see org.escalade.consumer.impl.dao.SecteurImpl#secteur(Integer) */
         Secteur secteur = getDaoFactory().getSecteurDao().secteur(id);
+        /**@see org.escalade.consumer.impl.dao.VoieImpl#voies(Integer)*/
         List<Voie> voies = getDaoFactory().getVoieDao().voies(id);
 
-        secteur.setVoies(voies);
+        secteur.setListVoies(voies);
 
         return secteur;
     }
 
     @Override
-    public String delScteur(Integer id) {
-        return getDaoFactory().getSecteurDao().delSecteur(id);
+    public void delSecteur(Integer id) {
+        /**@see org.escalade.consumer.impl.dao.SecteurImpl#delSecteur(Integer)*/
+        getDaoFactory().getSecteurDao().delSecteur(id);
     }
 
     @Override
-    public String upSecteur(Integer id, Secteur secteur) {
-        return getDaoFactory().getSecteurDao().upSecteur(id, secteur);
+    public void upSecteur(Secteur secteur) {
+        /**@see org.escalade.consumer.impl.dao.SecteurImpl#upSecteur(Secteur)*/
+        getDaoFactory().getSecteurDao().upSecteur(secteur);
     }
 
     /**
@@ -80,9 +85,10 @@ public class SecteurManagerImpl extends AbstractManagerImpl implements SecteurMa
         return secteurs;
     }
 
-    public List<Secteur> secteursParSessionDeCompte(Compte compte){
+    public List<Secteur> listSecteurByAccount(Compte compte){
 
-       List<Secteur> vSecteurs = getDaoFactory().getSecteurDao().secteursParSessionDeCompteDao(compte);
+        /**@see org.escalade.consumer.impl.dao.SecteurImpl#listSecteurByAccountDao(Compte) */
+       List<Secteur> vSecteurs = getDaoFactory().getSecteurDao().listSecteurByAccountDao(compte);
        return vSecteurs;
     }
 

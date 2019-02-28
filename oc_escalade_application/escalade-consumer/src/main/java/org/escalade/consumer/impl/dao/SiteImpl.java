@@ -68,7 +68,7 @@ public class SiteImpl extends AbstractDataImpl implements SiteDao {
         vParams.addValue("id", id);
 
         NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
-        int vNbrLigneMaj = vJdbcTemplate.update(vSql, vParams);
+        vJdbcTemplate.update(vSql, vParams);
     }
 
     /**

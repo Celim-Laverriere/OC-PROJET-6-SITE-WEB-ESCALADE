@@ -21,6 +21,7 @@ public class LongueurRM {
             vLongueurRelai.setNum_relai(pRs.getInt("num_relai"));
             vLongueurRelai.setHauteur(pRs.getFloat("hauteur"));
             vLongueurRelai.setCotation(pRs.getString("cotation"));
+            vLongueurRelai.setVoie_id(pRs.getInt("voie_id"));
             return vLongueurRelai;
         }
     };

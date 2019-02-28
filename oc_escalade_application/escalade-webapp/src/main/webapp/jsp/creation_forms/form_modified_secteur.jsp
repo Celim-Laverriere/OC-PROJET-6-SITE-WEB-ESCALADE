@@ -1,55 +1,47 @@
 <%--
   Created by IntelliJ IDEA.
   User: CELIM
-  Date: 07/11/2018
-  Time: 10:45
+  Date: 27/02/2019
+  Time: 12:31
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="s" uri="/struts-tags" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
+<head>
 
+</head>
 <body>
 
-<section>
-    <%@include file="../_include/user_menu.jsp"%>
+<%@include file="../_include/user_menu.jsp"%>
 
+<section>
     <div class="container" style="border-style: solid; border-color: #DCDCDC; border-width: 2px; border-radius: 10px;
         margin-top: 1%; box-shadow: 6px 6px 14px #DCDCDC">
 
         <div class="row">
             <div class="col-md-12" style="text-align: center; margin-top: 1%">
-                <h4>Création d'un nouveau SECTEUR</h4>
+                <h2>Modifier un secteur</h2>
             </div>
         </div>
 
         <div class="row justify-content-center">
             <div class="col-md-10">
-                <s:form action="new_secteur">
-
+                <s:form name="modified_secteur">
                 <div class="form-group">
-                    <label for="selectSite" requiredLabel="true">Sélectionnez un site d'escalade</label>
-                    <select id="selectSite" name="siteNomRegion" required="true" class="form-control">
-                        <s:iterator value="listSites">
-                            <option><s:property value="nom"/> - <s:property value="region"/></option>
-                    </s:iterator>
-                    </select>
+                    <label for="inputNomSecteur" requiredLabel="true">Nom du Site</label>
+                    <input id="inputNomSecteur" name="modifiedSecteur.nom" value="${secteur.nom}" class="form-control"
+                           required="true"/>
                 </div>
 
                 <div class="form-group">
-                    <label for="inputNomSecteur" requiredLabel="true">Nom du Secteur</label>
-                    <input id="inputNomSecteur" name="secteur.nom" class="form-control" required="true"/>
-                </div>
-
-                <div class="form-group">
-                    <label for="textareaDescriptionSecteur">Description du secteur</label>
-                    <textarea name="secteur.description" id="textareaDescriptionSecteur" rows="5" class="form-control"
-                              style="width: 100%"></textarea>
+                    <label for="textareaDescriptionSecteur">Description du site</label>
+                    <textarea name="modifiedSecteur.description" id="textareaDescriptionSecteur" rows="5" class="form-control"
+                              style="width: 100%"><s:property value="%{secteur.description}"/></textarea>
                 </div>
             </div>
         </div>
-
         <div class="row justify-content-center">
             <div class="col-md-5">
                 <button class="btn btn-primary" type="submit" style="width: 100%">Validez</button>
@@ -64,7 +56,8 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="secteurModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="secteurModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -79,7 +72,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary"
                             data-dismiss="modal">Annulez</button>
-                    <s:a action="choixCreate">
+                    <s:a action="sectors_by_account">
                         <button type="button" class="btn btn-primary">Confirmez</button>
                     </s:a>
                 </div>

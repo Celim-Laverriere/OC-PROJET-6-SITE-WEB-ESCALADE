@@ -4,7 +4,7 @@ import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 
 /**
- * Interceptor permettant de vérifier qu'utilisateur est bien connecté
+ * Interceptor permettant de vérifier qu'un utilisateur est bien connecté
  */
 public class AuthInterceptor extends AbstractInterceptor {
 

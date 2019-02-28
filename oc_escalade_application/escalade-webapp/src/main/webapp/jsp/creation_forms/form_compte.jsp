@@ -17,6 +17,7 @@
 
 <%@include file="../_include/header.jsp"%>
 
+<section>
 <s:if test="!#session.user">
     <div class="container" style="margin-top: 1%; padding-top: 1%; margin-bottom: 1%; border-style: solid; border-color: #DCDCDC; border-width: 2px;
                     border-radius: 10px">
@@ -58,7 +59,9 @@
 
 
 </s:if>
+</section>
 
+<section>
 <s:if test="#session.user">
 
     <div class="container" style="margin-top: 1%; padding-top: 1%; margin-bottom: 1%; border-style: solid;
@@ -141,10 +144,13 @@
     </div>
 
 </s:if>
+</section>
 
 <footer>
     <%@include file="../_include/footer.jsp"%>
+    <%@include file="../_include/scripts.jsp"%>
 </footer>
+
 
 </body>
 

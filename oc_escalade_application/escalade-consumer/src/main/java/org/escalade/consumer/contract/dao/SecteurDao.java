@@ -31,21 +31,11 @@ public interface SecteurDao {
          */
         Secteur secteur(Integer id);
 
-        /**
-         * Supprimer un secteur
-         *
-         * @param id
-         * @return un message de confirmation
-         */
-        String delSecteur(Integer id);
 
-        /**
-         * Mettre à jour un secteur
-         *
-         * @param id
-         * @return un message de confirmation
-         */
-        String upSecteur(Integer id, Secteur secteur);
+        void delSecteur(Integer id);
+
+
+        void upSecteur(Secteur secteur);
 
         /**
          *Renvoie les secteurs correspondant au site sélectionné
@@ -75,7 +65,7 @@ public interface SecteurDao {
          * @param compte
          * @return
          */
-       List<Secteur> secteursParSessionDeCompteDao(Compte compte);
+       List<Secteur> listSecteurByAccountDao(Compte compte);
 
         Secteur recoversSecteurWorkflowDao(Secteur secteur, Site site);
 }

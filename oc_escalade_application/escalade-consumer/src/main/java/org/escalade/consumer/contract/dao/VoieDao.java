@@ -1,5 +1,6 @@
 package org.escalade.consumer.contract.dao;
 
+import org.escalade.model.bean.Compte;
 import org.escalade.model.bean.Secteur;
 import org.escalade.model.bean.Voie;
 
@@ -9,52 +10,20 @@ import java.util.List;
 
 public interface VoieDao {
 
-       /**
-        * Renvoie la liste des voies demandées
-        *
-        * @return les {@link Voie}
-        */
-       List<Voie> voies(Integer secteur_id);
 
-       /**
-        * Ajouter une voie
-        *
-        * @param voie
-        * @return un message de confirmation
-        */
-       void addVoie(Voie voie, Secteur secteur);
+    List<Voie> voies(Integer secteur_id);
 
-       /**
-        * Renvoie la voie demandée
-        *
-        * @param id
-        * @return la voie correspondant à son id
-        */
-       Voie voie(Integer id);
+    void addVoie(Voie voie, Secteur secteur);
 
-    /**
-     * Supprimer une voie
-     *
-     * @param id
-     * @return un message de confirmation
-     */
-       String delVoie(Integer id);
+    Voie voie(Integer id);
 
-    /**
-     * Mettre à jour une voie
-     *
-     * @param voie
-     * @return un message de confirmation
-     */
-       String upVoie(Voie voie);
+    void delVoie(Integer id);
 
-    /**
-     * Recherche dans la table "voie" une correspondance
-     * par le nom de la voie avec la saissi de l'utilisateur.
-     * @param motCleRecherche
-     * @return
-     */
+    void upVoie(Voie voie);
+
     List<Voie>  rechercheSimpleParVoieDao(String motCleRecherche);
+
+    List<Voie> listVoiesByAccountDao(Compte compte);
 
     Voie recoversVoieWorkflowDao(Voie voie, Secteur secteur);
 }

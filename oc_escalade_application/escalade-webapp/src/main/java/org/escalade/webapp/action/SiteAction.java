@@ -22,16 +22,16 @@ public class SiteAction extends ActionSupport implements SessionAware {
 
     // ----- Eléments en sortie -----
 
-    private List<String> regions = new ArrayList(Arrays.asList("Ile-de-France", "Champagne-Ardenne", "Picardie",
+    private List<String> listRegions = new ArrayList(Arrays.asList("Ile-de-France", "Champagne-Ardenne", "Picardie",
             "Haute-Normandie", "Centre", "Basse-Normandie", "Bourgogne", "Nord-Pas-de-Calais", "Lorraine", "Alsace",
             "Franche-Comté", "Pays de la Loire", "Bretagne", "Poitou-Charentes", "Aquitaine", "Midi-Pyrénées",
             "Limousin", "Rhône-Alpes", "Auvergne", "Languedoc-Roussillon", "Provence-Alpes-Côte d'Azur",
             "Corse", "Guadeloupe", "Martinique", "Guyane", "La Réunion", "Mayotte"));
 
     // ----- Eléments en entrée -----
-    private List<Site> sites;
+    private List<Site> listSites;
     private Site site;
-    private Site modifySite;
+    private Site modifiedSite;
     private Compte compte;
 
     // ----- Eléments Struts
@@ -42,12 +42,12 @@ public class SiteAction extends ActionSupport implements SessionAware {
 
     // ============ Getters/Setters ============
 
-    public List<String> getRegions() {
-        return regions;
+    public List<String> getListRegions() {
+        return listRegions;
     }
 
-    public void setRegions(List<String> regions) {
-        this.regions = regions;
+    public void setListRegions(List<String> listRegions) {
+        this.listRegions = listRegions;
     }
 
     public Integer getSite_id() {
@@ -58,12 +58,12 @@ public class SiteAction extends ActionSupport implements SessionAware {
         this.site_id = site_id;
     }
 
-    public List<Site> getSites() {
-        return sites;
+    public List<Site> getListSites() {
+        return listSites;
     }
 
-    public void setSites(List<Site> sites) {
-        this.sites = sites;
+    public void setListSites(List<Site> listSites) {
+        this.listSites = listSites;
     }
 
     public Site getSite() {
@@ -84,12 +84,12 @@ public class SiteAction extends ActionSupport implements SessionAware {
 
 //    ===================================
 
-    public Site getModifySite() {
-        return modifySite;
+    public Site getModifiedSite() {
+        return modifiedSite;
     }
 
-    public void setModifySite(Site modifySite) {
-        this.modifySite = modifySite;
+    public void setModifiedSite(Site modifiedSite) {
+        this.modifiedSite = modifiedSite;
     }
 
     // =============== Méthodes ================
@@ -99,7 +99,7 @@ public class SiteAction extends ActionSupport implements SessionAware {
      * @return success
      */
     public String doList() {
-        sites = managerFactory.getSiteManager().sites();
+        listSites = managerFactory.getSiteManager().sites();
         return ActionSupport.SUCCESS;
     }
 
@@ -109,17 +109,17 @@ public class SiteAction extends ActionSupport implements SessionAware {
      */
     public String doDetail(){
 
-        if(site_id == null) {
-            this.addActionError("Vous devez indiquer un id de site");
-        } else {
+        String vResult = ActionSupport.INPUT;
+
             try {
                 site = managerFactory.getSiteManager().site(site_id);
+                vResult = ActionSupport.SUCCESS;
+
+                System.out.println(site.getListSecteurs().listIterator());
             } catch (Exception e) {
                this.addActionError("Site non trouvé. ID = " + site_id + " " + e);
             }
-        }
-
-        return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
+        return vResult;
     }
 
     /**
@@ -146,16 +146,16 @@ public class SiteAction extends ActionSupport implements SessionAware {
         return vResult;
     }
 
-    public String actionListSitesByAccount(){
+    public String sitesByAccount(){
         String vResult = ActionSupport.INPUT;
 
         try {
-            sites = managerFactory.getSiteManager().listSitesByAccount((Compte) this.session.get("user"));
+            listSites = managerFactory.getSiteManager().listSitesByAccount((Compte) this.session.get("user"));
             vResult = ActionSupport.SUCCESS;
 
-            if (sites.isEmpty()) {
+            if (listSites.isEmpty()) {
             vResult = ActionSupport.INPUT;
-            this.addActionMessage("Vous n'avez pas encore de sites d'escalades !");
+            this.addActionMessage("Vous n'avez pas encore de listSites d'escalades !");
             }
 
         } catch (NullPointerException pEX) {
@@ -178,20 +178,18 @@ public class SiteAction extends ActionSupport implements SessionAware {
             try {
 
                 site = (Site) this.session.get("site");
-                modifySite.setId(site.getId());
+                modifiedSite.setId(site.getId());
 
-                /**
-                 * @see org.escalade.business.impl.manager.SiteManagerImpl#upSite(Site)
-                 */
-                managerFactory.getSiteManager().upSite(modifySite);
+                /**@see org.escalade.business.impl.manager.SiteManagerImpl#upSite(Site)*/
+                managerFactory.getSiteManager().upSite(modifiedSite);
+
                 vResult = ActionSupport.SUCCESS;
 
                 this.addActionMessage("Modifications effectuées !");
 
             } catch (NullPointerException pEX) {
-                /**
-                 * @see org.escalade.business.impl.manager.SiteManagerImpl#site(Integer)
-                 */
+
+                /**@see org.escalade.business.impl.manager.SiteManagerImpl#site(Integer)*/
                 site = managerFactory.getSiteManager().site(site_id);
                 this.session.put("site", site);
 
@@ -206,7 +204,7 @@ public class SiteAction extends ActionSupport implements SessionAware {
      * Cette méthode permet de supprimer un site
      * @return
      */
-    public String supprimerSite(){
+    public String delSite(){
         String vResult = ActionSupport.INPUT;
 
         try {
@@ -219,6 +217,8 @@ public class SiteAction extends ActionSupport implements SessionAware {
 
         return vResult;
     }
+
+    // ======================== Session =========================
 
     @Override
     public void setSession(Map<String, Object> pSession) {

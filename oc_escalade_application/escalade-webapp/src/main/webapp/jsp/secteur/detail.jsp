@@ -12,11 +12,14 @@
 <head>
     <%@include file="../_include/head.jsp"%>
 </head>
+
 <body>
+
 <header>
     <%@include file="../_include/header.jsp"%>
 </header>
 
+<section>
 <div class="container">
     <s:iterator value="secteur">
     <div class="row">
@@ -39,7 +42,7 @@
             </div>
         </div>
 
-        <s:iterator value="voies">
+        <s:iterator value="listVoies">
             <div class="row">
                 <div class="col-md-8">
                     <div class="well well-md">
@@ -61,10 +64,11 @@
 
     </s:iterator>
 </div>
-
+</section>
 
 <footer>
     <%@include file="../_include/footer.jsp"%>
+    <%@include file="../_include/scripts.jsp"%>
 </footer>
 </body>
 </html>

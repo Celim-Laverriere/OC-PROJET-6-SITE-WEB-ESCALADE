@@ -32,9 +32,9 @@
 </div>
 
 <div class="container">
-    <s:if test="%{!sites.isEmpty()}">
+    <s:if test="%{!listSites.isEmpty()}">
         <h3 style="text-align: center">Site(s)</h3>
-        <s:iterator value="sites">
+        <s:iterator value="listSites">
             <div class="row">
                 <div class="col-md-9">
                     <h6>Nom : <s:property value="nom"/></h6>
@@ -55,9 +55,9 @@
 <div class="col-md-12"></div>
 
 <div class="container">
-    <s:if test="%{!secteurs.isEmpty()}">
+    <s:if test="%{!listSecteurs.isEmpty()}">
         <h3 style="text-align: center">Secteur(s)</h3>
-        <s:iterator value="secteurs">
+        <s:iterator value="listSecteurs">
             <div class="row">
                 <div class="col-md-9">
                     <h5>Nom : <s:property value="nom"/></h5>
@@ -88,9 +88,9 @@
 
 
 <div class="container">
-    <s:if test="%{!voies.isEmpty()}">
+    <s:if test="%{!listVoies.isEmpty()}">
         <h3 style="text-align: center">Voie(s)</h3>
-        <s:iterator value="voies">
+        <s:iterator value="listVoies">
             <div class="row">
                 <div class="col-md-9">
                     <h5>Nom : <s:property value="nom"/></h5>

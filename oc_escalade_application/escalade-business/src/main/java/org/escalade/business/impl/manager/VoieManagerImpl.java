@@ -2,6 +2,7 @@ package org.escalade.business.impl.manager;
 
 import org.escalade.business.contract.manager.VoieManager;
 import org.escalade.business.impl.AbstractManagerImpl;
+import org.escalade.model.bean.Compte;
 import org.escalade.model.bean.LongueurRelai;
 import org.escalade.model.bean.Secteur;
 import org.escalade.model.bean.Voie;
@@ -15,10 +16,13 @@ public class VoieManagerImpl extends AbstractManagerImpl implements VoieManager 
     }
 
     public void addVoie(Voie voie, Secteur secteur) {
+        /**@see org.escalade.consumer.impl.dao.VoieImpl#addVoie(Voie, Secteur) */
          getDaoFactory().getVoieDao().addVoie(voie,secteur);
     }
 
     public Voie voie(Integer id) {
+
+        /**@see org.escalade.consumer.impl.dao.VoieImpl#voie(Integer)*/
         Voie voie = getDaoFactory().getVoieDao().voie(id);
 
         List<LongueurRelai> longueursRelais = getDaoFactory().getLongueurRelaiDao().longueursRelai(voie.getId());
@@ -27,12 +31,16 @@ public class VoieManagerImpl extends AbstractManagerImpl implements VoieManager 
         return voie;
     }
 
-    public String delVoie(Integer id) {
-        return getDaoFactory().getVoieDao().delVoie(id);
+    public void delVoie(Integer id) {
+
+        /**@see org.escalade.consumer.impl.dao.VoieImpl#delVoie(Integer)*/
+        getDaoFactory().getVoieDao().delVoie(id);
     }
 
-    public String upVoie(Voie voie) {
-        return getDaoFactory().getVoieDao().upVoie(voie);
+    public void upVoie(Voie voie) {
+
+        /**@see org.escalade.consumer.impl.dao.VoieImpl#upVoie(Voie)*/
+        getDaoFactory().getVoieDao().upVoie(voie);
     }
 
     @Override
@@ -40,6 +48,14 @@ public class VoieManagerImpl extends AbstractManagerImpl implements VoieManager 
         List<Voie> voies = getDaoFactory().getVoieDao().rechercheSimpleParVoieDao(motCleRecherche);
         return voies;
     }
+
+    public List<Voie> listVoiesByAccount(Compte compte){
+
+        /**@see  org.escalade.consumer.impl.dao.VoieImpl#listVoiesByAccountDao(Compte)*/
+        List<Voie> listVoies = getDaoFactory().getVoieDao().listVoiesByAccountDao(compte);
+        return listVoies;
+    }
+
 
     /**
      *

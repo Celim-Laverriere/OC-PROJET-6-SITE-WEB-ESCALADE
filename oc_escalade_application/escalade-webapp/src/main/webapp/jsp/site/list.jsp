@@ -15,20 +15,20 @@
 
 <body>
 
-<header>
-    <%@include file="../_include/header.jsp"%>
-</header>
+
+<%@include file="../_include/header.jsp"%>
+
 
 <div class="container">
 
     <div class="row">
         <div class="col-md-12" style="margin-top: 10px; margin-bottom: 10px; text-align: center">
-            <h2>Liste des sites d'éscalades</h2>
+            <h2>Sites d'éscalades</h2>
             <hr width="100%" color="#DCDCDC">
         </div>
     </div>
 
-    <s:iterator value="sites">
+    <s:iterator value="listSites">
         <div class="row">
             <div class="col-md-9" style="margin-top: 5px">
                 <ul>
@@ -55,6 +55,7 @@
 
 <footer>
     <%@include file="../_include/footer.jsp"%>
+    <%@include file="../_include/scripts.jsp"%>
 </footer>
 
 </body>

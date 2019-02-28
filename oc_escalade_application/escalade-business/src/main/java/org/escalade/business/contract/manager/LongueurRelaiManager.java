@@ -1,5 +1,6 @@
 package org.escalade.business.contract.manager;
 
+import org.escalade.model.bean.Compte;
 import org.escalade.model.bean.LongueurRelai;
 import org.escalade.model.bean.Voie;
 
@@ -13,9 +14,11 @@ public interface LongueurRelaiManager {
 
     LongueurRelai longueurRelai(Integer id);
 
-    String delLongueurRelai(Integer id);
+    void delLongueurRelai(Integer id);
 
     String upLongueurRelai(Integer id, LongueurRelai longueur);
+
+    List<LongueurRelai> listLongueursByVoie(Voie voie);
 
     void addLongueurWorkflow(List<LongueurRelai> longueur, Voie voie);
 }

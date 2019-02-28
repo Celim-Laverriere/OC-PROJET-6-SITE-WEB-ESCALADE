@@ -31,7 +31,7 @@
                             Créer un nouveau Site d'escalade complet
                         </s:a>
                         <s:a action="new_site" class="dropdown-item">Créer un nouveau Site d'escalade</s:a>
-                        <s:a action="sites_Par_Session_De_Compte" class="dropdown-item">Afficher mes sites d'éscalades !</s:a>
+                        <s:a action="sites_by_account" class="dropdown-item">Afficher mes Sites d'éscalades !</s:a>
                     </div>
                 </li>
 
@@ -40,7 +40,7 @@
                        role="button" aria-haspopup="true" aria-expanded="false">MES SECTEURS</a>
                     <div class="dropdown-menu">
                         <s:a action="new_secteur" class="dropdown-item">Créer un nouveau Secteurs</s:a>
-                        <s:a action="secteurs_Par_Session_De_Compte" class="dropdown-item"> Afficher mes secteurs !</s:a>
+                        <s:a action="secteur_by_account" class="dropdown-item"> Afficher mes listSecteurs !</s:a>
                     </div>
                 </li>
 
@@ -48,8 +48,8 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
                        role="button" aria-haspopup="true" aria-expanded="false">MES VOIES</a>
                     <div class="dropdown-menu">
-                        <s:a action="" class="dropdown-item">Créer un nouvelle Voie</s:a>
-                        <s:a action="" class="dropdown-item"> Afficher mes Voies !</s:a>
+                        <s:a action="new_voie" class="dropdown-item">Créer un nouvelle Voie</s:a>
+                        <s:a action="voies_by_account" class="dropdown-item"> Afficher mes Voies !</s:a>
                     </div>
                 </li>
 
@@ -62,14 +62,24 @@
                         <s:a action="" class="dropdown-item"> Afficher mes Longueure et relais !</s:a>
                     </div>
                 </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
+                       role="button" aria-haspopup="true" aria-expanded="false">MES TOPOS</a>
+                    <div class="dropdown-menu">
+                        <s:a action="" class="dropdown-item">Créer un topo</s:a>
+                        <s:a action="" class="dropdown-item">Demande de réservations</s:a>
+                        <s:a action="" class="dropdown-item">Mes réservations</s:a>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>
 </div>
 
-<footer>
-    <%@include file="../_include/footer.jsp"%>
-</footer>
+
+<%@include file="../_include/scripts.jsp"%>
+
 
 </body>
 

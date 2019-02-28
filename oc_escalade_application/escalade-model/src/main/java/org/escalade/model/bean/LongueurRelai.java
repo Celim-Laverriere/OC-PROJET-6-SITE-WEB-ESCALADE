@@ -7,6 +7,7 @@ public class LongueurRelai {
     private Float hauteur;
     private int num_longueur;
     private int num_relai;
+    private Integer voie_id;
 
     public LongueurRelai() {
     }
@@ -27,11 +28,11 @@ public class LongueurRelai {
         this.cotation = cotation;
     }
 
-    public float getHauteur() {
+    public Float getHauteur() {
         return hauteur;
     }
 
-    public void setHauteur(float hauteur) {
+    public void setHauteur(Float hauteur) {
         this.hauteur = hauteur;
     }
 
@@ -49,6 +50,14 @@ public class LongueurRelai {
 
     public void setNum_relai(int num_relai) {
         this.num_relai = num_relai;
+    }
+
+    public Integer getVoie_id() {
+        return voie_id;
+    }
+
+    public void setVoie_id(Integer voie_id) {
+        this.voie_id = voie_id;
     }
 }
 

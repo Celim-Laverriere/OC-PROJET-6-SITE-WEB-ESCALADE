@@ -84,8 +84,10 @@ public class LongueurAction extends ActionSupport implements SessionAware {
 
     // =============== Méthodes ================
 
-    // ===== Ajouter une nouvelle longueur =====
-
+    /**
+     * Cette méthode permet d'ajouter une nouvelle longueur.
+     * @return
+     */
     public String newLongueur(){
 
         String vResult = ActionSupport.INPUT;
@@ -158,7 +160,81 @@ public class LongueurAction extends ActionSupport implements SessionAware {
         return vResult;
     }
 
-    // ===== Supprimer une longueur =====
+    /**
+     * Cette méthode permet de modifier une longueur
+     * @return
+     */
+    public String modifiedLongueur(){
+        String vResult = ActionSupport.INPUT;
+
+        try{
+
+            listLongueur = (List<LongueurRelai>) this.session.get("listLongueur");
+
+            longueur.setHauteur(Float.parseFloat(hauteur));
+
+            for (LongueurRelai vLongueur: listLongueur){
+                Integer numLongueur = vLongueur.getNum_longueur();
+
+                if (numLongueur.equals(longueur.getNum_longueur())){
+                    vLongueur.setHauteur(longueur.getHauteur());
+                    vLongueur.setCotation(longueur.getCotation());
+
+                    if (longueur.getNum_relai() != 0){
+                        // On récupère la liste des longueurs que l'on inverse.
+                        List<LongueurRelai> longueurListReverse = new ArrayList<>(listLongueur);
+                        Collections.reverse(longueurListReverse);
+
+                        for (LongueurRelai relais: longueurListReverse){
+                            if (relais.getNum_relai() > 0){
+                                int numRelai = relais.getNum_relai();
+                                vLongueur.setNum_relai(numRelai + 1);
+                                break;
+                            }
+                        }
+
+                    } else {
+                        vLongueur.setNum_relai(longueur.getNum_relai());
+                        this.session.put("listLongueurs", vLongueur);
+                    }
+                }
+            }
+
+            Integer i = 1;
+
+            for (LongueurRelai relai: listLongueur) {
+
+                if (relai.getNum_relai() > 0) {
+                    relai.setNum_relai(i);
+                    i++;
+                }
+
+                this.session.put("listLongueurs", listLongueur);
+            }
+
+
+            /**@see org.escalade.business.impl.manager.LongueurRelaiManagerImpl#upLongueur(List)*/
+            managerFactory.getLongueurRelaiManager().upLongueur(listLongueur);
+
+            vResult = ActionSupport.SUCCESS;
+
+        } catch (NullPointerException pEX){
+
+            listLongueur = (List<LongueurRelai>) this.session.get("listLongueur");
+            voie = (Voie) this.session.get("voie");
+
+        } catch (Exception pEX){
+
+            this.addActionError("Une erreur technique s'est produite, veuillez réessayer plus tard!");
+        }
+
+        return vResult;
+    }
+
+    /**
+     * Cette méthode permet de supprimer une longueur.
+     * @return
+     */
     public String delLongueur(){
 
         String vResult = ActionSupport.INPUT;
@@ -186,16 +262,19 @@ public class LongueurAction extends ActionSupport implements SessionAware {
             vResult = ActionSupport.SUCCESS;
 
         } catch (NullPointerException pEX) {
-
             listLongueur = (List<LongueurRelai>) this.session.get("listLongueur");
 
         } catch (Exception pEX){
-
+            this.addActionError("Une erreur technique s'est produite, veuillez réessayer plus tard!");
         }
 
         return vResult;
     }
 
+    /**
+     * Cette méthode permet d'afficher les longueurs d'une voie.
+     * @return
+     */
     public String longueurByVoie(){
 
         String vResult = null;
@@ -204,6 +283,28 @@ public class LongueurAction extends ActionSupport implements SessionAware {
 
             /**@see org.escalade.business.impl.manager.LongueurRelaiManagerImpl#listLongueursByVoie(Voie)*/
             listLongueur = managerFactory.getLongueurRelaiManager().listLongueursByVoie(voie);
+
+            List<Integer> numLongueur = new ArrayList<>();
+            List<LongueurRelai> tempListLongueur = new ArrayList<>();
+
+            for (LongueurRelai longueur : listLongueur){
+                numLongueur.add(longueur.getNum_longueur());
+            }
+
+            Collections.sort(numLongueur);
+
+            for (int i = 0; i < numLongueur.size(); i++){
+
+                for (int y = 0; y < listLongueur.size(); y++){
+
+                    if(listLongueur.get(y).getNum_longueur() == numLongueur.get(i)){
+                        tempListLongueur.add(listLongueur.get(y));
+                    }
+                }
+            }
+
+            listLongueur.clear();
+            listLongueur.addAll(tempListLongueur);
             this.session.put("listLongueur", listLongueur);
 
             /**@see org.escalade.business.impl.manager.VoieManagerImpl#voie(Integer) */
@@ -213,6 +314,7 @@ public class LongueurAction extends ActionSupport implements SessionAware {
             vResult = ActionSupport.SUCCESS;
 
         } catch (Exception pEX) {
+            System.out.println(pEX);
             this.addActionError("Une erreur technique s'est produite, veuillez réessayer plus tard!");
         }
 

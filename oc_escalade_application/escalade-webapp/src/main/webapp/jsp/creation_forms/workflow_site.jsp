@@ -370,7 +370,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <s:form action="modified_Longueur">
+                        <s:form action="modified_Longueur_workflow">
                             <div id="formGroupLongueurModif" class="form-group">
 
                                 <div class="row align-justify align-items-center">

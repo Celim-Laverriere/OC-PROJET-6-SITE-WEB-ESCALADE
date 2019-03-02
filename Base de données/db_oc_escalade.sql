@@ -13,6 +13,10 @@ CREATE TABLE public.compte (
 
 ALTER SEQUENCE public.compte_id_seq OWNED BY public.compte.id;
 
+CREATE UNIQUE INDEX compte_idx
+ ON public.compte
+ ( mail );
+
 CREATE SEQUENCE public.site_id_seq;
 
 CREATE TABLE public.site (
@@ -32,7 +36,7 @@ CREATE SEQUENCE public.photo_id_seq;
 CREATE TABLE public.photo (
                 id INTEGER NOT NULL DEFAULT nextval('public.photo_id_seq'),
                 nom VARCHAR NOT NULL,
-                lien_image VARCHAR NOT NULL,
+                url_image VARCHAR NOT NULL,
                 site_id INTEGER NOT NULL,
                 CONSTRAINT photo_pk PRIMARY KEY (id)
 );
@@ -69,20 +73,20 @@ CREATE TABLE public.voie (
 
 ALTER SEQUENCE public.voie_id_seq OWNED BY public.voie.id;
 
-CREATE SEQUENCE public.longueur_relai_id_seq;
+CREATE SEQUENCE public.longueur_id_seq;
 
-CREATE TABLE public.longueur_relai (
-                id INTEGER NOT NULL DEFAULT nextval('public.longueur_relai_id_seq'),
+CREATE TABLE public.longueur (
+                id INTEGER NOT NULL DEFAULT nextval('public.longueur_id_seq'),
                 num_longueur INTEGER NOT NULL,
                 num_relai INTEGER,
                 hauteur REAL NOT NULL,
                 cotation VARCHAR NOT NULL,
                 voie_id INTEGER NOT NULL,
-                CONSTRAINT longueur_relai_pk PRIMARY KEY (id)
+                CONSTRAINT longueur_pk PRIMARY KEY (id)
 );
 
 
-ALTER SEQUENCE public.longueur_relai_id_seq OWNED BY public.longueur_relai.id;
+ALTER SEQUENCE public.longueur_id_seq OWNED BY public.longueur.id;
 
 CREATE SEQUENCE public.topo_id_seq;
 
@@ -91,7 +95,7 @@ CREATE TABLE public.topo (
                 nom VARCHAR NOT NULL,
                 date_upload DATE NOT NULL,
                 description VARCHAR NOT NULL,
-                statut VARCHAR NOT NULL,
+                url_topo VARCHAR NOT NULL,
                 compte_id INTEGER NOT NULL,
                 CONSTRAINT topo_pk PRIMARY KEY (id)
 );
@@ -117,9 +121,11 @@ CREATE SEQUENCE public.resa_topo_id_seq;
 
 CREATE TABLE public.resa_topo (
                 id INTEGER NOT NULL DEFAULT nextval('public.resa_topo_id_seq'),
+                statut VARCHAR NOT NULL,
                 date_debut DATE NOT NULL,
                 date_fin DATE NOT NULL,
                 compte_id INTEGER NOT NULL,
+                message VARCHAR,
                 topo_id INTEGER NOT NULL,
                 CONSTRAINT resa_topo_pk PRIMARY KEY (id)
 );
@@ -183,7 +189,7 @@ ON DELETE CASCADE
 ON UPDATE CASCADE
 NOT DEFERRABLE;
 
-ALTER TABLE public.longueur_relai ADD CONSTRAINT voie_longueur_fk
+ALTER TABLE public.longueur ADD CONSTRAINT voie_longueur_fk
 FOREIGN KEY (voie_id)
 REFERENCES public.voie (id)
 ON DELETE CASCADE

@@ -82,7 +82,7 @@
                         </div>
                         <div class="col-md-5">
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#voieModal" style="width: 100%">Annuler</button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#cancelVoie" style="width: 100%">Annuler</button>
                         </div>
                     </div>
                 </s:form>
@@ -91,7 +91,7 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="voieModal" tabindex="-1" role="dialog" aria-labelledby="modyfVoieModalLabel" aria-hidden="true">
+    <div class="modal fade" id="cancelVoie" tabindex="-1" role="dialog" aria-labelledby="modyfVoieModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -106,7 +106,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary"
                             data-dismiss="modal">Annulez</button>
-                    <s:a action="choixCreate">
+                    <s:a action="voies_by_account">
                         <button type="button" class="btn btn-primary">Confirmez</button>
                     </s:a>
                 </div>

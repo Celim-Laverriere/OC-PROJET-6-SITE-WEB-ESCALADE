@@ -16,7 +16,7 @@ public interface LongueurRelaiManager {
 
     void delLongueurRelai(Integer id);
 
-    String upLongueurRelai(Integer id, LongueurRelai longueur);
+    void upLongueur(List<LongueurRelai> longueurs) ;
 
     List<LongueurRelai> listLongueursByVoie(Voie voie);
 

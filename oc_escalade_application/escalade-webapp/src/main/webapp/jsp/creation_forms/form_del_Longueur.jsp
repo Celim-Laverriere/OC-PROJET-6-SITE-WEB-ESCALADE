@@ -21,8 +21,8 @@
 
         <div class="row">
             <div class="col-md-12" style="text-align: center; margin-top: 1%">
-                <h2>Supprimez un relai !</h2>
-                <p>Longueurs et le relais correspondants à la voie : <s:property value="#session.voie.nom"/></p>
+                <h2>Supprimez une longueur !</h2>
+                <p>Longueurs et relais correspondants à la voie : <s:property value="#session.voie.nom"/></p>
             </div>
         </div>
 

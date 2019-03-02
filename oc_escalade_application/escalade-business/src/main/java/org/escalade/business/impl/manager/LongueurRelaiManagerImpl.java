@@ -32,8 +32,12 @@ public class LongueurRelaiManagerImpl extends AbstractManagerImpl implements Lon
     }
 
     @Override
-    public String upLongueurRelai(Integer id, LongueurRelai longueur) {
-        return getDaoFactory().getLongueurRelaiDao().upLongueur(id, longueur);
+    public void upLongueur(List<LongueurRelai> longueurs) {
+
+        for (LongueurRelai longueur : longueurs){
+            /**@see org.escalade.consumer.impl.dao.LongueurRelaiImpl#upLongueur(LongueurRelai)*/
+            getDaoFactory().getLongueurRelaiDao().upLongueur(longueur);
+        }
     }
 
     public List<LongueurRelai> listLongueursByVoie(Voie voie){

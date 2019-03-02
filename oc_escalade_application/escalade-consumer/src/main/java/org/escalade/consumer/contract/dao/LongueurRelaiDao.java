@@ -32,7 +32,7 @@ public interface LongueurRelaiDao {
 
         void delLongueurRelai(Integer id);
 
-        String upLongueur(Integer id, LongueurRelai longueur);
+        void upLongueur(LongueurRelai longueur);
 
         List<LongueurRelai> listLongueursByVoieDao(Voie voie);
 

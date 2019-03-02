@@ -161,7 +161,7 @@
 
         <!-- ================================================== -->
         <!-- =====  Renvoie les choix des formulaires     ===== -->
-        <!-- =====  de création des listSites d'escalade      ===== -->
+        <!-- =====  de création des listSites d'escalade  ===== -->
         <!-- ================================================== -->
 
         <action name="management_menu">
@@ -170,14 +170,15 @@
                 <param name="operationMode">RETRIEVE</param>
             </interceptor-ref>
             <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
 
             <result name="success">/jsp/_include/user_menu.jsp</result>
             <result name="error">/jsp/error.jsp</result>
         </action>
 
-                    <!-- ************************ -->
-                    <!-- ACTION SITES D'ESCALADES -->
-                    <!-- ************************ -->
+        <!-- ************************ -->
+        <!-- ACTION SITES D'ESCALADES -->
+        <!-- ************************ -->
 
         <!-- Récupère les informations pour créer un nouveau site -->
         <action name="new_site"
@@ -304,7 +305,7 @@
         </action>
 
         <!-- **** Action modification d'une longueur **** -->
-        <action name="modified_Longueur"
+        <action name="modified_Longueur_workflow"
                 class="org.escalade.webapp.action.workflowSiteAction"
                 method="modifiedLongueur">
 
@@ -332,9 +333,9 @@
         </action>
 
 
-                    <!-- *************************** -->
-                    <!-- ***** ACTION SECTEURS ***** -->
-                    <!-- *************************** -->
+        <!-- *************************** -->
+        <!-- ***** ACTION SECTEURS ***** -->
+        <!-- *************************** -->
 
         <!-- Récupère les informations pour créer un nouveau secteur -->
 
@@ -396,9 +397,9 @@
             <result name="error">jsp/error.jsp</result>
         </action>
 
-                    <!-- ************************** -->
-                    <!-- ****** ACTION VOIES ****** -->
-                    <!-- ************************** -->
+        <!-- ************************** -->
+        <!-- ****** ACTION VOIES ****** -->
+        <!-- ************************** -->
 
         <action name="new_voie" class="org.escalade.webapp.action.VoieAction" method="doCreate">
 
@@ -450,10 +451,11 @@
             <result name="error">jsp/error.jsp</result>
         </action>
 
-                    <!-- ***************************** -->
-                    <!-- ****** ACTION LONGUEUR ****** -->
-                    <!-- ***************************** -->
+        <!-- ***************************** -->
+        <!-- ****** ACTION LONGUEUR ****** -->
+        <!-- ***************************** -->
 
+        <!-- Ajouter une nouvelle longueur à une voie -->
         <action name="new_longueur" class="org.escalade.webapp.action.LongueurAction" method="newLongueur" >
 
             <interceptor-ref name="store">
@@ -467,6 +469,21 @@
             <result name="error">jsp/error.jsp</result>
         </action>
 
+        <!--Modifier une longueur-->
+        <action name="modified_longueur" class="org.escalade.webapp.action.LongueurAction" method="modifiedLongueur">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="input">jsp/creation_forms/form_modified_longueur.jsp</result>
+            <result name="success">jsp/longueur/list_longueur_of_connected_users.jsp</result>
+            <result name="error">jsp/error.jsp</result>
+        </action>
+
+        <!-- Supprimer une longueur -->
         <action name="del_longueur" class="org.escalade.webapp.action.LongueurAction" method="delLongueur">
 
             <interceptor-ref name="store">
@@ -480,6 +497,7 @@
             <result name="error">jsp/error.jsp</result>
         </action>
 
+        <!-- Afficher les longueurs d'une voie -->
         <action name="longueur_by_voie" class="org.escalade.webapp.action.LongueurAction" method="longueurByVoie">
 
             <interceptor-ref name="store">
@@ -493,14 +511,14 @@
         </action>
 
 
-                    <!-- ************************** -->
-                    <!-- ****** ACTION TOPOS ****** -->
-                    <!-- ************************** -->
+        <!-- ************************** -->
+        <!-- ****** ACTION TOPOS ****** -->
+        <!-- ************************** -->
 
 
-                    <!-- ************************* -->
-                    <!-- ***** ACTION COMPTE ***** -->
-                    <!-- ************************* -->
+        <!-- ************************* -->
+        <!-- ***** ACTION COMPTE ***** -->
+        <!-- ************************* -->
 
         <action name="modifier_compte_utilisateur"
                 class="org.escalade.webapp.action.CompteAction"

@@ -17,6 +17,27 @@
         <%@include file="../jsp/_include/header.jsp"%>
     </header>
 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" style="background: antiquewhite">
+                <p>One of three columns</p>
+            </div>
+            <div class="col-md-3" style="background: rebeccapurple">
+                <p>One of three columns</p>
+            </div>
+            <div class="col-md-3" style="background: royalblue">
+                <p>One of three columns</p>
+            </div>
+            <div class="col-md-3" style="background: red">
+                <p>One of three columns</p>
+            </div>
+            <div class="col-md-3" style="background: aquamarine">
+                <p>One of three columns</p>
+            </div>
+        </div>
+    </div>
+
+    <a href="pdf_topos/Edemere_topo.pdf" download>Télécharger</a>
 
     <footer>
         <%@include file="../jsp/_include/footer.jsp"%>

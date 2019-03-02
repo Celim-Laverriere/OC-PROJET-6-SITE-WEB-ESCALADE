@@ -65,24 +65,24 @@
             <div class="row justify-content-end">
                 <div class="col-md-5">
 
-                        <s:a  action="voies_by_account">
-                            <button type="button" class="btn btn-outline-primary">Retour</button>
-                        </s:a>
+                    <s:a  action="voies_by_account">
+                        <button type="button" class="btn btn-outline-primary">Retour</button>
+                    </s:a>
 
-                        <s:a  action="new_longueur">
-                            <s:param name="voie.id" value="%{voie.id}"/>
-                            <button type="button" class="btn btn-outline-primary">Ajouter</button>
-                        </s:a>
+                    <s:a  action="new_longueur">
+                        <s:param name="voie.id" value="%{voie.id}"/>
+                        <button type="button" class="btn btn-outline-primary">Ajouter</button>
+                    </s:a>
 
-                        <s:a  action="">
-                            <s:param name="" value=""/>
-                            <button type="button" class="btn btn-outline-primary">Modifier</button>
-                        </s:a>
+                    <s:a  action="modified_longueur">
+                        <s:param name="" value=""/>
+                        <button type="button" class="btn btn-outline-primary">Modifier</button>
+                    </s:a>
 
-                        <s:a action="del_longueur">
-                            <s:param name="voie.id" value="%{voie.id}"/>
-                            <button type="button" class="btn btn-outline-danger">Supprimer un relai</button>
-                        </s:a>
+                    <s:a action="del_longueur">
+                        <s:param name="voie.id" value="%{voie.id}"/>
+                        <button type="button" class="btn btn-outline-danger">Supprimer un relai</button>
+                    </s:a>
                 </div>
             </div>
             <div class="row">
@@ -94,7 +94,33 @@
         <s:else>
             <div class="row">
                 <div class="col-md-12" style="text-align: center">
-                    <p>Cette voie n'a pas de longueurs !</p>
+                    <p>Cette voie n'a pas encore de longueurs !</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <hr width="80%" color="#DCDCDC">
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+
+                <div class="col-md-5">
+                    <s:a  action="voies_by_account">
+                        <button type="button" style="width: 100%" class="btn btn-outline-secondary">Retour</button>
+                    </s:a>
+                </div>
+                <div class="col-md-5" >
+                    <s:a  action="new_longueur">
+                        <s:param name="voie.id" value="%{voie.id}"/>
+                        <button type="button" style="width: 100%" class="btn btn-success">Ajouter</button>
+                    </s:a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <hr width="80%" color="#DCDCDC">
                 </div>
             </div>
         </s:else>

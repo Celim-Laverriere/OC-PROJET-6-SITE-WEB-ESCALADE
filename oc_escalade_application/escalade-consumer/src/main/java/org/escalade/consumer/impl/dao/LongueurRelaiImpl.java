@@ -72,13 +72,24 @@ public class LongueurRelaiImpl extends AbstractDataImpl implements LongueurRelai
     }
 
     /**
-     *Mettre à jour une longueur et un relai d'une voie
-     * @param id
-     * @return un message de confirmation
+     * Mettre à jour une longueur et un relai d'une voie
+     * @param longueur
      */
     @Override
-    public String upLongueur(Integer id, LongueurRelai longueur) {
-        return null;
+    public void upLongueur(LongueurRelai longueur) {
+
+        String vSql = "UPDATE public.longueur_relai SET"
+                    + " hauteur = :hauteur, cotation = :cotation, num_relai = :num_relai"
+                    + " WHERE id = :id";
+
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("hauteur", longueur.getHauteur());
+        vParams.addValue("cotation", longueur.getCotation());
+        vParams.addValue("num_relai", longueur.getNum_relai());
+        vParams.addValue("id", longueur.getId());
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+        vJdbcTemplate.update(vSql, vParams);
     }
 
     public List<LongueurRelai> listLongueursByVoieDao(Voie voie){

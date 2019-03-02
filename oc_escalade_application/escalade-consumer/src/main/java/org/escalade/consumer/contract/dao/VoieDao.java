@@ -3,9 +3,6 @@ package org.escalade.consumer.contract.dao;
 import org.escalade.model.bean.Compte;
 import org.escalade.model.bean.Secteur;
 import org.escalade.model.bean.Voie;
-
-import javax.swing.*;
-import java.util.HashMap;
 import java.util.List;
 
 public interface VoieDao {

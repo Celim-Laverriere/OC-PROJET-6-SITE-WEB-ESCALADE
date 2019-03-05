@@ -10,7 +10,7 @@ public class Voie {
     private String cotation;
     private float hauteur;
     private String description;
-    private List<LongueurRelai> longueursRelais;
+    private List<Longueur> longueursRelais;
     private Integer secteur_id;
 
 
@@ -65,11 +65,11 @@ public class Voie {
         this.description = description;
     }
 
-    public List<LongueurRelai> getLongueursRelais() {
+    public List<Longueur> getLongueursRelais() {
         return longueursRelais;
     }
 
-    public void setLongueursRelais(List<LongueurRelai> longueursRelais) {
+    public void setLongueursRelais(List<Longueur> longueursRelais) {
         this.longueursRelais = longueursRelais;
     }
 

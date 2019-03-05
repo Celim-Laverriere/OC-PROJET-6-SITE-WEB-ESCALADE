@@ -2,6 +2,7 @@ package org.escalade.business.impl.manager;
 
 import org.escalade.business.contract.manager.SiteManager;
 import org.escalade.business.impl.AbstractManagerImpl;
+import org.escalade.consumer.impl.dao.LongueurImpl;
 import org.escalade.consumer.impl.dao.SiteImpl;
 import org.escalade.model.bean.*;
 
@@ -55,9 +56,9 @@ public class SiteManagerImpl extends AbstractManagerImpl implements SiteManager 
             List<Voie> voies = getDaoFactory().getVoieDao().voies(secteur.getId());
 
             for(Voie voie: voies){
-                /**@see org.escalade.consumer.impl.dao.LongueurRelaiImpl#longueurRelai(Integer)*/
-                List<LongueurRelai> longueursRelai = getDaoFactory().getLongueurRelaiDao().longueursRelai(voie.getId());
-                voie.setLongueursRelais(longueursRelai);
+                /**@see LongueurImpl#longueurs(Integer)*/
+                List<Longueur> longueurList = getDaoFactory().getLongueurDao().longueurs(voie.getId());
+                voie.setLongueursRelais(longueurList);
             }
             secteur.setListVoies(voies);
         }

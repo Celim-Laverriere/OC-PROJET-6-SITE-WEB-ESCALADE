@@ -101,7 +101,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary"
                             data-dismiss="modal">Annulez</button>
-                    <s:a action="choixCreate">
+                    <s:a action="management_menu">
                         <button type="button" class="btn btn-primary">Confirmez</button>
                     </s:a>
                 </div>

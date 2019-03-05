@@ -112,10 +112,11 @@ public class SiteAction extends ActionSupport implements SessionAware {
         String vResult = ActionSupport.INPUT;
 
             try {
+                /**@see org.escalade.business.impl.manager.SiteManagerImpl#site(Integer)*/
                 site = managerFactory.getSiteManager().site(site_id);
+
                 vResult = ActionSupport.SUCCESS;
 
-                System.out.println(site.getListSecteurs().listIterator());
             } catch (Exception e) {
                this.addActionError("Site non trouvé. ID = " + site_id + " " + e);
             }

@@ -7,7 +7,7 @@ public class DaoFactoryImpl implements DaoFactory {
 
     private CommentaireDao commentaireDao;
     private CompteDao compteDao;
-    private LongueurRelaiDao longueurRelaiDao;
+    private LongueurDao longueurDao;
     private ResaTopoDao resaTopoDao;
     private SecteurDao secteurDao;
     private SiteDao siteDao;
@@ -35,13 +35,13 @@ public class DaoFactoryImpl implements DaoFactory {
     }
 
     @Override
-    public LongueurRelaiDao getLongueurRelaiDao() {
-        return longueurRelaiDao;
+    public LongueurDao getLongueurDao() {
+        return longueurDao;
     }
 
     @Override
-    public void setLongueurRelaiDao(LongueurRelaiDao longueurRelaiDao) {
-        this.longueurRelaiDao = longueurRelaiDao;
+    public void setLongueurDao(LongueurDao longueurDao) {
+        this.longueurDao = longueurDao;
     }
 
     @Override

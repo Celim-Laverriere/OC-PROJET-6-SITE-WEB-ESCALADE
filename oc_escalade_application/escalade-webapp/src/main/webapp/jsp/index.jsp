@@ -17,27 +17,37 @@
         <%@include file="../jsp/_include/header.jsp"%>
     </header>
 
-    <div class="container">
+    <div class="container" style="border-style: solid; border-color: #DCDCDC; border-width: 2px; border-radius: 10px;
+        margin-top: 1%; box-shadow: 6px 6px 14px #DCDCDC">
         <div class="row">
-            <div class="col-md-12" style="background: antiquewhite">
-                <p>One of three columns</p>
+            <div class="col-md-12">
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="margin-top: 1%; margin-bottom: 1%">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class="d-block w-100" src="imgs/photo_escalade_1.jpg" width="800px" height="600px" alt="First slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="imgs/photo_escalade_2.jpg" width="800px" height="600px" alt="Second slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="imgs/photo_escalade_3.jpg" width="800px" height="600px" alt="Third slide">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
             </div>
-            <div class="col-md-3" style="background: rebeccapurple">
-                <p>One of three columns</p>
-            </div>
-            <div class="col-md-3" style="background: royalblue">
-                <p>One of three columns</p>
-            </div>
-            <div class="col-md-3" style="background: red">
-                <p>One of three columns</p>
-            </div>
-            <div class="col-md-3" style="background: aquamarine">
-                <p>One of three columns</p>
-            </div>
+
         </div>
     </div>
 
-    <a href="pdf_topos/Edemere_topo.pdf" download>Télécharger</a>
+    <a href="imgs/photo_escalade_3.JPG" download>Télécharger</a>
 
     <footer>
         <%@include file="../jsp/_include/footer.jsp"%>

@@ -72,7 +72,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary"
                             data-dismiss="modal">Annulez</button>
-                    <s:a action="sectors_by_account">
+                    <s:a action="secteur_by_account">
                         <button type="button" class="btn btn-primary">Confirmez</button>
                     </s:a>
                 </div>

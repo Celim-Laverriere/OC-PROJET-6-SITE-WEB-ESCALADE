@@ -57,7 +57,7 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
                        role="button" aria-haspopup="true" aria-expanded="false">MES TOPOS</a>
                     <div class="dropdown-menu">
-                        <s:a action="" class="dropdown-item">Créer un topo</s:a>
+                        <s:a action="new_topo" class="dropdown-item">Créer un topo</s:a>
                         <s:a action="" class="dropdown-item">Demande de réservations</s:a>
                         <s:a action="" class="dropdown-item">Mes réservations</s:a>
                     </div>

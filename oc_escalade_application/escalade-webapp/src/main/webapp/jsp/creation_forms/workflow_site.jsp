@@ -94,7 +94,7 @@
                     </div>
                     <!-- Button trigger modal -->
                     <div class="col-md-6">
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal">
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#annuler">
                             Annuler
                         </button>
                     </div>
@@ -137,7 +137,7 @@
                     </div>
                     <!-- Button trigger modal -->
                     <div class="col-md-6">
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal">
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#annuler">
                             Annuler
                         </button>
                     </div>
@@ -209,7 +209,7 @@
                     </div>
                     <!-- Button trigger modal -->
                     <div class="col-md-6">
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal">
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#annuler">
                             Annuler
                         </button>
                     </div>
@@ -328,7 +328,7 @@
 
                     <!-- Button trigger modal -->
                     <div class="col-md-6">
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal">
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#annuler">
                         Annuler
                         </button>
                     </div>
@@ -429,7 +429,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="annuler" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -444,7 +444,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary"
                         data-dismiss="modal">Annulez</button>
-                <s:a action="choixCreate">
+                <s:a action="management_menu">
                     <button type="button" class="btn btn-primary">Confirmez</button>
                 </s:a>
             </div>

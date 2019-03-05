@@ -31,19 +31,6 @@ CREATE TABLE public.site (
 
 ALTER SEQUENCE public.site_id_seq OWNED BY public.site.id;
 
-CREATE SEQUENCE public.photo_id_seq;
-
-CREATE TABLE public.photo (
-                id INTEGER NOT NULL DEFAULT nextval('public.photo_id_seq'),
-                nom VARCHAR NOT NULL,
-                url_image VARCHAR NOT NULL,
-                site_id INTEGER NOT NULL,
-                CONSTRAINT photo_pk PRIMARY KEY (id)
-);
-
-
-ALTER SEQUENCE public.photo_id_seq OWNED BY public.photo.id;
-
 CREATE SEQUENCE public.secteur_id_seq;
 
 CREATE TABLE public.secteur (
@@ -95,13 +82,26 @@ CREATE TABLE public.topo (
                 nom VARCHAR NOT NULL,
                 date_upload DATE NOT NULL,
                 description VARCHAR NOT NULL,
-                url_topo VARCHAR NOT NULL,
                 compte_id INTEGER NOT NULL,
                 CONSTRAINT topo_pk PRIMARY KEY (id)
 );
 
 
 ALTER SEQUENCE public.topo_id_seq OWNED BY public.topo.id;
+
+CREATE SEQUENCE public.photo_id_seq;
+
+CREATE TABLE public.photo (
+                id INTEGER NOT NULL DEFAULT nextval('public.photo_id_seq'),
+                nom VARCHAR NOT NULL,
+                url_image VARCHAR,
+                topo_id INTEGER,
+                site_id INTEGER,
+                CONSTRAINT photo_pk PRIMARY KEY (id)
+);
+
+
+ALTER SEQUENCE public.photo_id_seq OWNED BY public.photo.id;
 
 CREATE SEQUENCE public.commentaire_id_seq;
 
@@ -124,8 +124,9 @@ CREATE TABLE public.resa_topo (
                 statut VARCHAR NOT NULL,
                 date_debut DATE NOT NULL,
                 date_fin DATE NOT NULL,
-                compte_id INTEGER NOT NULL,
                 message VARCHAR,
+                date_message DATE NOT NULL,
+                compte_id INTEGER NOT NULL,
                 topo_id INTEGER NOT NULL,
                 CONSTRAINT resa_topo_pk PRIMARY KEY (id)
 );
@@ -208,4 +209,11 @@ FOREIGN KEY (topo_id)
 REFERENCES public.topo (id)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.photo ADD CONSTRAINT topo_photo_fk
+FOREIGN KEY (topo_id)
+REFERENCES public.topo (id)
+ON DELETE CASCADE
+ON UPDATE CASCADE
 NOT DEFERRABLE;

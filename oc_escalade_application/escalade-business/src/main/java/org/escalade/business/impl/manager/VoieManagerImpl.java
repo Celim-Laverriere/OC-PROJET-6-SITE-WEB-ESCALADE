@@ -3,7 +3,7 @@ package org.escalade.business.impl.manager;
 import org.escalade.business.contract.manager.VoieManager;
 import org.escalade.business.impl.AbstractManagerImpl;
 import org.escalade.model.bean.Compte;
-import org.escalade.model.bean.LongueurRelai;
+import org.escalade.model.bean.Longueur;
 import org.escalade.model.bean.Secteur;
 import org.escalade.model.bean.Voie;
 import java.util.List;
@@ -25,7 +25,7 @@ public class VoieManagerImpl extends AbstractManagerImpl implements VoieManager 
         /**@see org.escalade.consumer.impl.dao.VoieImpl#voie(Integer)*/
         Voie voie = getDaoFactory().getVoieDao().voie(id);
 
-        List<LongueurRelai> longueursRelais = getDaoFactory().getLongueurRelaiDao().longueursRelai(voie.getId());
+        List<Longueur> longueursRelais = getDaoFactory().getLongueurDao().longueurs(voie.getId());
         voie.setLongueursRelais(longueursRelais);
 
         return voie;

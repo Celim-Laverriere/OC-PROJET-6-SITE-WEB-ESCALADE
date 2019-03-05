@@ -498,6 +498,8 @@
         </action>
 
         <!-- Afficher les longueurs d'une voie -->
+
+
         <action name="longueur_by_voie" class="org.escalade.webapp.action.LongueurAction" method="longueurByVoie">
 
             <interceptor-ref name="store">
@@ -515,6 +517,21 @@
         <!-- ****** ACTION TOPOS ****** -->
         <!-- ************************** -->
 
+        <action name="new_topo" class="org.escalade.webapp.action.TopoAction" method="newTopo">
+
+            <interceptor-ref name="fileUpload">
+                <param name="maximumSize">10485760</param>
+            </interceptor-ref>
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="input">jsp/creation_forms/form_topo.jsp</result>
+            <result name="success">jsp/topo/list_topo_of_connected_users.jsp</result>
+
+        </action>
 
         <!-- ************************* -->
         <!-- ***** ACTION COMPTE ***** -->

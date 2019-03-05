@@ -4,7 +4,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.interceptor.SessionAware;
 import org.escalade.business.contract.ManagerFactory;
 import org.escalade.model.bean.Compte;
-import org.escalade.model.bean.LongueurRelai;
+import org.escalade.model.bean.Longueur;
 import org.escalade.model.bean.Secteur;
 import org.escalade.model.bean.Voie;
 
@@ -24,7 +24,7 @@ public class VoieAction extends ActionSupport implements SessionAware {
     private Voie voie;
     private Voie modifiedVoie;
     private List<Secteur> listSecteurs;
-    private List<LongueurRelai> listLongueurs;
+    private List<Longueur> listLongueurs;
 
     private List<String> cotations = new ArrayList(Arrays.asList("1", "2", "3", "4", "5a", "5b", "5c", "6a", "6a+", "6b",
             "6b+", "6c", "6c+", "7a", "7a+", "7b", "7b+", "7c", "7c+", "8a", "8a+", "8b", "8b+", "8c", "8c+", "9a", "9a+",
@@ -112,11 +112,11 @@ public class VoieAction extends ActionSupport implements SessionAware {
         this.listTypesVoie = listTypesVoie;
     }
 
-    public List<LongueurRelai> getListLongueurs() {
+    public List<Longueur> getListLongueurs() {
         return listLongueurs;
     }
 
-    public void setListLongueurs(List<LongueurRelai> listLongueurs) {
+    public void setListLongueurs(List<Longueur> listLongueurs) {
         this.listLongueurs = listLongueurs;
     }
 

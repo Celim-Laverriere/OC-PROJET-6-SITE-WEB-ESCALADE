@@ -12,9 +12,9 @@ public interface DaoFactory {
 
     void setCompteDao(CompteDao compteDao);
 
-    LongueurRelaiDao getLongueurRelaiDao();
+    LongueurDao getLongueurDao();
 
-    void setLongueurRelaiDao(LongueurRelaiDao longueurRelaiDao);
+    void setLongueurDao(LongueurDao longueurDao);
 
     ResaTopoDao getResaTopoDao();
 

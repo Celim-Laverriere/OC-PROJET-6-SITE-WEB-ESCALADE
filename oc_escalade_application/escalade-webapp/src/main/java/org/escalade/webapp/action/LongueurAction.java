@@ -3,7 +3,8 @@ package org.escalade.webapp.action;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.interceptor.SessionAware;
 import org.escalade.business.contract.ManagerFactory;
-import org.escalade.model.bean.LongueurRelai;
+import org.escalade.business.impl.manager.LongueurManagerImpl;
+import org.escalade.model.bean.Longueur;
 import org.escalade.model.bean.Voie;
 
 import javax.inject.Inject;
@@ -18,8 +19,8 @@ public class LongueurAction extends ActionSupport implements SessionAware {
 
 
     // ----- Eléments en sortie -----
-    private List<LongueurRelai> listLongueur;
-    private LongueurRelai longueur;
+    private List<Longueur> listLongueur;
+    private Longueur longueur;
     private Integer initNumLongueur;
 
     private List<String> cotations = new ArrayList(Arrays.asList("1", "2", "3", "4", "5a", "5b", "5c", "6a", "6a+", "6b",
@@ -42,11 +43,11 @@ public class LongueurAction extends ActionSupport implements SessionAware {
         this.voie = voie;
     }
 
-    public List<LongueurRelai> getListLongueur() {
+    public List<Longueur> getListLongueur() {
         return listLongueur;
     }
 
-    public void setListLongueur(List<LongueurRelai> listLongueur) {
+    public void setListLongueur(List<Longueur> listLongueur) {
         this.listLongueur = listLongueur;
     }
 
@@ -66,11 +67,11 @@ public class LongueurAction extends ActionSupport implements SessionAware {
         this.hauteur = hauteur;
     }
 
-    public LongueurRelai getLongueur() {
+    public Longueur getLongueur() {
         return longueur;
     }
 
-    public void setLongueur(LongueurRelai longueur) {
+    public void setLongueur(Longueur longueur) {
         this.longueur = longueur;
     }
 
@@ -101,13 +102,13 @@ public class LongueurAction extends ActionSupport implements SessionAware {
 
             if (longueur.getNum_longueur() != 1){
 
-                listLongueur = (List<LongueurRelai>) this.session.get("listLongueur");
+                listLongueur = (List<Longueur>) this.session.get("listLongueur");
 
                 if (longueur.getNum_relai() != 0){
-                    List<LongueurRelai> longueurListReverse = new ArrayList<>(listLongueur);
+                    List<Longueur> longueurListReverse = new ArrayList<>(listLongueur);
                     Collections.reverse(longueurListReverse);
 
-                    for (LongueurRelai relais: longueurListReverse){
+                    for (Longueur relais: longueurListReverse){
                         if (relais.getNum_relai() > 0){
                             int numRelai = relais.getNum_relai();
                             longueur.setNum_relai(numRelai + 1);
@@ -117,28 +118,28 @@ public class LongueurAction extends ActionSupport implements SessionAware {
                 }
             }
 
-            listLongueur = (List<LongueurRelai>) this.session.get("listLongueur");
+            listLongueur = (List<Longueur>) this.session.get("listLongueur");
             listLongueur.add(longueur);
 
             voie = (Voie) this.session.get("voie");
 
-            /**@see org.escalade.business.impl.manager.LongueurRelaiManagerImpl#addLongueurRelai(LongueurRelai, Voie) */
-            managerFactory.getLongueurRelaiManager().addLongueurRelai(longueur, voie);
+            /**@see LongueurManagerImpl#addLongueur(Longueur, Voie) */
+            managerFactory.getLongueurManager().addLongueur(longueur, voie);
 
             vResult = ActionSupport.SUCCESS;
 
         } catch (NullPointerException pEX){
 
-            listLongueur = (List<LongueurRelai>) this.session.get("listLongueur");
+            listLongueur = (List<Longueur>) this.session.get("listLongueur");
 
             if (!listLongueur.isEmpty()){
 
                 initNumLongueur  = (Integer) this.session.get("initNumLongueur");
 
-                List<LongueurRelai> longueurRelaiListReverse = new ArrayList<>(listLongueur);
-                Collections.reverse(longueurRelaiListReverse);
+                List<Longueur> longueurListReverse = new ArrayList<>(listLongueur);
+                Collections.reverse(longueurListReverse);
 
-                for (LongueurRelai vLongueur : longueurRelaiListReverse){
+                for (Longueur vLongueur : longueurListReverse){
                     int numLongueur = vLongueur.getNum_longueur();
                     initNumLongueur = numLongueur + 1;
                     this.session.put("initNumLongueur", initNumLongueur);
@@ -169,11 +170,11 @@ public class LongueurAction extends ActionSupport implements SessionAware {
 
         try{
 
-            listLongueur = (List<LongueurRelai>) this.session.get("listLongueur");
+            listLongueur = (List<Longueur>) this.session.get("listLongueur");
 
             longueur.setHauteur(Float.parseFloat(hauteur));
 
-            for (LongueurRelai vLongueur: listLongueur){
+            for (Longueur vLongueur: listLongueur){
                 Integer numLongueur = vLongueur.getNum_longueur();
 
                 if (numLongueur.equals(longueur.getNum_longueur())){
@@ -182,10 +183,10 @@ public class LongueurAction extends ActionSupport implements SessionAware {
 
                     if (longueur.getNum_relai() != 0){
                         // On récupère la liste des longueurs que l'on inverse.
-                        List<LongueurRelai> longueurListReverse = new ArrayList<>(listLongueur);
+                        List<Longueur> longueurListReverse = new ArrayList<>(listLongueur);
                         Collections.reverse(longueurListReverse);
 
-                        for (LongueurRelai relais: longueurListReverse){
+                        for (Longueur relais: longueurListReverse){
                             if (relais.getNum_relai() > 0){
                                 int numRelai = relais.getNum_relai();
                                 vLongueur.setNum_relai(numRelai + 1);
@@ -202,7 +203,7 @@ public class LongueurAction extends ActionSupport implements SessionAware {
 
             Integer i = 1;
 
-            for (LongueurRelai relai: listLongueur) {
+            for (Longueur relai: listLongueur) {
 
                 if (relai.getNum_relai() > 0) {
                     relai.setNum_relai(i);
@@ -213,14 +214,14 @@ public class LongueurAction extends ActionSupport implements SessionAware {
             }
 
 
-            /**@see org.escalade.business.impl.manager.LongueurRelaiManagerImpl#upLongueur(List)*/
-            managerFactory.getLongueurRelaiManager().upLongueur(listLongueur);
+            /**@see LongueurManagerImpl#upLongueur(List)*/
+            managerFactory.getLongueurManager().upLongueur(listLongueur);
 
             vResult = ActionSupport.SUCCESS;
 
         } catch (NullPointerException pEX){
 
-            listLongueur = (List<LongueurRelai>) this.session.get("listLongueur");
+            listLongueur = (List<Longueur>) this.session.get("listLongueur");
             voie = (Voie) this.session.get("voie");
 
         } catch (Exception pEX){
@@ -241,9 +242,9 @@ public class LongueurAction extends ActionSupport implements SessionAware {
 
         try{
 
-            listLongueur = (List<LongueurRelai>) this.session.get("listLongueur");
+            listLongueur = (List<Longueur>) this.session.get("listLongueur");
 
-            for (LongueurRelai vLongueur : listLongueur){
+            for (Longueur vLongueur : listLongueur){
 
                 if(vLongueur.getNum_longueur() == longueur.getNum_longueur()){
                     longueur.setId(vLongueur.getId());
@@ -252,17 +253,17 @@ public class LongueurAction extends ActionSupport implements SessionAware {
 
             voie = (Voie) this.session.get("voie");
 
-            /**@see org.escalade.business.impl.manager.LongueurRelaiManagerImpl#delLongueurRelai(Integer)*/
-            managerFactory.getLongueurRelaiManager().delLongueurRelai(longueur.getId());
+            /**@see LongueurManagerImpl#delLongueur(Integer)*/
+            managerFactory.getLongueurManager().delLongueur(longueur.getId());
 
-            /**@see org.escalade.business.impl.manager.LongueurRelaiManagerImpl#listLongueursByVoie(Voie)*/
-            listLongueur = managerFactory.getLongueurRelaiManager().listLongueursByVoie(voie);
+            /**@see LongueurManagerImpl#listLongueursByVoie(Voie)*/
+            listLongueur = managerFactory.getLongueurManager().listLongueursByVoie(voie);
             this.session.put("listLongueur", listLongueur);
 
             vResult = ActionSupport.SUCCESS;
 
         } catch (NullPointerException pEX) {
-            listLongueur = (List<LongueurRelai>) this.session.get("listLongueur");
+            listLongueur = (List<Longueur>) this.session.get("listLongueur");
 
         } catch (Exception pEX){
             this.addActionError("Une erreur technique s'est produite, veuillez réessayer plus tard!");
@@ -281,13 +282,13 @@ public class LongueurAction extends ActionSupport implements SessionAware {
 
         try {
 
-            /**@see org.escalade.business.impl.manager.LongueurRelaiManagerImpl#listLongueursByVoie(Voie)*/
-            listLongueur = managerFactory.getLongueurRelaiManager().listLongueursByVoie(voie);
+            /**@see LongueurManagerImpl#listLongueursByVoie(Voie)*/
+            listLongueur = managerFactory.getLongueurManager().listLongueursByVoie(voie);
 
             List<Integer> numLongueur = new ArrayList<>();
-            List<LongueurRelai> tempListLongueur = new ArrayList<>();
+            List<Longueur> tempListLongueur = new ArrayList<>();
 
-            for (LongueurRelai longueur : listLongueur){
+            for (Longueur longueur : listLongueur){
                 numLongueur.add(longueur.getNum_longueur());
             }
 

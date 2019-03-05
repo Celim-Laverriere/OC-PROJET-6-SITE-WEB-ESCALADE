@@ -1,6 +1,6 @@
 package org.escalade.model.bean;
 
-public class LongueurRelai {
+public class Longueur {
 
     private Integer id;
     private String cotation;
@@ -9,7 +9,7 @@ public class LongueurRelai {
     private int num_relai;
     private Integer voie_id;
 
-    public LongueurRelai() {
+    public Longueur() {
     }
 
     public Integer getId() {

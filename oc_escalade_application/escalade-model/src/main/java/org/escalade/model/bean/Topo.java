@@ -9,7 +9,7 @@ public class Topo {
     private String nom;
     private Date date_upload;
     private String description;
-    private String statut;
+    private String url_topo;
     private List<Commentaire> commentaires;
     private List<ResaTopo> resaTopos;
 
@@ -48,12 +48,12 @@ public class Topo {
         this.description = description;
     }
 
-    public String getStatut() {
-        return statut;
+    public String getUrl_topo() {
+        return url_topo;
     }
 
-    public void setStatut(String statut) {
-        this.statut = statut;
+    public void setUrl_topo(String url_topo) {
+        this.url_topo = url_topo;
     }
 
     public List<Commentaire> getCommentaires() {

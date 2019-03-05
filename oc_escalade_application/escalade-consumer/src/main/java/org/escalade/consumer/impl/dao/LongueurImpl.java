@@ -1,39 +1,35 @@
 package org.escalade.consumer.impl.dao;
 
-import org.escalade.consumer.contract.dao.LongueurRelaiDao;
+import org.escalade.consumer.contract.dao.LongueurDao;
 import org.escalade.consumer.impl.data.AbstractDataImpl;
 import org.escalade.consumer.impl.rowmapper.LongueurRM;
-import org.escalade.model.bean.Compte;
-import org.escalade.model.bean.LongueurRelai;
+import org.escalade.model.bean.Longueur;
 import org.escalade.model.bean.Voie;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
-public class LongueurRelaiImpl extends AbstractDataImpl implements LongueurRelaiDao {
+public class LongueurImpl extends AbstractDataImpl implements LongueurDao {
 
     @Override
-    public List<LongueurRelai> longueursRelai(Integer voie_id) {
+    public List<Longueur> longueurs(Integer voie_id) {
 
-        String vSql = "SELECT * FROM public.longueur_relai"
+        String vSql = "SELECT * FROM public.longueur"
                     + " WHERE voie_id = " + voie_id;
 
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
         LongueurRM vLongueurRM = new LongueurRM();
 
-        List<LongueurRelai> vListLongueurRelai = vJdbcTemplate.query(vSql, vLongueurRM.getvLongueurRelaiRowMapper());
-        return vListLongueurRelai;
+        List<Longueur> vListLongueur = vJdbcTemplate.query(vSql, vLongueurRM.getvLongueurRowMapper());
+        return vListLongueur;
     }
 
     @Override
-    public void addLongueurRelai(LongueurRelai longueur, Voie voie) {
+    public void addLongueur(Longueur longueur, Voie voie) {
 
-        String vSql = "INSERT INTO public.longueur_relai (num_longueur, num_relai, hauteur, cotation, voie_id) VALUES "
+        String vSql = "INSERT INTO public.longueur (num_longueur, num_relai, hauteur, cotation, voie_id) VALUES "
                     + " (:num_longueur, :num_relai, :hauteur, :cotation, :voie_id)";
 
         MapSqlParameterSource vParams = new MapSqlParameterSource();
@@ -49,7 +45,7 @@ public class LongueurRelaiImpl extends AbstractDataImpl implements LongueurRelai
     }
 
     @Override
-    public LongueurRelai longueurRelai(Integer id) {
+    public Longueur longueur(Integer id) {
         return null;
     }
 
@@ -59,9 +55,9 @@ public class LongueurRelaiImpl extends AbstractDataImpl implements LongueurRelai
      * @return un message de confirmation
      */
     @Override
-    public void delLongueurRelai(Integer id) {
+    public void delLongueur(Integer id) {
 
-        String vSql = "DELETE FROM  public.longueur_relai"
+        String vSql = "DELETE FROM  public.longueur"
                     + " WHERE id = :id";
 
         MapSqlParameterSource vParams = new MapSqlParameterSource();
@@ -76,9 +72,9 @@ public class LongueurRelaiImpl extends AbstractDataImpl implements LongueurRelai
      * @param longueur
      */
     @Override
-    public void upLongueur(LongueurRelai longueur) {
+    public void upLongueur(Longueur longueur) {
 
-        String vSql = "UPDATE public.longueur_relai SET"
+        String vSql = "UPDATE public.longueur SET"
                     + " hauteur = :hauteur, cotation = :cotation, num_relai = :num_relai"
                     + " WHERE id = :id";
 
@@ -92,31 +88,31 @@ public class LongueurRelaiImpl extends AbstractDataImpl implements LongueurRelai
         vJdbcTemplate.update(vSql, vParams);
     }
 
-    public List<LongueurRelai> listLongueursByVoieDao(Voie voie){
+    public List<Longueur> listLongueursByVoieDao(Voie voie){
 
-        String vSql = "SELECT longueur_relai.* FROM public.longueur_relai"
+        String vSql = "SELECT longueur.* FROM public.longueur"
                     + " INNER JOIN voie ON voie.id = " + voie.getId()
-                    + " WHERE longueur_relai.voie_id = voie.id";
+                    + " WHERE longueur.voie_id = voie.id";
 
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
         LongueurRM vLongueurRM = new LongueurRM();
 
-        List<LongueurRelai> listLongueurRelai = vJdbcTemplate.query(vSql, vLongueurRM.getvLongueurRelaiRowMapper());
-        return listLongueurRelai;
+        List<Longueur> listLongueur = vJdbcTemplate.query(vSql, vLongueurRM.getvLongueurRowMapper());
+        return listLongueur;
     }
 
-//    public List<LongueurRelai> recoversLongueurWorkflowDao(LongueurRelai longueurRelai, Voie voie){
+//    public List<Longueur> recoversLongueurWorkflowDao(Longueur longueur, Voie voie){
 //
 //        String vSql = "SELECT * FROM public.longueur_relai"
-//                    + " WHERE num_longueur = " + longueurRelai.getNum_longueur()
-//                    + " AND  cotation = '" + longueurRelai.getCotation() + "'"
-//                    + " AND  hauteur = '" + longueurRelai.getHauteur() + "'"
+//                    + " WHERE num_longueur = " + longueur.getNum_longueur()
+//                    + " AND  cotation = '" + longueur.getCotation() + "'"
+//                    + " AND  hauteur = '" + longueur.getHauteur() + "'"
 //                    + " AND  voie_id = " + voie.getId();
 //
 //        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
 //        LongueurRM vLongueurRM = new LongueurRM();
 //
-//        List<LongueurRelai> vListLongueur = vJdbcTemplate.query(vSql, vLongueurRM.getvLongueurRelaiRowMapper());
+//        List<Longueur> vListLongueur = vJdbcTemplate.query(vSql, vLongueurRM.getvLongueurRowMapper());
 //        return vListLongueur;
 //    }
 }

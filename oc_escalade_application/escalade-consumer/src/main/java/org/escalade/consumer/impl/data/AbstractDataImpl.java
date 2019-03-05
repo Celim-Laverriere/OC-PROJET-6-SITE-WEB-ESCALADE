@@ -1,7 +1,5 @@
 package org.escalade.consumer.impl.data;
 
-import org.escalade.model.bean.Secteur;
-
 import javax.sql.DataSource;
 
 public abstract  class AbstractDataImpl {
@@ -16,7 +14,4 @@ public abstract  class AbstractDataImpl {
         this.dataSource = dataSource;
     }
 
-    public Secteur faireUneRechercheSimple(String motCleRecherche) {
-        return null;
-    }
 }

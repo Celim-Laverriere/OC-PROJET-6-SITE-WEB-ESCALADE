@@ -102,6 +102,18 @@
             <artifactId>jaxws-api</artifactId>
         </dependency>
 
+        <!-- ====  commons-fileupload ==== -->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+        </dependency>
+
+        <!-- ====  commons-io ==== -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
+
         <!-- ===== Tests ===== -->
         <dependency>
             <groupId>junit</groupId>

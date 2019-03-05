@@ -5,6 +5,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.escalade.business.contract.ManagerFactory;
+import org.escalade.business.impl.manager.LongueurManagerImpl;
 import org.escalade.model.bean.*;
 
 import javax.inject.Inject;
@@ -21,8 +22,8 @@ public class workflowSiteAction extends ActionSupport implements SessionAware, S
     private Site site;
     private Secteur secteur;
     private Voie voie;
-    private LongueurRelai longueur;
-    private List<LongueurRelai> longueursRelais = new ArrayList<>();
+    private Longueur longueur;
+    private List<Longueur> longueursRelais = new ArrayList<>();
 
     /**
      * Stock la hauteur de la voie ou de la longueur
@@ -86,11 +87,11 @@ public class workflowSiteAction extends ActionSupport implements SessionAware, S
         this.voie = voie;
     }
 
-    public LongueurRelai getLongueur() {
+    public Longueur getLongueur() {
         return longueur;
     }
 
-    public void setLongueur(LongueurRelai longueur) {
+    public void setLongueur(Longueur longueur) {
         this.longueur = longueur;
     }
 
@@ -134,11 +135,11 @@ public class workflowSiteAction extends ActionSupport implements SessionAware, S
         this.initNumLongueur = initNumLongueur;
     }
 
-    public List<LongueurRelai> getLongueursRelais() {
+    public List<Longueur> getLongueursRelais() {
         return longueursRelais;
     }
 
-    public void setLongueursRelais(List<LongueurRelai> longueursRelais) {
+    public void setLongueursRelais(List<Longueur> longueursRelais) {
         this.longueursRelais = longueursRelais;
     }
 
@@ -208,7 +209,7 @@ public class workflowSiteAction extends ActionSupport implements SessionAware, S
 
             /* Si l'utilisateur après avoir ajouté des longueurs revient en arrière pour modifier la voie on récupère
             les longueurs sauvegardées en session pour les transmettre au formulaire des longueurs */
-            longueursRelais = (List<LongueurRelai>) this.session.get("listLongueurs");
+            longueursRelais = (List<Longueur>) this.session.get("listLongueurs");
 
             configSelectForm = "formLongueur";
         } catch (Exception pEX){
@@ -243,13 +244,13 @@ public class workflowSiteAction extends ActionSupport implements SessionAware, S
                 this.session.put("listLongueurs", longueursRelais);
             } else {
 
-                longueursRelais = (List<LongueurRelai>) this.session.get("listLongueurs");
+                longueursRelais = (List<Longueur>) this.session.get("listLongueurs");
 
                 if (longueur.getNum_relai() != 0){
-                    List<LongueurRelai> longueurRelaiListReverse = new ArrayList<>(longueursRelais);
-                    Collections.reverse(longueurRelaiListReverse);
+                    List<Longueur> longueurListReverse = new ArrayList<>(longueursRelais);
+                    Collections.reverse(longueurListReverse);
 
-                    for (LongueurRelai relais: longueurRelaiListReverse){
+                    for (Longueur relais: longueurListReverse){
                         if (relais.getNum_relai() > 0){
                             int numRelai = relais.getNum_relai();
                             longueur.setNum_relai(numRelai + 1);
@@ -282,39 +283,39 @@ public class workflowSiteAction extends ActionSupport implements SessionAware, S
 
         try {
 
-            longueursRelais = (List<LongueurRelai>) this.session.get("listLongueurs");
+            longueursRelais = (List<Longueur>) this.session.get("listLongueurs");
             longueur.setHauteur(Float.parseFloat(hauteur));
 
-            for (LongueurRelai vLongueurRelai: longueursRelais){
-                Integer numLongueur = vLongueurRelai.getNum_longueur();
+            for (Longueur vLongueur : longueursRelais){
+                Integer numLongueur = vLongueur.getNum_longueur();
 
                 if (numLongueur.equals(longueur.getNum_longueur())){
-                    vLongueurRelai.setHauteur(longueur.getHauteur());
-                    vLongueurRelai.setCotation(longueur.getCotation());
+                    vLongueur.setHauteur(longueur.getHauteur());
+                    vLongueur.setCotation(longueur.getCotation());
 
                     if (longueur.getNum_relai() != 0){
                         // On récupère la liste des longueurs que l'on inverse.
-                        List<LongueurRelai> longueurRelaiListReverse = new ArrayList<>(longueursRelais);
-                        Collections.reverse(longueurRelaiListReverse);
+                        List<Longueur> longueurListReverse = new ArrayList<>(longueursRelais);
+                        Collections.reverse(longueurListReverse);
 
-                        for (LongueurRelai relais: longueurRelaiListReverse){
+                        for (Longueur relais: longueurListReverse){
                             if (relais.getNum_relai() > 0){
                                 int numRelai = relais.getNum_relai();
-                                vLongueurRelai.setNum_relai(numRelai + 1);
+                                vLongueur.setNum_relai(numRelai + 1);
                                 break;
                             }
                         }
 
                     } else {
-                        vLongueurRelai.setNum_relai(longueur.getNum_relai());
-                        this.session.put("listLongueurs", vLongueurRelai);
+                        vLongueur.setNum_relai(longueur.getNum_relai());
+                        this.session.put("listLongueurs", vLongueur);
                     }
                 }
             }
 
             Integer i = 1;
 
-            for (LongueurRelai relai: longueursRelais) {
+            for (Longueur relai: longueursRelais) {
 
                 if (relai.getNum_relai() > 0) {
                     relai.setNum_relai(i);
@@ -351,9 +352,9 @@ public class workflowSiteAction extends ActionSupport implements SessionAware, S
             /**@see org.escalade.business.impl.manager.VoieManagerImpl#addVoieWorkflow(Voie, Secteur)*/
             Voie voie = managerFactory.getVoieManager().addVoieWorkflow((Voie) this.session.get("voie"), secteur);
 
-            /**@see org.escalade.business.impl.manager.LongueurRelaiManagerImpl#addLongueurWorkflow(List, Voie)*/
-            longueursRelais = (List<LongueurRelai>) this.session.get("listLongueurs");
-            managerFactory.getLongueurRelaiManager().addLongueurWorkflow(longueursRelais, voie);
+            /**@see LongueurManagerImpl#addLongueurWorkflow(List, Voie)*/
+            longueursRelais = (List<Longueur>) this.session.get("listLongueurs");
+            managerFactory.getLongueurManager().addLongueurWorkflow(longueursRelais, voie);
 
         } catch (Exception pEX){
             this.addActionError("Une erreur technique s'est produite, veuillez réessayer plus tard!");

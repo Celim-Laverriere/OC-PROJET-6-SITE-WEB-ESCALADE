@@ -12,7 +12,7 @@
     
     <bean id="commentaireDao" class="org.escalade.consumer.impl.dao.CommentaireImpl" parent="abstractDataImpl"/>
     <bean id="compteDao" class="org.escalade.consumer.impl.dao.CompteImpl" parent="abstractDataImpl"/>
-    <bean id="longueurRelaiDao" class="org.escalade.consumer.impl.dao.LongueurRelaiImpl" parent="abstractDataImpl"/>
+    <bean id="longueurDao" class="org.escalade.consumer.impl.dao.LongueurImpl" parent="abstractDataImpl"/>
     <bean id="resaTopoDao" class="org.escalade.consumer.impl.dao.ResaTopoImpl" parent="abstractDataImpl"/>
     <bean id="secteurDao" class="org.escalade.consumer.impl.dao.SecteurImpl" parent="abstractDataImpl"/>
     <bean id="siteDao" class="org.escalade.consumer.impl.dao.SiteImpl" parent="abstractDataImpl"/>
@@ -23,7 +23,7 @@
     <bean id="daoFactory" class="org.escalade.consumer.impl.DaoFactoryImpl">
         <property name="commentaireDao" ref="commentaireDao"/>
         <property name="compteDao" ref="compteDao"/>
-        <property name="longueurRelaiDao" ref="longueurRelaiDao"/>
+        <property name="longueurDao" ref="longueurDao"/>
         <property name="resaTopoDao" ref="resaTopoDao"/>
         <property name="secteurDao" ref="secteurDao"/>
         <property name="siteDao" ref="siteDao"/>

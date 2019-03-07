@@ -1,5 +1,6 @@
 package org.escalade.business.contract.manager;
 
+import org.escalade.model.bean.Compte;
 import org.escalade.model.bean.Topo;
 
 import java.util.List;
@@ -8,11 +9,15 @@ public interface TopoManager {
 
     List<Topo> topos();
 
-    String addTopo(Topo topo);
+    void addTopo(Topo topo, Compte compte);
 
     Topo topo(Integer topo_id);
 
-    String delTopo(Integer id);
+    void delTopo(Integer id);
 
-    String upTopo(Integer id, Topo topo);
+    void upTopo(Topo topo);
+
+    Topo recoversTopoForId(Compte compte, Topo topo);
+
+    List<Topo> topoByAccount(Compte compte);
 }

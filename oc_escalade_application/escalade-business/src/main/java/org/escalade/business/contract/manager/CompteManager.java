@@ -1,5 +1,6 @@
 package org.escalade.business.contract.manager;
 
+import org.escalade.model.bean.Commentaire;
 import org.escalade.model.bean.Compte;
 
 import java.util.List;
@@ -17,4 +18,7 @@ public interface CompteManager {
     void upCompte(Compte upCompte, Compte compte);
 
     Compte comptByUtilisateur (String login, String password);
+
+    List<Compte> compteByCommentaires(List<Commentaire> commentaireList);
+
 }

@@ -40,7 +40,7 @@
                        role="button" aria-haspopup="true" aria-expanded="false">MES SECTEURS</a>
                     <div class="dropdown-menu">
                         <s:a action="new_secteur" class="dropdown-item">Créer un nouveau Secteurs</s:a>
-                        <s:a action="secteur_by_account" class="dropdown-item"> Afficher mes listSecteurs !</s:a>
+                        <s:a action="secteur_by_account" class="dropdown-item"> Afficher mes Secteurs !</s:a>
                     </div>
                 </li>
 
@@ -58,6 +58,7 @@
                        role="button" aria-haspopup="true" aria-expanded="false">MES TOPOS</a>
                     <div class="dropdown-menu">
                         <s:a action="new_topo" class="dropdown-item">Créer un topo</s:a>
+                        <s:a action="topo_by_account" class="dropdown-item">Afficher mes topos</s:a>
                         <s:a action="" class="dropdown-item">Demande de réservations</s:a>
                         <s:a action="" class="dropdown-item">Mes réservations</s:a>
                     </div>

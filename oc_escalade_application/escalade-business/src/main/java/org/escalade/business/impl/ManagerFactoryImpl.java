@@ -13,6 +13,7 @@ public class ManagerFactoryImpl implements ManagerFactory {
     private SiteManager siteManager;
     private TopoManager topoManager;
     private VoieManager voieManager;
+    private PhotoManager photoManager;
 
     @Override
     public CommentaireManager getCommentaireManager() {
@@ -92,5 +93,15 @@ public class ManagerFactoryImpl implements ManagerFactory {
     @Override
     public void setVoieManager(VoieManager voieManager) {
         this.voieManager = voieManager;
+    }
+
+    @Override
+    public PhotoManager getPhotoManager() {
+        return photoManager;
+    }
+
+    @Override
+    public void setPhotoManager(PhotoManager photoManager) {
+        this.photoManager = photoManager;
     }
 }

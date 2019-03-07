@@ -519,9 +519,6 @@
 
         <action name="new_topo" class="org.escalade.webapp.action.TopoAction" method="newTopo">
 
-            <interceptor-ref name="fileUpload">
-                <param name="maximumSize">10485760</param>
-            </interceptor-ref>
             <interceptor-ref name="store">
                 <param name="operationMode">STORE</param>
             </interceptor-ref>
@@ -529,9 +526,66 @@
             <interceptor-ref name="defaultStack"/>
 
             <result name="input">jsp/creation_forms/form_topo.jsp</result>
-            <result name="success">jsp/topo/list_topo_of_connected_users.jsp</result>
+            <result name="success" type="redirectAction">topo_by_account.action</result>
+            <result name="error">jsp/error.jsp</result>
 
         </action>
+
+        <action name="topo_by_account" class="org.escalade.webapp.action.TopoAction" method="topoByAccount">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="success">jsp/topo/list_topo_of_connected_users.jsp</result>
+            <result name="error">jsp/error.jsp</result>
+        </action>
+
+        <action name="del_Topo" class="org.escalade.webapp.action.TopoAction" method="delTopo">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="success">jsp/topo/list_topo_of_connected_users.jsp</result>
+            <result name="error">jsp/error.jsp</result>
+        </action>
+
+        <action name="modified_topo" class="org.escalade.webapp.action.TopoAction" method="upTopo">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="input">jsp/creation_forms/form_modified_topo.jsp</result>
+            <result name="success">jsp/topo/list_topo_of_connected_users.jsp</result>
+            <result name="error">jsp/error.jsp</result>
+        </action>
+
+
+        <!-- **************************** -->
+        <!-- ***** ACTION RESA TOPO ***** -->
+        <!-- **************************** -->
+
+        <action name="resa_topo" class="org.escalade.webapp.action.ResaTopoAction" method="resaTopo">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="input">jsp/creation_forms/form_resa_topo.jsp</result>
+            <result name="success"></result>
+            <result name="error">jsp/error.jsp</result>
+        </action>
+
 
         <!-- ************************* -->
         <!-- ***** ACTION COMPTE ***** -->

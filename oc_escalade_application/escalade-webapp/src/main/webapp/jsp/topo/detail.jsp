@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
     <%@include file="../_include/head.jsp"%>
@@ -14,62 +15,116 @@
 
 <body>
 
-    <header>
-        <%@include file="../_include/header.jsp"%>
-    </header>
+<header>
+    <%@include file="../_include/header.jsp"%>
+</header>
 
-    <div class="container">
+<section>
+    <div class="container" style="margin-top: 1%; border-style: solid; border-color: #DCDCDC; border-width: 2px;
+border-radius: 10px; box-shadow: 6px 6px 14px #DCDCDC">
+
         <s:iterator value="topo">
+
         <div class="row">
             <div class="col-md-12" style="margin-top: 10px; margin-bottom: 10px; text-align: center">
                 <h2>Detail du topos d'éscalades : <s:property value="nom"/></h2>
-                <hr width="100%" color="#DCDCDC">
+                <hr width="90%" color="#DCDCDC">
             </div>
         </div>
 
-            <p
-                ID : <s:property value="id"/><br/>
-                Date d'upload : <s:property value="date_upload"/><br/>
-                Statut : <s:property value="statut"/><br/>
-                Desciption : <s:property value="description"/><br/>
-            </p>
+        <div class="row justify-content-center">
 
-            <div class="row">
-                <div class="col-md-12">
-                    <h4>Commentaires</h4>
+            <c:forEach var="photo" items="${photoList}">
+                <c:if test="${id == photo.topo_id}">
+                    <img src="<c:out value="${photo.url_image}"/>" style="width: 400px; height: 400px"
+                         alt="<c:out value="${photo.nom}"/>" class="rounded float-left">
+                </c:if>
+            </c:forEach>
+
+            <div class="col-md-10" style="margin-top: 1%">
+
+                <p>Date d'upload : <s:property value="date_upload"/></p>
+                <p>Desciption : <s:property value="description"/></p>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <hr width="90%" color="#DCDCDC">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h3 style="text-align: center">Reservation topo</h3>
+                <hr width="80%" color="#DCDCDC">
+            </div>
+        </div>
+
+        <div class="row justify-content-end">
+
+            <div class="col-md-4">
+                <s:a action="topo_list">
+                    <button type="button" class="btn btn-outline-primary">Retour</button>
+                </s:a>
+                <s:a action="resa_topo">
+                    <s:param name="topo_id" value="id"/>
+                    <button type="button" class="btn btn-outline-primary">Demmande de réservation</button>
+                </s:a>
+            </div>
+        </div>
+        </s:iterator>
+
+        <div class="row">
+            <div class="col-md-12">
+                <hr width="80%" color="#DCDCDC">
+            </div>
+        </div>
+
+</section>
+
+<section>
+    <div class="container" style="margin-top: 1%; border-style: solid; border-color: #DCDCDC; border-width: 2px;
+border-radius: 10px; box-shadow: 6px 6px 14px #DCDCDC">
+
+        <div class="row">
+            <div class="col-md-12">
+                <h4 style="text-align: center">Commentaires</h4>
+                <hr width="80%" color="#DCDCDC">
+            </div>
+        </div>
+
+        <s:iterator value="topo">
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+
+                    <s:if test="%{topo.commentaires.isEmpty()}">
+                        <p>Ce topo d'éscalade n'a pas encore de commentaires !</p>
+                    </s:if>
+                    <s:else>
+                        <s:iterator value="commentaires">
+                            <c:forEach var="compte" items="${compteList}">
+                                <c:if test="${compte.id == compte_id}">
+                                    <p>Commentaire poster par : <c:out value="${compte.nom}"/></p>
+                                </c:if>
+                            </c:forEach>
+                            <p><s:property value="commentaire"/></p>
+                        </s:iterator>
+                    </s:else>
+
                 </div>
             </div>
-
-            <s:if test="%{topo.commentaires.isEmpty()}">
-                <p>Ce topo d'éscalade n'a pas encore de commentaires !</p>
-            </s:if>
-            <s:else>
-                <s:iterator value="commentaires">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="well well-md">
-                                <p><s:property value="commentaire"/></p>
-                            </div>
-                        </div>
-                    </div>
-                </s:iterator>
-            </s:else>
-
-            <s:iterator value="resaTopos">
-                <h3>Reservation des topos</h3>
-                <p>
-                    <s:property value="id"/><br/>
-                    <s:property value="date_debut"/><br/>
-                    <s:property value="date_fin"/><br/>
-                    <s:property value="compte_id"/><br/>
-                </p>
-            </s:iterator>
-
         </s:iterator>
     </div>
-    <footer>
-        <%@include file="../_include/footer.jsp"%>
-    </footer>
 
-</body></center>
+    </div>
+</section>
+
+<footer>
+    <%@include file="../_include/footer.jsp"%>
+    <%@include file="../_include/scripts.jsp"%>
+</footer>
+
+</body>
 </html>

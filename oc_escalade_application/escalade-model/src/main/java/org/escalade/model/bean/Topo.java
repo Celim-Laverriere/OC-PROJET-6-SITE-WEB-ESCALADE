@@ -1,5 +1,7 @@
 package org.escalade.model.bean;
 
+import com.sun.istack.internal.NotNull;
+
 import java.util.Date;
 import java.util.List;
 
@@ -9,9 +11,10 @@ public class Topo {
     private String nom;
     private Date date_upload;
     private String description;
-    private String url_topo;
+    private Integer compte_id;
     private List<Commentaire> commentaires;
     private List<ResaTopo> resaTopos;
+    private List<Photo> photos;
 
     public Topo() {
     }
@@ -48,12 +51,12 @@ public class Topo {
         this.description = description;
     }
 
-    public String getUrl_topo() {
-        return url_topo;
+    public Integer getCompte_id() {
+        return compte_id;
     }
 
-    public void setUrl_topo(String url_topo) {
-        this.url_topo = url_topo;
+    public void setCompte_id(Integer compte_id) {
+        this.compte_id = compte_id;
     }
 
     public List<Commentaire> getCommentaires() {
@@ -70,5 +73,13 @@ public class Topo {
 
     public void setResaTopos(List<ResaTopo> resaTopos) {
         this.resaTopos = resaTopos;
+    }
+
+    public List<Photo> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(List<Photo> photos) {
+        this.photos = photos;
     }
 }

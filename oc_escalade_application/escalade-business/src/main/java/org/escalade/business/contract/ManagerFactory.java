@@ -35,4 +35,8 @@ public interface ManagerFactory {
     VoieManager getVoieManager();
 
     void setVoieManager(VoieManager voieManager);
+
+    PhotoManager getPhotoManager();
+
+    void setPhotoManager(PhotoManager photoManager);
 }

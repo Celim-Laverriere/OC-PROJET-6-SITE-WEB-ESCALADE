@@ -15,6 +15,7 @@
     <bean id="siteManager" class="org.escalade.business.impl.manager.SiteManagerImpl" parent="abstractManager"/>
     <bean id="topoManager" class="org.escalade.business.impl.manager.TopoManagerImpl" parent="abstractManager"/>
     <bean id="voieManager" class="org.escalade.business.impl.manager.VoieManagerImpl" parent="abstractManager"/>
+    <bean id="photoManager" class="org.escalade.business.impl.manager.PhotoManagerImpl" parent="abstractManager"/>
 
     <bean id="managerFactory" class="org.escalade.business.impl.ManagerFactoryImpl">
         <property name="commentaireManager" ref="commentaireManager"/>
@@ -25,6 +26,8 @@
         <property name="siteManager" ref="siteManager"/>
         <property name="topoManager" ref="topoManager"/>
         <property name="voieManager" ref="voieManager"/>
+        <property name="photoManager" ref="photoManager"/>
     </bean>
+
 
 </beans>

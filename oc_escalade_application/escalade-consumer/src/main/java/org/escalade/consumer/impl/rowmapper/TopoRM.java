@@ -19,7 +19,7 @@ public class TopoRM {
             vTopo.setNom(pRs.getString("nom"));
             vTopo.setDate_upload(pRs.getDate("date_upload"));
             vTopo.setDescription(pRs.getString("description"));
-            vTopo.setUrl_topo(pRs.getString("url_topo"));
+            vTopo.setCompte_id(pRs.getInt("compte_id"));
             return vTopo;
         }
     };

@@ -18,6 +18,9 @@ public class CommentaireRM {
             Commentaire vCommentaire = new Commentaire();
             vCommentaire.setId(pRs.getInt("id"));
             vCommentaire.setCommentaire(pRs.getString("commentaire"));
+            vCommentaire.setTopo_id(pRs.getInt("topo_id"));
+            vCommentaire.setSite_id(pRs.getInt("site_id"));
+            vCommentaire.setCompte_id(pRs.getInt("compte_id"));
             return vCommentaire;
         }
     };

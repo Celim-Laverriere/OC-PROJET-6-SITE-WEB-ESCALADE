@@ -80,6 +80,7 @@ CREATE SEQUENCE public.topo_id_seq;
 CREATE TABLE public.topo (
                 id INTEGER NOT NULL DEFAULT nextval('public.topo_id_seq'),
                 nom VARCHAR NOT NULL,
+                statut VARCHAR NOT NULL,
                 date_upload DATE NOT NULL,
                 description VARCHAR NOT NULL,
                 compte_id INTEGER NOT NULL,
@@ -124,8 +125,6 @@ CREATE TABLE public.resa_topo (
                 statut VARCHAR NOT NULL,
                 date_debut DATE NOT NULL,
                 date_fin DATE NOT NULL,
-                message VARCHAR,
-                date_message DATE NOT NULL,
                 compte_id INTEGER NOT NULL,
                 topo_id INTEGER NOT NULL,
                 CONSTRAINT resa_topo_pk PRIMARY KEY (id)
@@ -133,6 +132,20 @@ CREATE TABLE public.resa_topo (
 
 
 ALTER SEQUENCE public.resa_topo_id_seq OWNED BY public.resa_topo.id;
+
+CREATE SEQUENCE public.messagerie_id_seq;
+
+CREATE TABLE public.messagerie (
+                id INTEGER NOT NULL DEFAULT nextval('public.messagerie_id_seq'),
+                date_message DATE NOT NULL,
+                message VARCHAR NOT NULL,
+                resa_topo_id INTEGER NOT NULL,
+                compte_id INTEGER NOT NULL,
+                CONSTRAINT messagerie_pk PRIMARY KEY (id)
+);
+
+
+ALTER SEQUENCE public.messagerie_id_seq OWNED BY public.messagerie.id;
 
 ALTER TABLE public.resa_topo ADD CONSTRAINT compte_resa_topo_fk
 FOREIGN KEY (compte_id)
@@ -156,6 +169,13 @@ ON UPDATE CASCADE
 NOT DEFERRABLE;
 
 ALTER TABLE public.site ADD CONSTRAINT compte_site_fk
+FOREIGN KEY (compte_id)
+REFERENCES public.compte (id)
+ON DELETE CASCADE
+ON UPDATE CASCADE
+NOT DEFERRABLE;
+
+ALTER TABLE public.messagerie ADD CONSTRAINT compte_messagerie_fk
 FOREIGN KEY (compte_id)
 REFERENCES public.compte (id)
 ON DELETE CASCADE
@@ -214,6 +234,13 @@ NOT DEFERRABLE;
 ALTER TABLE public.photo ADD CONSTRAINT topo_photo_fk
 FOREIGN KEY (topo_id)
 REFERENCES public.topo (id)
+ON DELETE CASCADE
+ON UPDATE CASCADE
+NOT DEFERRABLE;
+
+ALTER TABLE public.messagerie ADD CONSTRAINT resa_topo_messagerie_fk
+FOREIGN KEY (resa_topo_id)
+REFERENCES public.resa_topo (id)
 ON DELETE CASCADE
 ON UPDATE CASCADE
 NOT DEFERRABLE;

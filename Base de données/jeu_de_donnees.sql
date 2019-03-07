@@ -67,20 +67,19 @@ VALUES
 ;
 
 INSERT INTO public.topo
-    (compte_id, nom, date_upload, description)
+    (compte_id, nom, statut, date_upload, description)
 VALUES
-    (1, 'Edemere', '2018-09-25', 'Sollicitudin elit molestie venenatis venenatis conubia netus phasellus. pellentesque dolor suspendisse pellentesque. vulputate amet malesuada lacus platea curae. ultricies suscipit mattis venenatis. semper ullamcorper sollicitudin aptent praesent. elementum curabitur lectus vivamus felis senectus volutpat. nam dolor'), 
-    (2, 'Adiatisa', '2018-09-10', 'Primis per nec sollicitudin luctus ornare luctus. tristique amet platea vestibulum curabitur praesent. feugiat fusce lectus posuere vehicula tellus nec per. imperdiet morbi scelerisque posuere congue. ultrices facilisis amet velit maecenas. aenean vitae dolor odio. metus volutpat felis dui lectus condimentum cubilia curabitur. eu ac hac vitae nisi urna'),
-    (3, 'Origine', '2018-09-22', 'Laoreet dictumst vel integer accumsan platea nisi vulputate. non aliquet dapibus ullamcorper placerat fusce aenean. massa ante viverra quam sem morbi semper. ut eros eu primis nisi diam ad. purus faucibus magna duis molestie fusce et donec. aptent sodales morbi iaculis morbi nam mauris. commodo quis donec eget magna.'),
-    (4, 'Land', '2018-09-15', 'Ornare fringilla non varius non netus. consequat libero nec sem sapien vehicula lectus nam. duis aliquet nec nullam ut risus porta. leo mattis blandit aenean blandit. nibh ultrices fusce hendrerit sed varius varius. elementum nec non'),
-    (5, 'Montagne rouge', '2018-09-5', 'Donec urna ad et dictum aenean eget vel. dui habitant gravida hendrerit felis vehicula elit accumsan. lorem justo etiam interdum feugiat leo dui ac. aliquet risus quam tristique aenean maecenas risus. pretium feugiat sagittis sed varius libero ultrices netus.')
+    (1, 'Edemere', 'libre', '2018-09-25', 'Sollicitudin elit molestie venenatis venenatis conubia netus phasellus. pellentesque dolor suspendisse pellentesque. vulputate amet malesuada lacus platea curae. ultricies suscipit mattis venenatis. semper ullamcorper sollicitudin aptent praesent. elementum curabitur lectus vivamus felis senectus volutpat. nam dolor'), 
+    (2, 'Adiatisa', 'reserver', '2018-09-10', 'Primis per nec sollicitudin luctus ornare luctus. tristique amet platea vestibulum curabitur praesent. feugiat fusce lectus posuere vehicula tellus nec per. imperdiet morbi scelerisque posuere congue. ultrices facilisis amet velit maecenas. aenean vitae dolor odio. metus volutpat felis dui lectus condimentum cubilia curabitur. eu ac hac vitae nisi urna'),
+    (3, 'Origine', 'libre', '2018-09-22', 'Laoreet dictumst vel integer accumsan platea nisi vulputate. non aliquet dapibus ullamcorper placerat fusce aenean. massa ante viverra quam sem morbi semper. ut eros eu primis nisi diam ad. purus faucibus magna duis molestie fusce et donec. aptent sodales morbi iaculis morbi nam mauris. commodo quis donec eget magna.'),
+    (4, 'Land', 'libre', '2018-09-15', 'Ornare fringilla non varius non netus. consequat libero nec sem sapien vehicula lectus nam. duis aliquet nec nullam ut risus porta. leo mattis blandit aenean blandit. nibh ultrices fusce hendrerit sed varius varius. elementum nec non'),
+    (5, 'Montagne rouge', 'libre', '2018-09-5', 'Donec urna ad et dictum aenean eget vel. dui habitant gravida hendrerit felis vehicula elit accumsan. lorem justo etiam interdum feugiat leo dui ac. aliquet risus quam tristique aenean maecenas risus. pretium feugiat sagittis sed varius libero ultrices netus.')
 ;
     
 INSERT INTO public.resa_topo
-    (topo_id, statut, date_debut, date_fin, message, date_message, compte_id)
+    (topo_id, statut, date_debut, date_fin, compte_id)
 VALUES
-    (2, 'demande_en_cours','2018-09-25', '2018-10-10', 'Porta sollicitudin velit enim nisi nunc. duis vel morbi curabitur', '2019-03-05',1),
-    (2, 'demande_accepter','2018-10-05', '2018-10-20', 'Placerat habitant ultricies blandit. ut fames pellentesque lacinia convallis gravida', '2019-03-05',1)
+    (2, 'demande_en_cours','2019-03-15', '2019-03-25',1)
 ;
 
 INSERT INTO public.commentaire
@@ -100,8 +99,11 @@ VALUES
     ('Adiatisa','imgs/photo_escalade_3.jpg', 2, null)
 ;
 
-
-
+INSERT INTO public.messagerie
+    (resa_topo_id, date_message, message, compte_id)
+VALUES
+    (1, '2019-03-07', 'Proin lobortis primis aliquam ante. malesuada justo senectus vel dapibus est.', 1)
+;
 
 
 

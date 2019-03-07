@@ -18,6 +18,7 @@
     <bean id="siteDao" class="org.escalade.consumer.impl.dao.SiteImpl" parent="abstractDataImpl"/>
     <bean id="topoDao" class="org.escalade.consumer.impl.dao.TopoImpl" parent="abstractDataImpl"/>
     <bean id="voieDao" class="org.escalade.consumer.impl.dao.VoieImpl" parent="abstractDataImpl"/>
+    <bean id="photoDao" class="org.escalade.consumer.impl.dao.PhotoImpl" parent="abstractDataImpl"/>
 
     <!-- ===== DaoFactory ===== -->
     <bean id="daoFactory" class="org.escalade.consumer.impl.DaoFactoryImpl">
@@ -29,6 +30,7 @@
         <property name="siteDao" ref="siteDao"/>
         <property name="topoDao" ref="topoDao"/>
         <property name="voieDao" ref="voieDao"/>
+        <property name="photoDao" ref="photoDao"/>
     </bean>
 
 </beans>

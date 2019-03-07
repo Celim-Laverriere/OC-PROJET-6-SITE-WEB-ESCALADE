@@ -3,8 +3,11 @@ package org.escalade.consumer.impl.dao;
 import org.escalade.consumer.contract.dao.TopoDao;
 import org.escalade.consumer.impl.data.AbstractDataImpl;
 import org.escalade.consumer.impl.rowmapper.TopoRM;
+import org.escalade.model.bean.Compte;
 import org.escalade.model.bean.Topo;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import java.util.List;
 
@@ -22,15 +25,27 @@ public class TopoImpl extends AbstractDataImpl implements TopoDao {
     }
 
     @Override
-    public String addTopo(Topo topo) {
-        return null;
+    public void addTopo(Topo topo, Compte compte) {
+
+        String vSql = "INSERT INTO public.topo (nom, description, date_upload, compte_id) VALUES "
+                    + " (:nom, :description, :date_upload, :compte_id)";
+
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("nom", topo.getNom());
+        vParams.addValue("description", topo.getDescription());
+        vParams.addValue("date_upload", topo.getDate_upload());
+        vParams.addValue("compte_id", compte.getId());
+
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+        vJdbcTemplate.update(vSql, vParams);
     }
 
     @Override
     public Topo topo(Integer topo_id) {
-        String vSql
-                = "SELECT * FROM public.topo"
-                + " WHERE id = " + topo_id;
+
+        String vSql = "SELECT * FROM public.topo"
+                    + " WHERE id = " + topo_id;
 
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
         TopoRM topoRM = new TopoRM();
@@ -40,12 +55,64 @@ public class TopoImpl extends AbstractDataImpl implements TopoDao {
     }
 
     @Override
-    public String delTopo(Integer id) {
-        return null;
+    public void delTopo(Integer id){
+
+        String vSql = "DELETE FROM public.topo WHERE id = :id";
+
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("id", id);
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+        vJdbcTemplate.update(vSql, vParams);
+
     }
 
+    /**
+     * Mettre à jour un topo
+     *
+     * @param topo
+     * @return un message de confirmation
+     */
     @Override
-    public String upTopo(Integer id, Topo topo) {
-        return null;
+    public void upTopo(Topo topo) {
+
+        String vSql = "UPDATE public.topo SET"
+                    + " nom = :nom, date_upload = :date_upload, description = :description"
+                    + " WHERE id = :id";
+
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("id", topo.getId());
+        vParams.addValue("nom", topo.getNom());
+        vParams.addValue("date_upload", topo.getDate_upload());
+        vParams.addValue("description", topo.getDescription());
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+        vJdbcTemplate.update(vSql, vParams);
+
+    }
+
+    public Topo recoversTopoForIdDao(Compte compte, Topo topo){
+
+        String vSql = "SELECT * FROM public.topo"
+                    + " WHERE compte_id = " + compte.getId()
+                    + " AND nom = '" + topo.getNom() + "'";
+
+        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+        TopoRM vTopoRM = new TopoRM();
+
+        List<Topo> topos = vJdbcTemplate.query(vSql, vTopoRM.getvTopoRowMapper());
+        return topos.get(0);
+    }
+
+    public List<Topo> topoByAccountDao(Compte compte){
+
+        String vSql = "SELECT * FROM public.topo"
+                    + " WHERE compte_id = " + compte.getId();
+
+        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+        TopoRM vTopoRM = new TopoRM();
+
+        List<Topo> topoList = vJdbcTemplate.query(vSql, vTopoRM.getvTopoRowMapper());
+        return topoList;
     }
 }

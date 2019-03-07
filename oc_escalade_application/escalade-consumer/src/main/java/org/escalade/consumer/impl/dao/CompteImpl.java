@@ -3,6 +3,7 @@ package org.escalade.consumer.impl.dao;
 import org.escalade.consumer.contract.dao.CompteDao;
 import org.escalade.consumer.impl.data.AbstractDataImpl;
 import org.escalade.consumer.impl.rowmapper.CompteRM;
+import org.escalade.model.bean.Commentaire;
 import org.escalade.model.bean.Compte;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -102,5 +103,17 @@ public class CompteImpl extends AbstractDataImpl implements CompteDao {
 
         List<Compte> vUtilisateur = vJdbcTemplate.query(vSql, vCompteRM.getvCompteRowMapper());
         return vUtilisateur.get(0);
+    }
+
+    public List<Compte> compteByCommentairesDao(Commentaire commentaire){
+
+        String vSql = "SELECT * FROM public.compte"
+                    + " WHERE id = " + commentaire.getCompte_id();
+
+        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+        CompteRM vCompteRM = new CompteRM();
+
+        List<Compte> compteList = vJdbcTemplate.query(vSql, vCompteRM.getvCompteRowMapper());
+        return compteList;
     }
 }

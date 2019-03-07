@@ -1,5 +1,6 @@
 package org.escalade.consumer.contract.dao;
 
+import org.escalade.model.bean.Commentaire;
 import org.escalade.model.bean.Compte;
 import java.util.List;
 
@@ -51,5 +52,7 @@ public interface CompteDao {
          * @return
          */
         Compte comptByUtilisateur(String login, String password);
+
+        List<Compte> compteByCommentairesDao(Commentaire commentaire);
 
 }

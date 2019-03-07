@@ -2,6 +2,8 @@ package org.escalade.consumer.contract.dao;
 
 import org.escalade.model.bean.Commentaire;
 import org.escalade.model.bean.Site;
+import org.escalade.model.bean.Topo;
+
 import java.util.List;
 
 public interface CommentaireDao {
@@ -36,4 +38,6 @@ public interface CommentaireDao {
          * @return un message de confirmation
          */
         String delCommentaire(Integer id);
+
+        List<Commentaire> commentairesByTopoDao(Topo topo);
 }

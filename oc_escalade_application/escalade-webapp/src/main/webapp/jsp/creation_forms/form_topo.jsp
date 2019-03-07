@@ -30,28 +30,68 @@
                         <s:form action="new_topo" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="inputNomTopo">Entrez le nom du topo</label>
-                                <input id="inputNomTopo" name="topo.nom" type="text" class="form-control">
+                                <input id="inputNomTopo" name="topo.nom" type="text" class="form-control" required="true">
                             </div>
 
-                            <label for="fileTopo">Choisissez une photo du topo</label>
+                            <hr width="100%" color="#DCDCDC">
+
+                            <label for="fileTopo">Choisissez une photo de topo</label>
                             <div class="form-group">
                                 <input type="file" name="upload" id="fileTopo" accept="image/jpeg" style="display: inline-block; align-items: center"/>
                             </div>
 
+                            <s:if test="hasActionErrors()">
+                                <p style="color: red">Attention la photoDao est trop volumineuse, 10 Mo maxi !</p>
+                            </s:if>
+
+                            <hr width="100%" color="#DCDCDC">
 
                             <div class="form-group">
                                 <label for="textareaDescriptionSite">Description du site</label>
                                 <textarea name="topo.description" id="textareaDescriptionSite" rows="5" class="form-control"></textarea>
                             </div>
 
-                            <button type="submit" class="btn btn-primary"  >Validez</button>
+                            <div class="row justify-content-center">
+                                <div class="col-md-5">
+                                    <button type="submit" class="btn btn-primary" style="width: 100%">Validez</button>
+                                </div>
+                                <div class="col-md-5">
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#topoModal"
+                                            style="width: 100%">Annuler</button>
+                                </div>
+                            </div>
                         </s:form>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="topoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Annulez la création d'un nouveau topo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Confirmez l'annulation !
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"
+                            data-dismiss="modal">Annulez</button>
+                    <s:a action="management_menu">
+                        <button type="button" class="btn btn-primary">Confirmez</button>
+                    </s:a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 </section>
 <footer>

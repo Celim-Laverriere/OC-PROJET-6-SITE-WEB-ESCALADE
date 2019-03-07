@@ -3,6 +3,11 @@ package org.escalade.webapp.action;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.interceptor.SessionAware;
 import org.escalade.business.contract.ManagerFactory;
+import org.escalade.business.impl.manager.PhotoManagerImpl;
+import org.escalade.business.impl.manager.TopoManagerImpl;
+import org.escalade.model.bean.Commentaire;
+import org.escalade.model.bean.Compte;
+import org.escalade.model.bean.Photo;
 import org.escalade.model.bean.Topo;
 
 
@@ -18,7 +23,7 @@ public class TopoAction extends ActionSupport implements SessionAware {
     private static final long serialVersionUID = 1L;
 
     private Integer TAILLE_TAMPON = 10240;
-    private String CHEMIN_FICHIERS = "E:/PARCOURS DÉVELOPPEUR D'APPLICATION JAVA/PROJET 6 - CREEZ UN SITE COMMUNAUTAIRE AUTOUR DE L’ESCALADE/OC-PROJET-6-SITE-WEB-ESCALADE/oc_escalade_application/escalade-webapp/src/main/webapp/pdf_topos/";
+    private String CHEMIN_FICHIERS = "E:/PARCOURS DÉVELOPPEUR D'APPLICATION JAVA/PROJET 6 - CREEZ UN SITE COMMUNAUTAIRE AUTOUR DE L’ESCALADE/OC-PROJET-6-SITE-WEB-ESCALADE/oc_escalade_application/escalade-webapp/src/main/webapp/imgs/";
 
     // =============== Attributs ===============
     private Integer topo_id;
@@ -31,6 +36,11 @@ public class TopoAction extends ActionSupport implements SessionAware {
     // ----- Eléments en sortie -----
     private List<Topo> topos;
     private Topo topo;
+    private Photo photo;
+    private List<Photo> photoList;
+    private List<Commentaire> commentaireList;
+    private Topo modifiedTopo;
+    private List<Compte> compteList;
 
     // ----- Eléments Struts
     private Map<String, Object> session;
@@ -84,16 +94,71 @@ public class TopoAction extends ActionSupport implements SessionAware {
         this.topo = topo;
     }
 
+    public List<Photo> getPhotoList() {
+        return photoList;
+    }
 
-// =============== Méthodes ================
+    public void setPhotoList(List<Photo> photoList) {
+        this.photoList = photoList;
+    }
+
+    public List<Commentaire> getCommentaireList() {
+        return commentaireList;
+    }
+
+    public void setCommentaireList(List<Commentaire> commentaireList) {
+        this.commentaireList = commentaireList;
+    }
+
+    public Photo getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(Photo photo) {
+        this.photo = photo;
+    }
+
+    public Topo getModifiedTopo() {
+        return modifiedTopo;
+    }
+
+    public void setModifiedTopo(Topo modifiedTopo) {
+        this.modifiedTopo = modifiedTopo;
+    }
+
+    public List<Compte> getCompteList() {
+        return compteList;
+    }
+
+    public void setCompteList(List<Compte> compteList) {
+        this.compteList = compteList;
+    }
+
+    // =============== Méthodes ================
 
     /**
      * Action listant les {@link Topo}
      * @return success
      */
     public String doList(){
-        topos = managerFactory.getTopoManager().topos();
-        return ActionSupport.SUCCESS;
+
+        String vResult = null;
+
+        try{
+
+            /**@see TopoManagerImpl#topos() */
+            topos = managerFactory.getTopoManager().topos();
+
+            /**@see PhotoManagerImpl#listPhotosByTopos(List) */
+            photoList = managerFactory.getPhotoManager().listPhotosByTopos(topos);
+
+            vResult = ActionSupport.SUCCESS;
+
+        } catch (Exception pEX){
+
+        }
+
+        return vResult;
     }
 
     /**
@@ -102,17 +167,27 @@ public class TopoAction extends ActionSupport implements SessionAware {
      */
     public String doDetail(){
 
-        if (topo_id == null) {
-            this.addActionError("Vous devez indiquer un id de topo");
-        } else {
+        String vResult = null;
+
             try {
+
+                /**@see TopoManagerImpl#topo(Integer) */
                 topo = managerFactory.getTopoManager().topo(topo_id);
+
+                /**@see org.escalade.business.impl.manager.CompteManagerImpl#compteByCommentaires(List) */
+                compteList = managerFactory.getCompteManager().compteByCommentaires(topo.getCommentaires());
+
+                /**@see PhotoManagerImpl#listPhotosByTopos(List) */
+                photoList = managerFactory.getPhotoManager().listPhotosOneTopo(topo.getId());
+
+                vResult = ActionSupport.SUCCESS;
+
             } catch (Exception pEX) {
                 this.addActionError("Topo non trouvé. ID = " + topo_id);
             }
-        }
 
-        return (this.hasErrors()) ? ActionSupport.ERROR : ActionSupport.SUCCESS;
+
+        return vResult;
     }
 
     /**
@@ -123,28 +198,43 @@ public class TopoAction extends ActionSupport implements SessionAware {
 
         String vResult = ActionSupport.INPUT;
 
-        System.out.println(filename);
-        System.out.println(contentType);
+        String nomPhoto = filename;
+        String url_image = "imgs/" + filename;
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        try {
 
-        Date date = new Date();
-        System.out.println("Aujourd'hui : " + dateFormat.format(date));
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = new Date();
+            dateFormat.format(date);
+            topo.setDate_upload(date);
 
-        BufferedInputStream entree = null;
-        BufferedOutputStream sortie = null;
 
-            try {
+            /**@see org.escalade.business.impl.manager.TopoManagerImpl#addTopo(Topo, Compte)*/
+            managerFactory.getTopoManager().addTopo(topo, (Compte) this.session.get("user"));
+
+            if (nomPhoto != null) {
+
+                /**@see org.escalade.business.impl.manager.TopoManagerImpl#recoversTopoForId(Compte, Topo)*/
+                topo = managerFactory.getTopoManager().recoversTopoForId((Compte) this.session.get("user"), topo);
+
+                /**@see PhotoManagerImpl#addPhoto(Topo, String, String)*/
+                managerFactory.getPhotoManager().addPhoto(topo, nomPhoto, url_image);
+
+                BufferedInputStream entree = null;
+                BufferedOutputStream sortie = null;
 
                 try {
+
                     entree = new BufferedInputStream(new FileInputStream((file)));
                     sortie = new BufferedOutputStream(new FileOutputStream(new File(CHEMIN_FICHIERS + filename)), TAILLE_TAMPON);
 
                     byte[] tampon = new byte[TAILLE_TAMPON];
                     int longueur;
+
                     while ((longueur = entree.read(tampon)) > 0) {
                         sortie.write(tampon, 0, longueur);
                     }
+
                 } finally {
                     try {
                         sortie.close();
@@ -156,16 +246,148 @@ public class TopoAction extends ActionSupport implements SessionAware {
                     }
                 }
 
-                vResult = ActionSupport.SUCCESS;
+            }
 
-            } catch(NullPointerException pEX){
-                System.out.println(pEX);
-                this.addActionError("Attention la photo et trop voluminueuse !");
+            vResult = ActionSupport.SUCCESS;
+
+        } catch(NullPointerException pEX){
+
+        }
+
+        return vResult;
+    }
+
+    public String topoByAccount(){
+        String vResult = null;
+
+        try {
+
+            /**@see org.escalade.business.impl.manager.TopoManagerImpl#topoByAccount(Compte)*/
+           topos =  managerFactory.getTopoManager().topoByAccount((Compte) this.session.get("user"));
+
+           /**@see org.escalade.business.impl.manager.CommentaireManagerImpl#commentairesByTopo(List)*/
+           commentaireList = managerFactory.getCommentaireManager().commentairesByTopo(topos);
+
+           /**@see PhotoManagerImpl#listPhotosByTopos(List) */
+            photoList = managerFactory.getPhotoManager().listPhotosByTopos(topos);
+
+            vResult = ActionSupport.SUCCESS;
+
+        } catch (Exception pEX){
+            this.addActionError("Une erreur s'est produite, veuillez réessayer plus tard!");
+        }
+
+        return vResult;
+    }
+
+    public String delTopo(){
+        String vResult = null;
+
+        try {
+
+            /**@see PhotoManagerImpl#photo(Integer)*/
+            photoList = managerFactory.getPhotoManager().listPhotosOneTopo(topo_id);
+
+            /**@see org.escalade.business.impl.manager.TopoManagerImpl#delTopo(Integer)*/
+            managerFactory.getTopoManager().delTopo(topo_id);
+
+            /**@see PhotoManagerImpl#delPhotoTopo(Integer)*/
+            managerFactory.getPhotoManager().delPhotoTopo(topo_id);
+
+            System.out.println(photo.getUrl_image());
+            
+
+
+            vResult = ActionSupport.SUCCESS;
+
+        } catch (Exception pEX){
+            this.addActionError("Une erreur s'est produite, veuillez réessayer plus tard!");
+        }
+
+        return vResult;
+    }
+
+    public String upTopo(){
+
+        String vResult = ActionSupport.INPUT;
+
+        String nomPhoto = filename;
+
+        try{
+
+            topo = (Topo) this.session.get("topo");
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = new Date();
+            dateFormat.format(date);
+            modifiedTopo.setDate_upload(date);
+
+            topo_id = topo.getId();
+            modifiedTopo.setId(topo_id);
+
+            /**@see org.escalade.business.impl.manager.TopoManagerImpl#upTopo(Topo) */
+            managerFactory.getTopoManager().upTopo(modifiedTopo);
+
+            if (nomPhoto != null) {
+
+                photo = (Photo) this.session.get("photo");
+
+                String delUrlPhoto = "imgs/" + photo.getUrl_image();
+                File delPhoto = new File(delUrlPhoto);
+                delPhoto.delete();
+
+                photo.setNom(filename);
+                photo.setUrl_image("imgs/" + filename);
+
+                /**@see PhotoManagerImpl#upPhoto(Photo) */
+                managerFactory.getPhotoManager().upPhoto(photo);
+
+                BufferedInputStream entree = null;
+                BufferedOutputStream sortie = null;
+
+                try {
+
+                    entree = new BufferedInputStream(new FileInputStream((file)));
+                    sortie = new BufferedOutputStream(new FileOutputStream(new File(CHEMIN_FICHIERS + filename)), TAILLE_TAMPON);
+
+                    byte[] tampon = new byte[TAILLE_TAMPON];
+                    int longueur;
+
+                    while ((longueur = entree.read(tampon)) > 0) {
+                        sortie.write(tampon, 0, longueur);
+                    }
+
+                } finally {
+                    try {
+                        sortie.close();
+                    } catch (IOException ignore) {
+                    }
+                    try {
+                        entree.close();
+                    } catch (IOException ignore) {
+                    }
+                }
 
             }
 
+            vResult = ActionSupport.SUCCESS;
 
+        } catch (Exception pEX){
 
+            /**@see org.escalade.business.impl.manager.TopoManagerImpl#topo(Integer)*/
+            topo = managerFactory.getTopoManager().topo(topo_id);
+            this.session.put("topo", topo);
+
+            try {
+                /**@see PhotoManagerImpl#photoByTopo(Topo)*/
+                photo = managerFactory.getPhotoManager().photoByTopo(topo);
+                this.session.put("photo", photo);
+
+            } catch (Exception pIndexOutOfBoundsException){
+
+            }
+
+        }
 
         return vResult;
     }

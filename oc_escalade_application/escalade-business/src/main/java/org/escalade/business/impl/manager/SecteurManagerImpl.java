@@ -78,6 +78,7 @@ public class SecteurManagerImpl extends AbstractManagerImpl implements SecteurMa
         }
 
         for (Integer secteur_id: voieSecteur_id){
+            /**@see org.escalade.consumer.impl.dao.SecteurImpl#rechercheSecteurParVoie(Integer)*/
             List<Secteur> secteursParVoie = getDaoFactory().getSecteurDao().rechercheSecteurParVoie(secteur_id);
             secteurs.addAll(secteursParVoie);
         }
@@ -96,12 +97,13 @@ public class SecteurManagerImpl extends AbstractManagerImpl implements SecteurMa
      * Ajoute le site  dscalade du Workflow
      * @param secteur
      * @param site
-     * @see org.escalade.consumer.impl.dao.SecteurImpl#recoversSecteurWorkflowDao(Secteur, Site)
      * @return le Secteur du Workflow pour transmettre l'id du secteur à la voie
      */
     public Secteur addSecteurWorkflow (Secteur secteur, Site site){
 
         getDaoFactory().getSecteurDao().addSecteur(secteur, site.getId());
+
+        /** @see org.escalade.consumer.impl.dao.SecteurImpl#recoversSecteurWorkflowDao(Secteur, Site)*/
         Secteur vSecteur = getDaoFactory().getSecteurDao().recoversSecteurWorkflowDao(secteur, site);
 
         return vSecteur;

@@ -1,5 +1,6 @@
 package org.escalade.consumer.contract.dao;
 
+import org.escalade.model.bean.Compte;
 import org.escalade.model.bean.Topo;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public interface TopoDao {
          * @param topo
          * @return un message de confirmation
          */
-        String addTopo(Topo topo);
+        void addTopo(Topo topo, Compte compte);
 
         /**
          * Renvoie le topo demandé
@@ -35,13 +36,12 @@ public interface TopoDao {
          * @param id
          * @return un message de confirmation
          */
-        String delTopo(Integer id);
+        void delTopo(Integer id);
 
-        /**
-         * Mettre à jour un topo
-         *
-         * @param id
-         * @return un message de confirmation
-         */
-        String upTopo(Integer id, Topo topo);
+
+        void upTopo(Topo topo);
+
+        Topo recoversTopoForIdDao(Compte compte, Topo topo);
+
+        List<Topo> topoByAccountDao(Compte compte);
 }

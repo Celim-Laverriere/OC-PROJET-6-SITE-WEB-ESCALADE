@@ -2,6 +2,7 @@ package org.escalade.consumer.impl;
 
 import org.escalade.consumer.contract.DaoFactory;
 import org.escalade.consumer.contract.dao.*;
+import org.escalade.model.bean.Photo;
 
 public class DaoFactoryImpl implements DaoFactory {
 
@@ -13,6 +14,7 @@ public class DaoFactoryImpl implements DaoFactory {
     private SiteDao siteDao;
     private TopoDao topoDao;
     private VoieDao voieDao;
+    private PhotoDao photoDao;
 
     @Override
     public CommentaireDao getCommentaireDao() {
@@ -92,5 +94,15 @@ public class DaoFactoryImpl implements DaoFactory {
     @Override
     public void setVoieDao(VoieDao voieDao) {
         this.voieDao = voieDao;
+    }
+
+    @Override
+    public PhotoDao getPhotoDao() {
+        return photoDao;
+    }
+
+    @Override
+    public void setPhotoDao(PhotoDao photoDao) {
+        this.photoDao = photoDao;
     }
 }

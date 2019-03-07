@@ -21,7 +21,7 @@
 
         <div class="row">
             <div class="col-md-12" style="text-align: center; margin-top: 1%">
-                <h5>Modification d'une nouvelle Voie !</h5>
+                <h5>Modification d'une Voie !</h5>
             </div>
         </div>
 
@@ -95,7 +95,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Annulez la création d'une nouvelle voie</h5>
+                    <h5 class="modal-title">Annulez la modification de la voie</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

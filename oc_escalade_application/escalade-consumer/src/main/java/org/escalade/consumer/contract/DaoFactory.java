@@ -2,6 +2,7 @@ package org.escalade.consumer.contract;
 
 import org.escalade.consumer.contract.dao.*;
 
+
 public interface DaoFactory {
 
     CommentaireDao getCommentaireDao();
@@ -35,4 +36,8 @@ public interface DaoFactory {
     VoieDao getVoieDao();
 
     void  setVoieDao(VoieDao voieDao);
+
+    PhotoDao getPhotoDao();
+
+    void setPhotoDao(PhotoDao photoDao);
 }

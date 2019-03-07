@@ -9,6 +9,7 @@ public class Topo {
 
     private Integer id;
     private String nom;
+    private String statut;
     private Date date_upload;
     private String description;
     private Integer compte_id;
@@ -33,6 +34,14 @@ public class Topo {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public String getStatut() {
+        return statut;
+    }
+
+    public void setStatut(String statut) {
+        this.statut = statut;
     }
 
     public Date getDate_upload() {

@@ -27,11 +27,12 @@ public class TopoImpl extends AbstractDataImpl implements TopoDao {
     @Override
     public void addTopo(Topo topo, Compte compte) {
 
-        String vSql = "INSERT INTO public.topo (nom, description, date_upload, compte_id) VALUES "
-                    + " (:nom, :description, :date_upload, :compte_id)";
+        String vSql = "INSERT INTO public.topo (nom, statut, description, date_upload, compte_id) VALUES "
+                    + " (:nom, :statut, :description, :date_upload, :compte_id)";
 
         MapSqlParameterSource vParams = new MapSqlParameterSource();
         vParams.addValue("nom", topo.getNom());
+        vParams.addValue("statut", topo.getStatut());
         vParams.addValue("description", topo.getDescription());
         vParams.addValue("date_upload", topo.getDate_upload());
         vParams.addValue("compte_id", compte.getId());

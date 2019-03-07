@@ -177,7 +177,7 @@ public class TopoAction extends ActionSupport implements SessionAware {
                 /**@see org.escalade.business.impl.manager.CompteManagerImpl#compteByCommentaires(List) */
                 compteList = managerFactory.getCompteManager().compteByCommentaires(topo.getCommentaires());
 
-                /**@see PhotoManagerImpl#listPhotosByTopos(List) */
+                /**@see PhotoManagerImpl#listPhotosOneTopo(Integer)*/
                 photoList = managerFactory.getPhotoManager().listPhotosOneTopo(topo.getId());
 
                 vResult = ActionSupport.SUCCESS;
@@ -207,6 +207,8 @@ public class TopoAction extends ActionSupport implements SessionAware {
             Date date = new Date();
             dateFormat.format(date);
             topo.setDate_upload(date);
+
+            topo.setStatut("libre");
 
 
             /**@see org.escalade.business.impl.manager.TopoManagerImpl#addTopo(Topo, Compte)*/
@@ -332,15 +334,20 @@ public class TopoAction extends ActionSupport implements SessionAware {
 
                 photo = (Photo) this.session.get("photo");
 
-                String delUrlPhoto = "imgs/" + photo.getUrl_image();
-                File delPhoto = new File(delUrlPhoto);
-                delPhoto.delete();
+                if (photo == null){
 
-                photo.setNom(filename);
-                photo.setUrl_image("imgs/" + filename);
+                    String url_image = "imgs/" + filename;
 
-                /**@see PhotoManagerImpl#upPhoto(Photo) */
-                managerFactory.getPhotoManager().upPhoto(photo);
+                    /**@see PhotoManagerImpl#addPhoto(Topo, String, String)*/
+                    managerFactory.getPhotoManager().addPhoto(topo, nomPhoto, url_image);
+
+                } else {
+                    photo.setNom(filename);
+                    photo.setUrl_image("imgs/" + filename);
+
+                    /**@see PhotoManagerImpl#upPhoto(Photo) */
+                    managerFactory.getPhotoManager().upPhoto(photo);
+                }
 
                 BufferedInputStream entree = null;
                 BufferedOutputStream sortie = null;

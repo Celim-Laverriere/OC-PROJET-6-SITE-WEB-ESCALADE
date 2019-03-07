@@ -44,7 +44,7 @@ public class PhotoImpl extends AbstractDataImpl implements PhotoDao {
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
         PhotoRM vPhotoRM = new PhotoRM();
 
-        List<Photo> photoList = vJdbcTemplate.query(vSql, vPhotoRM.vPhotoRowMapper);
+        List<Photo> photoList = vJdbcTemplate.query(vSql, vPhotoRM.getvPhotoRowMapper());
         return photoList;
     }
 

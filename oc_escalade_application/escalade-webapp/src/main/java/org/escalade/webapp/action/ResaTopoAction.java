@@ -3,6 +3,8 @@ package org.escalade.webapp.action;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.interceptor.SessionAware;
 import org.escalade.business.contract.ManagerFactory;
+import org.escalade.model.bean.Messagerie;
+import org.escalade.model.bean.ResaTopo;
 import org.escalade.model.bean.Topo;
 
 import javax.inject.Inject;
@@ -15,6 +17,8 @@ public class ResaTopoAction extends ActionSupport implements SessionAware {
     // ===== Paramètres en entrée =====
 
     private Integer topo_id;
+    private Messagerie messagerie;
+    private ResaTopo resaTopo;
 
     // ===== Paramètres en sortie =====
 
@@ -44,6 +48,22 @@ public class ResaTopoAction extends ActionSupport implements SessionAware {
         this.topo = topo;
     }
 
+    public Messagerie getMessagerie() {
+        return messagerie;
+    }
+
+    public void setMessagerie(Messagerie messagerie) {
+        this.messagerie = messagerie;
+    }
+
+    public ResaTopo getResaTopo() {
+        return resaTopo;
+    }
+
+    public void setResaTopo(ResaTopo resaTopo) {
+        this.resaTopo = resaTopo;
+    }
+
     // ======================== Méthodes ========================
 
     public String resaTopo(){
@@ -53,7 +73,7 @@ public class ResaTopoAction extends ActionSupport implements SessionAware {
     try {
         /**@see org.escalade.business.impl.manager.TopoManagerImpl#topo(Integer)*/
         topo = managerFactory.getTopoManager().topo(topo_id);
-        System.out.println(topo.getNom());
+
     } catch (Exception pEX){
 
         /**@see org.escalade.business.impl.manager.TopoManagerImpl#topo(Integer)*/

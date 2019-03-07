@@ -39,4 +39,8 @@ public interface ManagerFactory {
     PhotoManager getPhotoManager();
 
     void setPhotoManager(PhotoManager photoManager);
+
+    MessagerieManager getMessagerieManager();
+
+    void setMessagerieManager(MessagerieManager messagerieManager);
 }

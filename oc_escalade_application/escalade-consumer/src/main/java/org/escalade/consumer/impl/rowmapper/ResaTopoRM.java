@@ -18,7 +18,6 @@ public class ResaTopoRM {
            ResaTopo vResaTopo = new ResaTopo();
            vResaTopo.setId(pRs.getInt("id"));
            vResaTopo.setStatut(pRs.getString("statut"));
-           vResaTopo.setMessage(pRs.getString("message"));
            vResaTopo.setDate_debut(pRs.getDate("date_debut"));
            vResaTopo.setDate_fin(pRs.getDate("date_fin"));
            vResaTopo.setCompte_id(pRs.getInt("compte_id"));

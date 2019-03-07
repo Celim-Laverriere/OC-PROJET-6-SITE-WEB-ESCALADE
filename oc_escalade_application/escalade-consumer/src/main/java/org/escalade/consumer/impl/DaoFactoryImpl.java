@@ -15,6 +15,7 @@ public class DaoFactoryImpl implements DaoFactory {
     private TopoDao topoDao;
     private VoieDao voieDao;
     private PhotoDao photoDao;
+    private MessagerieDao messagerieDao;
 
     @Override
     public CommentaireDao getCommentaireDao() {
@@ -104,5 +105,15 @@ public class DaoFactoryImpl implements DaoFactory {
     @Override
     public void setPhotoDao(PhotoDao photoDao) {
         this.photoDao = photoDao;
+    }
+
+    @Override
+    public MessagerieDao getMessagerieDao() {
+        return messagerieDao;
+    }
+
+    @Override
+    public void setMessagerieDao(MessagerieDao messagerieDao) {
+        this.messagerieDao = messagerieDao;
     }
 }

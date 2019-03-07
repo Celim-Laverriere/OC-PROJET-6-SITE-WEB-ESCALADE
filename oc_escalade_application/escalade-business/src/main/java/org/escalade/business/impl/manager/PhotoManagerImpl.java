@@ -25,7 +25,7 @@ public class PhotoManagerImpl extends AbstractManagerImpl implements PhotoManage
     @Override
     public List<Photo> listPhotosOneTopo(Integer topo_id) {
 
-        /**@see org.escalade.consumer.impl.dao.PhotoImpl#photo(Integer)*/
+        /**@see org.escalade.consumer.impl.dao.PhotoImpl#listPhotosOneTopoDao(Integer) */
         List<Photo> photoList = getDaoFactory().getPhotoDao().listPhotosOneTopoDao(topo_id);
 
         return photoList;

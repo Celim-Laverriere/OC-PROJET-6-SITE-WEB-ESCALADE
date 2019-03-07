@@ -55,23 +55,34 @@ border-radius: 10px; box-shadow: 6px 6px 14px #DCDCDC">
             </div>
         </div>
 
-        <div class="row">
+        <div class="row ">
             <div class="col-md-12">
                 <h3 style="text-align: center">Reservation topo</h3>
                 <hr width="80%" color="#DCDCDC">
+
+                <s:if test="%{statut == 'libre'}">
+                    <p style="text-align: center">Ce topo est libre ! Pour le réserver cliquez sur "Demande de réservation", et remplissez le formulaire !</p>
+                </s:if>
+                <s:else>
+                    <p style="text-align: center">Désolé ce topo n'est pas disponible pour le moment !</p>
+                </s:else>
             </div>
         </div>
 
-        <div class="row justify-content-end">
+        <div class="row">
 
-            <div class="col-md-4">
+            <div class="col-md-3 offset-md-3">
                 <s:a action="topo_list">
-                    <button type="button" class="btn btn-outline-primary">Retour</button>
+                    <button type="button" class="btn btn-outline-primary" style="width: 100%">Retour</button>
                 </s:a>
-                <s:a action="resa_topo">
-                    <s:param name="topo_id" value="id"/>
-                    <button type="button" class="btn btn-outline-primary">Demmande de réservation</button>
-                </s:a>
+            </div>
+            <div class="col-md-3">
+                <s:if test="%{statut == 'libre'}">
+                    <s:a action="resa_topo">
+                        <s:param name="topo_id" value="id"/>
+                        <button type="button" class="btn btn-outline-primary" style="width: 100%">Demmande de réservation</button>
+                    </s:a>
+                </s:if>
             </div>
         </div>
         </s:iterator>

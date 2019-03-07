@@ -14,6 +14,7 @@ public class ManagerFactoryImpl implements ManagerFactory {
     private TopoManager topoManager;
     private VoieManager voieManager;
     private PhotoManager photoManager;
+    private MessagerieManager messagerieManager;
 
     @Override
     public CommentaireManager getCommentaireManager() {
@@ -103,5 +104,15 @@ public class ManagerFactoryImpl implements ManagerFactory {
     @Override
     public void setPhotoManager(PhotoManager photoManager) {
         this.photoManager = photoManager;
+    }
+
+    @Override
+    public MessagerieManager getMessagerieManager() {
+        return messagerieManager;
+    }
+
+    @Override
+    public void setMessagerieManager(MessagerieManager messagerieManager) {
+        this.messagerieManager = messagerieManager;
     }
 }

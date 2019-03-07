@@ -564,7 +564,7 @@
             <interceptor-ref name="defaultStack"/>
 
             <result name="input">jsp/creation_forms/form_modified_topo.jsp</result>
-            <result name="success">jsp/topo/list_topo_of_connected_users.jsp</result>
+            <result name="success" type="redirectAction">topo_by_account.action</result>
             <result name="error">jsp/error.jsp</result>
         </action>
 

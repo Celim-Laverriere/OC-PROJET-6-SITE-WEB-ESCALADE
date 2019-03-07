@@ -40,4 +40,8 @@ public interface DaoFactory {
     PhotoDao getPhotoDao();
 
     void setPhotoDao(PhotoDao photoDao);
+
+    MessagerieDao getMessagerieDao();
+
+    void setMessagerieDao(MessagerieDao messagerieDao);
 }

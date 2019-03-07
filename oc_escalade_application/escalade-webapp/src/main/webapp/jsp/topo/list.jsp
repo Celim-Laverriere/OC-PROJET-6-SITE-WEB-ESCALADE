@@ -20,7 +20,8 @@
 </header>
 
 <section>
-    <div class="container">
+    <div class="container" style="margin-top: 1%; border-style: solid; border-color: #DCDCDC; border-width: 2px;
+border-radius: 10px; box-shadow: 6px 6px 14px #DCDCDC">
 
         <div class="row">
             <div class="col-md-12" style="margin-top: 10px; margin-bottom: 10px; text-align: center">
@@ -30,7 +31,7 @@
         </div>
 
         <s:iterator value="topos">
-            <div class="row">
+            <div class="row justify-content-center">
 
                 <c:forEach var="photo" items="${photoList}">
                     <c:if test="${id == photo.topo_id}">

@@ -17,6 +17,7 @@ public class TopoRM {
             Topo vTopo = new Topo();
             vTopo.setId(pRs.getInt("id"));
             vTopo.setNom(pRs.getString("nom"));
+            vTopo.setStatut(pRs.getString("statut"));
             vTopo.setDate_upload(pRs.getDate("date_upload"));
             vTopo.setDescription(pRs.getString("description"));
             vTopo.setCompte_id(pRs.getInt("compte_id"));

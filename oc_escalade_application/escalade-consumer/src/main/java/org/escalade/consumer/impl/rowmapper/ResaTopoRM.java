@@ -20,6 +20,7 @@ public class ResaTopoRM {
            vResaTopo.setStatut(pRs.getString("statut"));
            vResaTopo.setDate_debut(pRs.getDate("date_debut"));
            vResaTopo.setDate_fin(pRs.getDate("date_fin"));
+           vResaTopo.setProprietaire_topo(pRs.getInt("proprietaire_topo"));
            vResaTopo.setCompte_id(pRs.getInt("compte_id"));
            vResaTopo.setTopo_id(pRs.getInt("topo_id"));
            return vResaTopo;

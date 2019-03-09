@@ -1,6 +1,7 @@
 package org.escalade.business.contract.manager;
 
 import org.escalade.model.bean.Compte;
+import org.escalade.model.bean.ResaTopo;
 import org.escalade.model.bean.Topo;
 
 import java.util.List;
@@ -20,4 +21,6 @@ public interface TopoManager {
     Topo recoversTopoForId(Compte compte, Topo topo);
 
     List<Topo> topoByAccount(Compte compte);
+
+//    List<Topo> toposByResaTopo(List<ResaTopo> resaTopoList);
 }

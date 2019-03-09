@@ -77,9 +77,9 @@ VALUES
 ;
     
 INSERT INTO public.resa_topo
-    (topo_id, statut, date_debut, date_fin, compte_id)
+    (topo_id, statut, date_debut, date_fin, compte_id, proprietaire_topo)
 VALUES
-    (2, 'demande_en_cours','2019-03-15', '2019-03-25',1)
+    (2, 'demande_en_cours','2019-03-15', '2019-03-25', 1, 2)
 ;
 
 INSERT INTO public.commentaire

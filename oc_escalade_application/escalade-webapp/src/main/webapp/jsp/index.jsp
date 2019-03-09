@@ -8,14 +8,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="s" uri="/struts-tags" %>
 <html>
-    <head>
+<head>
+    <s:if test="!#session.user">
         <%@include file="_include/head.jsp"%>
-    </head>
-<body>
+    </s:if>
+</head>
 
-    <header>
-        <%@include file="../jsp/_include/header.jsp"%>
-    </header>
+<body>
+<section>
+    <s:if test="!#session.user">
+        <%@include file="_include/header.jsp"%>
+    </s:if>
+    <s:else>
+        <%@include file="_include/user_menu.jsp"%>
+    </s:else>
 
     <div class="container" style="border-style: solid; border-color: #DCDCDC; border-width: 2px; border-radius: 10px;
         margin-top: 1%; box-shadow: 6px 6px 14px #DCDCDC">
@@ -51,7 +57,9 @@
 
     <footer>
         <%@include file="../jsp/_include/footer.jsp"%>
-        <%@include file="../jsp/_include/scripts.jsp"%>
+        <s:if test="!#session.user">
+            <%@include file="_include/scripts.jsp"%>
+        </s:if>
     </footer>
 
 </body>

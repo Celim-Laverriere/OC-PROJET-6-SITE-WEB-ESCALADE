@@ -10,11 +10,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-    <script>
-        $( function() {
-            $( "#datepicker" ).datepicker();
-        } );
-    </script>
+
 </head>
 <body>
 <section>
@@ -51,11 +47,11 @@
                         <div class="row justify-content-center">
                         <div class="col-md-4">
                             <label>Début de réservation : </label>
-                            <input name="date_debut" type="date" style="width: 100%">
+                            <input name="resaTopo.date_debut" type="date" style="width: 100%">
                         </div>
                         <div class="col-md-4">
                             <label>Fin de réservation : </label>
-                            <input name="date_debut" type="date" style="width: 100%">
+                            <input name="resaTopo.date_fin" type="date" style="width: 100%">
                         </div>
                         </div>
                     </div>
@@ -72,7 +68,7 @@
                             Envoyez un message au propriétaire du topo afin de vous organiser avec lui,
                             pour récupérer le topo dans les meilleurs délais !
                         </p>
-                        <label for="textareaMessage">Description du secteur</label>
+                        <label for="textareaMessage">Message</label>
                         <textarea name="messagerie.message" id="textareaMessage" cols="40" rows="5" class="form-control"
                                   style="width: 100%"></textarea>
                     </div>

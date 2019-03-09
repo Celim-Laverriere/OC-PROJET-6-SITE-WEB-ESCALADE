@@ -1,6 +1,8 @@
 package org.escalade.model.bean;
 
+
 import java.util.Date;
+import java.util.List;
 
 public class ResaTopo {
 
@@ -8,8 +10,11 @@ public class ResaTopo {
     private String statut;
     private Date date_debut;
     private Date date_fin;
+    private Integer proprietaire_topo;
     private Integer topo_id;
     private Integer compte_id;
+    private List<Messagerie> messagerieList;
+    private List<Topo> topoList;
 
     public ResaTopo() {
     }
@@ -46,6 +51,14 @@ public class ResaTopo {
         this.date_fin = date_fin;
     }
 
+    public Integer getProprietaire_topo() {
+        return proprietaire_topo;
+    }
+
+    public void setProprietaire_topo(Integer proprietaire_topo) {
+        this.proprietaire_topo = proprietaire_topo;
+    }
+
     public Integer getTopo_id() {
         return topo_id;
     }
@@ -60,5 +73,21 @@ public class ResaTopo {
 
     public void setCompte_id(Integer compte_id) {
         this.compte_id = compte_id;
+    }
+
+    public List<Messagerie> getMessagerieList() {
+        return messagerieList;
+    }
+
+    public void setMessagerieList(List<Messagerie> messagerieList) {
+        this.messagerieList = messagerieList;
+    }
+
+    public List<Topo> getTopoList() {
+        return topoList;
+    }
+
+    public void setTopoList(List<Topo> topoList) {
+        this.topoList = topoList;
     }
 }

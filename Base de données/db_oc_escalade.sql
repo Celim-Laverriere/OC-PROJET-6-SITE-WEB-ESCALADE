@@ -125,6 +125,7 @@ CREATE TABLE public.resa_topo (
                 statut VARCHAR NOT NULL,
                 date_debut DATE NOT NULL,
                 date_fin DATE NOT NULL,
+                proprietaire_topo INTEGER NOT NULL,
                 compte_id INTEGER NOT NULL,
                 topo_id INTEGER NOT NULL,
                 CONSTRAINT resa_topo_pk PRIMARY KEY (id)

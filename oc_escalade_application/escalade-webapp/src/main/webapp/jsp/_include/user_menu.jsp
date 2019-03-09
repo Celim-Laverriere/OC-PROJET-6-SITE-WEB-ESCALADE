@@ -59,10 +59,17 @@
                     <div class="dropdown-menu">
                         <s:a action="new_topo" class="dropdown-item">Créer un topo</s:a>
                         <s:a action="topo_by_account" class="dropdown-item">Afficher mes topos</s:a>
-                        <s:a action="" class="dropdown-item">Demande de réservations</s:a>
-                        <s:a action="" class="dropdown-item">Mes réservations</s:a>
                     </div>
                 </li>
+
+                <li class="nav-item">
+                    <s:a action="gestion_resa" class="nav-link" role="button" aria-expanded="false">RESERVATION TOPO</s:a>
+                    <%--<div class="dropdown-menu">--%>
+                        <%--<s:a class="dropdown-item">Demande de réservations</s:a>--%>
+                        <%--<s:a action="" class="dropdown-item">Mes réservations</s:a>--%>
+                    <%--</div>--%>
+                </li>
+
             </ul>
         </div>
     </div>

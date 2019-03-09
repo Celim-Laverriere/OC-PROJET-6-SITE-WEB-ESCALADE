@@ -116,4 +116,39 @@ public class CompteImpl extends AbstractDataImpl implements CompteDao {
         List<Compte> compteList = vJdbcTemplate.query(vSql, vCompteRM.getvCompteRowMapper());
         return compteList;
     }
+
+    /**
+     * Cette méthode récupère les comptes des utilisateurs qui on fait une demande de réservation de topo.
+     * @param compte_id
+     * @return
+     */
+    public List<Compte> compteByResaTopoDao(Integer compte_id){
+
+        String vSql = "SELECT * FROM public.compte"
+                    + " WHERE id = " + compte_id;
+
+        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+        CompteRM vCompteRM = new CompteRM();
+
+        List<Compte> compteList = vJdbcTemplate.query(vSql, vCompteRM.getvCompteRowMapper());
+        return compteList;
+    }
+
+    /**
+     * Cette méthode récupère les comptes des propriétaires à qui on a adressé une demande de topo.
+     * @param topo_id
+     * @return
+     */
+    public List<Compte> ownerAccountByResaTopoDao(Integer topo_id){
+
+        String vSql = "SELECT compte.* FROM public.compte"
+                    + " INNER JOIN topo ON topo.id = " + topo_id
+                    + " WHERE compte.id = topo.compte_id";
+
+        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+        CompteRM vCompteRM = new CompteRM();
+
+        List<Compte> vCompteList = vJdbcTemplate.query(vSql, vCompteRM.getvCompteRowMapper());
+        return vCompteList;
+    }
 }

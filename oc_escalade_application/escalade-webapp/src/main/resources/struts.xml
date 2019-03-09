@@ -582,10 +582,47 @@
             <interceptor-ref name="defaultStack"/>
 
             <result name="input">jsp/creation_forms/form_resa_topo.jsp</result>
+            <result name="success">jsp/topo/result_demande_resa.jsp</result>
+            <result name="error">jsp/error.jsp</result>
+        </action>
+
+        <action name="gestion_resa" class="org.escalade.webapp.action.ResaTopoAction" method="gestionResa">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="input">jsp/creation_forms/form_gestion_resa.jsp</result>
+            <result name="error">jsp/error.jsp</result>
+        </action>
+
+        <action name="message_resa_topo" class="org.escalade.webapp.action.ResaTopoAction" method="messageResaTopo">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="input">jsp/creation_forms/from_gestion_mesage_resa.jsp</result>
             <result name="success"></result>
             <result name="error">jsp/error.jsp</result>
         </action>
 
+        <action name="my_message_resa_topo" class="org.escalade.webapp.action.ResaTopoAction" method="messageResaTopo">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="input">jsp/creation_forms/from_gestion_message_mes_reserv.jsp</result>
+            <result name="success"></result>
+            <result name="error">jsp/error.jsp</result>
+        </action>
 
         <!-- ************************* -->
         <!-- ***** ACTION COMPTE ***** -->

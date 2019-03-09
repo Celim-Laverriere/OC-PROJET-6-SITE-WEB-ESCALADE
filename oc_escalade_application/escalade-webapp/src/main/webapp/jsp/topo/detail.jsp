@@ -10,16 +10,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-    <%@include file="../_include/head.jsp"%>
+    <s:if test="!#session.user">
+        <%@include file="../_include/head.jsp"%>
+    </s:if>
 </head>
 
 <body>
-
-<header>
-    <%@include file="../_include/header.jsp"%>
-</header>
-
 <section>
+    <s:if test="!#session.user">
+        <%@include file="../_include/header.jsp"%>
+    </s:if>
+    <s:else>
+        <%@include file="../_include/user_menu.jsp"%>
+    </s:else>
+
     <div class="container" style="margin-top: 1%; border-style: solid; border-color: #DCDCDC; border-width: 2px;
 border-radius: 10px; box-shadow: 6px 6px 14px #DCDCDC">
 
@@ -77,7 +81,7 @@ border-radius: 10px; box-shadow: 6px 6px 14px #DCDCDC">
                 </s:a>
             </div>
             <div class="col-md-3">
-                <s:if test="%{statut == 'libre'}">
+                <s:if test="%{statut == 'libre' && compte_id != #session.user.id}">
                     <s:a action="resa_topo">
                         <s:param name="topo_id" value="id"/>
                         <button type="button" class="btn btn-outline-primary" style="width: 100%">Demmande de réservation</button>
@@ -115,7 +119,7 @@ border-radius: 10px; box-shadow: 6px 6px 14px #DCDCDC">
                     </s:if>
                     <s:else>
                         <s:iterator value="commentaires">
-                            <c:forEach var="compte" items="${compteList}">
+                            <c:forEach var="compte" items="${applicantListAccount}">
                                 <c:if test="${compte.id == compte_id}">
                                     <p>Commentaire poster par : <c:out value="${compte.nom}"/></p>
                                 </c:if>
@@ -134,7 +138,9 @@ border-radius: 10px; box-shadow: 6px 6px 14px #DCDCDC">
 
 <footer>
     <%@include file="../_include/footer.jsp"%>
-    <%@include file="../_include/scripts.jsp"%>
+    <s:if test="!#session.user">
+        <%@include file="../_include/scripts.jsp"%>
+    </s:if>
 </footer>
 
 </body>

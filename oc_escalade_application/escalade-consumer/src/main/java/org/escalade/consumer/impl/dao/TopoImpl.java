@@ -4,6 +4,7 @@ import org.escalade.consumer.contract.dao.TopoDao;
 import org.escalade.consumer.impl.data.AbstractDataImpl;
 import org.escalade.consumer.impl.rowmapper.TopoRM;
 import org.escalade.model.bean.Compte;
+import org.escalade.model.bean.ResaTopo;
 import org.escalade.model.bean.Topo;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -111,6 +112,23 @@ public class TopoImpl extends AbstractDataImpl implements TopoDao {
                     + " WHERE compte_id = " + compte.getId();
 
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+        TopoRM vTopoRM = new TopoRM();
+
+        List<Topo> topoList = vJdbcTemplate.query(vSql, vTopoRM.getvTopoRowMapper());
+        return topoList;
+    }
+
+    /**
+     * Cette méthode récupère les topos appartenant à la réservation émise.
+     * @param resaTopo
+     * @return
+     */
+    public List<Topo> toposByResaTopoDao(ResaTopo resaTopo){
+
+        String vSql = "SELECT * FROM public.topo"
+                    + " WHERE id = " + resaTopo.getTopo_id();
+
+        JdbcTemplate vJdbcTemplate =  new JdbcTemplate(getDataSource());
         TopoRM vTopoRM = new TopoRM();
 
         List<Topo> topoList = vJdbcTemplate.query(vSql, vTopoRM.getvTopoRowMapper());

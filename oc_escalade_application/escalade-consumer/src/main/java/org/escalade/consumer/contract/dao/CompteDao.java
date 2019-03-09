@@ -55,4 +55,8 @@ public interface CompteDao {
 
         List<Compte> compteByCommentairesDao(Commentaire commentaire);
 
+        List<Compte> compteByResaTopoDao(Integer compte_id);
+
+        List<Compte> ownerAccountByResaTopoDao(Integer topo_id);
+
 }

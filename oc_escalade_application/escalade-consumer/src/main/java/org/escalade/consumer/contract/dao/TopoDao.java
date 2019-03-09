@@ -1,6 +1,7 @@
 package org.escalade.consumer.contract.dao;
 
 import org.escalade.model.bean.Compte;
+import org.escalade.model.bean.ResaTopo;
 import org.escalade.model.bean.Topo;
 
 import java.util.List;
@@ -44,4 +45,6 @@ public interface TopoDao {
         Topo recoversTopoForIdDao(Compte compte, Topo topo);
 
         List<Topo> topoByAccountDao(Compte compte);
+
+        List<Topo> toposByResaTopoDao(ResaTopo resaTopo);
 }

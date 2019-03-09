@@ -7,6 +7,7 @@ import org.escalade.model.bean.Compte;
 import org.escalade.model.bean.ResaTopo;
 import org.escalade.model.bean.Topo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TopoManagerImpl extends AbstractManagerImpl implements TopoManager {
@@ -76,4 +77,16 @@ public class TopoManagerImpl extends AbstractManagerImpl implements TopoManager 
         return topoList;
     }
 
+//    public List<Topo> toposByResaTopo(List<ResaTopo> resaTopoList) {
+//
+//        List<Topo> topoList = new ArrayList<>();
+//
+//        for (ResaTopo resaTopo : resaTopoList){
+//            /**@see org.escalade.consumer.impl.dao.TopoImpl#toposByResaTopoDao(ResaTopo)*/
+//            List<Topo> topoListTemp = getDaoFactory().getTopoDao().toposByResaTopoDao(resaTopo);
+//            topoList.addAll(topoListTemp);
+//        }
+//
+//        return topoList;
+//    }
 }

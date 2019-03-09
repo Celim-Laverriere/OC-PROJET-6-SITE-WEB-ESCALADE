@@ -1,5 +1,6 @@
 package org.escalade.consumer.contract.dao;
 
+import org.escalade.model.bean.Compte;
 import org.escalade.model.bean.ResaTopo;
 import java.util.List;
 
@@ -12,13 +13,8 @@ public interface ResaTopoDao {
          * */
         List <ResaTopo> resaTopos(Integer compte_id, Integer topo_id);
 
-        /**
-         * Ajouter une nouvelle réservation de topo
-         *
-         * @param resaTopo
-         * @return un message de confirmation
-         */
-        String addResaTopo(ResaTopo resaTopo);
+
+        void addResaTopo(ResaTopo resaTopo, Compte compte);
 
         /**
          * Renvoie la réservation du topo demandé
@@ -35,4 +31,10 @@ public interface ResaTopoDao {
          * @return un message de confirmation
          */
         String delResaTopo(Integer id);
+
+        List<ResaTopo> resaTopoListByTopoAccountDao(Compte compte);
+
+        List<ResaTopo> resaTopoListByAccountDao(Compte compte);
+
+        ResaTopo recoversIdResaTopoDao(ResaTopo resaTopo, Compte compte);
 }

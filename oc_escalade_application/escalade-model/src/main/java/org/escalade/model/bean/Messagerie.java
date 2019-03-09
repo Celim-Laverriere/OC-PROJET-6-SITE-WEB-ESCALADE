@@ -1,9 +1,12 @@
 package org.escalade.model.bean;
 
+import java.util.Date;
+import java.util.List;
+
 public class Messagerie {
 
     private Integer id;
-    private String date_message;
+    private Date date_message;
     private String message;
     private Integer resa_topo_id;
     private Integer compte_id;
@@ -19,11 +22,11 @@ public class Messagerie {
         this.id = id;
     }
 
-    public String getDate_message() {
+    public Date getDate_message() {
         return date_message;
     }
 
-    public void setDate_message(String date_message) {
+    public void setDate_message(Date date_message) {
         this.date_message = date_message;
     }
 
@@ -50,4 +53,5 @@ public class Messagerie {
     public void setCompte_id(Integer compte_id) {
         this.compte_id = compte_id;
     }
+
 }

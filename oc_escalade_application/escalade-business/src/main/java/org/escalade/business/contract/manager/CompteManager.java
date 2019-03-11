@@ -12,7 +12,7 @@ public interface CompteManager {
 
     void addCompte(Compte compte);
 
-    Compte compte(Compte compte_id);
+    Compte compte(Integer compte_id);
 
     void delCompte(Compte compte_id);
 

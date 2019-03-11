@@ -64,10 +64,6 @@
 
                 <li class="nav-item">
                     <s:a action="gestion_resa" class="nav-link" role="button" aria-expanded="false">RESERVATION TOPO</s:a>
-                    <%--<div class="dropdown-menu">--%>
-                        <%--<s:a class="dropdown-item">Demande de réservations</s:a>--%>
-                        <%--<s:a action="" class="dropdown-item">Mes réservations</s:a>--%>
-                    <%--</div>--%>
                 </li>
 
             </ul>

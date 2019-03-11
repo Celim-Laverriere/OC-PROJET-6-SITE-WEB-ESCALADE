@@ -79,12 +79,13 @@ public class TopoImpl extends AbstractDataImpl implements TopoDao {
     public void upTopo(Topo topo) {
 
         String vSql = "UPDATE public.topo SET"
-                    + " nom = :nom, date_upload = :date_upload, description = :description"
+                    + " nom = :nom, statut = :statut, date_upload = :date_upload, description = :description"
                     + " WHERE id = :id";
 
         MapSqlParameterSource vParams = new MapSqlParameterSource();
         vParams.addValue("id", topo.getId());
         vParams.addValue("nom", topo.getNom());
+        vParams.addValue("statut", topo.getStatut());
         vParams.addValue("date_upload", topo.getDate_upload());
         vParams.addValue("description", topo.getDescription());
 

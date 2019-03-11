@@ -53,8 +53,6 @@
         </div>
     </div>
 
-    <a href="imgs/photo_escalade_3.JPG" download>Télécharger</a>
-
     <footer>
         <%@include file="../jsp/_include/footer.jsp"%>
         <s:if test="!#session.user">

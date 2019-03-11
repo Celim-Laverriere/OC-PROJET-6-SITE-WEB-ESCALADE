@@ -16,21 +16,12 @@ public interface ResaTopoDao {
 
         void addResaTopo(ResaTopo resaTopo, Compte compte);
 
-        /**
-         * Renvoie la réservation du topo demandé
-         *
-         * @param compte_id, topo_id
-         * @return la réservation du topo correspondant à son id
-         */
-        ResaTopo resaTopo(Integer compte_id, Integer topo_id);
+        void upResaTopoDao(ResaTopo resaTopo);
 
-        /**
-         * Supprimer une réservation de topo
-         *
-         * @param id
-         * @return un message de confirmation
-         */
-        String delResaTopo(Integer id);
+
+        ResaTopo resaTopo(Integer resa_topo_id);
+
+        void delResaTopo(Integer resa_topo_id);
 
         List<ResaTopo> resaTopoListByTopoAccountDao(Compte compte);
 

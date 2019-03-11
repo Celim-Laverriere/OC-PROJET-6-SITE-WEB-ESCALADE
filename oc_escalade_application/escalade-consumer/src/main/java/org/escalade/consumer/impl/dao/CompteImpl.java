@@ -47,10 +47,10 @@ public class CompteImpl extends AbstractDataImpl implements CompteDao {
     }
 
     @Override
-    public Compte compte(Compte compte_id) {
+    public Compte compte(Integer compte_id) {
 
         String vSql = "SELECT * FROM public.compte"
-                    + " WHERE id = " + compte_id.getId();
+                    + " WHERE id = " + compte_id;
 
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
         CompteRM vCompteRM = new CompteRM();

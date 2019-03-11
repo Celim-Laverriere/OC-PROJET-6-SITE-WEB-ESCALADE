@@ -43,7 +43,7 @@
                         à laquelle vous vous engager à rendre le topo,
                         pour qu'il soit de nouveau disponible pour les autres utilisateur !
                     </p>
-
+                            <p><s:property value="%{dateDuJour}"/></p>
                         <div class="row justify-content-center">
                         <div class="col-md-4">
                             <label>Début de réservation : </label>
@@ -75,7 +75,7 @@
 
                     <div class="row justify-content-center">
                         <div class="col-md-5">
-                            <button class="btn btn-primary" type="submit" style="width: 100%">Envoyez</button>
+                            <button name="resaTopo.statut" value="demande en cours" class="btn btn-primary" type="submit" style="width: 100%">Envoyez</button>
                         </div>
                         <div class="col-md-5">
                             <!-- Button trigger modal -->

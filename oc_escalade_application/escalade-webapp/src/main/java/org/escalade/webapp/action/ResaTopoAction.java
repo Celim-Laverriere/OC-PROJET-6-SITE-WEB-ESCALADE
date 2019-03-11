@@ -24,6 +24,7 @@ public class ResaTopoAction extends ActionSupport implements SessionAware {
     private Integer resa_id;
     private Messagerie messagerie;
     private ResaTopo resaTopo;
+    private String statutResa;
 
     // ===== Paramètres en sortie =====
 
@@ -35,6 +36,7 @@ public class ResaTopoAction extends ActionSupport implements SessionAware {
     private List<Topo> ownerTopoList;
     private List<Topo> myTopoListApplicant;
     private List<Messagerie> messageList;
+    private Compte compte;
 
     // ----- Eléments Struts
     private Map<String, Object> session;
@@ -139,6 +141,24 @@ public class ResaTopoAction extends ActionSupport implements SessionAware {
     public void setMessageList(List<Messagerie> messageList) {
         this.messageList = messageList;
     }
+
+    public Compte getCompte() {
+        return compte;
+    }
+
+    public void setCompte(Compte compte) {
+        this.compte = compte;
+    }
+
+    public String getStatutResa() {
+        return statutResa;
+    }
+
+    public void setStatutResa(String statutResa) {
+        this.statutResa = statutResa;
+    }
+
+
     // ======================== Méthodes ========================
 
     /**
@@ -150,18 +170,20 @@ public class ResaTopoAction extends ActionSupport implements SessionAware {
 
         String vResult = ActionSupport.INPUT;
 
+
         try {
 
             topo = (Topo) this.session.get("topo");
 
             resaTopo.setTopo_id(topo.getId());
-            resaTopo.setStatut("demande_en_cours");
             resaTopo.setProprietaire_topo(topo.getCompte_id());
 
             /**@see org.escalade.business.impl.manager.ResaTopoManagerImpl#addResaTopo(ResaTopo, Compte) */
             ResaTopo resaTopoRecovers = managerFactory.getResaTopoManager().addResaTopo(resaTopo, (Compte) this.session.get("user"));
 
-            /* Ajouter le changement de statut du topo */
+            topo.setStatut("reserver");
+            /**@see org.escalade.business.impl.manager.ResaTopoManagerImpl#upResaTopo(ResaTopo)*/
+            managerFactory.getTopoManager().upTopo(topo);
 
             Date date = new Date();
             messagerie.setDate_message(date);
@@ -223,7 +245,7 @@ public class ResaTopoAction extends ActionSupport implements SessionAware {
             this.session.put("ownerListAccount", ownerListAccount);
             
         } catch (Exception pEX){
-
+            this.addActionError("Une erreur s'est produite, veuillez réessayer plus tard!");
         }
 
         return vResult;
@@ -240,12 +262,132 @@ public class ResaTopoAction extends ActionSupport implements SessionAware {
 
             managerFactory.getMessagerieManager().addMessage(messagerie, (Compte) this.session.get("user"));
 
+            vResult = ActionSupport.SUCCESS;
+
         } catch (Exception pEX){
 
             applicantResaTopoList = (List<ResaTopo>) this.session.get("applicantResaTopoList");
             applicantListAccount = (List<Compte>) this.session.get("applicantListAccount");
             myResaTopoListRequests = (List<ResaTopo>) this.session.get("myResaTopoListRequests");
             ownerListAccount = (List<Compte>) this.session.get("ownerListAccount");
+        }
+
+        return vResult;
+    }
+
+    public String annulerResaTopo(){
+
+        String vResult = null;
+
+        try {
+
+            /**@see org.escalade.business.impl.manager.ResaTopoManagerImpl#resaTopo(Integer)*/
+            resaTopo = managerFactory.getResaTopoManager().resaTopo(resaTopo.getId());
+
+            resaTopo.setStatut("annuler");
+
+            /**@see org.escalade.business.impl.manager.ResaTopoManagerImpl#upResaTopo(ResaTopo)*/
+            managerFactory.getResaTopoManager().upResaTopo(resaTopo);
+
+
+            vResult = ActionSupport.SUCCESS;
+
+        } catch (Exception pEX){
+            this.addActionError("Une erreur s'est produite, veuillez réessayer plus tard!");
+        }
+
+        return vResult;
+    }
+
+    public String delResaTopo(){
+
+        String vResult = null;
+
+        try {
+
+            /**@see org.escalade.business.impl.manager.ResaTopoManagerImpl#resaTopo(Integer)*/
+            resaTopo = managerFactory.getResaTopoManager().resaTopo(resaTopo.getId());
+
+            /**@see org.escalade.business.impl.manager.CompteManagerImpl#compte(Integer) */
+            compte = managerFactory.getCompteManager().compte(resaTopo.getCompte_id());
+
+            /**@see org.escalade.business.impl.manager.TopoManagerImpl#topo(Integer)*/
+            topo = managerFactory.getTopoManager().topo(resaTopo.getTopo_id());
+
+            /**@see org.escalade.business.impl.manager.ResaTopoManagerImpl#delReasaTopo(Integer)*/
+            managerFactory.getResaTopoManager().delReasaTopo(resaTopo.getId());
+
+            topo.setStatut("libre");
+
+            /**@see org.escalade.business.impl.manager.TopoManagerImpl#upTopo(Topo)*/
+            managerFactory.getTopoManager().upTopo(topo);
+
+
+            vResult = ActionSupport.SUCCESS;
+
+        } catch (Exception pEX){
+            this.addActionError("Une erreur s'est produite, veuillez réessayer plus tard!");
+        }
+        return vResult;
+    }
+
+    public String refuseOuRenduResaTopo(){
+
+        String vResult = null;
+
+        try {
+
+            /**@see org.escalade.business.impl.manager.ResaTopoManagerImpl#resaTopo(Integer)*/
+            resaTopo = managerFactory.getResaTopoManager().resaTopo(resaTopo.getId());
+
+            resaTopo.setStatut(statutResa);
+
+            /**@see org.escalade.business.impl.manager.ResaTopoManagerImpl#upResaTopo(ResaTopo)*/
+            managerFactory.getResaTopoManager().upResaTopo(resaTopo);
+
+            /**@see org.escalade.business.impl.manager.TopoManagerImpl#topo(Integer)*/
+            topo = managerFactory.getTopoManager().topo(resaTopo.getTopo_id());
+
+            topo.setStatut("libre");
+
+            /**@see org.escalade.business.impl.manager.TopoManagerImpl#upTopo(Topo)*/
+            managerFactory.getTopoManager().upTopo(topo);
+
+            vResult = ActionSupport.SUCCESS;
+
+        } catch (Exception pEX){
+            this.addActionError("Une erreur s'est produite, veuillez réessayer plus tard!");
+        }
+
+        return vResult;
+    }
+
+    public String acceptResaTopo(){
+
+        String vResult = null;
+
+        try {
+
+            /**@see org.escalade.business.impl.manager.ResaTopoManagerImpl#resaTopo(Integer)*/
+            resaTopo = managerFactory.getResaTopoManager().resaTopo(resaTopo.getId());
+
+            resaTopo.setStatut("accepter");
+
+            /**@see org.escalade.business.impl.manager.ResaTopoManagerImpl#upResaTopo(ResaTopo)*/
+            managerFactory.getResaTopoManager().upResaTopo(resaTopo);
+
+            /**@see org.escalade.business.impl.manager.TopoManagerImpl#topo(Integer)*/
+            topo = managerFactory.getTopoManager().topo(resaTopo.getTopo_id());
+
+            topo.setStatut("reserver");
+
+            /**@see org.escalade.business.impl.manager.TopoManagerImpl#upTopo(Topo)*/
+            managerFactory.getTopoManager().upTopo(topo);
+
+            vResult = ActionSupport.SUCCESS;
+
+        } catch (Exception pEX){
+            this.addActionError("Une erreur s'est produite, veuillez réessayer plus tard!");
         }
 
         return vResult;

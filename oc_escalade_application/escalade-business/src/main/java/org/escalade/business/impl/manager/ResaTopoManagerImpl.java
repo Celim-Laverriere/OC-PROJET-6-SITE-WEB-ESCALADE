@@ -29,14 +29,24 @@ public class ResaTopoManagerImpl extends AbstractManagerImpl implements ResaTopo
         return resaTopoRecovers;
     }
 
-    @Override
-    public ResaTopo resaTopo(Integer compte_id, Integer topo_id) {
-        return getDaoFactory().getResaTopoDao().resaTopo(compte_id, topo_id);
+    public void upResaTopo(ResaTopo resaTopo){
+
+        /**@see org.escalade.consumer.impl.dao.ResaTopoImpl#upResaTopoDao(ResaTopo)*/
+        getDaoFactory().getResaTopoDao().upResaTopoDao(resaTopo);
     }
 
     @Override
-    public String delReasaTopo(Integer id) {
-        return getDaoFactory().getResaTopoDao().delResaTopo(id);
+    public ResaTopo resaTopo(Integer resa_topo_id) {
+
+        /**@see org.escalade.consumer.impl.dao.ResaTopoImpl#resaTopo(Integer)*/
+        return getDaoFactory().getResaTopoDao().resaTopo(resa_topo_id);
+    }
+
+    @Override
+    public void delReasaTopo(Integer resa_topo_id) {
+
+        /**@see org.escalade.consumer.impl.dao.ResaTopoImpl#delResaTopo(Integer)*/
+        getDaoFactory().getResaTopoDao().delResaTopo(resa_topo_id);
     }
 
     /**

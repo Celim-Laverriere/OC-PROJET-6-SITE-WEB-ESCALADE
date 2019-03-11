@@ -23,7 +23,8 @@ public class CompteManagerImpl extends AbstractManagerImpl implements CompteMana
     }
 
     @Override
-    public Compte compte(Compte compte_id) {
+    public Compte compte(Integer compte_id) {
+        /**@see org.escalade.consumer.impl.dao.CompteImpl#compte(Integer)*/
         return getDaoFactory().getCompteDao().compte(compte_id);
     }
 
@@ -82,7 +83,7 @@ public class CompteManagerImpl extends AbstractManagerImpl implements CompteMana
         HashSet<Integer> topo_idHashSet = new HashSet<>();
 
         for (ResaTopo resaTopo : resaTopoList){
-            topo_idHashSet.add(resaTopo.getTopo_id());
+            topo_idHashSet.add(resaTopo.getProprietaire_topo());
         }
 
         for (Integer topo_id : topo_idHashSet){

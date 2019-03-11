@@ -11,9 +11,11 @@ public interface ResaTopoManager {
 
     ResaTopo addResaTopo(ResaTopo resaTopo, Compte compte);
 
-    ResaTopo resaTopo(Integer compte_id, Integer topo_id);
+    void upResaTopo(ResaTopo resaTopo);
 
-    String delReasaTopo(Integer id);
+    ResaTopo resaTopo(Integer resa_topo_id);
+
+    void delReasaTopo(Integer id);
 
     List<ResaTopo> resaTopoListByTopoAccount(Compte compte);
 

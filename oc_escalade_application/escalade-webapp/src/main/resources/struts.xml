@@ -607,7 +607,7 @@
             <interceptor-ref name="defaultStack"/>
 
             <result name="input">jsp/creation_forms/from_gestion_mesage_resa.jsp</result>
-            <result name="success"></result>
+            <result name="success" type="redirectAction">gestion_resa</result>
             <result name="error">jsp/error.jsp</result>
         </action>
 
@@ -620,9 +620,70 @@
             <interceptor-ref name="defaultStack"/>
 
             <result name="input">jsp/creation_forms/from_gestion_message_mes_reserv.jsp</result>
-            <result name="success"></result>
+            <result name="success" type="redirectAction">gestion_resa</result>
             <result name="error">jsp/error.jsp</result>
         </action>
+
+        <action name="annuler_resa_topo" class="org.escalade.webapp.action.ResaTopoAction" method="annulerResaTopo">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="success" type="redirectAction">gestion_resa.action</result>
+            <result name="error">jsp/error.jsp</result>
+        </action>
+
+        <action name="del_resa_topo" class="org.escalade.webapp.action.ResaTopoAction" method="delResaTopo">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="success">jsp/topo/result_demande_resa.jsp</result>
+            <result name="error">jsp/error.jsp</result>
+        </action>
+
+        <action name="refuse_ou_rendu_resa_topo" class="org.escalade.webapp.action.ResaTopoAction" method="refuseOuRenduResaTopo">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="success" type="redirectAction">gestion_resa.action</result>
+            <result name="error">jsp/error.jsp</result>
+
+        </action>
+
+        <action name="accept_resa_topo" class="org.escalade.webapp.action.ResaTopoAction" method="acceptResaTopo">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="success" type="redirectAction">gestion_resa.action</result>
+            <result name="error">jsp/error.jsp</result>
+        </action>
+
+        <!--<action name="rendu_resa_topo" class="org.escalade.webapp.action.ResaTopoAction" method="renduResaTopo">-->
+
+            <!--<interceptor-ref name="store">-->
+                <!--<param name="operationMode">STORE</param>-->
+            <!--</interceptor-ref>-->
+            <!--<interceptor-ref name="authenticatedStack"/>-->
+            <!--<interceptor-ref name="defaultStack"/>-->
+
+            <!--<result name="success" type="redirectAction">gestion_resa.action</result>-->
+            <!--<result name="error">jsp/error.jsp</result>-->
+        <!--</action>-->
 
         <!-- ************************* -->
         <!-- ***** ACTION COMPTE ***** -->

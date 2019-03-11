@@ -95,11 +95,11 @@ public class CompteAction extends ActionSupport implements SessionAware, Servlet
                 this.addActionMessage("Vos modifications ont bien été pris en compte !");
 
                 this.session.put("user",vUtilisateur );
-                compte = managerFactory.getCompteManager().compte((Compte) this.session.get("user"));
+                compte = managerFactory.getCompteManager().compte(((Compte) this.session.get("user")).getId());
             }
 
         } catch (NullPointerException pEX){
-            compte = managerFactory.getCompteManager().compte((Compte) this.session.get("user"));
+            compte = managerFactory.getCompteManager().compte(((Compte) this.session.get("user")).getId());
         } catch (Exception pEX) {
             this.addActionError("Une erreur s'est produite, veuillez réessayer ultérieurement !" );
         }
@@ -121,7 +121,7 @@ public class CompteAction extends ActionSupport implements SessionAware, Servlet
             this.addActionMessage("Votre compte à bien été supprimer !");
 
         } catch (NullPointerException pEX) {
-            compte = managerFactory.getCompteManager().compte((Compte) this.session.get("user"));
+            compte = managerFactory.getCompteManager().compte(((Compte) this.session.get("user")).getId());
         } catch (Exception pEX) {
 
             this.addActionError("Une erreur s'est produite, veuillez réessayer ultérieurement !");

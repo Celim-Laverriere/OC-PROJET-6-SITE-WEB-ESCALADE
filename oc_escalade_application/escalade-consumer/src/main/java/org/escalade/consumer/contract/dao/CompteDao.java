@@ -27,7 +27,7 @@ public interface CompteDao {
          * @param compte_id
          * @return le compte correspondant à son id
          */
-        Compte compte(Compte compte_id);
+        Compte compte(Integer compte_id);
 
         /**
          * Supprimer un compte

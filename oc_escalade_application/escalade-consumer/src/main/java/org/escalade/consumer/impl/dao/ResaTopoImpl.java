@@ -13,22 +13,16 @@ import java.util.List;
 
 public class ResaTopoImpl extends AbstractDataImpl implements ResaTopoDao {
 
+    /**
+     * Renvoie la liste des réservations de topos
+     *
+     * @return les {@link ResaTopo}
+     * */
     @Override
-    public List<ResaTopo> resaTopos(Integer compte_id, Integer topo_id) {
+    public List<ResaTopo> resaTopos(Integer topo_id) {
 
-        String vSql = null;
-
-        if (compte_id != null) {
-            vSql
-                    = "SELECT * FROM public.resa_topo"
-                    + " WHERE compte_id = " + compte_id;
-        }
-
-        if (topo_id != null){
-            vSql
-                    = "SELECT * FROM public.resa_topo"
+        String vSql = "SELECT * FROM public.resa_topo"
                     + " WHERE topo_id = " + topo_id;
-        }
 
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
         ResaTopoRM resaTopoRM = new ResaTopoRM();

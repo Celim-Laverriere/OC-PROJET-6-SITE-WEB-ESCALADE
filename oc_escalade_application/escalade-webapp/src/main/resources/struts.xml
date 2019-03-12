@@ -44,7 +44,7 @@
                 class="org.escalade.webapp.action.LoginAction"
                 method="doLogin">
             <result name="input">/jsp/login/login.jsp</result>
-            <result name="success">jsp/_include/user_menu.jsp</result>
+            <result name="success">jsp/index.jsp</result>
         </action>
 
         <action name="logout"
@@ -239,6 +239,20 @@
             <result name="success" type="redirectAction">sites_by_account.action</result>
             <result name="error">jsp/error.jsp</result>
         </action>
+
+        <!-- Commentaire site d'éscalade -->
+        <action name="site_commentaire" class="org.escalade.webapp.action.SiteAction" method="siteCommentaire">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="success">jsp/site/detail.jsp</result>
+            <result name="error">jsp/error.jsp</result>
+        </action>
+
 
         <!-- *********************************************** -->
         <!-- **** Création d'un site d'éscalade complet **** -->
@@ -568,6 +582,18 @@
             <result name="error">jsp/error.jsp</result>
         </action>
 
+        <action name="topo_commentaire" class="org.escalade.webapp.action.TopoAction" method="topoCommentaire">
+
+            <interceptor-ref name="store">
+                <param name="operationMode">STORE</param>
+            </interceptor-ref>
+            <interceptor-ref name="authenticatedStack"/>
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="success">jsp/topo/detail.jsp</result>
+            <result name="error">jsp/error.jsp</result>
+        </action>
+
 
         <!-- **************************** -->
         <!-- ***** ACTION RESA TOPO ***** -->
@@ -673,17 +699,6 @@
             <result name="error">jsp/error.jsp</result>
         </action>
 
-        <!--<action name="rendu_resa_topo" class="org.escalade.webapp.action.ResaTopoAction" method="renduResaTopo">-->
-
-            <!--<interceptor-ref name="store">-->
-                <!--<param name="operationMode">STORE</param>-->
-            <!--</interceptor-ref>-->
-            <!--<interceptor-ref name="authenticatedStack"/>-->
-            <!--<interceptor-ref name="defaultStack"/>-->
-
-            <!--<result name="success" type="redirectAction">gestion_resa.action</result>-->
-            <!--<result name="error">jsp/error.jsp</result>-->
-        <!--</action>-->
 
         <!-- ************************* -->
         <!-- ***** ACTION COMPTE ***** -->

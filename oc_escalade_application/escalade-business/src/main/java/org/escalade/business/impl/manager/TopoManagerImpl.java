@@ -35,7 +35,7 @@ public class TopoManagerImpl extends AbstractManagerImpl implements TopoManager 
         topo.setCommentaires(commentaires);
 
         /**@see org.escalade.consumer.impl.dao.ResaTopoImpl#resaTopos(Integer, Integer)*/
-        List<ResaTopo> resaTopos = getDaoFactory().getResaTopoDao().resaTopos(null, topo.getId());
+        List<ResaTopo> resaTopos = getDaoFactory().getResaTopoDao().resaTopos(topo.getId());
         topo.setResaTopos(resaTopos);
 
         return topo;

@@ -195,12 +195,14 @@ public class ResaTopoAction extends ActionSupport implements SessionAware {
 
             vResult = ActionSupport.SUCCESS;
 
-        } catch (Exception pEX){
+        } catch (NullPointerException pEX){
 
             /**@see org.escalade.business.impl.manager.TopoManagerImpl#topo(Integer)*/
             topo = managerFactory.getTopoManager().topo(topo_id);
             this.session.put("topo", topo);
 
+        } catch (Exception pEX){
+            this.addActionError("Une erreur s'est produite, veuillez réessayer plus tard!");
         }
 
         return vResult;

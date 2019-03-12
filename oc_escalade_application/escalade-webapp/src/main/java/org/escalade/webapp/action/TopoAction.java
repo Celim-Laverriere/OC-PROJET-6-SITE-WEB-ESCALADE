@@ -5,10 +5,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import org.escalade.business.contract.ManagerFactory;
 import org.escalade.business.impl.manager.PhotoManagerImpl;
 import org.escalade.business.impl.manager.TopoManagerImpl;
-import org.escalade.model.bean.Commentaire;
-import org.escalade.model.bean.Compte;
-import org.escalade.model.bean.Photo;
-import org.escalade.model.bean.Topo;
+import org.escalade.model.bean.*;
 
 
 import javax.inject.Inject;
@@ -31,6 +28,7 @@ public class TopoAction extends ActionSupport implements SessionAware {
     private File file;
     private String contentType;
     private String filename;
+    private Commentaire commentaire;
 
 
     // ----- Eléments en sortie -----
@@ -41,6 +39,7 @@ public class TopoAction extends ActionSupport implements SessionAware {
     private List<Commentaire> commentaireList;
     private Topo modifiedTopo;
     private List<Compte> compteList;
+    private List<ResaTopo> resaTopoList;
 
     // ----- Eléments Struts
     private Map<String, Object> session;
@@ -134,6 +133,22 @@ public class TopoAction extends ActionSupport implements SessionAware {
         this.compteList = compteList;
     }
 
+    public List<ResaTopo> getResaTopoList() {
+        return resaTopoList;
+    }
+
+    public void setResaTopoList(List<ResaTopo> resaTopoList) {
+        this.resaTopoList = resaTopoList;
+    }
+
+    public Commentaire getCommentaire() {
+        return commentaire;
+    }
+
+    public void setCommentaire(Commentaire commentaire) {
+        this.commentaire = commentaire;
+    }
+
     // =============== Méthodes ================
 
     /**
@@ -171,8 +186,14 @@ public class TopoAction extends ActionSupport implements SessionAware {
 
             try {
 
+                topo = (Topo) this.session.get("topo");
+
                 /**@see TopoManagerImpl#topo(Integer) */
                 topo = managerFactory.getTopoManager().topo(topo_id);
+                this.session.put("topo", topo);
+
+                /**@see org.escalade.business.impl.manager.ResaTopoManagerImpl#resaTopos(Integer)*/
+                resaTopoList = managerFactory.getResaTopoManager().resaTopos(topo.getId());
 
                 /**@see org.escalade.business.impl.manager.CompteManagerImpl#compteByCommentaires(List) */
                 compteList = managerFactory.getCompteManager().compteByCommentaires(topo.getCommentaires());
@@ -296,10 +317,6 @@ public class TopoAction extends ActionSupport implements SessionAware {
             /**@see PhotoManagerImpl#delPhotoTopo(Integer)*/
             managerFactory.getPhotoManager().delPhotoTopo(topo_id);
 
-            System.out.println(photo.getUrl_image());
-            
-
-
             vResult = ActionSupport.SUCCESS;
 
         } catch (Exception pEX){
@@ -394,6 +411,39 @@ public class TopoAction extends ActionSupport implements SessionAware {
 
             }
 
+        }
+
+        return vResult;
+    }
+
+    public String topoCommentaire(){
+
+        String vResult = null;
+
+        try {
+
+            topo = (Topo) this.session.get("topo");
+            commentaire.setTopo_id(topo.getId());
+
+            /**@see org.escalade.business.impl.manager.CommentaireManagerImpl#addCommentaireTopo(Commentaire, Compte)*/
+            managerFactory.getCommentaireManager().addCommentaireTopo(commentaire, (Compte) this.session.get("user"));
+
+            /**@see TopoManagerImpl#topo(Integer) */
+            topo = managerFactory.getTopoManager().topo(topo.getId());
+
+            /**@see org.escalade.business.impl.manager.ResaTopoManagerImpl#resaTopos(Integer)*/
+            resaTopoList = managerFactory.getResaTopoManager().resaTopos(topo.getId());
+
+            /**@see org.escalade.business.impl.manager.CompteManagerImpl#compteByCommentaires(List) */
+            compteList = managerFactory.getCompteManager().compteByCommentaires(topo.getCommentaires());
+
+            /**@see PhotoManagerImpl#listPhotosOneTopo(Integer)*/
+            photoList = managerFactory.getPhotoManager().listPhotosOneTopo(topo.getId());
+
+            vResult = ActionSupport.SUCCESS;
+
+        } catch (Exception pEX){
+            this.addActionError("Une erreur s'est produite, veuillez réessayer plus tard!");
         }
 
         return vResult;

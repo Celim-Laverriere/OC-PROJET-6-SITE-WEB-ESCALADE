@@ -1,6 +1,7 @@
 package org.escalade.consumer.contract.dao;
 
 import org.escalade.model.bean.Commentaire;
+import org.escalade.model.bean.Compte;
 import org.escalade.model.bean.Site;
 import org.escalade.model.bean.Topo;
 
@@ -8,20 +9,11 @@ import java.util.List;
 
 public interface CommentaireDao {
 
-        /**
-         * Renvoie la liste des commentaires demandés
-         *
-         * @return les {@link Commentaire}
-         * */
         List <Commentaire> commentaires(Integer site_id, Integer topo_id);
 
-        /**
-         * Ajouter un commentaire
-         *
-         * @param commentaire
-         * @return un message de confirmation
-         */
-        String addCommentaire(Commentaire commentaire);
+        void addCommentaireSiteDao(Commentaire commentaire, Compte compte);
+
+        void addCommentaireTopoDao(Commentaire commentaire, Compte compte);
 
         /**
          * Renvoie le commentaire demandé

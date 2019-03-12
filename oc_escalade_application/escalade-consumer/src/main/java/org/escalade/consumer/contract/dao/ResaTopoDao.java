@@ -6,13 +6,7 @@ import java.util.List;
 
 public interface ResaTopoDao {
 
-        /**
-         * Renvoie la liste des réservations de topos
-         *
-         * @return les {@link ResaTopo}
-         * */
-        List <ResaTopo> resaTopos(Integer compte_id, Integer topo_id);
-
+        List <ResaTopo> resaTopos(Integer topo_id);
 
         void addResaTopo(ResaTopo resaTopo, Compte compte);
 

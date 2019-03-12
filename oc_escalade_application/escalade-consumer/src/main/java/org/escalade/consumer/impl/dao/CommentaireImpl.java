@@ -4,14 +4,21 @@ import org.escalade.consumer.contract.dao.CommentaireDao;
 import org.escalade.consumer.impl.data.AbstractDataImpl;
 import org.escalade.consumer.impl.rowmapper.CommentaireRM;
 import org.escalade.model.bean.Commentaire;
+import org.escalade.model.bean.Compte;
 import org.escalade.model.bean.Site;
 import org.escalade.model.bean.Topo;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import java.util.List;
 
 public class CommentaireImpl extends AbstractDataImpl implements CommentaireDao {
 
+    /**
+     * Renvoie la liste des commentaires demandés
+     * @return les {@link Commentaire}
+     * */
     @Override
     public List<Commentaire> commentaires(Integer site_id, Integer topo_id) {
 
@@ -36,9 +43,39 @@ public class CommentaireImpl extends AbstractDataImpl implements CommentaireDao 
         return vListCommentaire;
     }
 
+    /**
+     * Ajouter un commentaire
+     *
+     * @param commentaire
+     * @return un message de confirmation
+     */
     @Override
-    public String addCommentaire(Commentaire commentaire) {
-        return null;
+    public void addCommentaireSiteDao(Commentaire commentaire, Compte compte){
+
+        String vSql = "INSERT INTO public.commentaire (commentaire, site_id, compte_id) VALUES "
+                    + " (:commentaire, :site_id, :compte_id)";
+
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("commentaire", commentaire.getCommentaire());
+        vParams.addValue("site_id", commentaire.getSite_id());
+        vParams.addValue("compte_id", compte.getId());
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+        vJdbcTemplate.update(vSql, vParams);
+    }
+
+    public void addCommentaireTopoDao(Commentaire commentaire, Compte compte){
+
+        String vSql = "INSERT INTO public.commentaire (commentaire, topo_id, compte_id) VALUES "
+                + " (:commentaire, :topo_id, :compte_id)";
+
+        MapSqlParameterSource vParams = new MapSqlParameterSource();
+        vParams.addValue("commentaire", commentaire.getCommentaire());
+        vParams.addValue("topo_id", commentaire.getTopo_id());
+        vParams.addValue("compte_id", compte.getId());
+
+        NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+        vJdbcTemplate.update(vSql, vParams);
     }
 
     @Override

@@ -4,7 +4,6 @@ import org.escalade.business.contract.manager.CommentaireManager;
 import org.escalade.business.impl.AbstractManagerImpl;
 import org.escalade.model.bean.Commentaire;
 import org.escalade.model.bean.Compte;
-import org.escalade.model.bean.Site;
 import org.escalade.model.bean.Topo;
 
 import java.util.ArrayList;
@@ -18,8 +17,16 @@ public class CommentaireManagerImpl extends AbstractManagerImpl implements Comme
     }
 
     @Override
-    public String addCommentaire(Commentaire commentaire) {
-        return getDaoFactory().getCommentaireDao().addCommentaire(commentaire);
+    public void addCommentaireSite(Commentaire commentaire, Compte compte) {
+
+        /**@see org.escalade.consumer.impl.dao.CommentaireImpl#addCommentaireSiteDao(Commentaire, Compte)*/
+         getDaoFactory().getCommentaireDao().addCommentaireSiteDao(commentaire, compte);
+    }
+
+    public void addCommentaireTopo(Commentaire commentaire, Compte compte){
+
+         /**@see org.escalade.consumer.impl.dao.CommentaireImpl#addCommentaireTopoDao(Commentaire, Compte)*/
+        getDaoFactory().getCommentaireDao().addCommentaireTopoDao(commentaire, compte);
     }
 
     @Override

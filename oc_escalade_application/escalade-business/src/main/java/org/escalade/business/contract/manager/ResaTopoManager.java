@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ResaTopoManager {
 
-    List<ResaTopo> resaTopos(Integer topo_id, Integer compte_id);
+    List<ResaTopo> resaTopos(Integer topo_id);
 
     ResaTopo addResaTopo(ResaTopo resaTopo, Compte compte);
 

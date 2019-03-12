@@ -13,8 +13,10 @@ import java.util.List;
 public class ResaTopoManagerImpl extends AbstractManagerImpl implements ResaTopoManager {
 
     @Override
-    public List<ResaTopo> resaTopos(Integer topo_id, Integer compte_id) {
-        return getDaoFactory().getResaTopoDao().resaTopos(topo_id, compte_id);
+    public List<ResaTopo> resaTopos(Integer topo_id) {
+
+        /**@see org.escalade.consumer.impl.dao.ResaTopoImpl#resaTopos(Integer)*/
+        return getDaoFactory().getResaTopoDao().resaTopos(topo_id);
     }
 
     @Override

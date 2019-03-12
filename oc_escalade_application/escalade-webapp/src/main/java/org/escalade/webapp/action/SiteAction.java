@@ -3,6 +3,7 @@ package org.escalade.webapp.action;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.interceptor.SessionAware;
 import org.escalade.business.contract.ManagerFactory;
+import org.escalade.model.bean.Commentaire;
 import org.escalade.model.bean.Compte;
 import org.escalade.model.bean.Site;
 
@@ -33,6 +34,7 @@ public class SiteAction extends ActionSupport implements SessionAware {
     private Site site;
     private Site modifiedSite;
     private Compte compte;
+    private Commentaire commentaire;
 
     // ----- Eléments Struts
     private Map<String, Object> session;
@@ -82,7 +84,15 @@ public class SiteAction extends ActionSupport implements SessionAware {
         this.compte = compte;
     }
 
-//    ===================================
+    public Commentaire getCommentaire() {
+        return commentaire;
+    }
+
+    public void setCommentaire(Commentaire commentaire) {
+        this.commentaire = commentaire;
+    }
+
+    //    ===================================
 
     public Site getModifiedSite() {
         return modifiedSite;
@@ -114,6 +124,7 @@ public class SiteAction extends ActionSupport implements SessionAware {
             try {
                 /**@see org.escalade.business.impl.manager.SiteManagerImpl#site(Integer)*/
                 site = managerFactory.getSiteManager().site(site_id);
+                this.session.put("site", site);
 
                 vResult = ActionSupport.SUCCESS;
 
@@ -214,6 +225,30 @@ public class SiteAction extends ActionSupport implements SessionAware {
             vResult = ActionSupport.SUCCESS;
         } catch (Exception pEX) {
 
+        }
+
+        return vResult;
+    }
+
+    public String siteCommentaire(){
+
+        String vResult = null;
+
+        try {
+
+            site = (Site) this.session.get("site");
+            commentaire.setSite_id(site.getId());
+
+            /**@see org.escalade.business.impl.manager.CommentaireManagerImpl#addCommentaireSite(Commentaire, Compte)*/
+            managerFactory.getCommentaireManager().addCommentaireSite(commentaire, (Compte) this.session.get("user"));
+
+            /**@see org.escalade.business.impl.manager.SiteManagerImpl#site(Integer)*/
+            site = managerFactory.getSiteManager().site(site.getId());
+
+            vResult = ActionSupport.SUCCESS;
+
+        } catch (Exception pEX){
+            this.addActionError("Une erreur s'est produite, veuillez réessayer plus tard!");
         }
 
         return vResult;

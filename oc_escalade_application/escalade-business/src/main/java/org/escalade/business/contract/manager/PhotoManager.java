@@ -7,8 +7,6 @@ import java.util.List;
 
 public interface PhotoManager {
 
-    List<Photo> photos();
-
     void addPhoto(Topo topo, String nomPhoto, String url_image);
 
     List<Photo> listPhotosOneTopo(Integer topo_id);

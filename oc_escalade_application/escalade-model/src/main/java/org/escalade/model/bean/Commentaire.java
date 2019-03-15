@@ -1,6 +1,5 @@
 package org.escalade.model.bean;
 
-
 public class Commentaire {
 
     private Integer id;

@@ -16,6 +16,10 @@ import java.util.List;
 
 public class CompteImpl extends AbstractDataImpl implements CompteDao {
 
+    /**
+     * Renvoie la liste des comptes demandés
+     * @return les {@link Compte}
+     * */
     @Override
     public List<Compte> comptes() {
 
@@ -29,6 +33,11 @@ public class CompteImpl extends AbstractDataImpl implements CompteDao {
         return vListeCompte;
     }
 
+    /**
+     * Ajouter un compte
+     * @param compte
+     * @return un message de confirmation
+     */
     @Override
     public void addCompte(Compte compte) {
 
@@ -42,10 +51,14 @@ public class CompteImpl extends AbstractDataImpl implements CompteDao {
         vParams.addValue("mot_de_passe", compte.getMot_de_passe());
 
         NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
-
-        int vNbrLigneMaj = vJdbcTemplate.update(vSql, vParams);
+        vJdbcTemplate.update(vSql, vParams);
     }
 
+    /**
+     * Renvoie le compte demandé
+     * @param compte_id
+     * @return le compte correspondant à son id
+     */
     @Override
     public Compte compte(Integer compte_id) {
 
@@ -59,6 +72,11 @@ public class CompteImpl extends AbstractDataImpl implements CompteDao {
         return vCompteDetail.get(0);
     }
 
+    /**
+     * Supprimer un compte
+     * @param id
+     * @return un message de confirmation
+     */
     @Override
     public void delCompte(Integer id) {
 
@@ -73,6 +91,11 @@ public class CompteImpl extends AbstractDataImpl implements CompteDao {
 
     }
 
+    /**
+     * Mettre à jour les informations d'un compte
+     * @param compte
+     * @return un message de confirmation
+     */
     @Override
     public void upCompte(Compte upCompte, Compte compte) {
 
@@ -89,9 +112,15 @@ public class CompteImpl extends AbstractDataImpl implements CompteDao {
 
 
         NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
-        int vNbrLigneMaj = vJdbcTemplate.update(vSql, vParams);
+        vJdbcTemplate.update(vSql, vParams);
     }
 
+    /**
+     * Renvoie le compte d'un utilisateur
+     * @param login
+     * @param password
+     * @return
+     */
     @Override
     public Compte comptByUtilisateur(String login, String password) {
         String vSql = "SELECT * FROM public.compte"

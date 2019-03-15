@@ -13,17 +13,15 @@ import java.util.List;
 public class CompteManagerImpl extends AbstractManagerImpl implements CompteManager {
 
     @Override
-    public List<Compte> comptes() {
-        return getDaoFactory().getCompteDao().comptes();
-    }
-
-    @Override
     public void addCompte(Compte compte) {
+
+        /**@see org.escalade.consumer.impl.dao.CompteImpl#addCompte(Compte)*/
         getDaoFactory().getCompteDao().addCompte(compte);
     }
 
     @Override
     public Compte compte(Integer compte_id) {
+
         /**@see org.escalade.consumer.impl.dao.CompteImpl#compte(Integer)*/
         return getDaoFactory().getCompteDao().compte(compte_id);
     }
@@ -31,17 +29,21 @@ public class CompteManagerImpl extends AbstractManagerImpl implements CompteMana
     @Override
     public void delCompte(Compte compte_id) {
 
+        /**@see org.escalade.consumer.impl.dao.CompteImpl#delCompte(Integer)*/
         getDaoFactory().getCompteDao().delCompte(compte_id.getId());
     }
 
     @Override
     public void upCompte(Compte upComte, Compte compte) {
+
+        /**@see org.escalade.consumer.impl.dao.CompteImpl#upCompte(Compte, Compte)*/
         getDaoFactory().getCompteDao().upCompte(upComte, compte);
     }
 
     @Override
     public Compte comptByUtilisateur(String login, String password) {
 
+        /**@see org.escalade.consumer.impl.dao.CompteImpl#comptByUtilisateur(String, String)*/
         Compte vUtilisateur = getDaoFactory().getCompteDao().comptByUtilisateur(login, password);
         return vUtilisateur;
     }

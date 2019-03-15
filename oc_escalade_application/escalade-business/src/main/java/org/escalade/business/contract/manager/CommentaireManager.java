@@ -2,14 +2,11 @@ package org.escalade.business.contract.manager;
 
 import org.escalade.model.bean.Commentaire;
 import org.escalade.model.bean.Compte;
-import org.escalade.model.bean.Site;
 import org.escalade.model.bean.Topo;
 
 import java.util.List;
 
 public interface CommentaireManager {
-    
-    List<Commentaire> commentaires(Integer site_id, Integer topo_id);
 
     void addCommentaireSite(Commentaire commentaire, Compte compte);
 

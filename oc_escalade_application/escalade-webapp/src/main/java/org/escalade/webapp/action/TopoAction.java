@@ -240,6 +240,8 @@ public class TopoAction extends ActionSupport implements SessionAware {
                 /**@see org.escalade.business.impl.manager.TopoManagerImpl#recoversTopoForId(Compte, Topo)*/
                 topo = managerFactory.getTopoManager().recoversTopoForId((Compte) this.session.get("user"), topo);
 
+                nomPhoto = topo.getNom();
+
                 /**@see PhotoManagerImpl#addPhoto(Topo, String, String)*/
                 managerFactory.getPhotoManager().addPhoto(topo, nomPhoto, url_image);
 
@@ -343,6 +345,8 @@ public class TopoAction extends ActionSupport implements SessionAware {
 
             topo_id = topo.getId();
             modifiedTopo.setId(topo_id);
+            modifiedTopo.setStatut(topo.getStatut());
+
 
             /**@see org.escalade.business.impl.manager.TopoManagerImpl#upTopo(Topo) */
             managerFactory.getTopoManager().upTopo(modifiedTopo);
@@ -354,12 +358,13 @@ public class TopoAction extends ActionSupport implements SessionAware {
                 if (photo == null){
 
                     String url_image = "imgs/" + filename;
+                    nomPhoto = modifiedTopo.getNom();
 
                     /**@see PhotoManagerImpl#addPhoto(Topo, String, String)*/
                     managerFactory.getPhotoManager().addPhoto(topo, nomPhoto, url_image);
 
                 } else {
-                    photo.setNom(filename);
+                    photo.setNom(modifiedTopo.getNom());
                     photo.setUrl_image("imgs/" + filename);
 
                     /**@see PhotoManagerImpl#upPhoto(Photo) */

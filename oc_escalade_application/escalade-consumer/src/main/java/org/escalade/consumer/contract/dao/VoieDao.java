@@ -7,7 +7,6 @@ import java.util.List;
 
 public interface VoieDao {
 
-
     List<Voie> voies(Integer secteur_id);
 
     void addVoie(Voie voie, Secteur secteur);
@@ -18,7 +17,7 @@ public interface VoieDao {
 
     void upVoie(Voie voie);
 
-    List<Voie>  rechercheSimpleParVoieDao(String motCleRecherche);
+    List<Voie> SimpleSearchByClimbingRoute(String motCleRecherche);
 
     List<Voie> listVoiesByAccountDao(Compte compte);
 

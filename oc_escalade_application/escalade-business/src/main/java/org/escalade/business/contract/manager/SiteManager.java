@@ -3,9 +3,6 @@ package org.escalade.business.contract.manager;
 import org.escalade.model.bean.Compte;
 import org.escalade.model.bean.Secteur;
 import org.escalade.model.bean.Site;
-import org.escalade.model.bean.Voie;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public interface SiteManager {

@@ -12,11 +12,6 @@ import java.util.List;
 public class CommentaireManagerImpl extends AbstractManagerImpl implements CommentaireManager {
 
     @Override
-    public List<Commentaire> commentaires(Integer site_id, Integer topo_id) {
-        return getDaoFactory().getCommentaireDao().commentaires(site_id, topo_id);
-    }
-
-    @Override
     public void addCommentaireSite(Commentaire commentaire, Compte compte) {
 
         /**@see org.escalade.consumer.impl.dao.CommentaireImpl#addCommentaireSiteDao(Commentaire, Compte)*/
@@ -31,11 +26,15 @@ public class CommentaireManagerImpl extends AbstractManagerImpl implements Comme
 
     @Override
     public Commentaire commentaire(Integer site_id, Integer topo_id) {
+
+        /**@see org.escalade.consumer.impl.dao.CommentaireImpl#commentaire(Integer, Integer)*/
         return getDaoFactory().getCommentaireDao().commentaire(site_id, topo_id);
     }
 
     @Override
     public String delCommentaire(Integer id) {
+
+        /**@see org.escalade.consumer.impl.dao.CommentaireImpl#delCommentaire(Integer)*/
         return getDaoFactory().getCommentaireDao().delCommentaire(id);
     }
 

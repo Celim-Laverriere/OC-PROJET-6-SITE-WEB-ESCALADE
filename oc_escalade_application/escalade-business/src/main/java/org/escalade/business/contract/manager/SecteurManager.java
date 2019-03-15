@@ -9,8 +9,6 @@ import java.util.List;
 
 public interface SecteurManager {
 
-    List<Secteur> secteurs();
-
     void addSecteur(Secteur secteur, Integer site_id);
 
     Secteur secteur(Integer id);

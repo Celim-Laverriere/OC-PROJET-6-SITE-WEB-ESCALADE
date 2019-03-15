@@ -13,13 +13,6 @@ import java.util.List;
 
 public class PhotoImpl extends AbstractDataImpl implements PhotoDao {
 
-
-    @Override
-    public List<Photo> photoList(Integer id) {
-
-        return null;
-    }
-
     @Override
     public void addPhotoTopo(Topo topo, String nomPhoto, String url_image) {
 

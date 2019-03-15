@@ -17,6 +17,10 @@ import java.util.List;
 
 public class SiteImpl extends AbstractDataImpl implements SiteDao {
 
+    /**
+     * Renvoie la liste des sites demandés
+     * @return les {@link Site}
+     */
     @Override
     public List<Site> sites() {
         String vSql = "SELECT * FROM public.site";
@@ -28,6 +32,11 @@ public class SiteImpl extends AbstractDataImpl implements SiteDao {
         return vListSite;
     }
 
+    /**
+     * Ajouter un site
+     * @param site
+     * @return un message de confirmation
+     */
     @Override
     public void addSite(Site site, Compte compte) {
 
@@ -46,6 +55,11 @@ public class SiteImpl extends AbstractDataImpl implements SiteDao {
         vJdbcTemplate.update(vSql, vParams);
     }
 
+    /**
+     * Renvoie le site demandé
+     * @param site_id
+     * @return le site correspondant à son id
+     */
     @Override
     public Site site(Integer site_id) {
 
@@ -59,6 +73,11 @@ public class SiteImpl extends AbstractDataImpl implements SiteDao {
         return  vSiteDetail.get(0);
     }
 
+    /**
+     * Supprimer un site
+     * @param id
+     * @return un message de confirmation
+     */
     @Override
     public void delSite(Integer id) {
 

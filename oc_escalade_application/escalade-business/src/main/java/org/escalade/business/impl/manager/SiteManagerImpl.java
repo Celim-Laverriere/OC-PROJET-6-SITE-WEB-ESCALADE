@@ -16,6 +16,7 @@ public class SiteManagerImpl extends AbstractManagerImpl implements SiteManager 
      */
     @Override
     public List<Site> sites() {
+
         /** @see SiteImpl#sites()*/
         return getDaoFactory().getSiteDao().sites();
     }
@@ -68,6 +69,7 @@ public class SiteManagerImpl extends AbstractManagerImpl implements SiteManager 
 
     @Override
     public void delSite(Integer id) {
+
         /**@see org.escalade.consumer.impl.dao.SiteImpl#delSite(Integer)*/
         getDaoFactory().getSiteDao().delSite(id);
     }
@@ -78,6 +80,7 @@ public class SiteManagerImpl extends AbstractManagerImpl implements SiteManager 
      */
     @Override
     public void upSite(Site site) {
+
         /**@see org.escalade.consumer.impl.dao.SiteImpl#upSite(Site)*/
         getDaoFactory().getSiteDao().upSite(site);
     }

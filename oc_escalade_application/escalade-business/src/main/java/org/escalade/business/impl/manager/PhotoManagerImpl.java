@@ -9,12 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PhotoManagerImpl extends AbstractManagerImpl implements PhotoManager {
-
-    @Override
-    public List<Photo> photos() {
-        return null;
-    }
-
+    
     @Override
     public void addPhoto(Topo topo, String nomPhoto, String url_image) {
 

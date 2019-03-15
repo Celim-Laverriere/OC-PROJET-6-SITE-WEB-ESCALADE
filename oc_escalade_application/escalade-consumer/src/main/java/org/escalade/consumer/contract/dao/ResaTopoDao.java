@@ -12,7 +12,6 @@ public interface ResaTopoDao {
 
         void upResaTopoDao(ResaTopo resaTopo);
 
-
         ResaTopo resaTopo(Integer resa_topo_id);
 
         void delResaTopo(Integer resa_topo_id);

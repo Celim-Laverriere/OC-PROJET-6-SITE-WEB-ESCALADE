@@ -11,23 +11,22 @@ import java.util.List;
 public class LongueurManagerImpl extends AbstractManagerImpl implements LongueurManager {
 
     @Override
-    public List<Longueur> longueursList(Integer voie_id) {
-        return getDaoFactory().getLongueurDao().longueurs(voie_id);
-    }
-
-    @Override
     public void addLongueur(Longueur longueur, Voie voie) {
-        /**@see LongueurImpl#addLongueur(Longueur, Voie) */
+
+        /**@see LongueurImpl#addLongueur(Longueur, Voie)*/
         getDaoFactory().getLongueurDao().addLongueur(longueur, voie);
     }
 
     @Override
     public Longueur longueur(Integer id) {
+
+        /**@see LongueurImpl#longueur(Integer)*/
         return getDaoFactory().getLongueurDao().longueur(id);
     }
 
     @Override
     public void delLongueur(Integer id) {
+
         /**@see LongueurImpl#delLongueur(Integer)*/
         getDaoFactory().getLongueurDao().delLongueur(id);
     }

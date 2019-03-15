@@ -14,6 +14,10 @@ import java.util.List;
 
 public class TopoImpl extends AbstractDataImpl implements TopoDao {
 
+    /**
+     * Renvoie la liste des topos demandés
+     * @return les {@link Topo}
+     */
     @Override
     public List<Topo> topos() {
         String vSql = "SELECT * FROM public.topo";
@@ -25,6 +29,11 @@ public class TopoImpl extends AbstractDataImpl implements TopoDao {
         return vListTopo;
     }
 
+    /**
+     * Ajouter un Topo
+     * @param topo
+     * @return un message de confirmation
+     */
     @Override
     public void addTopo(Topo topo, Compte compte) {
 
@@ -43,6 +52,11 @@ public class TopoImpl extends AbstractDataImpl implements TopoDao {
         vJdbcTemplate.update(vSql, vParams);
     }
 
+    /**
+     * Renvoie le topo demandé
+     * @param topo_id
+     * @return le topo correspondant à son id
+     */
     @Override
     public Topo topo(Integer topo_id) {
 
@@ -56,6 +70,11 @@ public class TopoImpl extends AbstractDataImpl implements TopoDao {
         return vListTopo.get(0);
     }
 
+    /**
+     * Supprimer un topo
+     * @param id
+     * @return un message de confirmation
+     */
     @Override
     public void delTopo(Integer id){
 

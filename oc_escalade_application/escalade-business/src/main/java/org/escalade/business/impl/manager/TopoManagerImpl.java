@@ -2,6 +2,7 @@ package org.escalade.business.impl.manager;
 
 import org.escalade.business.contract.manager.TopoManager;
 import org.escalade.business.impl.AbstractManagerImpl;
+import org.escalade.consumer.impl.dao.TopoImpl;
 import org.escalade.model.bean.Commentaire;
 import org.escalade.model.bean.Compte;
 import org.escalade.model.bean.ResaTopo;
@@ -14,6 +15,8 @@ public class TopoManagerImpl extends AbstractManagerImpl implements TopoManager 
 
     @Override
     public List<Topo> topos() {
+
+        /**@see TopoImpl#topos() */
         return getDaoFactory().getTopoDao().topos();
     }
 
@@ -77,16 +80,4 @@ public class TopoManagerImpl extends AbstractManagerImpl implements TopoManager 
         return topoList;
     }
 
-//    public List<Topo> toposByResaTopo(List<ResaTopo> resaTopoList) {
-//
-//        List<Topo> topoList = new ArrayList<>();
-//
-//        for (ResaTopo resaTopo : resaTopoList){
-//            /**@see org.escalade.consumer.impl.dao.TopoImpl#toposByResaTopoDao(ResaTopo)*/
-//            List<Topo> topoListTemp = getDaoFactory().getTopoDao().toposByResaTopoDao(resaTopo);
-//            topoList.addAll(topoListTemp);
-//        }
-//
-//        return topoList;
-//    }
 }

@@ -15,6 +15,10 @@ import java.util.List;
 
 public class SecteurImpl extends AbstractDataImpl implements SecteurDao {
 
+    /**
+     * Renvoie la liste des secteurs demandés
+     * @return les {@link Secteur}
+     * */
     @Override
     public List<Secteur> secteurs() {
 
@@ -27,6 +31,11 @@ public class SecteurImpl extends AbstractDataImpl implements SecteurDao {
         return vListSecteur;
     }
 
+    /**
+     * Ajouter un secteur
+     * @param secteur
+     * @return un message de confirmation
+     */
     @Override
     public void addSecteur(Secteur secteur, Integer site_id) {
 
@@ -43,6 +52,11 @@ public class SecteurImpl extends AbstractDataImpl implements SecteurDao {
         vJdbcTemplate.update(vSql, vParams);
     }
 
+    /**
+     * Renvoie le secteur demandé
+     * @param id
+     * @return le secteur correspondant à son id
+     */
     @Override
     public Secteur secteur(Integer id) {
 
@@ -94,6 +108,11 @@ public class SecteurImpl extends AbstractDataImpl implements SecteurDao {
         vJdbcTemplate.update(vSql, vParams);
     }
 
+    /**
+     *Renvoie les secteurs correspondant au site sélectionné
+     * @param site_id
+     * @return les Secteurs
+     */
     public List<Secteur> secteursBySiteId(Integer site_id){
 
         String vSql = "SELECT * FROM public.secteur "
@@ -143,7 +162,7 @@ public class SecteurImpl extends AbstractDataImpl implements SecteurDao {
     }
 
     /**
-     *
+     * Renvoie les secteurs correspondant à la session en cours
      * @param compte
      * @return
      */
@@ -160,6 +179,13 @@ public class SecteurImpl extends AbstractDataImpl implements SecteurDao {
         return vListSecteurs;
     }
 
+    /**
+     * Cette méthode renvoie le secteur précédemment ajouter dans le Workflow pour transmettre l'id de celui-ci
+     * a l'action pour ajouter la voie correspondant à ce secteur.
+     * @param site
+     * @param secteur
+     * @return
+     */
     public Secteur recoversSecteurWorkflowDao(Secteur secteur, Site site){
 
         String vSql = "SELECT * FROM public.secteur"

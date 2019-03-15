@@ -15,20 +15,18 @@ import java.util.Set;
 public class SecteurManagerImpl extends AbstractManagerImpl implements SecteurManager {
 
     @Override
-    public List<Secteur> secteurs() {
-        return getDaoFactory().getSecteurDao().secteurs();
-    }
-
-    @Override
     public void addSecteur(Secteur secteur, Integer site_id) {
+
         /**@see org.escalade.consumer.impl.dao.SecteurImpl#addSecteur(Secteur, Integer) */
         getDaoFactory().getSecteurDao().addSecteur(secteur, site_id);
     }
 
     @Override
     public Secteur secteur(Integer id) {
+
         /**@see org.escalade.consumer.impl.dao.SecteurImpl#secteur(Integer) */
         Secteur secteur = getDaoFactory().getSecteurDao().secteur(id);
+
         /**@see org.escalade.consumer.impl.dao.VoieImpl#voies(Integer)*/
         List<Voie> voies = getDaoFactory().getVoieDao().voies(id);
 
@@ -39,12 +37,14 @@ public class SecteurManagerImpl extends AbstractManagerImpl implements SecteurMa
 
     @Override
     public void delSecteur(Integer id) {
+
         /**@see org.escalade.consumer.impl.dao.SecteurImpl#delSecteur(Integer)*/
         getDaoFactory().getSecteurDao().delSecteur(id);
     }
 
     @Override
     public void upSecteur(Secteur secteur) {
+
         /**@see org.escalade.consumer.impl.dao.SecteurImpl#upSecteur(Secteur)*/
         getDaoFactory().getSecteurDao().upSecteur(secteur);
     }

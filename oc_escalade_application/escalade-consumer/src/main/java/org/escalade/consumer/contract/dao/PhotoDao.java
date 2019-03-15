@@ -7,8 +7,6 @@ import java.util.List;
 
 public interface PhotoDao {
 
-    List<Photo> photoList(Integer id);
-
     void addPhotoTopo(Topo topo, String nomPhoto, String url_image);
 
     List<Photo> listPhotosOneTopoDao(Integer topo_id);

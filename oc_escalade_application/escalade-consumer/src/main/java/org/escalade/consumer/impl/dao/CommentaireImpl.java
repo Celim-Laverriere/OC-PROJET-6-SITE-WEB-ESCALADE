@@ -78,6 +78,11 @@ public class CommentaireImpl extends AbstractDataImpl implements CommentaireDao 
         vJdbcTemplate.update(vSql, vParams);
     }
 
+    /**
+     * Renvoie le commentaire demandé
+     * @param site_id, topo_id
+     * @return le commentaire correspondant à son id
+     */
     @Override
     public Commentaire commentaire(Integer site_id, Integer topo_id) {
         String vSql = null;
@@ -101,6 +106,11 @@ public class CommentaireImpl extends AbstractDataImpl implements CommentaireDao 
         return vListCommentaire.get(0);
     }
 
+    /**
+     * Supprimer un commentaire
+     * @param id
+     * @return un message de confirmation
+     */
     @Override
     public String delCommentaire(Integer id) {
         return null;

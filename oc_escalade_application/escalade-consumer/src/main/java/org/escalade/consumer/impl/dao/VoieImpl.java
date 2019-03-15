@@ -122,7 +122,7 @@ public class VoieImpl extends AbstractDataImpl implements VoieDao {
      * @return vListVoie
      */
     @Override
-    public List<Voie>  rechercheSimpleParVoieDao(String motCleRecherche) {
+    public List<Voie> SimpleSearchByClimbingRoute(String motCleRecherche) {
 
         String vSql = "SELECT * FROM public.voie"
                 + " WHERE nom LIKE " + "'" + motCleRecherche + "%" + "'";

@@ -42,7 +42,6 @@
                 <div class="col-md-9" style="border-style: solid; border-color: #DCDCDC; border-width: 2px; border-radius: 10px;
                  margin-top: 1%; margin-top: 1%">
 
-
                     <s:iterator value="messagerieList">
                         <div class="alert alert-info" role="alert" style="padding: 1%; margin-top: 1%">
                             <p>
@@ -76,7 +75,8 @@
 
                         <div class="row justify-content-center">
                             <div class="col-md-5">
-                                <button name="messagerie.resa_topo_id" value="<s:property value="id"/>"  class="btn btn-primary" type="submit" style="width: 100%">Envoyez</button>
+                                <button name="messagerie.resa_topo_id" value="<s:property value="id"/>"
+                                        class="btn btn-primary" type="submit" style="width: 100%">Envoyez</button>
                             </div>
                             <div class="col-md-5">
                                 <!-- Button trigger modal -->

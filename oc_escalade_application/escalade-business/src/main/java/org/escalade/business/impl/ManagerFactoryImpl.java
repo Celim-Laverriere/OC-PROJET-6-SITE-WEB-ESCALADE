@@ -3,6 +3,9 @@ package org.escalade.business.impl;
 import org.escalade.business.contract.ManagerFactory;
 import org.escalade.business.contract.manager.*;
 
+import javax.inject.Named;
+
+@Named("managerFactory")
 public class ManagerFactoryImpl implements ManagerFactory {
 
     private CommentaireManager commentaireManager;

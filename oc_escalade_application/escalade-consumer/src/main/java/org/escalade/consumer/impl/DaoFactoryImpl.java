@@ -2,7 +2,6 @@ package org.escalade.consumer.impl;
 
 import org.escalade.consumer.contract.DaoFactory;
 import org.escalade.consumer.contract.dao.*;
-import org.escalade.model.bean.Photo;
 
 public class DaoFactoryImpl implements DaoFactory {
 

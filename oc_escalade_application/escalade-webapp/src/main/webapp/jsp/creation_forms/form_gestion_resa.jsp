@@ -221,6 +221,11 @@
                 </s:if>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                <hr width="80%" color="#DCDCDC">
+            </div>
+        </div>
     </div>
 
 </section>

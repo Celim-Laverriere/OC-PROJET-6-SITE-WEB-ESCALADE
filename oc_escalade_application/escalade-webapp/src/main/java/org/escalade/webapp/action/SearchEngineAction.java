@@ -28,17 +28,17 @@ public class SearchEngineAction extends ActionSupport  {
             "Limousin", "Rhône-Alpes", "Auvergne", "Languedoc-Roussillon", "Provence-Alpes-Côte d'Azur",
             "Corse", "Guadeloupe", "Martinique", "Guyane", "La Réunion", "Mayotte"));
 
-    // Liste de sélection de la difficulté par ordre croissant de 3 à 9 des voies.
+    // Liste de sélection de la difficulté par ordre croissant de 3 à 9 des listVoies.
     private List<String> listCotations = new ArrayList(Arrays.asList("1", "2", "3", "4", "5a", "5b", "5c", "6a", "6a+", "6b",
             "6b+", "6c", "6c+", "7a", "7a+", "7b", "7b+", "7c", "7c+", "8a", "8a+", "8b", "8b+", "8c", "8c+", "9a", "9a+",
             "9b", "9b+", "9c"));
 
-    // Liste de sélection, voies équipée ou non équipée.
+    // Liste de sélection, listVoies équipée ou non équipée.
     private  List<String> listTypesVoie = new ArrayList(Arrays.asList("Non équipée", "Equipée"));
 
-    private List<Site> sites;
-    private List<Voie> voies;
-    private List<Secteur> secteurs;
+    private List<Site> listSites;
+    private List<Voie> listVoies;
+    private List<Secteur> listSecteurs;
 
     private Site site;
     private Secteur secteur;
@@ -61,12 +61,12 @@ public class SearchEngineAction extends ActionSupport  {
         this.regionSelect = regionSelect;
     }
 
-    public List<Site> getSites() {
-        return sites;
+    public List<Site> getListSites() {
+        return listSites;
     }
 
-    public void setSites(List<Site> sites) {
-        this.sites = sites;
+    public void setListSites(List<Site> listSites) {
+        this.listSites = listSites;
     }
 
     public String getMotCleRecherche() {
@@ -117,20 +117,20 @@ public class SearchEngineAction extends ActionSupport  {
         this.cotationVoieSelect = cotationVoieSelect;
     }
 
-    public List<Secteur> getSecteurs() {
-        return secteurs;
+    public List<Secteur> getListSecteurs() {
+        return listSecteurs;
     }
 
-    public void setSecteurs(List<Secteur> secteurs) {
-        this.secteurs = secteurs;
+    public void setListSecteurs(List<Secteur> listSecteurs) {
+        this.listSecteurs = listSecteurs;
     }
 
-    public List<Voie> getVoies() {
-        return voies;
+    public List<Voie> getListVoies() {
+        return listVoies;
     }
 
-    public void setVoies(List<Voie> voies) {
-        this.voies = voies;
+    public void setListVoies(List<Voie> listVoies) {
+        this.listVoies = listVoies;
     }
 
     public Site getSite() {
@@ -184,7 +184,7 @@ public class SearchEngineAction extends ActionSupport  {
     // =============== Méthodes ================
 
     /**
-     * Action qui retourne la liste des sites correspondant à la région sélectionnée
+     * Action qui retourne la liste des listSites correspondant à la région sélectionnée
      * au type de la voie (équpée ou non) et à la difficultée de la voie.
      * @return success
      */
@@ -196,7 +196,7 @@ public class SearchEngineAction extends ActionSupport  {
 
             if (this.regionSelect != null){
                 /**@see org.escalade.business.impl.manager.SiteManagerImpl#sitesByAdvancedSearch(String, String, String)*/
-                sites = managerFactory.getSiteManager().sitesByAdvancedSearch(regionSelect, typeVoieSelect, cotationVoieSelect);
+                listSites = managerFactory.getSiteManager().sitesByAdvancedSearch(regionSelect, typeVoieSelect, cotationVoieSelect);
                 vResult = ActionSupport.SUCCESS;
             }
 
@@ -212,23 +212,24 @@ public class SearchEngineAction extends ActionSupport  {
         try {
 
             /**@see org.escalade.business.impl.manager.SiteManagerImpl#siteBySimpleSearch(String) */
-            sites = managerFactory.getSiteManager().siteBySimpleSearch(motCleRecherche);
+            listSites = managerFactory.getSiteManager().siteBySimpleSearch(motCleRecherche);
 
             /**@see org.escalade.business.impl.manager.SecteurManagerImpl#secteurBySimpleSearch(String) */
-            secteurs = managerFactory.getSecteurManager().secteurBySimpleSearch(motCleRecherche);
+            listSecteurs = managerFactory.getSecteurManager().secteurBySimpleSearch(motCleRecherche);
 
-            if (!secteurs.isEmpty()){
-                secteursRefSite = managerFactory.getSiteManager().searchSiteBySector(secteurs);
+            if (!listSecteurs.isEmpty()){
+                secteursRefSite = managerFactory.getSiteManager().searchSiteBySector(listSecteurs);
             }
 
-            voies = managerFactory.getVoieManager().rechercheSimpleParVoie(motCleRecherche);
+            listVoies = managerFactory.getVoieManager().rechercheSimpleParVoie(motCleRecherche);
 
-            if (!voies.isEmpty()){
-                voiesRefSecteur = managerFactory.getSecteurManager().rechercheSecteurParVoie(voies);
+            if (!listVoies.isEmpty()){
+                voiesRefSecteur = managerFactory.getSecteurManager().rechercheSecteurParVoie(listVoies);
                 voiesRefSecteurRefSite = managerFactory.getSiteManager().searchSiteBySector(voiesRefSecteur);
             }
 
         } catch (IndexOutOfBoundsException pEx) {
+            System.out.println(pEx);
             this.addActionMessage("Désolé ! Aucun site ne correspond à votre recherche : " + motCleRecherche + " !");
         }
 

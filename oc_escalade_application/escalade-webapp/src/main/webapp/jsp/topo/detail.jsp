@@ -51,7 +51,6 @@ border-radius: 10px; box-shadow: 6px 6px 14px #DCDCDC">
                 </div>
             </div>
 
-
             <div class="row">
                 <div class="col-md-12">
                     <hr width="90%" color="#DCDCDC">
@@ -123,7 +122,7 @@ border-radius: 10px; box-shadow: 6px 6px 14px #DCDCDC">
                 <div class="col-md-10">
 
                     <s:if test="%{topo.commentaires.isEmpty()}">
-                        <p>Ce topo d'éscalade n'a pas encore de commentaires !</p>
+                        <p style="text-align: center">Ce topo d'éscalade n'a pas encore de commentaires !</p>
                     </s:if>
                     <s:else>
                         <s:iterator value="commentaires">

@@ -10,16 +10,21 @@
 
 <html>
 <head>
-    <%@include file="../_include/head.jsp"%>
+    <s:if test="!#session.user">
+        <%@include file="../_include/head.jsp"%>
+    </s:if>
 </head>
 
 <body>
-
-<header>
-    <%@include file="../_include/header.jsp"%>
-</header>
-
 <section>
+
+    <s:if test="!#session.user">
+        <%@include file="../_include/header.jsp"%>
+    </s:if>
+    <s:else>
+        <%@include file="../_include/user_menu.jsp"%>
+    </s:else>
+
     <div class="container" style="margin-top: 1%; border-style: solid; border-color: #DCDCDC; border-width: 2px;
 border-radius: 10px; box-shadow: 6px 6px 14px #DCDCDC">
 
@@ -73,7 +78,7 @@ border-radius: 10px; box-shadow: 6px 6px 14px #DCDCDC">
         </div>
 
         <s:if test="%{site.commentaires.isEmpty()}">
-            <p>Ce site n'a pas encore de commentaires !</p>
+            <p style="text-align: center">Ce site n'a pas encore de commentaires !</p>
         </s:if>
         <s:else>
             <s:iterator value="site.commentaires">
@@ -156,7 +161,9 @@ border-radius: 10px; box-shadow: 6px 6px 14px #DCDCDC">
 
 <footer>
     <%@include file="../_include/footer.jsp"%>
-    <%@include file="../_include/scripts.jsp"%>
+    <s:if test="!#session.user">
+        <%@include file="../_include/scripts.jsp"%>
+    </s:if>
 </footer>
 
 </body>

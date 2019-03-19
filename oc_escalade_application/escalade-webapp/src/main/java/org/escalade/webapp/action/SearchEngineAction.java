@@ -218,19 +218,26 @@ public class SearchEngineAction extends ActionSupport  {
             listSecteurs = managerFactory.getSecteurManager().secteurBySimpleSearch(motCleRecherche);
 
             if (!listSecteurs.isEmpty()){
+                /**@see org.escalade.business.impl.manager.SiteManagerImpl#searchSiteBySector(List)*/
                 secteursRefSite = managerFactory.getSiteManager().searchSiteBySector(listSecteurs);
             }
 
+            /**@see org.escalade.business.impl.manager.VoieManagerImpl#rechercheSimpleParVoie(String)*/
             listVoies = managerFactory.getVoieManager().rechercheSimpleParVoie(motCleRecherche);
 
             if (!listVoies.isEmpty()){
+                /**@see org.escalade.business.impl.manager.SecteurManagerImpl#rechercheSecteurParVoie(List)*/
                 voiesRefSecteur = managerFactory.getSecteurManager().rechercheSecteurParVoie(listVoies);
+                /**@see org.escalade.business.impl.manager.SiteManagerImpl#searchSiteBySector(List)*/
                 voiesRefSecteurRefSite = managerFactory.getSiteManager().searchSiteBySector(voiesRefSecteur);
             }
 
+            if (listSites.isEmpty() && listSecteurs.isEmpty() && listVoies.isEmpty()){
+                this.addActionMessage("Désolé ! Aucun site ne correspond à votre recherche : " + motCleRecherche + " !");
+            }
+
         } catch (IndexOutOfBoundsException pEx) {
-            System.out.println(pEx);
-            this.addActionMessage("Désolé ! Aucun site ne correspond à votre recherche : " + motCleRecherche + " !");
+            this.addActionError("Une erreur s'est produite, veuillez réessayer plus tard!");
         }
 
         return ActionSupport.SUCCESS;
